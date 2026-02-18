@@ -500,41 +500,65 @@ const cmdInfo = [
     "shell": "bash"
   }
 ]
+
+function matchCommand(match, candidate) {
+  if (match == '') {
+    // If the input is blank, we want to match anything.
+    return true;
+  }
+  if (candidate.includes(match)) {
+    //console.log(`"${candidate}" includes "${match}"`);
+    return true;
+  } else {
+    //console.log(`"${candidate}" does not include "${match}"`);
+    return false;
+  }
+}
+
 function matchDescription(match, candidate, caseSensitive) {
+  if (match == '') {
+    // If the input is blank, we want to match anything.
+    return true;
+  }
   if (caseSensitive === true) {
     if (candidate.includes(match)) {
-      console.log(`"${candidate}" includes "${match}"`);
+      //console.log(`"${candidate}" includes "${match}"`);
       return true;
     } else {
-      console.log(`"${candidate}" does not include "${match}"`);
+      //console.log(`"${candidate}" does not include "${match}"`);
       return false;
     }
   } else {
     // Don't match case.
     if (candidate.toLowerCase().includes(match.toLowerCase())) {
-      console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
       return true;
     } else {
-      console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
       return false;
     }
   }
 }
 const elem = {};
 function updateSearch() {
+  var searchCommand = elem.searchCommand.value;
+  console.log(`searchCommand  = "${searchCommand}"`);
   var searchDescription = elem.searchDescription.value;
   console.log(`searchDescription  = "${searchDescription}"`);
   const descriptionCaseSensitive = elem.descriptionCaseSensitive.checked;
 
   var innerHTML = "";
-  if (searchDescription === '') {
+  if (searchCommand === '' && searchDescription === '') {
     // Input is blank, don't need to do anything.
     elem.outputElem.innerHTML = innerHTML;
     return true;
   }
   // Actually match the search text.
   for (let info of cmdInfo) {
-    if (matchDescription(searchDescription, info.description, descriptionCaseSensitive)) {
+    if (
+      matchCommand(searchCommand, info.invocation) &&
+      matchDescription(searchDescription, info.description, descriptionCaseSensitive)
+    ) {
         innerHTML += "<div><code>" + info.invocation + "</code></div>";
     }
   }
@@ -550,6 +574,11 @@ function handleChange(event) {
   updateSearch();
 }
 function initialize() {
+  elem.searchCommand = document.getElementById("searchCommand");
+  if (elem.searchCommand == null) {
+    console.log("Error: Could not get ID: " + "searchCommand");
+    return false;
+  }
   elem.searchDescription = document.getElementById("searchDescription");
   if (elem.searchDescription == null) {
     console.log("Error: Could not get ID: " + "searchDescription");
@@ -567,6 +596,7 @@ function initialize() {
   }
   updateSearch();
   // Register event handlers.
+  elem.searchCommand.onkeyup = handleKeyUp;
   elem.searchDescription.onkeyup = handleKeyUp;
   elem.descriptionCaseSensitive.onchange = handleChange;
 }
