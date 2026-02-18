@@ -189,7 +189,6 @@ const cmdInfo = [
       "curl"
     ],
     "description": "Show external IP address using http://ifconfig.me website.",
-    "example-output": [],
     "invocation": "curl --proto https ifconfig.me",
     "relevant-urls": [
       "http://askubuntu.com/questions/95910/command-for-determining-my-public-ip",
@@ -235,7 +234,7 @@ const cmdInfo = [
       "uname"
     ],
     "description": "Determine which architecture the Linux kernel is configured for; may not be the same as the actual CPU architecture. For example, an Intel i686 kernel can run on an Intel x86_64 processor, but its RAM will be limited unless the kernel has PAE is enabled. Short flag is `-m'.",
-    "example-output": "x86_64",
+    "example-output": "x86_64\n",
     "invocation": "uname --machine",
     "relevant-urls": [
       "http://www.cyberciti.biz/faq/linux-how-to-find-if-processor-is-64-bit-or-not/",
@@ -249,7 +248,7 @@ const cmdInfo = [
       "ps"
     ],
     "description": "Show information about parent process.",
-    "example-output": "UID          PID    PPID  C STIME TTY          TIME CMD\nusernam+  157147    3627  0 11:23 ?        00:00:00 /usr/bin/xterm",
+    "example-output": "UID          PID    PPID  C STIME TTY          TIME CMD\nusernam+  157147    3627  0 11:23 ?        00:00:00 /usr/bin/xterm\n",
     "invocation": "ps -p $PPID",
     "shell": "bash"
   },
@@ -317,7 +316,6 @@ const cmdInfo = [
       "zip"
     ],
     "description": "Resize all the images in an OpenDocument (ODT) file to 10% of their former size. Stores location of tempfile in $dir shell variable, which is not entirely safe.",
-    "example-output": [],
     "invocation": "dir=\"$(mktemp -d --tmpdir=.)\" && unzip -q file.odt -d \"$dir\" && cd \"$dir\" && mogrify -resize 10x10% Pictures/* && zip -qrm ../resized.odt * && cd .. && rmdir \"$dir\"",
     "shell": "bash"
   },
@@ -326,7 +324,6 @@ const cmdInfo = [
       "mv"
     ],
     "description": "Move all files in the current directory to the parent directory, including hidden files (dotfiles). Preserves inodes. Excludes the current directory and parent directory and includes filenames starting with two dots.",
-    "example-output": [],
     "invocation": "mv -- * .[!.] .??* ../",
     "relevant-urls": [
       "http://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via",
@@ -359,7 +356,7 @@ const cmdInfo = [
       "date"
     ],
     "description": "Show the date and time in a different timezone without changing the system time zone. Example is for Buenos Aires, Argentina.",
-    "example-output": "Thu Jan  1 00:00:00 ART 1970",
+    "example-output": "Thu Jan  1 00:00:00 ART 1970\n",
     "invocation": "TZ=America/Argentina/Buenos_Aires date",
     "relevant-urls": [
       "https://unix.stackexchange.com/questions/48101/how-can-i-have-date-output-the-time-from-a-different-timezone",
@@ -404,7 +401,6 @@ const cmdInfo = [
       "find"
     ],
     "description": "Find broken symbolic links (symlinks) in current directory and below. ",
-    "example-output": [],
     "invocation": "find . -xtype l",
     "relevant-urls": [
       "https://unix.stackexchange.com/questions/34248/how-can-i-find-broken-symlinks",
@@ -418,9 +414,7 @@ const cmdInfo = [
       "getconf"
     ],
     "description": "Returns the number of processors / CPU cores available on this machine.",
-    "example-output": [
-      "4\n"
-    ],
+    "example-output": "4\n",
     "invocation": "getconf _NPROCESSORS_ONLN",
     "relevant-urls": [
       "http://stackoverflow.com/questions/4586405/get-number-of-cpus-in-linux-using-c",
@@ -495,7 +489,7 @@ const cmdInfo = [
       "stat"
     ],
     "description": "Show the time when `updatedb' was run to update the database for the `locate' command.",
-    "example-output": "2026-02-16 07:53:13.870631441 -0500",
+    "example-output": "2026-02-16 07:53:13.870631441 -0500\n",
     "invocation": "stat --format %y /var/lib/plocate/plocate.db",
     "shell": "bash"
   }
