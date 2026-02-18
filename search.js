@@ -3,7 +3,7 @@ const cmdInfo = [
     "component-commands": [
         "head"
     ],
-    "description": "Create a 10 megabyte file full of ASCII NULs.",
+    "description": "Create a file of given size (10 megabyte) full of ASCII NULs.",
     "invocation": "head --bytes=10MB /dev/zero > ./bigfile",
     "relevant-urls": [
       "https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html",
