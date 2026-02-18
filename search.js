@@ -501,6 +501,17 @@ const cmdInfo = [
   }
 ]
 
+var highlightedElement = null;
+function copyText(event) {
+  navigator.clipboard.writeText(this.innerText);
+  if (highlightedElement !== null) {
+    highlightedElement.style.background = "";
+  }
+  this.style.background = "yellow";
+  highlightedElement = this;
+  //console.log(this.innerText);
+}
+
 function matchCommand(match, candidate) {
   if (match == '') {
     // If the input is blank, we want to match anything.
@@ -559,10 +570,14 @@ function updateSearch() {
       matchCommand(searchCommand, info.invocation) &&
       matchDescription(searchDescription, info.description, descriptionCaseSensitive)
     ) {
-        innerHTML += "<div><code>" + info.invocation + "</code></div>";
+        innerHTML += "<div class=\"copyOnClick\"><code>" + info.invocation + "</code></div>";
     }
   }
   elem.outputElem.innerHTML = innerHTML;
+  var elems = document.getElementsByClassName("copyOnClick");
+  for (var i=0; i<elems.length; i++) {
+    elems[i].addEventListener("click", copyText);
+  }
   return true;
 }
 function handleKeyUp(event) {
