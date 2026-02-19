@@ -10,7 +10,8 @@ const cmdInfo = [
       "https://ostechnix.com/create-files-certain-size-linux/",
       "https://www.baeldung.com/linux/create-file-of-given-size#using-the-head-and-tail-commands"
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "00e7daf1-0ec4-49b7-b704-ab4ddbcda771"
   },
   {
     "component-commands": [
@@ -23,7 +24,8 @@ const cmdInfo = [
       "https://commandmasters.com/commands/texdoc-common/",
       "https://tex.stackexchange.com/questions/646669/how-to-get-texdoc-to-return-a-particular-document",
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "6f1c574e-9500-4656-88e0-77755721a1d7"
   },
   {
     "component-commands": [
@@ -35,7 +37,8 @@ const cmdInfo = [
       "http://unix.stackexchange.com/questions/145131/copy-image-from-clipboard-to-file",
       "http://ubuntuforums.org/showthread.php?t=1335075"
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "5a413ea5-d4f0-46d9-b7c8-b7170a74b847"
   },
   {
     "component-commands": [
@@ -48,6 +51,7 @@ const cmdInfo = [
     "description": "For each file ending with '.pdf' in the current directory, extract the images from the pdf file into a new directory with the name of the file stripped of '.pdf'.",
     "invocation": "for f in *.pdf; do dir=\"${f%.*}\"; mkdir -p \"$dir\" && pdfimages -png -j \"$f\" \"$dir/$dir\"; done",
     "shell" : "bash",
+    "uuid": "6c0081a3-5c10-4cdf-826b-1bd778ae8ef0"
   },
   {
     "component-commands": [
@@ -62,7 +66,8 @@ const cmdInfo = [
        "http://superuser.com/questions/412024/is-my-system-64-bit",
        "http://lists.us.dell.com/pipermail/linux-poweredge/2011-February/044344.html"
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "fe1bd5ee-ae26-4abd-85a6-09be801f9f2b"
   },
   {
     "component-commands": [
@@ -75,7 +80,8 @@ const cmdInfo = [
       "https://unix.stackexchange.com/questions/46786/how-to-tell-gzip-to-keep-original-file",
       "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=240539"
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "b70da7de-745f-4774-93eb-6eb034ccbd57"
   },
   {
     "component-commands": [
@@ -88,7 +94,8 @@ const cmdInfo = [
        "http://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line",
        "http://stackoverflow.com/questions/13875081/difference-between-nproc-and-ulimit"
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "d67df423-d4c2-4a24-b83c-c494f94bdb75"
   },
   {
     "component-commands": [
@@ -103,7 +110,8 @@ const cmdInfo = [
       "https://stackoverflow.com/questions/7066625/how-to-find-the-linux-processor-chip-architecture/22100700",
       "http://www.cyberciti.biz/faq/lscpu-command-find-out-cpu-architecture-information/"
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "101630e8-efc4-4566-bbc8-78e6ac76120f"
   },
   {
     "component-commands": [
@@ -114,7 +122,8 @@ const cmdInfo = [
     "description": "Get driver names for all network interfaces.",
     "invocation": "readlink /sys/class/net/*/device/driver | xargs -L 1 basename",
     "example-output": "e1000e\niwlwifi\n",
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "80a480e5-8898-462c-910b-2bede6507e19"
   },
   {
     "component-commands": [
@@ -122,7 +131,8 @@ const cmdInfo = [
     ],
     "description": "Find files in your home directory that you don't own.",
     "invocation": "find $HOME ! -user $USER",
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "2b0656bc-9ea5-466b-8734-dcc1570be067"
   },
   {
     "component-commands": [
@@ -135,7 +145,8 @@ const cmdInfo = [
     "relevant-urls": [
       "http://ftp.arl.mil/mike/ping.html"
     ],
-    "shell" : "bash"
+    "shell" : "bash",
+    "uuid": "07248c2f-4809-4b19-9ff0-6fa8e554b8f6"
   },
   {
     "component-commands": [
@@ -149,16 +160,18 @@ const cmdInfo = [
       "http://superuser.com/a/228926/219809",
       "http://ubuntuforums.org/showthread.php?t=1954090&s=c408c62db23afe753dfcfd40f1a86e32&p=11825162#post11825162"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "dbadb0c9-5590-46af-b846-095c44a66e2c"
   },
   {
     "component-commands": [
       "mkdir",
       "unzip"
     ],
-    "description": "Make a new empty directory and unzip a ZIP archive into the same directory.",
+    "description": "Make a new empty directory and unzip a ZIP archive into that directory.",
     "invocation": "mkdir output; unzip my-zip-file.zip -d output",
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "ea0ee52c-0dc4-44df-8a4d-2db6bf83634e"
   },
   {
     "component-commands": [
@@ -172,7 +185,8 @@ const cmdInfo = [
       "http://unix.stackexchange.com/questions/166674/how-do-i-search-for-every-file-with-executable-permission-x-in-my-system",
       "http://lists.gnu.org/archive/html/bug-findutils/2005-12/msg00058.html"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "c2172098-7e38-43ff-9ab7-30c964f80861"
   },
   {
     "component-commands": [
@@ -190,7 +204,8 @@ const cmdInfo = [
     ],
     "description": "Run three different `sleep` commands in parallel.",
     "invocation": "parallel -j 3 -- \"sleep 2; echo '1st'\" \"sleep 1; echo '2nd'\" \"echo '3rd'\"",
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "a54b30ce-e62a-41b8-800c-c5f21c999bd6"
   },
   {
     "component-commands": [
@@ -202,7 +217,8 @@ const cmdInfo = [
       "http://askubuntu.com/questions/95910/command-for-determining-my-public-ip",
       "http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-bash"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "9cb1510d-eca5-404f-94fc-e5113bdbbc54"
   },
   {
     "component-commands": [
@@ -215,7 +231,8 @@ const cmdInfo = [
       "https://unix.stackexchange.com/questions/56084/how-do-i-copy-a-symbolic-link",
       "https://www.gnu.org/software/coreutils/manual/html_node/cp-invocation.html#index-_002d_002dno_002ddereference"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "8be325fc-1d76-46f1-8e13-514882230cbd"
   },
   {
     "component-commands": [
@@ -224,7 +241,8 @@ const cmdInfo = [
     ],
     "description": "See directories taking up the most space in user's home directory. Human-readable size (e.g. 8M for 8 megabytes).",
     "invocation": "du --human --max-depth=1 $HOME | sort --reverse --human-numeric-sort",
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "64c52fa6-cdde-4e8b-9671-1b74978cdc2c"
   },
   {
     "component-commands": [
@@ -235,7 +253,8 @@ const cmdInfo = [
     "relevant-urls": [
       "https://askubuntu.com/questions/138152/software-to-copy-a-scratched-cd-dvd-blueray-to-an-iso-file"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "7761f0b2-8e5f-4b63-8360-7af0a8c16576"
   },
   {
     "component-commands": [
@@ -249,7 +268,8 @@ const cmdInfo = [
       "http://stackoverflow.com/questions/2565282/difference-between-machine-hardware-and-hardware-platform",
       "https://www.ibm.com/developerworks/community/blogs/58e72888-6340-46ac-b488-d31aa4058e9c/entry/know_about_your_linux_system_using_uname_command77?lang=en"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "f69252a3-a58b-48bc-9fd2-89e9e5d29f94"
   },
   {
     "component-commands": [
@@ -258,7 +278,8 @@ const cmdInfo = [
     "description": "Show information about parent process.",
     "example-output": "UID          PID    PPID  C STIME TTY          TIME CMD\nusernam+  157147    3627  0 11:23 ?        00:00:00 /usr/bin/xterm\n",
     "invocation": "ps -p $PPID",
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "fdcc1f87-af46-4834-9ce2-b1ac27a3f070"
   },
   {
     "component-commands": [
@@ -271,7 +292,8 @@ const cmdInfo = [
       "http://unix.stackexchange.com/a/79713",
       "http://vsingleton.blogspot.com/2009/03/grep-using-octal-patterns-and-avoid.html"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "fd1ea283-a1ec-4997-9806-464a5a715624"
   },
   {
     "component-commands": [
@@ -284,7 +306,8 @@ const cmdInfo = [
     "relevant-urls": [
       "http://www.commandlinefu.com/commands/view/9766/copy-currentworking-directory-to-clipboard"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "6f5fdd18-b781-4b22-8b7f-7ad3066b912a"
   },
   {
     "component-commands": [
@@ -298,7 +321,8 @@ const cmdInfo = [
       "http://www.theunixschool.com/2012/07/find-command-15-examples-to-exclude.html",
       "http://www.liamdelahunty.com/tips/linux_find_exclude_multiple_directories.php"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "0e72bbcc-c43e-446c-bb83-ac0f00a4076b"
   },
   {
     "component-commands": [
@@ -312,7 +336,8 @@ const cmdInfo = [
       "https://stackoverflow.com/questions/5109038/linux-sine-wave-audio-generator",
       "https://unix.stackexchange.com/questions/245897/audio-tone-sine-generator-with-frequency-gauge"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "3f6a786a-9a20-43c6-acb9-1b782757e78f"
   },
   {
     "component-commands": [
@@ -325,7 +350,8 @@ const cmdInfo = [
     ],
     "description": "Resize all the images in an OpenDocument (ODT) file to 10% of their former size. Stores location of tempfile in $dir shell variable, which is not entirely safe.",
     "invocation": "dir=\"$(mktemp -d --tmpdir=.)\" && unzip -q file.odt -d \"$dir\" && cd \"$dir\" && mogrify -resize 10x10% Pictures/* && zip -qrm ../resized.odt * && cd .. && rmdir \"$dir\"",
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "361f2d3b-beeb-4a29-bcf6-070edaec63a9"
   },
   {
     "component-commands": [
@@ -341,7 +367,8 @@ const cmdInfo = [
       "http://serverfault.com/questions/122233/how-to-recursively-move-all-files-including-hidden-in-a-subfolder-into-a-paren",
       "https://askubuntu.com/questions/259383/how-can-i-get-mv-or-the-wildcard-to-move-hidden-files/259386"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "510c302e-fb2b-4a2a-898f-b98ba0326453"
   },
   {
     "component-commands": [
@@ -357,7 +384,8 @@ const cmdInfo = [
       "http://superuser.com/questions/88202/how-do-i-move-files-and-directories-to-the-parent-folder-in-linux/542214",
       "http://serverfault.com/questions/122233/how-to-recursively-move-all-files-including-hidden-in-a-subfolder-into-a-paren"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "19e51b80-ceb4-4a9a-a5f8-fd8e8bf8101d"
   },
   {
     "component-commands": [
@@ -371,7 +399,8 @@ const cmdInfo = [
       "http://www.cyberciti.biz/tips/date-command-set-tz-environment-variable.html",
       "https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "e47766a1-e332-4cd3-9e42-573d0bcd09de"
   },
   {
     "component-commands": [
@@ -386,7 +415,8 @@ const cmdInfo = [
       "https://stackoverflow.com/questions/3001177/how-do-i-grep-for-all-non-ascii-characters-in-unix",
       "http://superuser.com/questions/417305/how-can-i-identify-non-ascii-characters-from-the-shell"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "7b93628a-938d-4227-a88c-9d697f55fac4"
   },
   {
     "component-commands": [
@@ -402,7 +432,8 @@ const cmdInfo = [
       "http://stackoverflow.com/questions/9157138/recursively-counting-files-in-a-linux-directory",
       "http://www.commandlinefu.com/commands/view/4/count-files-beneath-current-directory-including-subfolders"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "40cbcc05-dedf-417c-ad0b-ce5f252ed141"
   },
   {
     "component-commands": [
@@ -415,7 +446,8 @@ const cmdInfo = [
       "https://serverfault.com/questions/295929/how-do-i-find-and-report-on-broken-symbolic-links-automatically",
       "http://www.commandlinefu.com/commands/view/10742/find-broken-symlinks"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "d1963f6a-dd27-48f5-8663-8ebe6ff5dae8"
   },
   {
     "component-commands": [
@@ -428,7 +460,8 @@ const cmdInfo = [
       "http://stackoverflow.com/questions/4586405/get-number-of-cpus-in-linux-using-c",
       "http://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "df4be8b4-833e-4e48-af1a-e03916833409"
   },
   {
     "component-commands": [
@@ -440,7 +473,8 @@ const cmdInfo = [
     "relevant-urls": [
       "https://wiki.archlinux.org/index.php/Zsh#Making_Zsh_your_default_shell"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "7a49c243-47f7-4a5a-a42a-87357d134b0d"
   },
   {
     "component-commands": [
@@ -453,7 +487,8 @@ const cmdInfo = [
       "http://stackoverflow.com/a/699071/1608986",
       "http://stackoverflow.com/a/2550243/1608986"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "924d5f3a-512b-4c0e-8219-6a47002d9014"
   },
   {
     "component-commands": [
@@ -468,7 +503,8 @@ const cmdInfo = [
       "http://tldp.org/HOWTO/Battery-Powered/methods.html#XF86",
       "https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling#Modifying_DPMS_and_screensaver_settings_using_xset"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "5b791952-7792-4ca5-bb38-cf622f3cdc8a"
   },
   {
     "component-commands": [
@@ -481,7 +517,8 @@ const cmdInfo = [
       "https://superuser.com/questions/303910/ubuntu-default-access-mode-permissions-for-users-home-dir-home-user",
       "https://unix.stackexchange.com/questions/95897/permissions-755-on-home-user"
     ],
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "2d031b99-6945-45bd-be31-71382d661d73"
   },
   {
     "component-commands": [
@@ -490,7 +527,8 @@ const cmdInfo = [
     "description": "Find all packages in apt repositories that match the pattern '/fftw3.h$', even if the package is not installed. Should return result 'libfftw3-dev'.",
     "example-output": "libfftw3-dev: /usr/include/fftw3.h\nlibmkl-dev: /usr/include/mkl/fftw/fftw3.h\n",
     "invocation": "apt-file -x search '/fftw3.h$'",
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "efd177f4-51e5-40cc-8c16-2720cb06d94e"
   },
   {
     "component-commands": [
@@ -499,7 +537,8 @@ const cmdInfo = [
     "description": "Show the time when `updatedb' was run to update the database for the `locate' command.",
     "example-output": "2026-02-16 07:53:13.870631441 -0500\n",
     "invocation": "stat --format %y /var/lib/plocate/plocate.db",
-    "shell": "bash"
+    "shell": "bash",
+    "uuid": "308423e6-95a4-4001-9e76-501ad79b2e93"
   },
   {
     "component-commands": [
