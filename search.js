@@ -583,6 +583,7 @@ function handleChange(event) {
   updateSearch();
 }
 function initialize() {
+  // Look for necessary HTML elements.
   elem.searchCommand = document.getElementById("searchCommand");
   if (elem.searchCommand == null) {
     console.log("Error: Could not get ID: " + "searchCommand");
@@ -603,10 +604,46 @@ function initialize() {
     console.log("Error: Could not get ID: " + "output");
     return false;
   }
-  updateSearch();
   // Register event handlers.
   elem.searchCommand.onkeyup = handleKeyUp;
   elem.searchDescription.onkeyup = handleKeyUp;
   elem.descriptionCaseSensitive.onchange = handleChange;
+  // Validate data.
+  const mandatory_fields = [
+    "component-commands",
+    "description",
+    "invocation",
+    "shell",
+  ]
+  const optional_fields = [
+    "example-output",
+    "relevant-urls",
+  ]
+  for (let info of cmdInfo) {
+    for (let field of mandatory_fields) {
+      var val = info[field];
+      if (val === '') {
+        console.error(`${field} = ''`);
+      } else if (val === null) {
+        console.error(`${field} = null`);
+      } else if (val === []) {
+        console.error(`${field} = []`);
+      } else if (val === undefined) {
+        console.error(`${field} = undefined`);
+      }
+    }
+    for (let field of optional_fields) {
+      var val = info[field];
+      if (val === '') {
+        console.error(`${field} = ''`);
+      } else if (val === null) {
+        console.error(`${field} = null`);
+      } else if (val === []) {
+        console.error(`${field} = []`);
+      }
+    }
+  }
+  // Update output.
+  updateSearch();
 }
 window.onload = initialize;
