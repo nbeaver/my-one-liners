@@ -176,6 +176,14 @@ const cmdInfo = [
   },
   {
     "component-commands": [
+      "find"
+    ],
+    "description": "Find non-executable files recursively.",
+    "invocation": "find . -type f \\! -executable -print",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
       "echo",
       "parallel",
       "sleep"
@@ -681,22 +689,6 @@ const cmdInfo = [
   },
   {
     "component-commands": [
-      "find"
-    ],
-    "description": "Find executables recursively.",
-    "invocation": "find . -type f -executable -print",
-    "shell": "bash"
-  },
-  {
-    "component-commands": [
-      "find"
-    ],
-    "description": "Find non-executable files recursively.",
-    "invocation": "find . -type f \\! -executable -print",
-    "shell": "bash"
-  },
-  {
-    "component-commands": [
       "rename"
     ],
     "description": "Replace spaces with underscores for all filenames in current directory.",
@@ -820,30 +812,6 @@ const cmdInfo = [
     "description": "Grep for words that end in \"gry\"",
     "example-output": "angry\ndemagogry\nhungry\n",
     "invocation": "grep -i '.*gry$' /usr/share/dict/words",
-    "shell": "bash"
-  },
-  {
-    "component-commands": [
-      "getconf"
-    ],
-    "description": "Print how many cores the CPU has.",
-    "example-output": "8\n",
-    "invocation": "getconf _NPROCESSORS_ONLN",
-    "relevant-urls": [
-      "https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line"
-    ],
-    "shell": "bash"
-  },
-  {
-    "component-commands": [
-      "nproc"
-    ],
-    "description": "Print how many cores the CPU has.",
-    "example-output": "8\n",
-    "invocation": "nproc",
-    "relevant-urls": [
-      "https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line"
-    ],
     "shell": "bash"
   },
   {
