@@ -9,3 +9,4 @@ Optional fields:
 
 - `example-output`
 - `relevant-urls`
+- `uuid`

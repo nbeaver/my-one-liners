@@ -983,8 +983,10 @@ function initialize() {
   const optional_keys = [
     "example-output",
     "relevant-urls",
+    "uuid",
   ]
   var invocations = new Set([]);
+  var uuids = new Set([]);
   var i = 0;
   for (let info of cmdInfo) {
     i++;
@@ -1022,6 +1024,11 @@ function initialize() {
       console.warn(`Duplicate invocation: ${info.invocation}`);
     } else {
       invocations.add(info.invocation);
+    }
+    if (uuids.has(info.uuid)) {
+      console.warn(`Duplicate UUID: ${info.uuid}`);
+    } else if (info.uuid !== undefined) {
+      uuids.add(info.uuid);
     }
   }
   // Update output.
