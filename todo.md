@@ -1,6 +1,6 @@
 General
 - [x] Do basic validation on data on first load
-- [ ] Check for duplicate commands
+- [x] Check for duplicate commands
 - [ ] Should each entry have a UUID? For debugging etc.
 
 Search
