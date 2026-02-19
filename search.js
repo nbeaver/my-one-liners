@@ -609,37 +609,47 @@ function initialize() {
   elem.searchDescription.onkeyup = handleKeyUp;
   elem.descriptionCaseSensitive.onchange = handleChange;
   // Validate data.
-  const mandatory_fields = [
+  const mandatory_keys = [
     "component-commands",
     "description",
     "invocation",
     "shell",
   ]
-  const optional_fields = [
+  const optional_keys = [
     "example-output",
     "relevant-urls",
   ]
+  var i = 0;
   for (let info of cmdInfo) {
-    for (let field of mandatory_fields) {
-      var val = info[field];
+    i++;
+    for (let key of mandatory_keys) {
+      var val = info[key];
       if (val === '') {
-        console.error(`${field} = ''`);
+        console.error(`#${i}: ${key} = ''`);
       } else if (val === null) {
-        console.error(`${field} = null`);
+        console.error(`#${i}: ${key} = null`);
       } else if (val === []) {
-        console.error(`${field} = []`);
+        console.error(`#${i}: ${key} = []`);
       } else if (val === undefined) {
-        console.error(`${field} = undefined`);
+        console.error(`#${i}: ${key} = undefined`);
       }
     }
-    for (let field of optional_fields) {
-      var val = info[field];
+    for (let key of optional_keys) {
+      var val = info[key];
       if (val === '') {
-        console.error(`${field} = ''`);
+        console.error(`#${i}: ${key} = ''`);
       } else if (val === null) {
-        console.error(`${field} = null`);
+        console.error(`#${i}: ${key} = null`);
       } else if (val === []) {
-        console.error(`${field} = []`);
+        console.error(`#${i}: ${key} = []`);
+      }
+    }
+    for (let key in info) {
+      if (mandatory_keys.includes(key) || optional_keys.includes(key)) {
+        continue;
+      } else {
+        // Important for e.g. catching misspellings of fields.
+        console.error(`#${i}: unknown key '${key}'`);
       }
     }
   }
