@@ -1016,6 +1016,7 @@ function initialize() {
     "example-output",
     "relevant-urls",
   ]
+  var invocations = new Set([]);
   var i = 0;
   for (let info of cmdInfo) {
     i++;
@@ -1048,6 +1049,11 @@ function initialize() {
         // Important for e.g. catching misspellings of fields.
         console.error(`#${i}: unknown key '${key}'`);
       }
+    }
+    if (invocations.has(info.invocation)) {
+      console.warn(`Duplicate invocation: ${info.invocation}`);
+    } else {
+      invocations.add(info.invocation);
     }
   }
   // Update output.
