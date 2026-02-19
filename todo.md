@@ -6,6 +6,7 @@ General
 Search
 - [ ] Search box for component commands
 - [x] Search box command string
+- [ ] Search box sample output
 - [ ] Search box shell
 
 Output
