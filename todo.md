@@ -1,3 +1,8 @@
+General
+- [ ] Do basic validation on data on first load
+- [ ] Check for duplicate commands
+- [ ] Should each entry have a UUID? For debugging etc.
+
 Search
 - [ ] Search box for component commands
 - [x] Search box command string
