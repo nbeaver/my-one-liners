@@ -492,6 +492,403 @@ const cmdInfo = [
     "example-output": "2026-02-16 07:53:13.870631441 -0500\n",
     "invocation": "stat --format %y /var/lib/plocate/plocate.db",
     "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "sudo", "iwlist"
+    ],
+    "description": "List wireless access points",
+    "invocation": "sudo iwlist scanning",
+    "relevant-urls": [
+      "https://hewlettpackard.github.io/wireless-tools/Tools"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find all files with 'cool' somewhere in the filename",
+    "invocation": "find . -name  '*cool*'",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find all files with 'cool'/'COOL'/'CoOl' somewhere in the filename (case insensitive).",
+    "invocation": "find . -iname  '*cool*'",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find all files ending in .html in current directory and subdirectories",
+    "invocation": "find . -name '*.html'",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find vim swap files (e.g. .swp, .swo, .example.txt.swp):",
+    "invocation": "find . -type f -name '*.sw?'",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find files with spaces in the filename.",
+    "invocation": "find . -name '* *'",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find all files with world-readable, writable, and executable permissions.",
+    "invocation": "find . -perm -a+rwx",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find directories that are world-writable.",
+    "invocation": "find . -type d -perm -a+w",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find directories that aren't permissions 0775 (drwxr-xr-x).",
+    "invocation": "find . -type d \\! -perm 0775",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find files or directories that are not writable in the current directory.",
+    "invocation": "find . \\! -writable",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find files or directories that are not writable in the current directory. Not compliant with POSIX-standard `find` command.",
+    "invocation": "find . -not -writable",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find", "chmod"
+    ],
+    "description": "Find files or directories that are not writable and make them writable again.",
+    "invocation": "find . \\! -writable -exec chmod --changes +w '{}' \\+",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find all files with world-readable (777) permissions, but skip symbolic links.",
+    "invocation": "find . -not -type l -perm 777",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find", "sort"
+    ],
+    "description": "Find directories and sort by permissions type.",
+    "invocation": "find . -type d -printf '%m %p\\n' | sort",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "ls"
+    ],
+    "description": "Print permissions of the /var/log directory.",
+    "example-output": "drwxr-xr-x 23 root root 4096 May 23 08:18 /var/log\n",
+    "invocation": "ls -ld /var/log",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "stat"
+    ],
+    "description": "Print permissions of the /var/log directory.",
+    "example-output": "  File: ‘/var/log’\n  Size: 4096      \tBlocks: 8          IO Block: 4096   directory\nDevice: 801h/2049d\tInode: 30416373    Links: 23\nAccess: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)\nAccess: 2016-05-23 09:59:45.411033488 -0500\nModify: 2016-05-23 08:18:12.333311420 -0500\nChange: 2016-05-23 08:18:12.333311420 -0500\n Birth: -",
+    "invocation": "stat /var/log",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "stat"
+    ],
+    "description": "Print permisisons in octal.",
+    "invocation": "stat --format='%a %n' -- *",
+    "relevant-urls": [
+      "https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "stat"
+    ],
+    "description": "Print permissions in octal, but also include the human-readable permissions.",
+    "invocation": "stat --format='%a %A %n' -- *",
+    "relevant-urls": [
+      "https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Show human-readable and octal permissions of files recursively.",
+    "invocation": "find . -type f -printf \"%m %M %f\\n\"",
+    "relevant-urls": [
+      "https://unix.stackexchange.com/questions/126040/convert-the-permissions-in-ls-l-output-to-octal"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find all files over a certain size (500MB in this case.)",
+    "invocation": "find . -size +500M",
+    "relevant-urls": [
+      "https://superuser.com/questions/204564/how-can-i-find-files-that-are-bigger-smaller-than-x-bytes",
+      "https://unix.stackexchange.com/questions/638335/find-command-size-behavior"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find", "sort", "head"
+    ],
+    "description": "Find smallest text files.",
+    "invocation": "find . -name '*.txt' -printf '%s %f\\n' | sort -n | head",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find executables recursively.",
+    "invocation": "find . -type f -executable -print",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find"
+    ],
+    "description": "Find non-executable files recursively.",
+    "invocation": "find . -type f \\! -executable -print",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "rename"
+    ],
+    "description": "Replace spaces with underscores for all filenames in current directory.",
+    "invocation": "rename 'y/ /_/' -- *",
+    "relevant-urls": [
+      "https://www.commandlinefu.com/commands/view/2518/replace-spaces-in-filenames-with-underscores"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "rename"
+    ],
+    "description": "Replace colons with dashes for filenames in current directory.",
+    "invocation": "rename 's/:/-/g' -- *",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find", "rename"
+    ],
+    "description": "Replace colons with dashes recursively.",
+    "invocation": "find . -name \"*:*\" -exec rename 's/:/-/g' {} \\+",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "find", "rename"
+    ],
+    "description": "Remove colons from filenames recursively.",
+    "invocation": "find . -name '*:*' -exec rename -n 's/://g' '{}' \\+",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "rename"
+    ],
+    "description": "Remove non-ASCII characters from filenames.",
+    "invocation": "rename 's/[^\\x00-\\x7F]//g' -- *",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "rename"
+    ],
+    "description": "Replace non-ASCII characters in filenames with underscores ('_').",
+    "invocation": "rename 's/[^\\x00-\\x7F]/_/g' -- *",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "rename"
+    ],
+    "description": "Rename all .jpeg files to .jpg.",
+    "invocation": "rename 's/.jpeg/.jpg/' -- *.jpeg",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "mv"
+    ],
+    "description": "Quick file rename using bash brace expansion.",
+    "invocation": "mv file.{txt,csv}",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "cp"
+    ],
+    "description": "Make a backup copy of a file with '.old' appended using bash brace expansion.",
+    "invocation": "cp myfile.txt{,.old}",
+    "relevant-urls": [
+      "http://www.shell-fu.org/lister.php?id=46"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "grep"
+    ],
+    "description": "Grepping the system dictionary for words starting with 's' and containing 'm' and 'b'; this is how samba was named:",
+    "invocation": "grep -i '^s.*m.*b' /usr/share/dict/words",
+    "relevant-urls": [
+      "http://www.rxn.com/services/faq/smb/samba.history.txt"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "grep"
+    ],
+    "description": "Grep all three-letter words without vowels, e.g. 'brr', 'nth', Mrs'.",
+    "invocation": "grep -E -i \"^[^aeiouy']{3}$\" /usr/share/dict/words",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "grep"
+    ],
+    "description": "Grep all words without vowels.",
+    "invocation": "grep -iv '[aeiouy]' /usr/share/dict/words",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "grep"
+    ],
+    "description": "Grep words that can be spelled with hexadecimal alone, like 0xDEADBEEF.",
+    "invocation": "grep -E -i \"^[a-fA-F]+$\" /usr/share/dict/words",
+    "relevant-urls": [
+      "https://en.wikipedia.org/wiki/Magic_number_%28programming%29#Magic_debug_values",
+      "http://www.urbandictionary.com/define.php?term=0xDEADBEEF",
+      "https://stackoverflow.com/questions/5907614/0xdeadbeef-vs-null"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "grep"
+    ],
+    "description": "Grep for words that end in \"gry\"",
+    "example-output": "angry\ndemagogry\nhungry\n",
+    "invocation": "grep -i '.*gry$' /usr/share/dict/words",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "getconf"
+    ],
+    "description": "Print how many cores the CPU has.",
+    "example-output": "8\n",
+    "invocation": "getconf _NPROCESSORS_ONLN",
+    "relevant-urls": [
+      "https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "nproc"
+    ],
+    "description": "Print how many cores the CPU has.",
+    "example-output": "8\n",
+    "invocation": "nproc",
+    "relevant-urls": [
+      "https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line"
+    ],
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "getconf"
+    ],
+    "description": "Print maximum path length.",
+    "example-output": "4096\n",
+    "invocation": "getconf PATH_MAX /",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "echo"
+    ],
+    "description": "Print operating system type (OS identifier). Available in bash but not POSIX standard.",
+    "example-output": "linux-gnu\n",
+    "invocation": "echo \"$OSTYPE\"",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "uname"
+    ],
+    "description": "Print operating system kernel name (OS identifier).",
+    "example-output": "Linux\n",
+    "invocation": "uname --kernel-name",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "uname"
+    ],
+    "description": "Print operating system name (OS identifier). GNU-only extension.",
+    "example-output": "GNU/Linux\n",
+    "invocation": "uname -o",
+    "shell": "bash"
+  },
+  {
+    "component-commands": [
+      "compgen"
+    ],
+    "description": "List all signals.",
+    "invocation": "compgen -A signal",
+    "shell": "bash"
   }
 ]
 
