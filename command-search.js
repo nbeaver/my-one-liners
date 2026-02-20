@@ -1062,38 +1062,28 @@ function validate(cmdInfo) {
     "description",
     "invocation",
     "shell",
-  ]
+  ];
   const optionalKeys = [
     "exampleOutput",
     "relevantURLs",
     "uuid",
-  ]
+  ];
   var invocations = new Set([]);
   var uuids = new Set([]);
-  var i = 0;
-  for (let info of cmdInfo) {
-    i++;
+  for (let i = 0; i < cmdInfo.length; i++) {
+    var info = cmdInfo[i]
     for (let key of mandatoryKeys) {
       var val = info[key];
-      if (val === '') {
-        console.error(`#${i}: ${key} = ''`);
-      } else if (val === null) {
-        console.error(`#${i}: ${key} = null`);
-      } else if (val === []) {
-        console.error(`#${i}: ${key} = []`);
-      } else if (val === undefined) {
-        console.error(`#${i}: ${key} = undefined`);
-      }
+      console.assert(val !== '',        "#%i: %s = %o", i, key, val)
+      console.assert(val !== null,      "#%i: %s = %o", i, key, val)
+      console.assert(val !== [],        "#%i: %s = %o", i, key, val)
+      console.assert(val !== undefined, "#%i: %s = %o", i, key, val)
     }
     for (let key of optionalKeys) {
       var val = info[key];
-      if (val === '') {
-        console.error(`#${i}: ${key} = ''`);
-      } else if (val === null) {
-        console.error(`#${i}: ${key} = null`);
-      } else if (val === []) {
-        console.error(`#${i}: ${key} = []`);
-      }
+      console.assert(val !== '',   "#%i: %s = %o", i, key, val)
+      console.assert(val !== null, "#%i: %s = %o", i, key, val)
+      console.assert(val !== [],   "#%i: %s = %o", i, key, val)
     }
     for (let key in info) {
       if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
