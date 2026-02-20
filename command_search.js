@@ -5,7 +5,7 @@ const cmdInfo = [
     ],
     "description": "Create a file of given size (10 megabyte) full of ASCII NULs.",
     "invocation": "head --bytes=10MB /dev/zero > ./bigfile",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html",
       "https://ostechnix.com/create-files-certain-size-linux/",
       "https://www.baeldung.com/linux/create-file-of-given-size#using-the-head-and-tail-commands"
@@ -20,7 +20,7 @@ const cmdInfo = [
     "description": "List all matching documentation files for 'siunitx'",
     "invocation": "texdoc --list --showall siunitx",
     "exampleOutput": " 1 /usr/share/texlive/texmf-dist/doc/latex/siunitx/siunitx.pdf\n   = Package documentation\n 2 /usr/share/texlive/texmf-dist/doc/latex/siunitx/README.md\n   = Readme\nEnter number of file to view, RET to view 1, anything else to skip:\n",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://commandmasters.com/commands/texdoc-common/",
       "https://tex.stackexchange.com/questions/646669/how-to-get-texdoc-to-return-a-particular-document",
     ],
@@ -33,7 +33,7 @@ const cmdInfo = [
     ],
     "description": "Save copied image to file.",
     "invocation": "xclip -selection clipboard -target image/png -out > out.png",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://unix.stackexchange.com/questions/145131/copy-image-from-clipboard-to-file",
       "http://ubuntuforums.org/showthread.php?t=1335075"
     ],
@@ -60,7 +60,7 @@ const cmdInfo = [
     "description": "Display the word size of the kernel, e.g. 32-bit or 64-bit.",
     "invocation": "getconf LONG_BIT",
     "exampleOutput": "64\n",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://www.cyberciti.biz/faq/linux-how-to-find-if-processor-is-64-bit-or-not/",
       "http://stackoverflow.com/questions/10137880/need-help-32-bit-64-bit-check-for-linux",
        "http://superuser.com/questions/412024/is-my-system-64-bit",
@@ -75,7 +75,7 @@ const cmdInfo = [
     ],
     "description": "Compress a file using gzip without removing the original file.",
     "invocation": "gzip < file > file.gz",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://lists.gnu.org/archive/html/info-gnu/2013-06/msg00003.html",
       "https://unix.stackexchange.com/questions/46786/how-to-tell-gzip-to-keep-original-file",
       "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=240539"
@@ -90,7 +90,7 @@ const cmdInfo = [
     "description": "Returns the number of processors / CPU cores available on this machine.",
     "invocation": "nproc",
     "exampleOutput": "4\n",
-    "relevant-urls": [
+    "relevantURLs": [
        "http://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line",
        "http://stackoverflow.com/questions/13875081/difference-between-nproc-and-ulimit"
     ],
@@ -106,7 +106,7 @@ const cmdInfo = [
     "description": "Display name of hardware's CPU architecture, e.g. x86_64 for 64-bit Intel processors and i686 for 32-bit Intel processors.",
     "invocation": "lscpu | grep '^Architecture:' | awk '{print $2}'",
     "exampleOutput": "x86_64\n",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://stackoverflow.com/questions/7066625/how-to-find-the-linux-processor-chip-architecture/22100700",
       "http://www.cyberciti.biz/faq/lscpu-command-find-out-cpu-architecture-information/"
     ],
@@ -142,7 +142,7 @@ const cmdInfo = [
     ],
     "description": "Generates audible voice that says 'ping' every time it gets an ICMP ECHO_RESPONSE, sent in intervals of 2 seconds.",
     "invocation": "ping -i 2 localhost | sed --unbuffered 's/.*/ping/' | espeak",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://ftp.arl.mil/mike/ping.html"
     ],
     "shell" : "bash",
@@ -155,7 +155,7 @@ const cmdInfo = [
     ],
     "description": "Kill stopped jobs. Bash-specific because of `jobs -p' to list process IDs.",
     "invocation": "kill $(jobs -ps)",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://serverfault.com/questions/240155/how-can-i-kill-all-stopped-jobs",
       "http://superuser.com/a/228926/219809",
       "http://ubuntuforums.org/showthread.php?t=1954090&s=c408c62db23afe753dfcfd40f1a86e32&p=11825162#post11825162"
@@ -179,7 +179,7 @@ const cmdInfo = [
     ],
     "description": "Find executables under current directory. Does not follow symbolic links.",
     "invocation": "find . -type f -executable -print",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://stackoverflow.com/questions/4458120/unix-find-search-for-executable-files",
       "http://serverfault.com/questions/381034/find-executables",
       "http://unix.stackexchange.com/questions/166674/how-do-i-search-for-every-file-with-executable-permission-x-in-my-system",
@@ -213,7 +213,7 @@ const cmdInfo = [
     ],
     "description": "Show external IP address using http://ifconfig.me website.",
     "invocation": "curl --proto https ifconfig.me",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://askubuntu.com/questions/95910/command-for-determining-my-public-ip",
       "http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-bash"
     ],
@@ -226,7 +226,7 @@ const cmdInfo = [
     ],
     "description": "Make a copy of a symbolic link (symlink).",
     "invocation": "cp --no-dereference mylink mylink-copy",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://superuser.com/questions/138587/how-to-copy-symbolic-links",
       "https://unix.stackexchange.com/questions/56084/how-do-i-copy-a-symbolic-link",
       "https://www.gnu.org/software/coreutils/manual/html_node/cp-invocation.html#index-_002d_002dno_002ddereference"
@@ -250,7 +250,7 @@ const cmdInfo = [
     ],
     "description": "Copy a disc (such as a CD or DVD) to a disk image (ISO), re-reading or skipping bad sectors instead of failing when an input/output error is encountered. This makes an iso from the /dev/dvd device file.",
     "invocation": "safecopy /dev/dvd disc.iso",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://askubuntu.com/questions/138152/software-to-copy-a-scratched-cd-dvd-blueray-to-an-iso-file"
     ],
     "shell": "bash",
@@ -263,7 +263,7 @@ const cmdInfo = [
     "description": "Determine which architecture the Linux kernel is configured for; may not be the same as the actual CPU architecture. For example, an Intel i686 kernel can run on an Intel x86_64 processor, but its RAM will be limited unless the kernel has PAE is enabled. Short flag is `-m'.",
     "exampleOutput": "x86_64\n",
     "invocation": "uname --machine",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://www.cyberciti.biz/faq/linux-how-to-find-if-processor-is-64-bit-or-not/",
       "http://stackoverflow.com/questions/2565282/difference-between-machine-hardware-and-hardware-platform",
       "https://www.ibm.com/developerworks/community/blogs/58e72888-6340-46ac-b488-d31aa4058e9c/entry/know_about_your_linux_system_using_uname_command77?lang=en"
@@ -287,7 +287,7 @@ const cmdInfo = [
     ],
     "description": "Recursively find text files ending in '.txt' that contain the DOS carriage return (octal 015, hexadecimal x0D). Uses ANSI-C single quotes instead of a literal carriage return character.",
     "invocation": "grep --binary --recursive --files-with-matches $'\\r' --include='*.txt'",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://unix.stackexchange.com/questions/79702/how-to-test-whether-the-file-is-crlf-or-lf-without-modyfing-it",
       "http://unix.stackexchange.com/a/79713",
       "http://vsingleton.blogspot.com/2009/03/grep-using-octal-patterns-and-avoid.html"
@@ -303,7 +303,7 @@ const cmdInfo = [
     ],
     "description": "Copy working directory to clipboard.",
     "invocation": "pwd | tr -d '\\n' | xsel -b",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://www.commandlinefu.com/commands/view/9766/copy-currentworking-directory-to-clipboard"
     ],
     "shell": "bash",
@@ -315,7 +315,7 @@ const cmdInfo = [
     ],
     "description": "Find all directory paths matching '*doc*' in `/usr/share`, except the paths under `/usr/share/doc`. This can help find documentation that is in an unusual place.",
     "invocation": "find '/usr/share' -path '/usr/share/doc' -prune -o -type d -name '*doc*'",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://stackoverflow.com/questions/1489277/how-to-use-prune-option-of-find-in-sh",
       "https://stackoverflow.com/questions/4210042/exclude-directory-from-find-command",
       "http://www.theunixschool.com/2012/07/find-command-15-examples-to-exclude.html",
@@ -331,7 +331,7 @@ const cmdInfo = [
     ],
     "description": "Interactive audio signal / tone / sound generator with various waveforms, including sine, triangle, square, and sawtooth (stereo mode).",
     "invocation": "aoss siggen -2",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://inconsolation.wordpress.com/2015/01/18/siggen-much-to-see-much-to-hear/",
       "https://stackoverflow.com/questions/5109038/linux-sine-wave-audio-generator",
       "https://unix.stackexchange.com/questions/245897/audio-tone-sine-generator-with-frequency-gauge"
@@ -359,7 +359,7 @@ const cmdInfo = [
     ],
     "description": "Move all files in the current directory to the parent directory, including hidden files (dotfiles). Preserves inodes. Excludes the current directory and parent directory and includes filenames starting with two dots.",
     "invocation": "mv -- * .[!.] .??* ../",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via",
       "http://unix.stackexchange.com/questions/6393/how-do-you-move-all-files-including-hidden-from-one-directory-to-another",
       "http://superuser.com/questions/62141/how-to-move-all-files-from-current-directory-to-upper-directory",
@@ -377,7 +377,7 @@ const cmdInfo = [
     ],
     "description": "Move all files and folders in the current directory to the parent directory, including hidden files and folders (dotfiles). Preserves inodes.",
     "invocation": "find . -mindepth 1 -maxdepth 1 -exec mv -t ../ -- '{}' \\+",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via",
       "http://unix.stackexchange.com/questions/6393/how-do-you-move-all-files-including-hidden-from-one-directory-to-another",
       "http://superuser.com/questions/62141/how-to-move-all-files-from-current-directory-to-upper-directory",
@@ -394,7 +394,7 @@ const cmdInfo = [
     "description": "Show the date and time in a different timezone without changing the system time zone. Example is for Buenos Aires, Argentina.",
     "exampleOutput": "Thu Jan  1 00:00:00 ART 1970\n",
     "invocation": "TZ=America/Argentina/Buenos_Aires date",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://unix.stackexchange.com/questions/48101/how-can-i-have-date-output-the-time-from-a-different-timezone",
       "http://www.cyberciti.biz/tips/date-command-set-tz-environment-variable.html",
       "https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"
@@ -409,7 +409,7 @@ const cmdInfo = [
     ],
     "description": "Highlight non-ASCII characters (e.g. Unicode) in a text file and give the line number they are on.",
     "invocation": "grep --line-number --perl-regexp '[^[:ascii:]]' --color=always /usr/share/dict/words | less --RAW-CONTROL-CHARS",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://lists.gnu.org/archive/html/bug-gnu-utils/2006-03/msg00000.html",
       "https://groups.google.com/forum/#!topic/comp.unix.programmer/Auge3Bz4iCA",
       "https://stackoverflow.com/questions/3001177/how-do-i-grep-for-all-non-ascii-characters-in-unix",
@@ -425,7 +425,7 @@ const cmdInfo = [
     ],
     "description": "Count number of files in this directory and all subdirectories on current filesystem. Works even if filenames contain newlines.",
     "invocation": "find . -xdev -type f -printf '.' | wc -c",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://stackoverflow.com/questions/27942749/return-number-of-files-in-a-directory-to-a-variable-in-a-shell-scrtpt",
       "http://askubuntu.com/questions/711293/how-to-count-the-total-number-of-files-folders-on-a-system",
       "http://superuser.com/questions/689293/is-there-anything-faster-than-find-wc-l-to-count-files-in-a-directory",
@@ -441,7 +441,7 @@ const cmdInfo = [
     ],
     "description": "Find broken symbolic links (symlinks) in current directory and below. ",
     "invocation": "find . -xtype l",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://unix.stackexchange.com/questions/34248/how-can-i-find-broken-symlinks",
       "https://serverfault.com/questions/295929/how-do-i-find-and-report-on-broken-symbolic-links-automatically",
       "http://www.commandlinefu.com/commands/view/10742/find-broken-symlinks"
@@ -456,7 +456,7 @@ const cmdInfo = [
     "description": "Returns the number of processors / CPU cores available on this machine.",
     "exampleOutput": "4\n",
     "invocation": "getconf _NPROCESSORS_ONLN",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://stackoverflow.com/questions/4586405/get-number-of-cpus-in-linux-using-c",
       "http://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line"
     ],
@@ -470,7 +470,7 @@ const cmdInfo = [
     ],
     "description": "Change the default shell of the current user to zsh.",
     "invocation": "chsh --shell $(which zsh) $USER",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://wiki.archlinux.org/index.php/Zsh#Making_Zsh_your_default_shell"
     ],
     "shell": "bash",
@@ -482,7 +482,7 @@ const cmdInfo = [
     ],
     "description": "List hidden files and folders (dotfiles). Uses bash globbing.",
     "invocation": "ls --directory -- .[^.]*",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://www.gnu.org/software/coreutils/faq/coreutils-faq.html#ls-_002da-_002a-does-not-list-dot-files",
       "http://stackoverflow.com/a/699071/1608986",
       "http://stackoverflow.com/a/2550243/1608986"
@@ -496,7 +496,7 @@ const cmdInfo = [
     ],
     "description": "Turn off the monitor; make the display go dark; blank the screen until the mouse is moved or a key is pressed.",
     "invocation": "xset dpms force standby",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://magnatecha.com/turn-off-display-from-linux-command-line/",
       "http://superuser.com/a/66923/219809",
       "http://www.cyberciti.biz/faq/linux-how-to-find-if-processor-is-64-bit-or-not/",
@@ -512,7 +512,7 @@ const cmdInfo = [
     ],
     "description": "Make home directory private from all other users.",
     "invocation": "chmod g-rwx,o-rwx $HOME",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://askubuntu.com/questions/46501/why-can-other-users-see-the-files-in-my-home-folder",
       "https://superuser.com/questions/303910/ubuntu-default-access-mode-permissions-for-users-home-dir-home-user",
       "https://unix.stackexchange.com/questions/95897/permissions-755-on-home-user"
@@ -546,7 +546,7 @@ const cmdInfo = [
     ],
     "description": "List wireless access points",
     "invocation": "sudo iwlist scanning",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://hewlettpackard.github.io/wireless-tools/Tools"
     ],
     "shell": "bash"
@@ -679,7 +679,7 @@ const cmdInfo = [
     ],
     "description": "Print permisisons in octal.",
     "invocation": "stat --format='%a %n' -- *",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line"
     ],
     "shell": "bash"
@@ -690,7 +690,7 @@ const cmdInfo = [
     ],
     "description": "Print permissions in octal, but also include the human-readable permissions.",
     "invocation": "stat --format='%a %A %n' -- *",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line"
     ],
     "shell": "bash"
@@ -701,7 +701,7 @@ const cmdInfo = [
     ],
     "description": "Show human-readable and octal permissions of files recursively.",
     "invocation": "find . -type f -printf \"%m %M %f\\n\"",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://unix.stackexchange.com/questions/126040/convert-the-permissions-in-ls-l-output-to-octal"
     ],
     "shell": "bash"
@@ -712,7 +712,7 @@ const cmdInfo = [
     ],
     "description": "Find all files over a certain size (500MB in this case.)",
     "invocation": "find . -size +500M",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://superuser.com/questions/204564/how-can-i-find-files-that-are-bigger-smaller-than-x-bytes",
       "https://unix.stackexchange.com/questions/638335/find-command-size-behavior"
     ],
@@ -732,7 +732,7 @@ const cmdInfo = [
     ],
     "description": "Replace spaces with underscores for all filenames in current directory.",
     "invocation": "rename 'y/ /_/' -- *",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://www.commandlinefu.com/commands/view/2518/replace-spaces-in-filenames-with-underscores"
     ],
     "shell": "bash"
@@ -799,7 +799,7 @@ const cmdInfo = [
     ],
     "description": "Make a backup copy of a file with '.old' appended using bash brace expansion.",
     "invocation": "cp myfile.txt{,.old}",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://www.shell-fu.org/lister.php?id=46"
     ],
     "shell": "bash"
@@ -810,7 +810,7 @@ const cmdInfo = [
     ],
     "description": "Grepping the system dictionary for words starting with 's' and containing 'm' and 'b'; this is how samba was named:",
     "invocation": "grep -i '^s.*m.*b' /usr/share/dict/words",
-    "relevant-urls": [
+    "relevantURLs": [
       "http://www.rxn.com/services/faq/smb/samba.history.txt"
     ],
     "shell": "bash"
@@ -837,7 +837,7 @@ const cmdInfo = [
     ],
     "description": "Grep words that can be spelled with hexadecimal alone, like 0xDEADBEEF.",
     "invocation": "grep -E -i \"^[a-fA-F]+$\" /usr/share/dict/words",
-    "relevant-urls": [
+    "relevantURLs": [
       "https://en.wikipedia.org/wiki/Magic_number_%28programming%29#Magic_debug_values",
       "http://www.urbandictionary.com/define.php?term=0xDEADBEEF",
       "https://stackoverflow.com/questions/5907614/0xdeadbeef-vs-null"
@@ -1065,7 +1065,7 @@ function validate(cmdInfo) {
   ]
   const optionalKeys = [
     "exampleOutput",
-    "relevant-urls",
+    "relevantURLs",
     "uuid",
   ]
   var invocations = new Set([]);

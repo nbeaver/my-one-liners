@@ -8,5 +8,5 @@ Mandatory fields:
 Optional fields:
 
 - `exampleOutput`
-- `relevant-urls`
+- `relevantURLs`
 - `uuid`
