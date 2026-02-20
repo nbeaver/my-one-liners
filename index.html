@@ -9,6 +9,9 @@
         margin: auto;
         font-size:  18px;
       }
+      .singleCmd {
+        border: thin solid black
+      }
     </style>
     <script src="command-search.js"></script>
   </head>
@@ -22,6 +25,7 @@
       <input type="text" id="componentCommands" name="componentCommands" class="search"/>
     </div>
     <div>
+      <input type="checkbox" id="toggleDescription" class="search" checked=true/>
       <label for="description">Description:</label>
       <input type="text" id="description" name="description" class="search"/>
       <input type="checkbox" id="descriptionCaseSensitive" name="descriptionCaseSensitive" class="search"/>

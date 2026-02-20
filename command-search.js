@@ -1018,6 +1018,10 @@ function updateSearch() {
     'exampleOutput': elem.exampleOutputCaseSensitive.checked,
   }
 
+  var showField = {
+    'invocation' : true,
+    'description' : elem.toggleDescription.checked,
+  }
   var innerHTML = "";
   const allBlank = Object.keys(strings).every(function(x){ return strings[x] === '' });
   if (allBlank) {
@@ -1036,7 +1040,16 @@ function updateSearch() {
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
     if (allMatch) {
-        innerHTML += "<div class=\"copyOnClick\"><code>" + info.invocation + "</code></div>";
+      // TODO: do this properly with escaping etc.
+      // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
+      innerHTML += '<div class="singleCmd">'
+      if (showField['invocation'] === true) {
+        innerHTML += '<div class="copyOnClick"><code>' + info.invocation + "</code></div>"
+      }
+      if (showField['description'] === true) {
+        innerHTML += "<div>" + info.description + "</div>"
+      }
+      innerHTML += "</div>";
     }
   }
   elem.output.innerHTML = innerHTML;
@@ -1140,6 +1153,7 @@ function initialize() {
   elem.componentCommands.onkeyup = handleKeyUp;
   elem.exampleOutput.onkeyup = handleKeyUp;
   elem.descriptionCaseSensitive.onchange = handleChange;
+  elem.toggleDescription.onchange = handleChange;
   validate(cmdInfo);
   // Update output.
   updateSearch();
