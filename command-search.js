@@ -1090,15 +1090,15 @@ function validate(cmdInfo) {
       var val = info[key];
       console.assert(val !== '',   "#%i: %s = %o", i, key, val)
       console.assert(val !== null, "#%i: %s = %o", i, key, val)
-      console.assert(val !== [],   "#%i: %s = %o", i, key, val)
       if (val !== undefined) {
         console.assert(typeof val === keyType[key], "#%i: typeof %s = %s != %s", i, key, typeof val, keyType[key])
         if (key in arrayType) {
           // Check each value in the array.
+          console.assert(Array.isArray(val), "#%i: %s : Array.isArray(%o) === false", i, key, val)
+          console.assert(val.length !== 0, "#%i: %s : %s.length === 0", i, key, key)
           for (let arrayVal of val) {
             console.assert(arrayVal !== '',   "#%i: %o in %s", i, arrayVal, key)
             console.assert(arrayVal !== null, "#%i: %o in %s", i, arrayVal, key)
-            console.assert(arrayVal !== [],   "#%i: %o in %s", i, arrayVal, key)
             console.assert(typeof arrayVal === arrayType[key], "#%i: typeof %o = %s != %s in %s", i, arrayVal, typeof arrayVal, arrayType[key], key)
           }
         }
