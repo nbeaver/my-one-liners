@@ -959,7 +959,7 @@ function updateSearch() {
   var innerHTML = "";
   if (searchCommand === '' && searchDescription === '') {
     // Input is blank, don't need to do anything.
-    elem.outputElem.innerHTML = innerHTML;
+    elem.output.innerHTML = innerHTML;
     return true;
   }
   // Actually match the search text.
@@ -971,7 +971,7 @@ function updateSearch() {
         innerHTML += "<div class=\"copyOnClick\"><code>" + info.invocation + "</code></div>";
     }
   }
-  elem.outputElem.innerHTML = innerHTML;
+  elem.output.innerHTML = innerHTML;
   var elems = document.getElementsByClassName("copyOnClick");
   for (var i=0; i<elems.length; i++) {
     elems[i].addEventListener("click", copyText);
@@ -988,25 +988,8 @@ function handleChange(event) {
 }
 function initialize() {
   // Look for necessary HTML elements.
-  elem.searchCommand = document.getElementById("searchCommand");
-  if (elem.searchCommand == null) {
-    console.log("Error: Could not get ID: " + "searchCommand");
-    return false;
-  }
-  elem.searchDescription = document.getElementById("searchDescription");
-  if (elem.searchDescription == null) {
-    console.log("Error: Could not get ID: " + "searchDescription");
-    return false;
-  }
-  elem.descriptionCaseSensitive = document.getElementById("descriptionCaseSensitive");
-  if (elem.descriptionCaseSensitive == null) {
-    console.log("Error: Could not get ID: " + "descriptionCaseSensitive");
-    return false;
-  }
-  elem.outputElem = document.getElementById("output");
-  if (elem.outputElem == null) {
-    console.log("Error: Could not get ID: " + "output");
-    return false;
+  for (let el of document.getElementsByClassName("search")) {
+    elem[el.id] = el
   }
   // Register event handlers.
   elem.searchCommand.onkeyup = handleKeyUp;
