@@ -950,12 +950,24 @@ function matchDescription(match, candidate, caseSensitive) {
 }
 
 function matchComponentCommands(match, candidate) {
-  console.log(match)
-  if (match.isSubsetOf(candidate)) {
+  if (match.size === 0) {
+    // If the input is blank, we want to match anything.
+    return true;
+  } else if (match.isSubsetOf(candidate)) {
     return true;
   } else {
     return false;
   }
+}
+
+function noWhiteSpace(arrayIn) {
+  var array = [];
+  for (let val of arrayIn) {
+    if (val.trim() !== '') {
+      array.push(val)
+    }
+  }
+  return array;
 }
 
 const elem = {};
@@ -966,7 +978,7 @@ function updateSearch() {
   console.log(`searchDescription  = "${searchDescription}"`);
   const descriptionCaseSensitive = elem.descriptionCaseSensitive.checked;
   var componentCommandsStr = elem.componentCommands.value;
-  var componentCommandsList = elem.componentCommands.value.split(' ');
+  var componentCommandsList = noWhiteSpace(elem.componentCommands.value.split(' '));
   var componentCommands = new Set(componentCommandsList);
 
   var innerHTML = "";
@@ -977,11 +989,14 @@ function updateSearch() {
   }
   // Actually match the search text.
   for (let info of cmdInfo) {
-    if (
-      matchCommand(searchCommand, info.invocation) &&
-      matchDescription(searchDescription, info.description, descriptionCaseSensitive) &&
-      matchComponentCommands(componentCommands, new Set(info['component-commands']))
-    ) {
+    var match = {
+      'invocation' : matchCommand(searchCommand, info.invocation),
+      'description' : matchDescription(searchDescription, info.description, descriptionCaseSensitive),
+      'component-commands': matchComponentCommands(componentCommands, new Set(info['component-commands']))
+    }
+    var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
+  // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
+    if (allMatch) {
         innerHTML += "<div class=\"copyOnClick\"><code>" + info.invocation + "</code></div>";
     }
   }
