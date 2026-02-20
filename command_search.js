@@ -948,6 +948,16 @@ function matchDescription(match, candidate, caseSensitive) {
     }
   }
 }
+
+function matchComponentCommands(match, candidate) {
+  console.log(match)
+  if (match.isSubsetOf(candidate)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const elem = {};
 function updateSearch() {
   var searchCommand = elem.searchCommand.value;
@@ -955,9 +965,12 @@ function updateSearch() {
   var searchDescription = elem.searchDescription.value;
   console.log(`searchDescription  = "${searchDescription}"`);
   const descriptionCaseSensitive = elem.descriptionCaseSensitive.checked;
+  var componentCommandsStr = elem.componentCommands.value;
+  var componentCommandsList = elem.componentCommands.value.split(' ');
+  var componentCommands = new Set(componentCommandsList);
 
   var innerHTML = "";
-  if (searchCommand === '' && searchDescription === '') {
+  if (searchCommand === '' && searchDescription === '' && componentCommandsStr == '') {
     // Input is blank, don't need to do anything.
     elem.output.innerHTML = innerHTML;
     return true;
@@ -966,7 +979,8 @@ function updateSearch() {
   for (let info of cmdInfo) {
     if (
       matchCommand(searchCommand, info.invocation) &&
-      matchDescription(searchDescription, info.description, descriptionCaseSensitive)
+      matchDescription(searchDescription, info.description, descriptionCaseSensitive) &&
+      matchComponentCommands(componentCommands, new Set(info['component-commands']))
     ) {
         innerHTML += "<div class=\"copyOnClick\"><code>" + info.invocation + "</code></div>";
     }
@@ -994,6 +1008,7 @@ function initialize() {
   // Register event handlers.
   elem.searchCommand.onkeyup = handleKeyUp;
   elem.searchDescription.onkeyup = handleKeyUp;
+  elem.componentCommands.onkeyup = handleKeyUp;
   elem.descriptionCaseSensitive.onchange = handleChange;
   // Validate data.
   const mandatory_keys = [
