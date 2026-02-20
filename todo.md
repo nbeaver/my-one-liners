@@ -4,7 +4,7 @@ General
 - [x] Allow optional UUID for error messages and debugging
 
 Search
-- [ ] Search box for component commands
+- [x] Search box for component commands
 - [x] Search box command string
 - [ ] Search box sample output
 - [ ] Search box shell
