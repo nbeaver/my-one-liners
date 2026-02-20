@@ -19,7 +19,7 @@ const cmdInfo = [
     ],
     "description": "List all matching documentation files for 'siunitx'",
     "invocation": "texdoc --list --showall siunitx",
-    "example-output": " 1 /usr/share/texlive/texmf-dist/doc/latex/siunitx/siunitx.pdf\n   = Package documentation\n 2 /usr/share/texlive/texmf-dist/doc/latex/siunitx/README.md\n   = Readme\nEnter number of file to view, RET to view 1, anything else to skip:\n",
+    "exampleOutput": " 1 /usr/share/texlive/texmf-dist/doc/latex/siunitx/siunitx.pdf\n   = Package documentation\n 2 /usr/share/texlive/texmf-dist/doc/latex/siunitx/README.md\n   = Readme\nEnter number of file to view, RET to view 1, anything else to skip:\n",
     "relevant-urls": [
       "https://commandmasters.com/commands/texdoc-common/",
       "https://tex.stackexchange.com/questions/646669/how-to-get-texdoc-to-return-a-particular-document",
@@ -59,7 +59,7 @@ const cmdInfo = [
     ],
     "description": "Display the word size of the kernel, e.g. 32-bit or 64-bit.",
     "invocation": "getconf LONG_BIT",
-    "example-output": "64\n",
+    "exampleOutput": "64\n",
     "relevant-urls": [
       "http://www.cyberciti.biz/faq/linux-how-to-find-if-processor-is-64-bit-or-not/",
       "http://stackoverflow.com/questions/10137880/need-help-32-bit-64-bit-check-for-linux",
@@ -89,7 +89,7 @@ const cmdInfo = [
     ],
     "description": "Returns the number of processors / CPU cores available on this machine.",
     "invocation": "nproc",
-    "example-output": "4\n",
+    "exampleOutput": "4\n",
     "relevant-urls": [
        "http://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line",
        "http://stackoverflow.com/questions/13875081/difference-between-nproc-and-ulimit"
@@ -105,7 +105,7 @@ const cmdInfo = [
     ],
     "description": "Display name of hardware's CPU architecture, e.g. x86_64 for 64-bit Intel processors and i686 for 32-bit Intel processors.",
     "invocation": "lscpu | grep '^Architecture:' | awk '{print $2}'",
-    "example-output": "x86_64\n",
+    "exampleOutput": "x86_64\n",
     "relevant-urls": [
       "https://stackoverflow.com/questions/7066625/how-to-find-the-linux-processor-chip-architecture/22100700",
       "http://www.cyberciti.biz/faq/lscpu-command-find-out-cpu-architecture-information/"
@@ -121,7 +121,7 @@ const cmdInfo = [
     ],
     "description": "Get driver names for all network interfaces.",
     "invocation": "readlink /sys/class/net/*/device/driver | xargs -L 1 basename",
-    "example-output": "e1000e\niwlwifi\n",
+    "exampleOutput": "e1000e\niwlwifi\n",
     "shell" : "bash",
     "uuid": "80a480e5-8898-462c-910b-2bede6507e19"
   },
@@ -261,7 +261,7 @@ const cmdInfo = [
       "uname"
     ],
     "description": "Determine which architecture the Linux kernel is configured for; may not be the same as the actual CPU architecture. For example, an Intel i686 kernel can run on an Intel x86_64 processor, but its RAM will be limited unless the kernel has PAE is enabled. Short flag is `-m'.",
-    "example-output": "x86_64\n",
+    "exampleOutput": "x86_64\n",
     "invocation": "uname --machine",
     "relevant-urls": [
       "http://www.cyberciti.biz/faq/linux-how-to-find-if-processor-is-64-bit-or-not/",
@@ -276,7 +276,7 @@ const cmdInfo = [
       "ps"
     ],
     "description": "Show information about parent process.",
-    "example-output": "UID          PID    PPID  C STIME TTY          TIME CMD\nusernam+  157147    3627  0 11:23 ?        00:00:00 /usr/bin/xterm\n",
+    "exampleOutput": "UID          PID    PPID  C STIME TTY          TIME CMD\nusernam+  157147    3627  0 11:23 ?        00:00:00 /usr/bin/xterm\n",
     "invocation": "ps -p $PPID",
     "shell": "bash",
     "uuid": "fdcc1f87-af46-4834-9ce2-b1ac27a3f070"
@@ -392,7 +392,7 @@ const cmdInfo = [
       "date"
     ],
     "description": "Show the date and time in a different timezone without changing the system time zone. Example is for Buenos Aires, Argentina.",
-    "example-output": "Thu Jan  1 00:00:00 ART 1970\n",
+    "exampleOutput": "Thu Jan  1 00:00:00 ART 1970\n",
     "invocation": "TZ=America/Argentina/Buenos_Aires date",
     "relevant-urls": [
       "https://unix.stackexchange.com/questions/48101/how-can-i-have-date-output-the-time-from-a-different-timezone",
@@ -454,7 +454,7 @@ const cmdInfo = [
       "getconf"
     ],
     "description": "Returns the number of processors / CPU cores available on this machine.",
-    "example-output": "4\n",
+    "exampleOutput": "4\n",
     "invocation": "getconf _NPROCESSORS_ONLN",
     "relevant-urls": [
       "http://stackoverflow.com/questions/4586405/get-number-of-cpus-in-linux-using-c",
@@ -525,7 +525,7 @@ const cmdInfo = [
       "apt-file"
     ],
     "description": "Find all packages in apt repositories that match the pattern '/fftw3.h$', even if the package is not installed. Should return result 'libfftw3-dev'.",
-    "example-output": "libfftw3-dev: /usr/include/fftw3.h\nlibmkl-dev: /usr/include/mkl/fftw/fftw3.h\n",
+    "exampleOutput": "libfftw3-dev: /usr/include/fftw3.h\nlibmkl-dev: /usr/include/mkl/fftw/fftw3.h\n",
     "invocation": "apt-file -x search '/fftw3.h$'",
     "shell": "bash",
     "uuid": "efd177f4-51e5-40cc-8c16-2720cb06d94e"
@@ -535,7 +535,7 @@ const cmdInfo = [
       "stat"
     ],
     "description": "Show the time when `updatedb' was run to update the database for the `locate' command.",
-    "example-output": "2026-02-16 07:53:13.870631441 -0500\n",
+    "exampleOutput": "2026-02-16 07:53:13.870631441 -0500\n",
     "invocation": "stat --format %y /var/lib/plocate/plocate.db",
     "shell": "bash",
     "uuid": "308423e6-95a4-4001-9e76-501ad79b2e93"
@@ -660,7 +660,7 @@ const cmdInfo = [
       "ls"
     ],
     "description": "Print permissions of the /var/log directory.",
-    "example-output": "drwxr-xr-x 23 root root 4096 May 23 08:18 /var/log\n",
+    "exampleOutput": "drwxr-xr-x 23 root root 4096 May 23 08:18 /var/log\n",
     "invocation": "ls -ld /var/log",
     "shell": "bash"
   },
@@ -669,7 +669,7 @@ const cmdInfo = [
       "stat"
     ],
     "description": "Print permissions of the /var/log directory.",
-    "example-output": "  File: ‘/var/log’\n  Size: 4096      \tBlocks: 8          IO Block: 4096   directory\nDevice: 801h/2049d\tInode: 30416373    Links: 23\nAccess: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)\nAccess: 2016-05-23 09:59:45.411033488 -0500\nModify: 2016-05-23 08:18:12.333311420 -0500\nChange: 2016-05-23 08:18:12.333311420 -0500\n Birth: -",
+    "exampleOutput": "  File: ‘/var/log’\n  Size: 4096      \tBlocks: 8          IO Block: 4096   directory\nDevice: 801h/2049d\tInode: 30416373    Links: 23\nAccess: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)\nAccess: 2016-05-23 09:59:45.411033488 -0500\nModify: 2016-05-23 08:18:12.333311420 -0500\nChange: 2016-05-23 08:18:12.333311420 -0500\n Birth: -",
     "invocation": "stat /var/log",
     "shell": "bash"
   },
@@ -849,7 +849,7 @@ const cmdInfo = [
       "grep"
     ],
     "description": "Grep for words that end in \"gry\"",
-    "example-output": "angry\ndemagogry\nhungry\n",
+    "exampleOutput": "angry\ndemagogry\nhungry\n",
     "invocation": "grep -i '.*gry$' /usr/share/dict/words",
     "shell": "bash"
   },
@@ -858,7 +858,7 @@ const cmdInfo = [
       "getconf"
     ],
     "description": "Print maximum path length.",
-    "example-output": "4096\n",
+    "exampleOutput": "4096\n",
     "invocation": "getconf PATH_MAX /",
     "shell": "bash"
   },
@@ -867,7 +867,7 @@ const cmdInfo = [
       "echo"
     ],
     "description": "Print operating system type (OS identifier). Available in bash but not POSIX standard.",
-    "example-output": "linux-gnu\n",
+    "exampleOutput": "linux-gnu\n",
     "invocation": "echo \"$OSTYPE\"",
     "shell": "bash"
   },
@@ -876,7 +876,7 @@ const cmdInfo = [
       "uname"
     ],
     "description": "Print operating system kernel name (OS identifier).",
-    "example-output": "Linux\n",
+    "exampleOutput": "Linux\n",
     "invocation": "uname --kernel-name",
     "shell": "bash"
   },
@@ -885,7 +885,7 @@ const cmdInfo = [
       "uname"
     ],
     "description": "Print operating system name (OS identifier). GNU-only extension.",
-    "example-output": "GNU/Linux\n",
+    "exampleOutput": "GNU/Linux\n",
     "invocation": "uname -o",
     "shell": "bash"
   },
@@ -1031,7 +1031,7 @@ function updateSearch() {
       'invocation' : matchCommand(search.invocation, info.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
       'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
-      'example-output': matchExampleOutput(search.exampleOutput, info['example-output'], caseSensitive.exampleOutput),
+      'exampleOutput': matchExampleOutput(search.exampleOutput, info['exampleOutput'], caseSensitive.exampleOutput),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
@@ -1064,7 +1064,7 @@ function validate(cmdInfo) {
     "shell",
   ]
   const optionalKeys = [
-    "example-output",
+    "exampleOutput",
     "relevant-urls",
     "uuid",
   ]

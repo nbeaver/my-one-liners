@@ -7,6 +7,6 @@ Mandatory fields:
 
 Optional fields:
 
-- `example-output`
+- `exampleOutput`
 - `relevant-urls`
 - `uuid`
