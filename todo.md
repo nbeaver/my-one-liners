@@ -1,11 +1,11 @@
 General
-- [ ] Use camelCase for all keys
+- [x] Use camelCase for all keys
 
 Validation
 - [x] Do basic validation on data on first load
 - [x] Check for duplicate commands
 - [x] Allow optional UUID for error messages and debugging
-- [ ] Check type is correct (string, list of strings, etc.)
+- [x] Check type is correct (string, list of strings, etc.)
 
 Search
 - [x] Search box for component commands
