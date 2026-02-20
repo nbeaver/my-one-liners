@@ -949,6 +949,34 @@ function matchDescription(match, candidate, caseSensitive) {
   }
 }
 
+function matchExampleOutput(match, candidate, caseSensitive) {
+  if (match == '') {
+    // If the input is blank, we want to match anything.
+    return true;
+  } else if (candidate === undefined) {
+    // If the field isn't available, we don't want to match.
+    return false;
+  }
+  if (caseSensitive === true) {
+    if (candidate.includes(match)) {
+      //console.log(`"${candidate}" includes "${match}"`);
+      return true;
+    } else {
+      //console.log(`"${candidate}" does not include "${match}"`);
+      return false;
+    }
+  } else {
+    // Don't match case.
+    if (candidate.toLowerCase().includes(match.toLowerCase())) {
+      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      return true;
+    } else {
+      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      return false;
+    }
+  }
+}
+
 function matchComponentCommands(match, candidate) {
   if (match.size === 0) {
     // If the input is blank, we want to match anything.
@@ -976,15 +1004,18 @@ function updateSearch() {
     'invocation' : elem.searchCommand.value,
     'description' : elem.searchDescription.value,
     'componentCommands' : elem.componentCommands.value,
+    'exampleOutput' : elem.exampleOutput.value,
   }
   var componentCommandsList = noWhiteSpace(strings.componentCommands.split(' '));
   const search = {
     'invocation' : strings.invocation,
     'description' : strings.description.trim(),
     'componentCommands' : new Set(componentCommandsList),
+    'exampleOutput' : strings.exampleOutput,
   }
   const caseSensitive = {
     'description': elem.descriptionCaseSensitive.checked,
+    'exampleOutput': elem.exampleOutputCaseSensitive.checked,
   }
 
   var innerHTML = "";
@@ -999,7 +1030,8 @@ function updateSearch() {
     var match = {
       'invocation' : matchCommand(search.invocation, info.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
-      'component-commands': matchComponentCommands(search.componentCommands, new Set(info['component-commands']))
+      'component-commands': matchComponentCommands(search.componentCommands, new Set(info['component-commands'])),
+      'example-output': matchExampleOutput(search.exampleOutput, info['example-output'], caseSensitive.exampleOutput),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
@@ -1031,6 +1063,7 @@ function initialize() {
   elem.searchCommand.onkeyup = handleKeyUp;
   elem.searchDescription.onkeyup = handleKeyUp;
   elem.componentCommands.onkeyup = handleKeyUp;
+  elem.exampleOutput.onkeyup = handleKeyUp;
   elem.descriptionCaseSensitive.onchange = handleChange;
   // Validate data.
   const mandatory_keys = [
