@@ -1,7 +1,7 @@
 General
 - [x] Do basic validation on data on first load
 - [x] Check for duplicate commands
-- [ ] Allow optional UUID for error messages and debugging
+- [x] Allow optional UUID for error messages and debugging
 
 Search
 - [ ] Search box for component commands
