@@ -1030,7 +1030,7 @@ function updateSearch() {
     var match = {
       'invocation' : matchCommand(search.invocation, info.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
-      'componentCommands': matchComponentCommands(search.componentCommands, new Set(info['componentCommands'])),
+      'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
       'example-output': matchExampleOutput(search.exampleOutput, info['example-output'], caseSensitive.exampleOutput),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
