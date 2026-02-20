@@ -1001,8 +1001,8 @@ function noWhiteSpace(arrayIn) {
 const elem = {};
 function updateSearch() {
   var strings = {
-    'invocation' : elem.searchCommand.value,
-    'description' : elem.searchDescription.value,
+    'invocation' : elem.command.value,
+    'description' : elem.description.value,
     'componentCommands' : elem.componentCommands.value,
     'exampleOutput' : elem.exampleOutput.value,
   }
@@ -1122,8 +1122,8 @@ function initialize() {
     elem[el.id] = el
   }
   // Register event handlers.
-  elem.searchCommand.onkeyup = handleKeyUp;
-  elem.searchDescription.onkeyup = handleKeyUp;
+  elem.command.onkeyup = handleKeyUp;
+  elem.description.onkeyup = handleKeyUp;
   elem.componentCommands.onkeyup = handleKeyUp;
   elem.exampleOutput.onkeyup = handleKeyUp;
   elem.descriptionCaseSensitive.onchange = handleChange;
