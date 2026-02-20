@@ -1054,17 +1054,8 @@ function handleChange(event) {
   // Update search results.
   updateSearch();
 }
-function initialize() {
-  // Look for necessary HTML elements.
-  for (let el of document.getElementsByClassName("search")) {
-    elem[el.id] = el
-  }
-  // Register event handlers.
-  elem.searchCommand.onkeyup = handleKeyUp;
-  elem.searchDescription.onkeyup = handleKeyUp;
-  elem.componentCommands.onkeyup = handleKeyUp;
-  elem.exampleOutput.onkeyup = handleKeyUp;
-  elem.descriptionCaseSensitive.onchange = handleChange;
+
+function validate(cmdInfo) {
   // Validate data.
   const mandatory_keys = [
     "component-commands",
@@ -1123,6 +1114,20 @@ function initialize() {
       uuids.add(info.uuid);
     }
   }
+}
+
+function initialize() {
+  // Look for necessary HTML elements.
+  for (let el of document.getElementsByClassName("search")) {
+    elem[el.id] = el
+  }
+  // Register event handlers.
+  elem.searchCommand.onkeyup = handleKeyUp;
+  elem.searchDescription.onkeyup = handleKeyUp;
+  elem.componentCommands.onkeyup = handleKeyUp;
+  elem.exampleOutput.onkeyup = handleKeyUp;
+  elem.descriptionCaseSensitive.onchange = handleChange;
+  validate(cmdInfo);
   // Update output.
   updateSearch();
 }
