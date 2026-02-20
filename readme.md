@@ -1,6 +1,6 @@
 Mandatory fields:
 
-- `component-commands`
+- `componentCommands`
 - `description`
 - `invocation`
 - `shell`

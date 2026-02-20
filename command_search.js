@@ -1,6 +1,6 @@
 const cmdInfo = [
   {
-    "component-commands": [
+    "componentCommands": [
         "head"
     ],
     "description": "Create a file of given size (10 megabyte) full of ASCII NULs.",
@@ -14,7 +14,7 @@ const cmdInfo = [
     "uuid": "00e7daf1-0ec4-49b7-b704-ab4ddbcda771"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "texdoc"
     ],
     "description": "List all matching documentation files for 'siunitx'",
@@ -28,7 +28,7 @@ const cmdInfo = [
     "uuid": "6f1c574e-9500-4656-88e0-77755721a1d7"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "xclip"
     ],
     "description": "Save copied image to file.",
@@ -41,7 +41,7 @@ const cmdInfo = [
     "uuid": "5a413ea5-d4f0-46d9-b7c8-b7170a74b847"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "do",
         "done",
         "for",
@@ -54,7 +54,7 @@ const cmdInfo = [
     "uuid": "6c0081a3-5c10-4cdf-826b-1bd778ae8ef0"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "getconf"
     ],
     "description": "Display the word size of the kernel, e.g. 32-bit or 64-bit.",
@@ -70,7 +70,7 @@ const cmdInfo = [
     "uuid": "fe1bd5ee-ae26-4abd-85a6-09be801f9f2b"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "gzip"
     ],
     "description": "Compress a file using gzip without removing the original file.",
@@ -84,7 +84,7 @@ const cmdInfo = [
     "uuid": "b70da7de-745f-4774-93eb-6eb034ccbd57"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "nproc"
     ],
     "description": "Returns the number of processors / CPU cores available on this machine.",
@@ -98,7 +98,7 @@ const cmdInfo = [
     "uuid": "d67df423-d4c2-4a24-b83c-c494f94bdb75"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "awk",
         "grep",
         "lscpu"
@@ -114,7 +114,7 @@ const cmdInfo = [
     "uuid": "101630e8-efc4-4566-bbc8-78e6ac76120f"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "readlink",
         "xargs",
         "basename"
@@ -126,7 +126,7 @@ const cmdInfo = [
     "uuid": "80a480e5-8898-462c-910b-2bede6507e19"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "find"
     ],
     "description": "Find files in your home directory that you don't own.",
@@ -135,7 +135,7 @@ const cmdInfo = [
     "uuid": "2b0656bc-9ea5-466b-8734-dcc1570be067"
   },
   {
-    "component-commands": [
+    "componentCommands": [
         "espeak",
         "ping",
         "sed"
@@ -149,7 +149,7 @@ const cmdInfo = [
     "uuid": "07248c2f-4809-4b19-9ff0-6fa8e554b8f6"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "jobs",
       "kill"
     ],
@@ -164,7 +164,7 @@ const cmdInfo = [
     "uuid": "dbadb0c9-5590-46af-b846-095c44a66e2c"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "mkdir",
       "unzip"
     ],
@@ -174,7 +174,7 @@ const cmdInfo = [
     "uuid": "ea0ee52c-0dc4-44df-8a4d-2db6bf83634e"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find executables under current directory. Does not follow symbolic links.",
@@ -189,7 +189,7 @@ const cmdInfo = [
     "uuid": "c2172098-7e38-43ff-9ab7-30c964f80861"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find non-executable files recursively.",
@@ -197,7 +197,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "echo",
       "parallel",
       "sleep"
@@ -208,7 +208,7 @@ const cmdInfo = [
     "uuid": "a54b30ce-e62a-41b8-800c-c5f21c999bd6"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "curl"
     ],
     "description": "Show external IP address using http://ifconfig.me website.",
@@ -221,7 +221,7 @@ const cmdInfo = [
     "uuid": "9cb1510d-eca5-404f-94fc-e5113bdbbc54"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "cp"
     ],
     "description": "Make a copy of a symbolic link (symlink).",
@@ -235,7 +235,7 @@ const cmdInfo = [
     "uuid": "8be325fc-1d76-46f1-8e13-514882230cbd"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "du",
       "sort"
     ],
@@ -245,7 +245,7 @@ const cmdInfo = [
     "uuid": "64c52fa6-cdde-4e8b-9671-1b74978cdc2c"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "safecopy"
     ],
     "description": "Copy a disc (such as a CD or DVD) to a disk image (ISO), re-reading or skipping bad sectors instead of failing when an input/output error is encountered. This makes an iso from the /dev/dvd device file.",
@@ -257,7 +257,7 @@ const cmdInfo = [
     "uuid": "7761f0b2-8e5f-4b63-8360-7af0a8c16576"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "uname"
     ],
     "description": "Determine which architecture the Linux kernel is configured for; may not be the same as the actual CPU architecture. For example, an Intel i686 kernel can run on an Intel x86_64 processor, but its RAM will be limited unless the kernel has PAE is enabled. Short flag is `-m'.",
@@ -272,7 +272,7 @@ const cmdInfo = [
     "uuid": "f69252a3-a58b-48bc-9fd2-89e9e5d29f94"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "ps"
     ],
     "description": "Show information about parent process.",
@@ -282,7 +282,7 @@ const cmdInfo = [
     "uuid": "fdcc1f87-af46-4834-9ce2-b1ac27a3f070"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "grep"
     ],
     "description": "Recursively find text files ending in '.txt' that contain the DOS carriage return (octal 015, hexadecimal x0D). Uses ANSI-C single quotes instead of a literal carriage return character.",
@@ -296,7 +296,7 @@ const cmdInfo = [
     "uuid": "fd1ea283-a1ec-4997-9806-464a5a715624"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "pwd",
       "tr",
       "xsel"
@@ -310,7 +310,7 @@ const cmdInfo = [
     "uuid": "6f5fdd18-b781-4b22-8b7f-7ad3066b912a"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find all directory paths matching '*doc*' in `/usr/share`, except the paths under `/usr/share/doc`. This can help find documentation that is in an unusual place.",
@@ -325,7 +325,7 @@ const cmdInfo = [
     "uuid": "0e72bbcc-c43e-446c-bb83-ac0f00a4076b"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "aoss",
       "siggen"
     ],
@@ -340,7 +340,7 @@ const cmdInfo = [
     "uuid": "3f6a786a-9a20-43c6-acb9-1b782757e78f"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "cd",
       "mktemp",
       "mogrify",
@@ -354,7 +354,7 @@ const cmdInfo = [
     "uuid": "361f2d3b-beeb-4a29-bcf6-070edaec63a9"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "mv"
     ],
     "description": "Move all files in the current directory to the parent directory, including hidden files (dotfiles). Preserves inodes. Excludes the current directory and parent directory and includes filenames starting with two dots.",
@@ -371,7 +371,7 @@ const cmdInfo = [
     "uuid": "510c302e-fb2b-4a2a-898f-b98ba0326453"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find",
       "mv"
     ],
@@ -388,7 +388,7 @@ const cmdInfo = [
     "uuid": "19e51b80-ceb4-4a9a-a5f8-fd8e8bf8101d"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "date"
     ],
     "description": "Show the date and time in a different timezone without changing the system time zone. Example is for Buenos Aires, Argentina.",
@@ -403,7 +403,7 @@ const cmdInfo = [
     "uuid": "e47766a1-e332-4cd3-9e42-573d0bcd09de"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "grep",
       "less"
     ],
@@ -419,7 +419,7 @@ const cmdInfo = [
     "uuid": "7b93628a-938d-4227-a88c-9d697f55fac4"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find",
       "wc"
     ],
@@ -436,7 +436,7 @@ const cmdInfo = [
     "uuid": "40cbcc05-dedf-417c-ad0b-ce5f252ed141"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find broken symbolic links (symlinks) in current directory and below. ",
@@ -450,7 +450,7 @@ const cmdInfo = [
     "uuid": "d1963f6a-dd27-48f5-8663-8ebe6ff5dae8"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "getconf"
     ],
     "description": "Returns the number of processors / CPU cores available on this machine.",
@@ -464,7 +464,7 @@ const cmdInfo = [
     "uuid": "df4be8b4-833e-4e48-af1a-e03916833409"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "chsh",
       "which"
     ],
@@ -477,7 +477,7 @@ const cmdInfo = [
     "uuid": "7a49c243-47f7-4a5a-a42a-87357d134b0d"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "ls"
     ],
     "description": "List hidden files and folders (dotfiles). Uses bash globbing.",
@@ -491,7 +491,7 @@ const cmdInfo = [
     "uuid": "924d5f3a-512b-4c0e-8219-6a47002d9014"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "xset"
     ],
     "description": "Turn off the monitor; make the display go dark; blank the screen until the mouse is moved or a key is pressed.",
@@ -507,7 +507,7 @@ const cmdInfo = [
     "uuid": "5b791952-7792-4ca5-bb38-cf622f3cdc8a"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "chmod"
     ],
     "description": "Make home directory private from all other users.",
@@ -521,7 +521,7 @@ const cmdInfo = [
     "uuid": "2d031b99-6945-45bd-be31-71382d661d73"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "apt-file"
     ],
     "description": "Find all packages in apt repositories that match the pattern '/fftw3.h$', even if the package is not installed. Should return result 'libfftw3-dev'.",
@@ -531,7 +531,7 @@ const cmdInfo = [
     "uuid": "efd177f4-51e5-40cc-8c16-2720cb06d94e"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "stat"
     ],
     "description": "Show the time when `updatedb' was run to update the database for the `locate' command.",
@@ -541,7 +541,7 @@ const cmdInfo = [
     "uuid": "308423e6-95a4-4001-9e76-501ad79b2e93"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "sudo", "iwlist"
     ],
     "description": "List wireless access points",
@@ -552,7 +552,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find all files with 'cool' somewhere in the filename",
@@ -560,7 +560,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find all files with 'cool'/'COOL'/'CoOl' somewhere in the filename (case insensitive).",
@@ -568,7 +568,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find all files ending in .html in current directory and subdirectories",
@@ -576,7 +576,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find vim swap files (e.g. .swp, .swo, .example.txt.swp):",
@@ -584,7 +584,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find files with spaces in the filename.",
@@ -592,7 +592,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find all files with world-readable, writable, and executable permissions.",
@@ -600,7 +600,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find directories that are world-writable.",
@@ -608,7 +608,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find directories that aren't permissions 0775 (drwxr-xr-x).",
@@ -616,7 +616,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find files or directories that are not writable in the current directory.",
@@ -624,7 +624,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find files or directories that are not writable in the current directory. Not compliant with POSIX-standard `find` command.",
@@ -632,7 +632,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find", "chmod"
     ],
     "description": "Find files or directories that are not writable and make them writable again.",
@@ -640,7 +640,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find all files with world-readable (777) permissions, but skip symbolic links.",
@@ -648,7 +648,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find", "sort"
     ],
     "description": "Find directories and sort by permissions type.",
@@ -656,7 +656,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "ls"
     ],
     "description": "Print permissions of the /var/log directory.",
@@ -665,7 +665,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "stat"
     ],
     "description": "Print permissions of the /var/log directory.",
@@ -674,7 +674,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "stat"
     ],
     "description": "Print permisisons in octal.",
@@ -685,7 +685,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "stat"
     ],
     "description": "Print permissions in octal, but also include the human-readable permissions.",
@@ -696,7 +696,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Show human-readable and octal permissions of files recursively.",
@@ -707,7 +707,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find"
     ],
     "description": "Find all files over a certain size (500MB in this case.)",
@@ -719,7 +719,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find", "sort", "head"
     ],
     "description": "Find smallest text files.",
@@ -727,7 +727,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "rename"
     ],
     "description": "Replace spaces with underscores for all filenames in current directory.",
@@ -738,7 +738,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "rename"
     ],
     "description": "Replace colons with dashes for filenames in current directory.",
@@ -746,7 +746,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find", "rename"
     ],
     "description": "Replace colons with dashes recursively.",
@@ -754,7 +754,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "find", "rename"
     ],
     "description": "Remove colons from filenames recursively.",
@@ -762,7 +762,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "rename"
     ],
     "description": "Remove non-ASCII characters from filenames.",
@@ -770,7 +770,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "rename"
     ],
     "description": "Replace non-ASCII characters in filenames with underscores ('_').",
@@ -778,7 +778,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "rename"
     ],
     "description": "Rename all .jpeg files to .jpg.",
@@ -786,7 +786,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "mv"
     ],
     "description": "Quick file rename using bash brace expansion.",
@@ -794,7 +794,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "cp"
     ],
     "description": "Make a backup copy of a file with '.old' appended using bash brace expansion.",
@@ -805,7 +805,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "grep"
     ],
     "description": "Grepping the system dictionary for words starting with 's' and containing 'm' and 'b'; this is how samba was named:",
@@ -816,7 +816,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "grep"
     ],
     "description": "Grep all three-letter words without vowels, e.g. 'brr', 'nth', Mrs'.",
@@ -824,7 +824,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "grep"
     ],
     "description": "Grep all words without vowels.",
@@ -832,7 +832,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "grep"
     ],
     "description": "Grep words that can be spelled with hexadecimal alone, like 0xDEADBEEF.",
@@ -845,7 +845,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "grep"
     ],
     "description": "Grep for words that end in \"gry\"",
@@ -854,7 +854,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "getconf"
     ],
     "description": "Print maximum path length.",
@@ -863,7 +863,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "echo"
     ],
     "description": "Print operating system type (OS identifier). Available in bash but not POSIX standard.",
@@ -872,7 +872,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "uname"
     ],
     "description": "Print operating system kernel name (OS identifier).",
@@ -881,7 +881,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "uname"
     ],
     "description": "Print operating system name (OS identifier). GNU-only extension.",
@@ -890,7 +890,7 @@ const cmdInfo = [
     "shell": "bash"
   },
   {
-    "component-commands": [
+    "componentCommands": [
       "compgen"
     ],
     "description": "List all signals.",
@@ -1030,7 +1030,7 @@ function updateSearch() {
     var match = {
       'invocation' : matchCommand(search.invocation, info.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
-      'component-commands': matchComponentCommands(search.componentCommands, new Set(info['component-commands'])),
+      'componentCommands': matchComponentCommands(search.componentCommands, new Set(info['componentCommands'])),
       'example-output': matchExampleOutput(search.exampleOutput, info['example-output'], caseSensitive.exampleOutput),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
@@ -1058,7 +1058,7 @@ function handleChange(event) {
 function validate(cmdInfo) {
   // Validate data.
   const mandatoryKeys = [
-    "component-commands",
+    "componentCommands",
     "description",
     "invocation",
     "shell",
