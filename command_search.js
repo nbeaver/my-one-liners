@@ -1057,13 +1057,13 @@ function handleChange(event) {
 
 function validate(cmdInfo) {
   // Validate data.
-  const mandatory_keys = [
+  const mandatoryKeys = [
     "component-commands",
     "description",
     "invocation",
     "shell",
   ]
-  const optional_keys = [
+  const optionalKeys = [
     "example-output",
     "relevant-urls",
     "uuid",
@@ -1073,7 +1073,7 @@ function validate(cmdInfo) {
   var i = 0;
   for (let info of cmdInfo) {
     i++;
-    for (let key of mandatory_keys) {
+    for (let key of mandatoryKeys) {
       var val = info[key];
       if (val === '') {
         console.error(`#${i}: ${key} = ''`);
@@ -1085,7 +1085,7 @@ function validate(cmdInfo) {
         console.error(`#${i}: ${key} = undefined`);
       }
     }
-    for (let key of optional_keys) {
+    for (let key of optionalKeys) {
       var val = info[key];
       if (val === '') {
         console.error(`#${i}: ${key} = ''`);
@@ -1096,7 +1096,7 @@ function validate(cmdInfo) {
       }
     }
     for (let key in info) {
-      if (mandatory_keys.includes(key) || optional_keys.includes(key)) {
+      if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
         continue;
       } else {
         // Important for e.g. catching misspellings of fields.
