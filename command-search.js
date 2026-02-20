@@ -1068,22 +1068,20 @@ function validate(cmdInfo) {
     "relevantURLs",
     "uuid",
   ];
+  const allKeys = mandatoryKeys.concat(optionalKeys);
   var invocations = new Set([]);
   var uuids = new Set([]);
   for (let i = 0; i < cmdInfo.length; i++) {
     var info = cmdInfo[i]
-    for (let key of mandatoryKeys) {
-      var val = info[key];
-      console.assert(val !== '',        "#%i: %s = %o", i, key, val)
-      console.assert(val !== null,      "#%i: %s = %o", i, key, val)
-      console.assert(val !== [],        "#%i: %s = %o", i, key, val)
-      console.assert(val !== undefined, "#%i: %s = %o", i, key, val)
-    }
-    for (let key of optionalKeys) {
+    for (let key of allKeys) {
       var val = info[key];
       console.assert(val !== '',   "#%i: %s = %o", i, key, val)
       console.assert(val !== null, "#%i: %s = %o", i, key, val)
       console.assert(val !== [],   "#%i: %s = %o", i, key, val)
+    }
+    for (let key of mandatoryKeys) {
+      var val = info[key];
+      console.assert(val !== undefined, "#%i: %s = %o", i, key, val)
     }
     for (let key in info) {
       if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
