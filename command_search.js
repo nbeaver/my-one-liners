@@ -1031,7 +1031,7 @@ function updateSearch() {
       'invocation' : matchCommand(search.invocation, info.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
       'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
-      'exampleOutput': matchExampleOutput(search.exampleOutput, info['exampleOutput'], caseSensitive.exampleOutput),
+      'exampleOutput': matchExampleOutput(search.exampleOutput, info.exampleOutput, caseSensitive.exampleOutput),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
