@@ -972,17 +972,24 @@ function noWhiteSpace(arrayIn) {
 
 const elem = {};
 function updateSearch() {
-  var searchCommand = elem.searchCommand.value;
-  console.log(`searchCommand  = "${searchCommand}"`);
-  var searchDescription = elem.searchDescription.value;
-  console.log(`searchDescription  = "${searchDescription}"`);
-  const descriptionCaseSensitive = elem.descriptionCaseSensitive.checked;
-  var componentCommandsStr = elem.componentCommands.value;
-  var componentCommandsList = noWhiteSpace(elem.componentCommands.value.split(' '));
-  var componentCommands = new Set(componentCommandsList);
+  var strings = {
+    'invocation' : elem.searchCommand.value,
+    'description' : elem.searchDescription.value,
+    'componentCommands' : elem.componentCommands.value,
+  }
+  var componentCommandsList = noWhiteSpace(strings.componentCommands.split(' '));
+  const search = {
+    'invocation' : strings.invocation,
+    'description' : strings.description.trim(),
+    'componentCommands' : new Set(componentCommandsList),
+  }
+  const caseSensitive = {
+    'description': elem.descriptionCaseSensitive.checked,
+  }
 
   var innerHTML = "";
-  if (searchCommand === '' && searchDescription === '' && componentCommandsStr == '') {
+  const allBlank = Object.keys(strings).every(function(x){ return strings[x] === '' });
+  if (allBlank) {
     // Input is blank, don't need to do anything.
     elem.output.innerHTML = innerHTML;
     return true;
@@ -990,9 +997,9 @@ function updateSearch() {
   // Actually match the search text.
   for (let info of cmdInfo) {
     var match = {
-      'invocation' : matchCommand(searchCommand, info.invocation),
-      'description' : matchDescription(searchDescription, info.description, descriptionCaseSensitive),
-      'component-commands': matchComponentCommands(componentCommands, new Set(info['component-commands']))
+      'invocation' : matchCommand(search.invocation, info.invocation),
+      'description' : matchDescription(search.description, info.description, caseSensitive.description),
+      'component-commands': matchComponentCommands(search.componentCommands, new Set(info['component-commands']))
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
