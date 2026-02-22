@@ -896,6 +896,20 @@ const cmdInfo = [
     "description": "List all signals.",
     "invocation": "compgen -A signal",
     "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "git"
+    ],
+    "description": "Do a soft reset (undo) of last commit.",
+    "invocation": "git reset --soft HEAD~1",
+    "shell": "bash",
+    "links" : [
+      "https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git",
+      "https://git-scm.com/docs/git-reset#_examples",
+      "https://stackoverflow.com/questions/5203535/practical-uses-of-git-reset-soft",
+      "https://stackoverflow.com/questions/24568936/what-is-difference-between-git-reset-hard-head1-and-git-reset-soft-head"
+    ]
   }
 ]
 
