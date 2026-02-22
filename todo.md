@@ -12,7 +12,7 @@ Search
 - [x] Search box command string
 - [x] Search box sample output
 - [ ] Search box shell
-- [ ] Search box relevant URLs
+- [ ] Search box links
 
 Output
 - [x] Click to copy command

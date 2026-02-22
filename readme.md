@@ -8,7 +8,7 @@ Mandatory fields:
 Optional fields:
 
 - `exampleOutput`
-- `relevantURLs`
+- `links`
 - `uuid`
 
 # Design and rationale
