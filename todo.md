@@ -17,5 +17,5 @@ Search
 Output
 - [x] Click to copy command
 - [x] Toggle for description
-- [ ] Toggle for sample output (`<samp></samp>`)
+- [x] Toggle for sample output (`<samp></samp>`)
 - [ ] Toggle for links
