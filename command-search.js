@@ -1156,6 +1156,7 @@ function initialize() {
   elem.description.onkeyup = handleKeyUp;
   elem.componentCommands.onkeyup = handleKeyUp;
   elem.exampleOutput.onkeyup = handleKeyUp;
+  elem.exampleOutputCaseSensitive.onchange = handleChange;
   elem.toggleExampleOutput.onchange = handleChange;
   elem.descriptionCaseSensitive.onchange = handleChange;
   elem.toggleDescription.onchange = handleChange;
