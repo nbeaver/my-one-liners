@@ -16,6 +16,6 @@ Search
 
 Output
 - [x] Click to copy command
-- [ ] Toggle for description
+- [x] Toggle for description
 - [ ] Toggle for sample output (`<samp></samp>`)
 - [ ] Toggle for links
