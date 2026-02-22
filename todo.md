@@ -9,13 +9,14 @@ Validation
 
 Search
 - [x] Search box for component commands
-- [x] Search box command string
-- [x] Search box sample output
-- [ ] Search box shell
-- [ ] Search box links
+- [x] Search box for command string
+- [x] Search box for sample output
+- [ ] Search box for shell
+- [ ] Search box for links
 
 Output
 - [x] Click to copy command
 - [x] Toggle for description
 - [x] Toggle for sample output (`<samp></samp>`)
+- [ ] Toggle for shell
 - [ ] Toggle for links
