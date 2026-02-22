@@ -1021,6 +1021,7 @@ function updateSearch() {
   var showField = {
     'invocation' : true,
     'description' : elem.toggleDescription.checked,
+    'exampleOutput' : elem.toggleExampleOutput.checked,
   }
   var innerHTML = "";
   const allBlank = Object.keys(strings).every(function(x){ return strings[x] === '' });
@@ -1045,6 +1046,9 @@ function updateSearch() {
       innerHTML += '<div class="singleCmd">'
       if (showField['invocation'] === true) {
         innerHTML += '<div class="copyOnClick"><code>' + info.invocation + "</code></div>"
+      }
+      if (showField['exampleOutput'] === true) {
+        innerHTML += "<pre><samp>" + info.exampleOutput + "</samp></pre>"
       }
       if (showField['description'] === true) {
         innerHTML += "<div>" + info.description + "</div>"
@@ -1152,6 +1156,7 @@ function initialize() {
   elem.description.onkeyup = handleKeyUp;
   elem.componentCommands.onkeyup = handleKeyUp;
   elem.exampleOutput.onkeyup = handleKeyUp;
+  elem.toggleExampleOutput.onchange = handleChange;
   elem.descriptionCaseSensitive.onchange = handleChange;
   elem.toggleDescription.onchange = handleChange;
   validate(cmdInfo);
