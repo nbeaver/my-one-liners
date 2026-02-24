@@ -1002,6 +1002,23 @@ function matchComponentCommands(match, candidate) {
   }
 }
 
+function matchLinks(match, candidate) {
+    // If the input is blank, we want to match anything.
+  if (match === '') {
+    return true
+  } else if (candidate === undefined) {
+    // If the field isn't available, we don't want to match.
+    return false;
+  }
+  for (const link of candidate) {
+    if (link.includes(match)) {
+      return true;
+    }
+  }
+  // None of the links match.
+  return false;
+}
+
 function noWhiteSpace(arrayIn) {
   var array = [];
   for (let val of arrayIn) {
@@ -1019,6 +1036,7 @@ function updateSearch() {
     'description' : elem.description.value,
     'componentCommands' : elem.componentCommands.value,
     'exampleOutput' : elem.exampleOutput.value,
+    'links' : elem.links.value,
   }
   var componentCommandsList = noWhiteSpace(strings.componentCommands.split(' '));
   const search = {
@@ -1026,6 +1044,7 @@ function updateSearch() {
     'description' : strings.description.trim(),
     'componentCommands' : new Set(componentCommandsList),
     'exampleOutput' : strings.exampleOutput,
+    'links' : strings.links,
   }
   const caseSensitive = {
     'description': elem.descriptionCaseSensitive.checked,
@@ -1036,6 +1055,7 @@ function updateSearch() {
     'invocation' : true,
     'description' : elem.toggleDescription.checked,
     'exampleOutput' : elem.toggleExampleOutput.checked,
+    'links' : elem.toggleLinks.checked,
   }
   var innerHTML = "";
   const allBlank = Object.keys(strings).every(function(x){ return strings[x] === '' });
@@ -1051,6 +1071,7 @@ function updateSearch() {
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
       'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
       'exampleOutput': matchExampleOutput(search.exampleOutput, info.exampleOutput, caseSensitive.exampleOutput),
+      'links': matchLinks(search.links, info.links),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
@@ -1066,6 +1087,11 @@ function updateSearch() {
       }
       if (showField['description'] === true) {
         innerHTML += "<div>" + info.description + "</div>"
+      }
+      if (showField['links'] === true) {
+        for (let link of info.links) {
+          innerHTML += `<div><a href="${link}">${link}</a></div>`
+        }
       }
       innerHTML += "</div>";
     }
@@ -1170,8 +1196,10 @@ function initialize() {
   elem.description.onkeyup = handleKeyUp;
   elem.componentCommands.onkeyup = handleKeyUp;
   elem.exampleOutput.onkeyup = handleKeyUp;
+  elem.links.onkeyup = handleKeyUp;
   elem.exampleOutputCaseSensitive.onchange = handleChange;
   elem.toggleExampleOutput.onchange = handleChange;
+  elem.toggleLinks.onchange = handleChange;
   elem.descriptionCaseSensitive.onchange = handleChange;
   elem.toggleDescription.onchange = handleChange;
   validate(cmdInfo);
