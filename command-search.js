@@ -1082,7 +1082,7 @@ function updateSearch() {
       if (showField['invocation'] === true) {
         innerHTML += '<div class="copyOnClick"><code>' + info.invocation + "</code></div>"
       }
-      if (showField['exampleOutput'] === true) {
+      if (showField['exampleOutput'] === true && info.exampleOutput !== undefined) {
         innerHTML += "<pre><samp>" + info.exampleOutput + "</samp></pre>"
       }
       if (showField['description'] === true) {
