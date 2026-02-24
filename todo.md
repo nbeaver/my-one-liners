@@ -20,3 +20,7 @@ Output
 - [x] Toggle for sample output (`<samp></samp>`)
 - [ ] Toggle for shell
 - [ ] Toggle for links
+- [ ] Show shell options
+
+Maybe do
+- [ ] Add toggle box for optional fields, e.g. "has links", "has example output"
