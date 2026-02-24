@@ -1088,7 +1088,7 @@ function updateSearch() {
       if (showField['description'] === true) {
         innerHTML += "<div>" + info.description + "</div>"
       }
-      if (showField['links'] === true) {
+      if (showField['links'] === true && info.links !== undefined) {
         for (let link of info.links) {
           innerHTML += `<div><a href="${link}">${link}</a></div>`
         }
