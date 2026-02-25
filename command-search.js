@@ -1064,6 +1064,7 @@ function updateSearch() {
     elem.output.innerHTML = innerHTML;
     return true;
   }
+  var tree = document.createDocumentFragment();
   // Actually match the search text.
   for (let info of cmdInfo) {
     var match = {
@@ -1076,31 +1077,50 @@ function updateSearch() {
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
     if (allMatch) {
-      // TODO: do this properly with escaping etc.
       // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
-      innerHTML += '<div class="singleCmd">'
+      var div = document.createElement("div");
+      div.classList.add("singleCmd");
       if (showField['invocation'] === true) {
-        innerHTML += '<div class="copyOnClick"><code>' + info.invocation + "</code></div>"
+        var codeDiv = document.createElement("div");
+        codeDiv.classList.add("copyOnClick");
+        codeDiv.addEventListener("click", copyText);
+        var code = document.createElement("code");
+        var codeText = document.createTextNode(info.invocation);
+        code.appendChild(codeText);
+        codeDiv.appendChild(code);
+        div.appendChild(codeDiv);
       }
       if (showField['exampleOutput'] === true && info.exampleOutput !== undefined) {
-        innerHTML += "<pre><samp>" + info.exampleOutput + "</samp></pre>"
+        var pre = document.createElement("pre");
+        var samp = document.createElement("samp");
+        var sampText = document.createTextNode(info.exampleOutput);
+        samp.appendChild(sampText);
+        pre.appendChild(samp);
+        div.appendChild(pre);
       }
       if (showField['description'] === true) {
-        innerHTML += "<div>" + info.description + "</div>"
+        var descriptionDiv = document.createElement("div");
+        var description = document.createTextNode(info.description);
+        descriptionDiv.appendChild(description);
+        div.appendChild(descriptionDiv);
       }
       if (showField['links'] === true && info.links !== undefined) {
+        var links = document.createElement("div");
         for (let link of info.links) {
-          innerHTML += `<div><a href="${link}">${link}</a></div>`
+          var thisLink = document.createElement("div");
+          var thisAnchor = document.createElement("a");
+          thisAnchor.setAttribute("href", link)
+          var linkText = document.createTextNode(link);
+          thisAnchor.appendChild(linkText);
+          thisLink.appendChild(thisAnchor);
+          links.appendChild(thisLink);
         }
+        div.appendChild(links)
       }
-      innerHTML += "</div>";
+      tree.appendChild(div);
     }
   }
-  elem.output.innerHTML = innerHTML;
-  var elems = document.getElementsByClassName("copyOnClick");
-  for (var i=0; i<elems.length; i++) {
-    elems[i].addEventListener("click", copyText);
-  }
+  elem.output.replaceChildren(tree);
   return true;
 }
 function handleKeyUp(event) {
