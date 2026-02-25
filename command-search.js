@@ -789,18 +789,22 @@ const cmdInfo = [
     "componentCommands": [
       "mv"
     ],
-    "description": "Quick file rename using bash brace expansion.",
+    "description": "Rename 'file.txt' as 'file.csv' using bash brace expansion.",
     "invocation": "mv file.{txt,csv}",
-    "shell": "bash"
+    "shell": "bash",
+    "links": [
+      "https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html"
+    ]
   },
   {
     "componentCommands": [
       "cp"
     ],
-    "description": "Make a backup copy of a file with '.old' appended using bash brace expansion.",
+    "description": "Make a copy of 'myfile.txt' called 'myfile.txt.old' using bash brace expansion.",
     "invocation": "cp myfile.txt{,.old}",
     "links": [
-      "http://www.shell-fu.org/lister.php?id=46"
+      "http://www.shell-fu.org/lister.php?id=46",
+      "https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html"
     ],
     "shell": "bash"
   },
