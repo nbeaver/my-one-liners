@@ -914,7 +914,62 @@ const cmdInfo = [
       "https://stackoverflow.com/questions/5203535/practical-uses-of-git-reset-soft",
       "https://stackoverflow.com/questions/24568936/what-is-difference-between-git-reset-hard-head1-and-git-reset-soft-head"
     ]
+  },
+  {
+    "componentCommands": [
+      "gwmi"
+    ],
+    "description": "Print battery status and charging information.",
+    "invocation": "gwmi -Class batterystatus -Namespace root\\wmi",
+    "shell": "PowerShell",
+    "exampleOutput": "\r\n\r\n__GENUS            : 2\r\n__CLASS            : BatteryStatus\r\n__SUPERCLASS       : MSBatteryClass\r\n__DYNASTY          : CIM_StatisticalInformation\r\n__RELPATH          : BatteryStatus.InstanceName=\"ACPI\\\\PNP0C0A\\\\0_0\"\r\n__PROPERTY_COUNT   : 20\r\n__DERIVATION       : {MSBatteryClass, Win32_PerfRawData, Win32_Perf, CIM_StatisticalInformation}\r\n__SERVER           : WIN11-LAPTOP\r\n__NAMESPACE        : root\\wmi\r\n__PATH             : \\\\WIN11-LAPTOP\\root\\wmi:BatteryStatus.InstanceName=\"ACPI\\\\PNP0C0A\\\\0_0\"\r\nActive             : True\r\nCaption            : \r\nChargeRate         : 0\r\nCharging           : False\r\nCritical           : False\r\nDescription        : \r\nDischargeRate      : 19290\r\nDischarging        : True\r\nFrequency_Object   : \r\nFrequency_PerfTime : \r\nFrequency_Sys100NS : \r\nInstanceName       : ACPI\\PNP0C0A\\0_0\r\nName               : \r\nPowerOnline        : False\r\nRemainingCapacity  : 32894\r\nTag                : 15\r\nTimestamp_Object   : \r\nTimestamp_PerfTime : \r\nTimestamp_Sys100NS : \r\nVoltage            : 15457\r\nPSComputerName     : WIN11-LAPTOP\r\n\r\n\r\n\r\n\r\n",
+    "links" : [
+      "https://devblogs.microsoft.com/scripting/using-windows-powershell-to-determine-if-a-laptop-is-on-battery-power/",
+      "https://superuser.com/questions/1732383/where-can-i-see-the-current-charging-speed-on-windows-10"
+    ]
+  },
+  {
+    "componentCommands": [
+      "Get-PnpDevice"
+    ],
+    "description": "Print list of USB devices, lsusb (1).",
+    "invocation": "Get-PnpDevice -InstanceId 'USB*' -Status OK",
+    "shell": "PowerShell",
+    "exampleOutput": "\r\nStatus     Class           FriendlyName                                                                     InstanceId     \r\n------     -----           ------------                                                                     ----------     \r\nOK         Bluetooth       Intel(R) Wireless Bluetooth(R)                                                   USB\\VID_8087...\r\nOK         Biometric       Framework Fingerprint Reader                                                     USB\\VID_27C6...\r\nOK                         USB4 Virtual power coordination device                                           USB4\\VIRTUAL...\r\nOK         USB             USB Root Hub (USB 3.0)                                                           USB\\ROOT_HUB...\r\nOK         USB             USB4 Root Router (1.0)                                                           USB4\\ROOT_DE...\r\nOK                         USB4 Virtual power coordination device                                           USB4\\VIRTUAL...\r\nOK         USB             USB Root Hub (USB 3.0)                                                           USB\\ROOT_HUB...\r\nOK         USB             USB Composite Device                                                             USB\\VID_0BDA...\r\nOK         Camera          Laptop Camera                                                                    USB\\VID_0BDA...\r\nOK         USB             USB4 Root Router (1.0)                                                           USB4\\ROOT_DE...\r\n\r\n\r\n",
+    "links" : [
+      "https://superuser.com/questions/1411312/is-there-an-equivalent-to-linuxs-lsusb-in-windows",
+      "https://www.shellhacks.com/windows-lsusb-equivalent-powershell/"
+    ]
+  },
+  {
+    "componentCommands": [
+      "Get-Command"
+    ],
+    "description": "Show all definitions of the 'sort' command, including aliases; like 'type -a' in bash.",
+    "invocation": "Get-Command -All sort",
+    "shell": "PowerShell",
+    "exampleOutput": "\r\nCommandType     Name                                               Version    Source                                   \r\n-----------     ----                                               -------    ------                                   \r\nAlias           sort -> Sort-Object                                                                                    \r\nApplication     sort.exe                                           10.0.26... C:\\WINDOWS\\system32\\sort.exe             \r\n\r\n\r\n",
+    "links" : [
+      "https://superuser.com/questions/49104/how-do-i-find-the-location-of-an-executable-in-windows",
+      "https://stackoverflow.com/questions/304319/is-there-an-equivalent-of-which-on-the-windows-command-line",
+      "https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2"
+    ]
+  },
+  {
+    "componentCommands": [
+      "Measure-Command"
+    ],
+    "description": "Time a command and see the output in stdout.",
+    "invocation": "Measure-Command { echo 'Hello, world!' | out-default }",
+    "shell": "PowerShell",
+    "exampleOutput": "\r\n\r\nDays              : 0\r\nHours             : 0\r\nMinutes           : 0\r\nSeconds           : 0\r\nMilliseconds      : 16\r\nTicks             : 165570\r\nTotalDays         : 1.91631944444444E-07\r\nTotalHours        : 4.59916666666667E-06\r\nTotalMinutes      : 0.00027595\r\nTotalSeconds      : 0.016557\r\nTotalMilliseconds : 16.557\r\n\r\n\r\n\r\n",
+    "links" : [
+      "https://stackoverflow.com/questions/2038181/how-to-output-something-in-powershell",
+      "https://stackoverflow.com/questions/3513650/timing-a-commands-execution-in-powershell",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.5"
+    ]
   }
+
 ]
 
 var highlightedElement = null;
