@@ -11,8 +11,10 @@ Search
 - [x] Search box for component commands
 - [x] Search box for command string
 - [x] Search box for sample output
-- [ ] Search box for shell
 - [x] Search box for links
+- [ ] Case-sensitive toggle for commands
+- [ ] Case-sensitive toggle for component commands
+- [ ] Output shell options and have clickable text that toggles output for each
 
 Output
 - [x] Click to copy command
@@ -20,7 +22,6 @@ Output
 - [x] Toggle for sample output (`<samp></samp>`)
 - [ ] Toggle for shell
 - [x] Toggle for links
-- [ ] Show shell options
 
 Maybe do
 - [ ] Add toggle box for optional fields, e.g. "has links", "has example output"
