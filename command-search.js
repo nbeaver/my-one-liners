@@ -1096,7 +1096,7 @@ function getChosenShells() {
   var chosenShells = [];
   for (let el of document.getElementsByClassName("shellOption")) {
     if (el.checked === true) {
-      chosenShells.push(el.name);
+      chosenShells.push(el.value);
     }
   }
   return chosenShells;
@@ -1327,17 +1327,15 @@ function initialize() {
     var input = document.createElement("input");
     input.setAttribute("type", "checkbox")
     input.checked = true;
-    input.setAttribute("name", shellName)
     var label = document.createElement("label");
-    label.setAttribute("for", shellName)
-    input.setAttribute("name", shellName)
+    input.setAttribute("value", shellName)
     input.classList.add("shellOption");
     input.onchange = handleChange;
     var code = document.createElement("code");
     var codeText = document.createTextNode(shellName);
     code.appendChild(codeText);
+    label.appendChild(input);
     label.appendChild(code);
-    div.appendChild(input);
     div.appendChild(label);
     elem.shellOptions.appendChild(div);
   }
