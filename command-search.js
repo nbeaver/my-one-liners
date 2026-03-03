@@ -19,6 +19,10 @@ const cmdInfo = [
     ],
     "description": "Print filename and file information for each file under current directory, excluding git repositories.",
     "invocation": "find . -name '*.git' -prune -o -type f -execdir file '{}' +",
+    "links": [
+      "https://stackoverflow.com/questions/1489277/how-to-use-prune-option-of-find-in-sh",
+      "https://unix.stackexchange.com/questions/109900/find-prune-does-not-ignore-specified-path"
+    ],
     "shell": "bash",
     "uuid": "267f5da8-ac81-4df4-b3a8-cd8aa99d4d1d"
   },
