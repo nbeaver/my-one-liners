@@ -1116,15 +1116,8 @@ function updateSearch() {
     'exampleOutput' : elem.toggleExampleOutput.checked,
     'links' : elem.toggleLinks.checked,
   }
-  var innerHTML = "";
-  const allBlank = Object.keys(strings).every(function(x){ return strings[x] === '' });
-  if (allBlank) {
-    // Input is blank, don't need to do anything.
-    elem.output.innerHTML = innerHTML;
-    return true;
-  }
   var tree = document.createDocumentFragment();
-  // Actually match the search text.
+  // Match the search text.
   for (let info of cmdInfo) {
     var match = {
       'invocation' : matchCommand(search.invocation, info.invocation),
