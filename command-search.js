@@ -659,7 +659,7 @@ const cmdInfo = [
     "componentCommands": [
       "ls"
     ],
-    "description": "Print permissions of the /var/log directory.",
+    "description": "Print long listing format, including permissions, for the /var/log directory.",
     "exampleOutput": "drwxr-xr-x 23 root root 4096 May 23 08:18 /var/log\n",
     "invocation": "ls -ld /var/log",
     "shell": "bash"
