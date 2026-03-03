@@ -992,7 +992,6 @@ const cmdInfo = [
       "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.5"
     ]
   }
-
 ]
 
 var highlightedElement = null;
