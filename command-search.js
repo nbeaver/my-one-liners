@@ -1,6 +1,29 @@
 const cmdInfo = [
   {
     "componentCommands": [
+      "find", "file"
+    ],
+    "description": "Print filename and file information for each file under current directory, recursively.",
+    "invocation": "find . -type f -execdir file '{}' +",
+    "links": [
+      "https://stackoverflow.com/questions/21155287/shell-notation-find-type-f-exec-file",
+      "https://stackoverflow.com/questions/20913198/why-are-the-backslash-and-semicolon-required-with-the-find-commands-exec-optio",
+      "https://man7.org/linux/man-pages/man1/find.1.html#EXAMPLES"
+    ],
+    "shell": "bash",
+    "uuid": "70ec2ed5-1d68-4877-b608-36068580d2c7"
+  },
+  {
+    "componentCommands": [
+      "find", "file"
+    ],
+    "description": "Print filename and file information for each file under current directory, excluding git repositories.",
+    "invocation": "find . -name '*.git' -prune -o -type f -execdir file '{}' +",
+    "shell": "bash",
+    "uuid": "267f5da8-ac81-4df4-b3a8-cd8aa99d4d1d"
+  },
+  {
+    "componentCommands": [
         "head"
     ],
     "description": "Create a file of given size (10 megabyte) full of ASCII NULs.",
