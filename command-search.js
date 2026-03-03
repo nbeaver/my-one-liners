@@ -930,6 +930,98 @@ const cmdInfo = [
   },
   {
     "componentCommands": [
+      "compgen"
+    ],
+    "description": "See a list of all functions.",
+    "invocation": "compgen -A function",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "declare"
+    ],
+    "description": "List of all shell functions, aliases, and variables.",
+    "invocation": "declare",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "type", "ls"
+    ],
+    "description": "Identify what kind of command 'ls' is.",
+    "exampleOutput": "ls is aliased to `ls --color=auto'\n",
+    "invocation": "type ls",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "type", "ls"
+    ],
+    "description": "Print all the definitions of 'ls', including executables in $PATH, aliases, functions, and builtins.",
+    "exampleOutput": "ls is aliased to `ls --color=auto'\nls is /bin/ls\n",
+    "invocation": "type -a ls",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "command", "ls"
+    ],
+    "description": "Run the plain `ls' command instead of a shell function or alias called `ls'",
+    "invocation": "command ls",
+    "links": [
+      "https://unix.stackexchange.com/questions/39291/run-a-command-that-is-shadowed-by-an-alias"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "command", "ls"
+    ],
+    "description": "Run the un-aliased `ls' command.",
+    "invocation": "\\ls",
+    "links": [
+      "https://unix.stackexchange.com/questions/39291/run-a-command-that-is-shadowed-by-an-alias"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "type", "echo"
+    ],
+    "description": "Print all the definitions of `echo'",
+    "exampleOutput": "echo is a shell builtin\necho is /usr/bin/echo\necho is /bin/echo\n",
+    "invocation": "type -a echo",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "type", "time"
+    ],
+    "description": "Print all the definitions of `time'.",
+    "exampleOutput": "time is a shell keyword\ntime is /usr/bin/time\ntime is /bin/time\n",
+    "invocation": "type -a time",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "type", "ipython"
+    ],
+    "description": "Identify the kind of command `ipython' is.",
+    "exampleOutput": "ipython is /home/username/.local/bin/ipython\nipython is /usr/bin/ipython\n",
+    "invocation": "type -a ipython",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "shopt", "declare", "quote"
+    ],
+    "description": "See where the function `quote' was defined.",
+    "exampleOutput": "quote 132 /usr/share/bash-completion/bash_completion\n",
+    "invocation": "shopt -s extdebug; declare -F quote; shopt -u extdebug",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
       "git"
     ],
     "description": "Do a soft reset (undo) of last commit.",
