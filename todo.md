@@ -1,5 +1,7 @@
 General
 - [x] Use camelCase for all keys
+- [x] Dark mode
+- [ ] Dark/light mode toggle
 
 Validation
 - [x] Do basic validation on data on first load
