@@ -1011,12 +1011,10 @@ function copyText(event) {
     console.log("this.style.background = ", this.style.background);
   } else {
     // Light mode
-    this.style.background = "yellow";
-    console.log("light mode");
-    console.log("this.style.background = ", this.style.background);
+    //this.style.background = "yellow"; // #d8d800
+    this.style.background = "#f7f792";
   }
   highlightedElement = this;
-  //console.log(this.innerText);
 }
 
 function matchCommand(match, candidate) {
