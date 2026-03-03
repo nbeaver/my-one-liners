@@ -1099,8 +1099,6 @@ function copyText(event) {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     // Dark mode
     this.style.background = "#8C3313";
-    console.log("dark mode");
-    console.log("this.style.background = ", this.style.background);
   } else {
     // Light mode
     //this.style.background = "yellow"; // #d8d800
