@@ -1078,6 +1078,10 @@ function matchLinks(match, candidate) {
   return false;
 }
 
+function matchShell(match, candidate) {
+  return match.has(candidate);
+}
+
 function noWhiteSpace(arrayIn) {
   var array = [];
   for (let val of arrayIn) {
@@ -1086,6 +1090,16 @@ function noWhiteSpace(arrayIn) {
     }
   }
   return array;
+}
+
+function getChosenShells() {
+  var chosenShells = [];
+  for (let el of document.getElementsByClassName("shellOption")) {
+    if (el.checked === true) {
+      chosenShells.push(el.name);
+    }
+  }
+  return chosenShells;
 }
 
 const elem = {};
@@ -1098,12 +1112,14 @@ function updateSearch() {
     'links' : elem.links.value,
   }
   var componentCommandsList = noWhiteSpace(strings.componentCommands.split(' '));
+  var chosenShellsList = getChosenShells();
   const search = {
     'invocation' : strings.invocation,
     'description' : strings.description.trim(),
     'componentCommands' : new Set(componentCommandsList),
     'exampleOutput' : strings.exampleOutput,
     'links' : strings.links,
+    'shells' : new Set(chosenShellsList),
   }
   const caseSensitive = {
     'description': elem.descriptionCaseSensitive.checked,
@@ -1115,6 +1131,7 @@ function updateSearch() {
     'description' : elem.toggleDescription.checked,
     'exampleOutput' : elem.toggleExampleOutput.checked,
     'links' : elem.toggleLinks.checked,
+    'shell' : elem.toggleShell.checked,
   }
   var tree = document.createDocumentFragment();
   // Match the search text.
@@ -1125,6 +1142,7 @@ function updateSearch() {
       'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
       'exampleOutput': matchExampleOutput(search.exampleOutput, info.exampleOutput, caseSensitive.exampleOutput),
       'links': matchLinks(search.links, info.links),
+      'shell': matchShell(search.shells, info.shell),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
   // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
@@ -1169,6 +1187,16 @@ function updateSearch() {
         }
         div.appendChild(links)
       }
+      if (showField['shell'] === true) {
+        var shellDiv = document.createElement("div");
+        var shellNameText = document.createTextNode(info.shell);
+        var shellName = document.createElement("code");
+        shellName.appendChild(shellNameText);
+        var shellText = document.createTextNode("shell: ");
+        shellDiv.appendChild(shellText);
+        shellDiv.appendChild(shellName);
+        div.appendChild(shellDiv);
+      }
       tree.appendChild(div);
     }
   }
@@ -1181,6 +1209,18 @@ function handleKeyUp(event) {
 }
 function handleChange(event) {
   // Update search results.
+  updateSearch();
+}
+function selectAllShells(event) {
+  for (let el of document.getElementsByClassName("shellOption")) {
+    el.checked = true;
+  }
+  updateSearch();
+}
+function selectNoShells(event) {
+  for (let el of document.getElementsByClassName("shellOption")) {
+    el.checked = false;
+  }
   updateSearch();
 }
 
@@ -1274,8 +1314,35 @@ function initialize() {
   elem.toggleLinks.onchange = handleChange;
   elem.descriptionCaseSensitive.onchange = handleChange;
   elem.toggleDescription.onchange = handleChange;
+  elem.toggleShell.onchange = handleChange;
   validate(cmdInfo);
   // Update output.
+  var shellSet = new Set([]);
+  for (const info of cmdInfo) {
+    shellSet.add(info.shell);
+  }
+  const shells = Array.from(shellSet).sort(Intl.Collator().compare);
+  for (const shellName of shells) {
+    var div = document.createElement("div");
+    var input = document.createElement("input");
+    input.setAttribute("type", "checkbox")
+    input.checked = true;
+    input.setAttribute("name", shellName)
+    var label = document.createElement("label");
+    label.setAttribute("for", shellName)
+    input.setAttribute("name", shellName)
+    input.classList.add("shellOption");
+    input.onchange = handleChange;
+    var code = document.createElement("code");
+    var codeText = document.createTextNode(shellName);
+    code.appendChild(codeText);
+    label.appendChild(code);
+    div.appendChild(input);
+    div.appendChild(label);
+    elem.shellOptions.appendChild(div);
+  }
+  elem.allShells.addEventListener("click", selectAllShells);
+  elem.noShells.addEventListener("click", selectNoShells);
   updateSearch();
 }
 window.onload = initialize;
