@@ -3,7 +3,36 @@ body {
   margin: auto;
   font-size:  18px;
 }
-.singleCmd {
+div.singleCmd {
   border: thin solid black;
   border-radius: 5px;
+}
+input[type="checkbox"] {
+  background-color: #e0e0e0;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #242424;
+    color: #FFFFEA;
+  }
+  a:link {
+    color: #80DFFF;
+  }
+  input {
+    color: #FFFFEA;
+    background: #242424;
+  }
+  /* See:
+   * https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css
+   */
+  input[type='checkbox']:checked {
+    filter: none;
+  }
+  input[type="checkbox"] {
+    accent-color: black;
+    filter: brightness(0%) saturate(100) hue-rotate(25deg);
+  }
+  div.singleCmd {
+    border: thin solid white;
+  }
 }

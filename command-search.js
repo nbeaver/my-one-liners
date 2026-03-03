@@ -1004,7 +1004,17 @@ function copyText(event) {
   if (highlightedElement !== null) {
     highlightedElement.style.background = "";
   }
-  this.style.background = "yellow";
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // Dark mode
+    this.style.background = "#8C3313";
+    console.log("dark mode");
+    console.log("this.style.background = ", this.style.background);
+  } else {
+    // Light mode
+    this.style.background = "yellow";
+    console.log("light mode");
+    console.log("this.style.background = ", this.style.background);
+  }
   highlightedElement = this;
   //console.log(this.innerText);
 }
