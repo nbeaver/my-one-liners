@@ -14,14 +14,17 @@ Search
 - [x] Search box for links
 - [ ] Case-sensitive toggle for commands
 - [ ] Case-sensitive toggle for component commands
-- [ ] Output shell options and have clickable text that toggles output for each
+- [x] Output shell options and have toggle for each
+- [x] Button for no shells
+- [x] Button for all shells
 
 Output
 - [x] Click to copy command
 - [x] Toggle for description
 - [x] Toggle for sample output (`<samp></samp>`)
-- [ ] Toggle for shell
+- [x] Toggle for shell
 - [x] Toggle for links
+- [x] Show all commands by default
 
 Maybe do
 - [ ] Add toggle box for optional fields, e.g. "has links", "has example output"
