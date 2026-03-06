@@ -10,6 +10,7 @@ Validation
 - [x] Check type is correct (string, list of strings, etc.)
 
 Search
+- [ ] Regex search for command invocation
 - [x] Search box for component commands
 - [x] Search box for command string
 - [x] Search box for sample output
