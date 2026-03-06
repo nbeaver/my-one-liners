@@ -33,9 +33,23 @@ const cmdInfo = [
     "description": "Create a file of given size (10 megabyte) full of ASCII NULs.",
     "invocation": "head --bytes=10MB /dev/zero > ./bigfile",
     "links": [
-      "https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html",
       "https://ostechnix.com/create-files-certain-size-linux/",
-      "https://www.baeldung.com/linux/create-file-of-given-size#using-the-head-and-tail-commands"
+      "https://www.baeldung.com/linux/create-file-of-given-size#using-the-head-and-tail-commands",
+      "https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html"
+    ],
+    "shell" : "bash",
+    "uuid": "00e7daf1-0ec4-49b7-b704-ab4ddbcda771"
+  },
+  {
+    "componentCommands": [
+        "head"
+    ],
+    "description": "Create a binary file of given size (10 megabyte) full of random bytes.",
+    "invocation": "head --bytes=10MB /dev/urandom > ./bigfile",
+    "links": [
+      "https://unix.stackexchange.com/questions/33629/how-can-i-populate-a-file-with-random-data",
+      "https://superuser.com/questions/470949/how-do-i-create-a-1gb-random-file-in-linux",
+      "https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html"
     ],
     "shell" : "bash",
     "uuid": "00e7daf1-0ec4-49b7-b704-ab4ddbcda771"
@@ -139,6 +153,79 @@ const cmdInfo = [
     ],
     "shell" : "bash",
     "uuid": "101630e8-efc4-4566-bbc8-78e6ac76120f"
+  },
+  {
+    "componentCommands": [
+        "findmnt"
+    ],
+    "description": "Show filesystem information for root directory.",
+    "exampleOutput": "TARGET\n  SOURCE         FSTYPE OPTIONS\n/ /dev/nvme0n1p2 ext4   rw,relatime,stripe=64\n",
+    "invocation": "findmnt /",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+        "findmnt"
+    ],
+    "description": "List all filesystems.",
+    "invocation": "findmnt --all",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+        "encguess"
+    ],
+    "description": "Guess / infer character encoding of a text file.",
+    "invocation": "encguess *.txt",
+    "links": [
+      "https://stackoverflow.com/questions/805418/how-can-i-find-encoding-of-a-file-via-a-script-on-linux",
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+        "dos2unix"
+    ],
+    "description": "Inspect text files for encoding information including line breaks, byte order mark (BOM), and text/binary.",
+    "exampleOutput": "    6       0       0  no_bom    text    dos.txt\n    0       6       0  no_bom    text    unix.txt\n    0       0       6  no_bom    text    mac.txt\n    6       6       6  no_bom    text    mixed.txt\n   50       0       0  UTF-16LE  text    utf16le.txt\n    0      50       0  no_bom    text    utf8unix.txt\n   50       0       0  UTF-8     text    utf8dos.txt\n    2     418     219  no_bom    binary  dos2unix.exe",
+    "invocation": "dos2unix --info *",
+    "links" : [
+      "https://man.archlinux.org/man/dos2unix.1.en#i_FLAGS_,",
+      "https://manpages.debian.org/stable/dos2unix/dos2unix.1.en.html#i_FLAGS_,"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+        "iconv"
+    ],
+    "description": "List all encodings iconv can handle.",
+    "invocation": "iconv --list",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+        "iconv"
+    ],
+    "description": "Convert from little-endian UTF-16 to UTF-8.",
+    "invocation": "iconv --from-code UTF-16LE --to-code UTF-8 utf16.txt > utf8.txt",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+        "lscpu", "jq"
+    ],
+    "description": "Get CPU architecture by parsing JSON output of lscpu.\nExample output:\nx86_64",
+    "invocation": "lscpu --json | jq -r '.lscpu[] | select(.field==\"Architecture:\").data'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+        "lscpu", "jq"
+    ],
+    "description": "Get CPU model by parsing JSON output of lscpu.\nExample output:\n11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz",
+    "invocation": "lscpu --json | jq -r '.lscpu[] | select(.field==\"Model name:\").data'",
+    "shell": "bash"
   },
   {
     "componentCommands": [
@@ -842,7 +929,9 @@ const cmdInfo = [
     "description": "Grepping the system dictionary for words starting with 's' and containing 'm' and 'b'; this is how samba was named:",
     "invocation": "grep -i '^s.*m.*b' /usr/share/dict/words",
     "links": [
-      "http://www.rxn.com/services/faq/smb/samba.history.txt"
+      "http://web.archive.org/web/20200807045435/http://www.rxn.com/services/faq/smb/samba.history.txt",
+      "https://sources.debian.org/src/samba/2%3A3.2.5-4lenny15/docs/history",
+      "https://www.landley.net/history/mirror/linux/samba.history.txt"
     ],
     "shell": "bash"
   },
@@ -1087,6 +1176,39 @@ const cmdInfo = [
       "https://stackoverflow.com/questions/3513650/timing-a-commands-execution-in-powershell",
       "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.5"
     ]
+  },
+  {
+    "componentCommands": [
+      "dir"
+    ],
+    "description": "List filenames in a single column without extra information.",
+    "invocation": "dir /b",
+    "links": [
+      "https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir"
+    ],
+    "shell": "cmd.exe"
+  },
+  {
+    "componentCommands": [
+      "systeminfo"
+    ],
+    "description": "Save Windows version, install date, product ID, and other system information to a text file.",
+    "invocation": "systeminfo > systeminfo.txt",
+    "links": [
+      "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/systeminfo"
+    ],
+    "shell": "cmd.exe"
+  },
+  {
+    "componentCommands": [
+      "help"
+    ],
+    "description": "Get information about a built-in command like 'dir'.",
+    "invocation": "help dir",
+    "links" : [
+      "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/help"
+    ],
+    "shell": "cmd.exe"
   }
 ]
 
