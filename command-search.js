@@ -1521,7 +1521,7 @@ function validate(cmdInfo) {
     }
     for (let key of mandatoryKeys) {
       var val = info[key];
-      console.assert(val !== undefined, "#%i: %s = %o", i, key, val)
+      console.assert(val !== undefined, "#%i: %s = %o, info = %s", i, key, val, JSON.stringify(info))
     }
     for (let key in info) {
       if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
