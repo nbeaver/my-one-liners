@@ -1405,7 +1405,7 @@ function updateSearch() {
       'shell': matchShell(search.shells, info.shell),
     }
     var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
-  // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
+    // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
     if (allMatch) {
       // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
       var div = document.createElement("div");
