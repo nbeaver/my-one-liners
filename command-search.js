@@ -1229,17 +1229,28 @@ function copyText(event) {
   highlightedElement = this;
 }
 
-function matchCommand(match, candidate) {
+function matchCommand(match, candidate, useRegex = false) {
   if (match == '') {
     // If the input is blank, we want to match anything.
     return true;
   }
-  if (candidate.includes(match)) {
-    //console.log(`"${candidate}" includes "${match}"`);
-    return true;
+  if (useRegex === true) {
+    // Regular expression matching.
+    const re = new RegExp(match);
+    if (re.test(candidate)) {
+      return true;
+    } else {
+      return false
+    }
   } else {
-    //console.log(`"${candidate}" does not include "${match}"`);
-    return false;
+    // Regular string matching.
+    if (candidate.includes(match)) {
+      //console.log(`"${candidate}" includes "${match}"`);
+      return true;
+    } else {
+      //console.log(`"${candidate}" does not include "${match}"`);
+      return false;
+    }
   }
 }
 
@@ -1371,6 +1382,9 @@ function updateSearch() {
     'description': elem.descriptionCaseSensitive.checked,
     'exampleOutput': elem.exampleOutputCaseSensitive.checked,
   }
+  const regex = {
+    'invocation': elem.commandRegex.checked,
+  }
 
   var showField = {
     'invocation' : true,
@@ -1383,7 +1397,7 @@ function updateSearch() {
   // Match the search text.
   for (let info of cmdInfo) {
     var match = {
-      'invocation' : matchCommand(search.invocation, info.invocation),
+      'invocation' : matchCommand(search.invocation, info.invocation, regex.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
       'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
       'exampleOutput': matchExampleOutput(search.exampleOutput, info.exampleOutput, caseSensitive.exampleOutput),
@@ -1551,6 +1565,7 @@ function initialize() {
   }
   // Register event handlers.
   elem.command.onkeyup = handleKeyUp;
+  elem.commandRegex.onchange = handleChange;
   elem.description.onkeyup = handleKeyUp;
   elem.componentCommands.onkeyup = handleKeyUp;
   elem.exampleOutput.onkeyup = handleKeyUp;
