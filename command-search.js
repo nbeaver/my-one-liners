@@ -1254,7 +1254,7 @@ function matchCommand(match, candidate, useRegex = false) {
   }
 }
 
-function matchDescription(match, candidate, caseSensitive) {
+function matchDescription(match, candidate, caseSensitive = false) {
   if (match == '') {
     // If the input is blank, we want to match anything.
     return true;
@@ -1279,7 +1279,7 @@ function matchDescription(match, candidate, caseSensitive) {
   }
 }
 
-function matchExampleOutput(match, candidate, caseSensitive) {
+function matchExampleOutput(match, candidate, caseSensitive = false) {
   if (match == '') {
     // If the input is blank, we want to match anything.
     return true;
