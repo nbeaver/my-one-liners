@@ -52,7 +52,7 @@ const cmdInfo = [
       "https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html"
     ],
     "shell" : "bash",
-    "uuid": "00e7daf1-0ec4-49b7-b704-ab4ddbcda771"
+    "uuid": "b767de89-654e-4322-b751-a023c3362d53"
   },
   {
     "componentCommands": [
