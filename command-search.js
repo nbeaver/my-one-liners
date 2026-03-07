@@ -1558,6 +1558,27 @@ function validate(cmdInfo) {
   }
 }
 
+function runTests() {
+  console.assert(matchCommand("", "ls") === true); // Empty match strings always match
+  console.assert(matchCommand("ls", "") === false); // Empty candidate strings don't match
+  console.assert(matchCommand("ls", "ls") === true); // Exact match
+  console.assert(matchCommand("ls", "ls ") === true); // Match with whitespace
+  console.assert(matchCommand(".*", "ls", useRegex = true) === true); // Match with whitespace
+  // TODO: write more regex tests
+
+  console.assert(matchDescription("Print filenames", "Print filenames") === true);
+  console.assert(matchDescription("filename", "Print filenames") === true);
+  console.assert(matchDescription("files", "Print filenames") === false);
+  console.assert(matchDescription("filname", "Print filenames") === false);
+  console.assert(matchDescription("Print", "Print filenames", caseSensitive = true) === true)
+  console.assert(matchDescription("print", "Print filenames", caseSensitive = true) === false)
+
+  const shells = new Set(["bash", "PowerShell"]);
+  console.assert(matchShell(shells, "bash") === true);
+  console.assert(matchShell(shells, "PowerShell") === true);
+  console.assert(matchShell(shells, "zsh") === false);
+}
+
 function initialize() {
   // Look for necessary HTML elements.
   for (let el of document.getElementsByClassName("search")) {
@@ -1577,6 +1598,7 @@ function initialize() {
   elem.toggleDescription.onchange = handleChange;
   elem.toggleShell.onchange = handleChange;
   validate(cmdInfo);
+  runTests();
   // Update output.
   var shellSet = new Set([]);
   for (const info of cmdInfo) {
