@@ -1584,9 +1584,9 @@ function runTests() {
     ["matchDescription", "Print filenames", "Print filenames", false, true],
     ["matchDescription", "filename", "Print filenames", false, true],
     ["matchDescription", "files", "Print filenames", false, false],
-    ["matchDescription", "filname", "Print filenames", false, false],
+    ["matchDescription", "filname", "Print filenames", false, false], // Mis-spelling
     ["matchDescription", "Print", "Print filenames", true, true],
-    ["matchDescription", "print", "Print filenames", true, false],
+    ["matchDescription", "print", "Print filenames", true, false], // Not the same case
   ]
   for (const matchDescriptionTest of matchDescriptionTests) {
     let funcName, match, candidate, caseSensitive, expectedValue;
