@@ -1601,6 +1601,17 @@ function runTests() {
   }
 
 
+  const lsSet = new Set(["ls"])
+  const findSet = new Set(["find"])
+  const findFileSet = new Set(["find", "file"])
+  console.assert(matchComponentCommands(lsSet, lsSet) == true)
+  console.assert(matchComponentCommands(findFileSet, findFileSet) == true)
+  console.assert(matchComponentCommands(lsSet, findSet) == false)
+  console.assert(matchComponentCommands(findSet, findFileSet) == true)
+
+  console.assert(matchLinks("example.org", ["https://example.org"]) === true);
+  console.assert(matchLinks("example.com", ["https://example.org"]) === true);
+  console.assert(matchLinks("example.com", ["https://example.org", "https://example.com"]) === true);
 
   const shells = new Set(["bash", "PowerShell"]);
   console.assert(matchShell(shells, "bash") === true);
