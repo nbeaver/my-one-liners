@@ -1559,12 +1559,25 @@ function validate(cmdInfo) {
 }
 
 function runTests() {
-  console.assert(matchCommand("", "ls") === true); // Empty match strings always match
-  console.assert(matchCommand("ls", "") === false); // Empty candidate strings don't match
-  console.assert(matchCommand("ls", "ls") === true); // Exact match
-  console.assert(matchCommand("ls", "ls ") === true); // Match with whitespace
-  console.assert(matchCommand(".*", "ls", useRegex = true) === true); // Match with whitespace
-  // TODO: write more regex tests
+  matchCommandTests = [
+    ["matchCommand", "", "ls", false, true], // Empty match strings always match
+    ["matchCommand", "ls", "", false, false], // Empty candidate strings don't match
+    ["matchCommand", "ls", "ls", false, true], // Exact match
+    ["matchCommand", "ls", "ls ", false, true], // Prefix with whitespace
+    ["matchCommand", "ls", " ls ", false, true], // Suffix match with whitespace
+    ["matchCommand", "-sh", "du -sh --exclude \"./.*\"", false, true], // Match flag
+    // TODO: write more regex tests
+  ]
+  for (const matchCommandTest of matchCommandTests) {
+    [funcName, match, candidate, useRegex, expectedValue] = matchCommandTest;
+    var actualValue = matchCommand(match, candidate, useRegex)
+    console.assert(
+      actualValue === expectedValue,
+      "%s(%s, %s, useRegex = %s) === %s !== %s",
+      funcName, JSON.stringify(match), JSON.stringify(candidate), useRegex,
+      actualValue, expectedValue
+    );
+  }
 
   console.assert(matchDescription("Print filenames", "Print filenames") === true);
   console.assert(matchDescription("filename", "Print filenames") === true);
