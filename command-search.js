@@ -1621,7 +1621,7 @@ function runTests() {
 
   const matchLinksTests = [
     ["matchLinks", "example.org", ["https://example.org"], true],
-    ["matchLinks", "example.com", ["https://example.org"], true],
+    ["matchLinks", "example.com", ["https://example.org"], false],
     ["matchLinks", "example.com", ["https://example.org", "https://example.org"], false],
   ];
   for (const matchLinksTest of matchLinksTests) {
