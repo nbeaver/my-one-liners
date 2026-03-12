@@ -1619,9 +1619,21 @@ function runTests() {
     );
   }
 
-  console.assert(matchLinks("example.org", ["https://example.org"]) === true);
-  console.assert(matchLinks("example.com", ["https://example.org"]) === true);
-  console.assert(matchLinks("example.com", ["https://example.org", "https://example.com"]) === true);
+  const matchLinksTests = [
+    ["matchLinks", "example.org", ["https://example.org"], true],
+    ["matchLinks", "example.com", ["https://example.org"], true],
+    ["matchLinks", "example.com", ["https://example.org", "https://example.org"], false],
+  ];
+  for (const matchLinksTest of matchLinksTests) {
+    let funcName, match, candidate, expectedValue;
+    [funcName, match, candidate, expectedValue] = matchLinksTest;
+    let actualValue = matchLinks(match, candidate);
+    console.assert(
+      actualValue === expectedValue,
+      "%s(%s, %s) === %s !== %s",
+      funcName, JSON.stringify(match), JSON.stringify(candidate), actualValue, expectedValue
+    );
+  }
 
   const shells = new Set(["bash", "PowerShell"]);
   console.assert(matchShell(shells, "bash") === true);
