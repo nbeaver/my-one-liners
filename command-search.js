@@ -1600,14 +1600,24 @@ function runTests() {
     );
   }
 
-
-  const lsSet = new Set(["ls"])
-  const findSet = new Set(["find"])
-  const findFileSet = new Set(["find", "file"])
-  console.assert(matchComponentCommands(lsSet, lsSet) == true)
-  console.assert(matchComponentCommands(findFileSet, findFileSet) == true)
-  console.assert(matchComponentCommands(lsSet, findSet) == false)
-  console.assert(matchComponentCommands(findSet, findFileSet) == true)
+  const matchComponentCommandsTests = [
+    ["matchComponentCommands", new Set(["ls"]), new Set(["ls"]), true],
+    ["matchComponentCommands", new Set(["find", "file"]), new Set(["find", "file"]), true],
+    ["matchComponentCommands", new Set(["ls"]), new Set(["find"]), false],
+    ["matchComponentCommands", new Set(["find"]), new Set(["find", "file"]), true],
+    ["matchComponentCommands", new Set(["find", "file"]), new Set(["find"]), false],
+  ];
+  for (const matchComponentCommandsTest of matchComponentCommandsTests) {
+    let funcName, match, candidate, expectedValue;
+    [funcName, match, candidate, expectedValue] = matchComponentCommandsTest;
+    let actualValue = matchComponentCommands(match, candidate);
+    console.assert(
+      actualValue === expectedValue,
+      "%s(new Set(%s), new Set(%s)) === %s !== %s",
+      funcName, JSON.stringify(Array.from(match)), JSON.stringify(Array.from(candidate)),
+      actualValue, expectedValue
+    );
+  }
 
   console.assert(matchLinks("example.org", ["https://example.org"]) === true);
   console.assert(matchLinks("example.com", ["https://example.org"]) === true);
