@@ -1635,6 +1635,23 @@ function runTests() {
     );
   }
 
+  const matchShellTests = [
+    ["matchShell", new Set(["bash", "PowerShell"]), "bash", true],
+    ["matchShell", new Set(["bash", "PowerShell"]), "PowerShell", true],
+    ["matchShell", new Set(["bash", "PowerShell"]), "zsh", false],
+  ];
+  for (const matchShellTest of matchShellTests) {
+    let funcName, match, candidate, expectedValue;
+    [funcName, match, candidate, expectedValue] = matchShellTest;
+    let actualValue = matchShell(match, candidate);
+    console.assert(
+      actualValue === expectedValue,
+      "%s(new Set(%s), %s) === %s !== %s",
+      funcName, JSON.stringify(Array.from(match)), JSON.stringify(candidate),
+      actualValue, expectedValue
+    );
+  }
+
   const shells = new Set(["bash", "PowerShell"]);
   console.assert(matchShell(shells, "bash") === true);
   console.assert(matchShell(shells, "PowerShell") === true);
