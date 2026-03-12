@@ -1580,12 +1580,27 @@ function runTests() {
     );
   }
 
-  console.assert(matchDescription("Print filenames", "Print filenames") === true);
-  console.assert(matchDescription("filename", "Print filenames") === true);
-  console.assert(matchDescription("files", "Print filenames") === false);
-  console.assert(matchDescription("filname", "Print filenames") === false);
-  console.assert(matchDescription("Print", "Print filenames", caseSensitive = true) === true)
-  console.assert(matchDescription("print", "Print filenames", caseSensitive = true) === false)
+  const matchDescriptionTests = [
+    ["matchDescription", "Print filenames", "Print filenames", false, true],
+    ["matchDescription", "filename", "Print filenames", false, true],
+    ["matchDescription", "files", "Print filenames", false, false],
+    ["matchDescription", "filname", "Print filenames", false, false],
+    ["matchDescription", "Print", "Print filenames", true, true],
+    ["matchDescription", "print", "Print filenames", true, false],
+  ]
+  for (const matchDescriptionTest of matchDescriptionTests) {
+    let funcName, match, candidate, caseSensitive, expectedValue;
+    [funcName, match, candidate, caseSensitive, expectedValue] = matchDescriptionTest;
+    let actualValue = matchDescription(match, candidate, caseSensitive)
+    console.assert(
+      actualValue === expectedValue,
+      "%s(%s, %s, useRegex = %s) === %s !== %s",
+      funcName, JSON.stringify(match), JSON.stringify(candidate), caseSensitive,
+      actualValue, expectedValue
+    );
+  }
+
+
 
   const shells = new Set(["bash", "PowerShell"]);
   console.assert(matchShell(shells, "bash") === true);
