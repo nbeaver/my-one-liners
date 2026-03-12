@@ -175,10 +175,11 @@ const cmdInfo = [
     "componentCommands": [
         "encguess"
     ],
-    "description": "Guess / infer character encoding of a text file.",
+    "description": "Guess / infer character encoding of all files ending in '.txt'.",
     "invocation": "encguess *.txt",
     "links": [
       "https://stackoverflow.com/questions/805418/how-can-i-find-encoding-of-a-file-via-a-script-on-linux",
+      "https://manpages.debian.org/bullseye/perl/encguess.1.en.html"
     ],
     "shell": "bash"
   },
