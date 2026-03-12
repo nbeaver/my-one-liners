@@ -1559,7 +1559,7 @@ function validate(cmdInfo) {
 }
 
 function runTests() {
-  matchCommandTests = [
+  const matchCommandTests = [
     ["matchCommand", "", "ls", false, true], // Empty match strings always match
     ["matchCommand", "ls", "", false, false], // Empty candidate strings don't match
     ["matchCommand", "ls", "ls", false, true], // Exact match
@@ -1569,8 +1569,9 @@ function runTests() {
     // TODO: write more regex tests
   ]
   for (const matchCommandTest of matchCommandTests) {
+    let funcName, match, candidate, useRegex, expectedValue;
     [funcName, match, candidate, useRegex, expectedValue] = matchCommandTest;
-    var actualValue = matchCommand(match, candidate, useRegex)
+    let actualValue = matchCommand(match, candidate, useRegex)
     console.assert(
       actualValue === expectedValue,
       "%s(%s, %s, useRegex = %s) === %s !== %s",
