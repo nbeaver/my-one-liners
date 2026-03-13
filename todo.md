@@ -32,3 +32,4 @@ Output
 Maybe do
 - [x] Display number of unique invocations and unique component commands for each shell
 - [ ] Add toggle box for optional fields, e.g. "has links", "has example output"
+- [ ] Save GUI state in URL
