@@ -126,8 +126,8 @@ function matchShell(match, candidate) {
 }
 
 function noWhiteSpace(arrayIn) {
-  var array = [];
-  for (let val of arrayIn) {
+  const array = [];
+  for (const val of arrayIn) {
     if (val.trim() !== '') {
       array.push(val)
     }
@@ -136,8 +136,8 @@ function noWhiteSpace(arrayIn) {
 }
 
 function getChosenShells() {
-  var chosenShells = [];
-  for (let el of document.getElementsByClassName("shellOption")) {
+  const chosenShells = [];
+  for (const el of document.getElementsByClassName("shellOption")) {
     if (el.checked === true) {
       chosenShells.push(el.value);
     }
@@ -181,7 +181,7 @@ function updateSearch() {
   }
   const tree = document.createDocumentFragment();
   // Match the search text.
-  for (let info of cmdInfo) {
+  for (const info of cmdInfo) {
     const match = {
       'invocation' : matchCommand(search.invocation, info.invocation, regex.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
@@ -222,7 +222,7 @@ function updateSearch() {
       }
       if (showField['links'] === true && info.links !== undefined) {
         const links = document.createElement("div");
-        for (let link of info.links) {
+        for (const link of info.links) {
           const thisLink = document.createElement("div");
           const thisAnchor = document.createElement("a");
           thisAnchor.setAttribute("href", link)
@@ -258,13 +258,13 @@ function handleChange(event) {
   updateSearch();
 }
 function selectAllShells(event) {
-  for (let el of document.getElementsByClassName("shellOption")) {
+  for (const el of document.getElementsByClassName("shellOption")) {
     el.checked = true;
   }
   updateSearch();
 }
 function selectNoShells(event) {
-  for (let el of document.getElementsByClassName("shellOption")) {
+  for (const el of document.getElementsByClassName("shellOption")) {
     el.checked = false;
   }
   updateSearch();
@@ -297,12 +297,12 @@ function validate(cmdInfo) {
     "componentCommands": "string",
     "links": "string",
   }
-  var invocations = new Set([]);
-  var uuids = new Set([]);
+  const invocations = new Set([]);
+  const uuids = new Set([]);
   for (let i = 0; i < cmdInfo.length; i++) {
-    var info = cmdInfo[i]
-    for (let key of allKeys) {
-      var val = info[key];
+    const info = cmdInfo[i]
+    for (const key of allKeys) {
+      const val = info[key];
       console.assert(val !== '',   "#%i: %s = %o", i, key, val)
       console.assert(val !== null, "#%i: %s = %o", i, key, val)
       if (val !== undefined) {
@@ -311,7 +311,7 @@ function validate(cmdInfo) {
           // Check each value in the array.
           console.assert(Array.isArray(val), "#%i: %s : Array.isArray(%o) === false", i, key, val)
           console.assert(val.length !== 0, "#%i: %s : %s.length === 0", i, key, key)
-          for (let arrayVal of val) {
+          for (const arrayVal of val) {
             console.assert(arrayVal !== '',   "#%i: %o in %s", i, arrayVal, key)
             console.assert(arrayVal !== null, "#%i: %o in %s", i, arrayVal, key)
             console.assert(typeof arrayVal === arrayType[key], "#%i: typeof %o = %s != %s in %s", i, arrayVal, typeof arrayVal, arrayType[key], key)
@@ -319,11 +319,11 @@ function validate(cmdInfo) {
         }
       }
     }
-    for (let key of mandatoryKeys) {
-      var val = info[key];
+    for (const key of mandatoryKeys) {
+      const val = info[key];
       console.assert(val !== undefined, "#%i: %s = %o, info = %s", i, key, val, JSON.stringify(info))
     }
-    for (let key in info) {
+    for (const key in info) {
       if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
         continue;
       } else {
@@ -357,7 +357,7 @@ function runTests() {
   for (const matchCommandTest of matchCommandTests) {
     let funcName, match, candidate, useRegex, expectedValue;
     [funcName, match, candidate, useRegex, expectedValue] = matchCommandTest;
-    let actualValue = matchCommand(match, candidate, useRegex)
+    const actualValue = matchCommand(match, candidate, useRegex)
     console.assert(
       actualValue === expectedValue,
       "%s(%s, %s, useRegex = %s) === %s !== %s",
@@ -377,7 +377,7 @@ function runTests() {
   for (const matchDescriptionTest of matchDescriptionTests) {
     let funcName, match, candidate, caseSensitive, expectedValue;
     [funcName, match, candidate, caseSensitive, expectedValue] = matchDescriptionTest;
-    let actualValue = matchDescription(match, candidate, caseSensitive)
+    const actualValue = matchDescription(match, candidate, caseSensitive)
     console.assert(
       actualValue === expectedValue,
       "%s(%s, %s, useRegex = %s) === %s !== %s",
@@ -396,7 +396,7 @@ function runTests() {
   for (const matchComponentCommandsTest of matchComponentCommandsTests) {
     let funcName, match, candidate, expectedValue;
     [funcName, match, candidate, expectedValue] = matchComponentCommandsTest;
-    let actualValue = matchComponentCommands(match, candidate);
+    const actualValue = matchComponentCommands(match, candidate);
     console.assert(
       actualValue === expectedValue,
       "%s(new Set(%s), new Set(%s)) === %s !== %s",
@@ -413,7 +413,7 @@ function runTests() {
   for (const matchLinksTest of matchLinksTests) {
     let funcName, match, candidate, expectedValue;
     [funcName, match, candidate, expectedValue] = matchLinksTest;
-    let actualValue = matchLinks(match, candidate);
+    const actualValue = matchLinks(match, candidate);
     console.assert(
       actualValue === expectedValue,
       "%s(%s, %s) === %s !== %s",
@@ -429,7 +429,7 @@ function runTests() {
   for (const matchShellTest of matchShellTests) {
     let funcName, match, candidate, expectedValue;
     [funcName, match, candidate, expectedValue] = matchShellTest;
-    let actualValue = matchShell(match, candidate);
+    const actualValue = matchShell(match, candidate);
     console.assert(
       actualValue === expectedValue,
       "%s(new Set(%s), %s) === %s !== %s",
@@ -446,7 +446,7 @@ function runTests() {
 
 function initialize() {
   // Look for necessary HTML elements.
-  for (let el of document.getElementsByClassName("search")) {
+  for (const el of document.getElementsByClassName("search")) {
     elem[el.id] = el
   }
   // Register event handlers.
@@ -465,15 +465,15 @@ function initialize() {
   validate(cmdInfo);
   runTests();
   // Update output.
-  let shellSet = new Set([]);
-  let shellStats = {}
+  const shellSet = new Set([]);
+  const shellStats = {}
   for (const info of cmdInfo) {
-    let key = info.shell;
+    const key = info.shell;
     shellSet.add(key);
     if (shellStats[key] == undefined) {
       shellStats[key] = new Object();
     }
-    let ss = shellStats[key]
+    const ss = shellStats[key]
     if (ss.nInvocations === undefined) {
       ss.nInvocations = 1;
     } else {
@@ -487,23 +487,23 @@ function initialize() {
   }
   const shells = Array.from(shellSet).sort(Intl.Collator().compare);
   for (const shellName of shells) {
-    var div = document.createElement("div");
-    var input = document.createElement("input");
+    const div = document.createElement("div");
+    const input = document.createElement("input");
     input.setAttribute("type", "checkbox")
     input.checked = true;
-    var label = document.createElement("label");
+    const label = document.createElement("label");
     input.setAttribute("value", shellName)
     input.classList.add("shellOption");
     input.onchange = handleChange;
-    var code = document.createElement("code");
-    var codeText = document.createTextNode(shellName);
-    let stats = shellStats[shellName];
+    const code = document.createElement("code");
+    const codeText = document.createTextNode(shellName);
+    const stats = shellStats[shellName];
     console.log(stats);
-    let nInvocationsText = `${stats.nInvocations} invocations`;
-    let nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
-    let statsText = document.createTextNode(` (${nInvocationsText}, ${nComponentCommandsText})`);
+    const nInvocationsText = `${stats.nInvocations} invocations`;
+    const nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
+    const statsText = document.createTextNode(` (${nInvocationsText}, ${nComponentCommandsText})`);
     code.appendChild(codeText);
-    let statsSpan = document.createElement("span");
+    const statsSpan = document.createElement("span");
     statsSpan.appendChild(statsText);
     label.appendChild(input);
     label.appendChild(code);
