@@ -147,15 +147,15 @@ function getChosenShells() {
 
 const elem = {};
 function updateSearch() {
-  var strings = {
+  const strings = {
     'invocation' : elem.command.value,
     'description' : elem.description.value,
     'componentCommands' : elem.componentCommands.value,
     'exampleOutput' : elem.exampleOutput.value,
     'links' : elem.links.value,
   }
-  var componentCommandsList = noWhiteSpace(strings.componentCommands.split(' '));
-  var chosenShellsList = getChosenShells();
+  const componentCommandsList = noWhiteSpace(strings.componentCommands.split(' '));
+  const chosenShellsList = getChosenShells();
   const search = {
     'invocation' : strings.invocation,
     'description' : strings.description.trim(),
@@ -172,17 +172,17 @@ function updateSearch() {
     'invocation': elem.commandRegex.checked,
   }
 
-  var showField = {
+  const showField = {
     'invocation' : true,
     'description' : elem.toggleDescription.checked,
     'exampleOutput' : elem.toggleExampleOutput.checked,
     'links' : elem.toggleLinks.checked,
     'shell' : elem.toggleShell.checked,
   }
-  var tree = document.createDocumentFragment();
+  const tree = document.createDocumentFragment();
   // Match the search text.
   for (let info of cmdInfo) {
-    var match = {
+    const match = {
       'invocation' : matchCommand(search.invocation, info.invocation, regex.invocation),
       'description' : matchDescription(search.description, info.description, caseSensitive.description),
       'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
@@ -190,43 +190,43 @@ function updateSearch() {
       'links': matchLinks(search.links, info.links),
       'shell': matchShell(search.shells, info.shell),
     }
-    var allMatch = Object.keys(match).every(function(x){ return match[x] === true });
+    const allMatch = Object.keys(match).every(function(x){ return match[x] === true });
     // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
     if (allMatch) {
       // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
-      var div = document.createElement("div");
+      const div = document.createElement("div");
       div.classList.add("singleCmd");
       if (showField['invocation'] === true) {
-        var codeDiv = document.createElement("div");
+        const codeDiv = document.createElement("div");
         codeDiv.classList.add("copyOnClick");
         codeDiv.addEventListener("click", copyText);
-        var code = document.createElement("code");
-        var codeText = document.createTextNode(info.invocation);
+        const code = document.createElement("code");
+        const codeText = document.createTextNode(info.invocation);
         code.appendChild(codeText);
         codeDiv.appendChild(code);
         div.appendChild(codeDiv);
       }
       if (showField['exampleOutput'] === true && info.exampleOutput !== undefined) {
-        var pre = document.createElement("pre");
-        var samp = document.createElement("samp");
-        var sampText = document.createTextNode(info.exampleOutput);
+        const pre = document.createElement("pre");
+        const samp = document.createElement("samp");
+        const sampText = document.createTextNode(info.exampleOutput);
         samp.appendChild(sampText);
         pre.appendChild(samp);
         div.appendChild(pre);
       }
       if (showField['description'] === true) {
-        var descriptionDiv = document.createElement("div");
-        var description = document.createTextNode(info.description);
+        const descriptionDiv = document.createElement("div");
+        const description = document.createTextNode(info.description);
         descriptionDiv.appendChild(description);
         div.appendChild(descriptionDiv);
       }
       if (showField['links'] === true && info.links !== undefined) {
-        var links = document.createElement("div");
+        const links = document.createElement("div");
         for (let link of info.links) {
-          var thisLink = document.createElement("div");
-          var thisAnchor = document.createElement("a");
+          const thisLink = document.createElement("div");
+          const thisAnchor = document.createElement("a");
           thisAnchor.setAttribute("href", link)
-          var linkText = document.createTextNode(link);
+          const linkText = document.createTextNode(link);
           thisAnchor.appendChild(linkText);
           thisLink.appendChild(thisAnchor);
           links.appendChild(thisLink);
@@ -234,11 +234,11 @@ function updateSearch() {
         div.appendChild(links)
       }
       if (showField['shell'] === true) {
-        var shellDiv = document.createElement("div");
-        var shellNameText = document.createTextNode(info.shell);
-        var shellName = document.createElement("code");
+        const shellDiv = document.createElement("div");
+        const shellNameText = document.createTextNode(info.shell);
+        const shellName = document.createElement("code");
         shellName.appendChild(shellNameText);
-        var shellText = document.createTextNode("shell: ");
+        const shellText = document.createTextNode("shell: ");
         shellDiv.appendChild(shellText);
         shellDiv.appendChild(shellName);
         div.appendChild(shellDiv);
