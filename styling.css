@@ -3,31 +3,38 @@ body {
   margin: auto;
   font-size:  18px;
 }
-div.singleCmd {
+
+div.single-cmd {
   border: thin solid black;
   border-radius: 5px;
 }
+
 @media (prefers-color-scheme: dark) {
   body {
     background: #242424;
     color: #FFFFEA;
   }
+
   a:link {
     color: #80DFFF;
   }
+
   input {
     color: #FFFFEA;
     background: #242424;
   }
+
   /* See:
    * https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css
    * https://stackoverflow.com/questions/2460501/how-to-change-checkboxs-border-style-in-css
    */
+
   input[type="checkbox"] {
     outline: 1px solid #FFFFEA;
     accent-color: black;
   }
-  div.singleCmd {
+
+  div.single-cmd {
     border: thin solid #FFFFEA;
   }
 }

@@ -215,7 +215,7 @@ function updateSearch() {
     if (allMatch) {
       // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
       const div = document.createElement("div");
-      div.classList.add("singleCmd");
+      div.classList.add("single-cmd");
       if (showField.invocation === true) {
         const codeDiv = document.createElement("div");
         codeDiv.classList.add("copyOnClick");
