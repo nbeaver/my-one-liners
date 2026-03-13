@@ -1,3 +1,34 @@
+# Intro
+
+When I got more serious about learning interactive shells like the bash command line circa 2012,
+I started [saving useful one-liners to a text file](https://github.com/nbeaver/cool-commands).
+Over time this file grew to to contain thousands of commands,
+and it became increasing difficult to find the command I wanted.
+I especially wanted to be able to search for the command string
+separately from the explanatory comments I had added.
+I began thinking about ways to store one-liner commands in a more structured way,
+so that the descriptions and other metadata could be searched separately
+from the command itself.
+
+This capability works well for single commands,
+but where this really shines is *composite commands*,
+i.e. one-liners composed of multiple commands.
+This includes commands that take another command as an argument
+(such as `find`'s `-exec`/`execdir` argument),
+arguments supplied by command expansion (such as `killall $(pgrep firefox)`),
+and commands that pipe output to another command
+(such as `pwd | tr -d '\n' | xsel -b`).
+I particularly wanted to be able to search for particular component commands,
+such as `grep` without matching `pgrep` or `ls` without matching `lsof`.
+After experimenting with a [command-line search version of this idea](https://github.com/nbeaver/cmd_oysters)
+I decided to do a simpler version with static HTML instead.
+
+<!--- TODO link to hosted version --->
+
+This provides the benefits of interactivity
+without requiring an additional installation step,
+since almost all users have access to a web browser.
+
 # Field descriptions
 
 ## Mandatory fields
