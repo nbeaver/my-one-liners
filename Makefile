@@ -1,7 +1,7 @@
 lint:
 	tidy -errors -quiet index.html
-	npx prettier --write command-search.js
-	npx eslint command-search.js
+	npx prettier --write "**/*.js"
+	npx eslint "**/*.js"
 
 readme.html : readme.md
 	cmark "$<" > "$@"
