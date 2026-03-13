@@ -1680,9 +1680,25 @@ function initialize() {
   validate(cmdInfo);
   runTests();
   // Update output.
-  var shellSet = new Set([]);
+  let shellSet = new Set([]);
+  let shellStats = {}
   for (const info of cmdInfo) {
-    shellSet.add(info.shell);
+    let key = info.shell;
+    shellSet.add(key);
+    if (shellStats[key] == undefined) {
+      shellStats[key] = new Object();
+    }
+    let ss = shellStats[key]
+    if (ss.nInvocations === undefined) {
+      ss.nInvocations = 1;
+    } else {
+      ss.nInvocations++;
+    }
+    if (ss.componentCommands == undefined) {
+      ss.componentCommands = new Set(info.componentCommands)
+    } else {
+      ss.componentCommands = ss.componentCommands.union(new Set(info.componentCommands))
+    }
   }
   const shells = Array.from(shellSet).sort(Intl.Collator().compare);
   for (const shellName of shells) {
@@ -1696,9 +1712,17 @@ function initialize() {
     input.onchange = handleChange;
     var code = document.createElement("code");
     var codeText = document.createTextNode(shellName);
+    let stats = shellStats[shellName];
+    console.log(stats);
+    let nInvocationsText = `${stats.nInvocations} invocations`;
+    let nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
+    let statsText = document.createTextNode(` (${nInvocationsText}, ${nComponentCommandsText})`);
     code.appendChild(codeText);
+    let statsSpan = document.createElement("span");
+    statsSpan.appendChild(statsText);
     label.appendChild(input);
     label.appendChild(code);
+    label.appendChild(statsSpan);
     div.appendChild(label);
     elem.shellOptions.appendChild(div);
   }
