@@ -104,3 +104,76 @@ For example, the `dir` command is available in [MS-DOS](https://en.wikipedia.org
 and on Unix-like systems [with GNU coreutils](https://www.gnu.org/software/coreutils/manual/html_node/dir-invocation.html#dir-invocation).
 However, today the `dir` command is most commonly associated with the `cmd.exe` interpreter
 for Windows NT, so for most people `cmd.exe` is the appropriate choice.
+
+> Why aren't multiple variations of a command permitted permitted per entry?
+
+While this might seem desirable in certain cases,
+such as for a long and short flag version of a command,
+the data model and conceptual framework
+relies on specifying the properties of a single invocation.
+Permitting multiple invocations makes detecting duplicates harder,
+in addition to complicating the data model and interface for little real benefit.
+Similarly, a single description is better than e.g. a verbose description
+and a terse description field.
+
+> Why are the command examples specific instead of more generalized?
+
+This is a stylistic choice: a command invocation
+should resemble real usage as much as possible,
+and ideally should be runnable as-is on an actual system.
+For example,
+
+    grep -nP '[^[:ascii:]]' --color=always /usr/share/dict/words | less -R
+
+is a better example than
+
+    grep -nP '[^[:ascii:]]' --color=always /path/to/file.txt | less -R
+
+which is better than
+
+    grep -nP '[^[:ascii:]]' --color=always foo | less -R
+
+which is better than
+
+    grep -nP '[^[:ascii:]]' foo
+
+which is better than
+
+    grep -nP '[^[:ascii:]]' [FILE...]
+
+even though the last example is the most abstract, general case.
+From this perspective, the "best" example is not the most general,
+it is the one that is closest to an example that can be run without modification.
+
+Thus, metasyntax designed to show all the possible uses of a command,
+or make the example more abstract,
+such as the man-page convention `[FILE...]`,
+or [metasyntactic variables](https://en.wikipedia.org/wiki/Metasyntactic_variable) like `foo` and `bar`, are not good examples.
+
+# Related projects
+
+## Centralized command lists
+- https://github.com/denisidoro/navi
+- https://github.com/Orange-Cyberdefense/arsenal
+- https://github.com/tldr-pages/tldr
+- https://github.com/knqyf263/pet
+- https://github.com/ok-borg/borg
+- https://github.com/orkohunter/keep
+- https://github.com/plainas/icl
+- https://launchpad.net/clicompanion
+- https://github.com/nbeaver/cmd_oysters
+
+## Enhanced shell history
+- https://atuin.sh/
+- https://github.com/dvorka/hstr
+
+## Per-folder files
+- https://secretgeek.net/ok
+- https://github.com/casey/just
+- https://github.com/laktak/tome
+
+# Websites
+- https://bropages.org/ (defunct)
+- https://explainshell.com/
+- https://www.commandlinefu.com/
+- https://cb.vu/unixtoolbox.html
