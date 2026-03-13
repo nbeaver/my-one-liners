@@ -535,6 +535,22 @@ const cmdInfo = [
   },
   {
     "componentCommands": [
+      "grep",
+      "less"
+    ],
+    "description": "Highlight non-ASCII characters (e.g. Unicode) in a text file and give the line number they are on (short flags version).",
+    "invocation": "grep -nP '[^[:ascii:]]' --color=always /usr/share/dict/words | less -R",
+    "links": [
+      "http://lists.gnu.org/archive/html/bug-gnu-utils/2006-03/msg00000.html",
+      "https://groups.google.com/forum/#!topic/comp.unix.programmer/Auge3Bz4iCA",
+      "https://stackoverflow.com/questions/3001177/how-do-i-grep-for-all-non-ascii-characters-in-unix",
+      "http://superuser.com/questions/417305/how-can-i-identify-non-ascii-characters-from-the-shell"
+    ],
+    "shell": "bash",
+    "uuid": "fe5488ea-da5a-4cb2-b95a-e26336c96a4f"
+  },
+  {
+    "componentCommands": [
       "find",
       "wc"
     ],
