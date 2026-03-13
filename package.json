@@ -1,0 +1,30 @@
+{
+  "name": "personal-command-search",
+  "version": "0.0.1",
+  "description": "Search a personalized list of shell commands.",
+  "main": "command-search.js",
+  "scripts": {
+    "test": "make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbeaver/personal-command-search.git"
+  },
+  "keywords": [
+    "shell",
+    "command",
+    "search",
+    "filter"
+  ],
+  "author": "Nathaniel M. Foley-Beaver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nbeaver/personal-command-search/issues"
+  },
+  "homepage": "https://github.com/nbeaver/personal-command-search#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0"
+  }
+}
