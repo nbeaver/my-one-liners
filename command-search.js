@@ -1691,6 +1691,10 @@ var cmdInfo = [
     "componentCommands": ["source"],
     "description": "Make bash re-read modified .bashrc file",
     "invocation": "source ~/.bashrc",
+    "links": [
+      "https://stackoverflow.com/questions/2518127/how-to-reload-bashrc-settings-without-logging-out-and-back-in-again",
+      "https://superuser.com/questions/46139/what-does-source-do"
+    ],
     "shell": "bash"
   },
   {
@@ -1706,6 +1710,11 @@ var cmdInfo = [
     "invocation": "apt-cache search --names-only 'blender'",
     "exampleOutput":
       "blender-dbgsym - debug symbols for blender\nblender - Very fast and versatile 3D modeller/renderer\nblender-data - Very fast and versatile 3D modeller/renderer - data package\nblender-doc - Blender Manual by the Blender Foundation\nblender-ogrexml-1.9 - Blender Exporter for OGRE\nblender-ogrexml-next - Blender Exporter for OGRE-Next",
+    "links": [
+      "https://askubuntu.com/questions/298506/using-apt-cache-search",
+      "https://stackoverflow.com/questions/2944104/why-does-apt-cache-search-find-packages-which-do-not-match-the-given-regular-exp",
+      "https://unix.stackexchange.com/questions/118921/what-exactly-does-the-names-only-option-of-apt-cache-do"
+    ],
     "shell": "bash"
   },
   {
@@ -1714,6 +1723,10 @@ var cmdInfo = [
       "Only exact string 'mc' in package names, not '*mc*' that matches e.g. 'wmcalc'",
     "invocation": "apt-cache search --names-only '^mc$'",
     "exampleOutput": "mc - Midnight Commander - a powerful file manager\n",
+    "links": [
+      "https://askubuntu.com/questions/298506/using-apt-cache-search",
+      "https://askubuntu.com/questions/934739/apt-search-limit-to-exact-match"
+    ],
     "shell": "bash"
   },
   {
@@ -1727,12 +1740,20 @@ var cmdInfo = [
     "componentCommands": ["alsamixer"],
     "description": "Interactively adjust volume and other sound settings.",
     "invocation": "alsamixer",
+    "links": [
+      "https://askubuntu.com/questions/345487/how-do-i-adjust-alsamixer",
+      "https://en.wikipedia.org/wiki/Alsamixer",
+      "https://wiki.ubuntu.com/Audio/Alsamixer"
+    ],
     "shell": "bash"
   },
   {
     "componentCommands": ["cat"],
     "description": "Show sound cards and headsets.",
     "invocation": "cat /proc/asound/cards",
+    "links": [
+      "https://docs.kernel.org/sound/designs/procfile.html#card-specific-files",
+    ],
     "shell": "bash"
   },
   {
