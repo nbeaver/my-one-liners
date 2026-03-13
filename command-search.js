@@ -1,5 +1,6 @@
 var highlightedElement = null;
-function copyText(event) {
+function copyText() {
+  // console.info(event.target);
   navigator.clipboard.writeText(this.innerText);
   if (highlightedElement !== null) {
     highlightedElement.style.background = "";
@@ -249,21 +250,25 @@ function updateSearch() {
   elem.output.replaceChildren(tree);
   return true;
 }
-function handleKeyUp(event) {
+function handleKeyUp() {
+  // console.info(event.target);
   // Update search results.
   updateSearch();
 }
-function handleChange(event) {
+function handleChange() {
   // Update search results.
+  // console.info(event.target);
   updateSearch();
 }
-function selectAllShells(event) {
+function selectAllShells() {
+  // console.info(event.target);
   for (const el of document.getElementsByClassName("shellOption")) {
     el.checked = true;
   }
   updateSearch();
 }
-function selectNoShells(event) {
+function selectNoShells() {
+  // console.info(event.target);
   for (const el of document.getElementsByClassName("shellOption")) {
     el.checked = false;
   }
@@ -498,7 +503,6 @@ function initialize() {
     const code = document.createElement("code");
     const codeText = document.createTextNode(shellName);
     const stats = shellStats[shellName];
-    console.log(stats);
     const nInvocationsText = `${stats.nInvocations} invocations`;
     const nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
     const statsText = document.createTextNode(` (${nInvocationsText}, ${nComponentCommandsText})`);
