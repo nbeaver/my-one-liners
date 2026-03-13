@@ -37,6 +37,15 @@
 
 # Design, explanation, and rationale Q & A
 
+Design goals:
+
+- Static HTML with full offline functionality.
+- No dependencies except a standards-compliant web browser.
+- Consistent data format with full backward and forward compatibility.
+- All data stored in a single JavaScript file,
+  with a format that could be copy and pasted into a JSON file.
+- Ease of debugging: data errors point to a line in a single JavaScript file.
+
 > Why is `componentCommands` necessary?
 
 A simple search of the command invocation will often match too many things.
