@@ -1,5 +1,5 @@
 {
     "rules": {
-        "quotes": "off"
+        "quotes": ["warn", "double"]
     }
 }
