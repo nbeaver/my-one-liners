@@ -1686,5 +1686,59 @@ var cmdInfo = [
       "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/help"
     ],
     "shell": "cmd.exe"
+  },
+  {
+    "componentCommands": ["source"],
+    "description": "Make bash re-read modified .bashrc file",
+    "invocation": "source ~/.bashrc",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["apt-cache"],
+    "description":
+      "Search apt packages name and descriptions for 'blender', case insensitive",
+    "invocation": "apt-cache search blender",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["apt-cache"],
+    "description": "Search only package names for 'blender', not descriptions.",
+    "invocation": "apt-cache search --names-only 'blender'",
+    "exampleOutput":
+      "blender-dbgsym - debug symbols for blender\nblender - Very fast and versatile 3D modeller/renderer\nblender-data - Very fast and versatile 3D modeller/renderer - data package\nblender-doc - Blender Manual by the Blender Foundation\nblender-ogrexml-1.9 - Blender Exporter for OGRE\nblender-ogrexml-next - Blender Exporter for OGRE-Next",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["apt-cache"],
+    "description":
+      "Only exact string 'mc' in package names, not '*mc*' that matches e.g. 'wmcalc'",
+    "invocation": "apt-cache search --names-only '^mc$'",
+    "exampleOutput": "mc - Midnight Commander - a powerful file manager\n",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["apt-cache"],
+    "description":
+      "Find package descriptions that are longer than 4000 characters.",
+    "invocation": "apt-cache search '.{4000,}'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["alsamixer"],
+    "description": "Interactively adjust volume and other sound settings.",
+    "invocation": "alsamixer",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["cat"],
+    "description": "Show sound cards and headsets.",
+    "invocation": "cat /proc/asound/cards",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["find"],
+    "description": "Find non-executables in /bin/ and /usr/bin/",
+    "invocation": "find /bin/ /usr/bin/ -type f -not -executable -print",
+    "shell": "bash"
   }
 ];
