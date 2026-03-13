@@ -5,19 +5,19 @@ function copyText() {
   if (highlightedElement !== null) {
     highlightedElement.style.background = "";
   }
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     // Dark mode
     this.style.background = "#8C3313";
   } else {
     // Light mode
-    //this.style.background = "yellow"; // #d8d800
+    // this.style.background = "yellow"; // #d8d800
     this.style.background = "#f7f792";
   }
   highlightedElement = this;
 }
 
 function matchCommand(match, candidate, useRegex = false) {
-  if (match == '') {
+  if (match == "") {
     // If the input is blank, we want to match anything.
     return true;
   }
@@ -27,47 +27,47 @@ function matchCommand(match, candidate, useRegex = false) {
     if (re.test(candidate)) {
       return true;
     } else {
-      return false
+      return false;
     }
   } else {
     // Regular string matching.
     if (candidate.includes(match)) {
-      //console.log(`"${candidate}" includes "${match}"`);
+      // console.log(`"${candidate}" includes "${match}"`);
       return true;
     } else {
-      //console.log(`"${candidate}" does not include "${match}"`);
+      // console.log(`"${candidate}" does not include "${match}"`);
       return false;
     }
   }
 }
 
 function matchDescription(match, candidate, caseSensitive = false) {
-  if (match == '') {
+  if (match == "") {
     // If the input is blank, we want to match anything.
     return true;
   }
   if (caseSensitive === true) {
     if (candidate.includes(match)) {
-      //console.log(`"${candidate}" includes "${match}"`);
+      // console.log(`"${candidate}" includes "${match}"`);
       return true;
     } else {
-      //console.log(`"${candidate}" does not include "${match}"`);
+      // console.log(`"${candidate}" does not include "${match}"`);
       return false;
     }
   } else {
     // Don't match case.
     if (candidate.toLowerCase().includes(match.toLowerCase())) {
-      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      // console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
       return true;
     } else {
-      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      // console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
       return false;
     }
   }
 }
 
 function matchExampleOutput(match, candidate, caseSensitive = false) {
-  if (match == '') {
+  if (match == "") {
     // If the input is blank, we want to match anything.
     return true;
   } else if (candidate === undefined) {
@@ -76,19 +76,19 @@ function matchExampleOutput(match, candidate, caseSensitive = false) {
   }
   if (caseSensitive === true) {
     if (candidate.includes(match)) {
-      //console.log(`"${candidate}" includes "${match}"`);
+      // console.log(`"${candidate}" includes "${match}"`);
       return true;
     } else {
-      //console.log(`"${candidate}" does not include "${match}"`);
+      // console.log(`"${candidate}" does not include "${match}"`);
       return false;
     }
   } else {
     // Don't match case.
     if (candidate.toLowerCase().includes(match.toLowerCase())) {
-      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      // console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
       return true;
     } else {
-      //console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
+      // console.log(`"${candidate.toLowerCase()}" does not include "${match.toLowerCase()}"`);
       return false;
     }
   }
@@ -106,9 +106,9 @@ function matchComponentCommands(match, candidate) {
 }
 
 function matchLinks(match, candidate) {
-    // If the input is blank, we want to match anything.
-  if (match === '') {
-    return true
+  // If the input is blank, we want to match anything.
+  if (match === "") {
+    return true;
   } else if (candidate === undefined) {
     // If the field isn't available, we don't want to match.
     return false;
@@ -129,8 +129,8 @@ function matchShell(match, candidate) {
 function noWhiteSpace(arrayIn) {
   const array = [];
   for (const val of arrayIn) {
-    if (val.trim() !== '') {
-      array.push(val)
+    if (val.trim() !== "") {
+      array.push(val);
     }
   }
   return array;
@@ -149,55 +149,74 @@ function getChosenShells() {
 const elem = {};
 function updateSearch() {
   const strings = {
-    'invocation' : elem.command.value,
-    'description' : elem.description.value,
-    'componentCommands' : elem.componentCommands.value,
-    'exampleOutput' : elem.exampleOutput.value,
-    'links' : elem.links.value,
-  }
-  const componentCommandsList = noWhiteSpace(strings.componentCommands.split(' '));
+    "invocation": elem.command.value,
+    "description": elem.description.value,
+    "componentCommands": elem.componentCommands.value,
+    "exampleOutput": elem.exampleOutput.value,
+    "links": elem.links.value,
+  };
+  const componentCommandsList = noWhiteSpace(
+    strings.componentCommands.split(" "),
+  );
   const chosenShellsList = getChosenShells();
   const search = {
-    'invocation' : strings.invocation,
-    'description' : strings.description.trim(),
-    'componentCommands' : new Set(componentCommandsList),
-    'exampleOutput' : strings.exampleOutput,
-    'links' : strings.links,
-    'shells' : new Set(chosenShellsList),
-  }
+    "invocation": strings.invocation,
+    "description": strings.description.trim(),
+    "componentCommands": new Set(componentCommandsList),
+    "exampleOutput": strings.exampleOutput,
+    "links": strings.links,
+    "shells": new Set(chosenShellsList),
+  };
   const caseSensitive = {
-    'description': elem.descriptionCaseSensitive.checked,
-    'exampleOutput': elem.exampleOutputCaseSensitive.checked,
-  }
+    "description": elem.descriptionCaseSensitive.checked,
+    "exampleOutput": elem.exampleOutputCaseSensitive.checked,
+  };
   const regex = {
-    'invocation': elem.commandRegex.checked,
-  }
+    "invocation": elem.commandRegex.checked,
+  };
 
   const showField = {
-    'invocation' : true,
-    'description' : elem.toggleDescription.checked,
-    'exampleOutput' : elem.toggleExampleOutput.checked,
-    'links' : elem.toggleLinks.checked,
-    'shell' : elem.toggleShell.checked,
-  }
+    "invocation": true,
+    "description": elem.toggleDescription.checked,
+    "exampleOutput": elem.toggleExampleOutput.checked,
+    "links": elem.toggleLinks.checked,
+    "shell": elem.toggleShell.checked,
+  };
   const tree = document.createDocumentFragment();
   // Match the search text.
   for (const info of cmdInfo) {
     const match = {
-      'invocation' : matchCommand(search.invocation, info.invocation, regex.invocation),
-      'description' : matchDescription(search.description, info.description, caseSensitive.description),
-      'componentCommands': matchComponentCommands(search.componentCommands, new Set(info.componentCommands)),
-      'exampleOutput': matchExampleOutput(search.exampleOutput, info.exampleOutput, caseSensitive.exampleOutput),
-      'links': matchLinks(search.links, info.links),
-      'shell': matchShell(search.shells, info.shell),
-    }
-    const allMatch = Object.keys(match).every(function(x){ return match[x] === true });
+      "invocation": matchCommand(
+        search.invocation,
+        info.invocation,
+        regex.invocation,
+      ),
+      "description": matchDescription(
+        search.description,
+        info.description,
+        caseSensitive.description,
+      ),
+      "componentCommands": matchComponentCommands(
+        search.componentCommands,
+        new Set(info.componentCommands),
+      ),
+      "exampleOutput": matchExampleOutput(
+        search.exampleOutput,
+        info.exampleOutput,
+        caseSensitive.exampleOutput,
+      ),
+      "links": matchLinks(search.links, info.links),
+      "shell": matchShell(search.shells, info.shell),
+    };
+    const allMatch = Object.keys(match).every(function (x) {
+      return match[x] === true;
+    });
     // https://stackoverflow.com/questions/17117712/how-to-know-if-all-javascript-object-values-are-true
     if (allMatch) {
       // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
       const div = document.createElement("div");
       div.classList.add("singleCmd");
-      if (showField['invocation'] === true) {
+      if (showField.invocation === true) {
         const codeDiv = document.createElement("div");
         codeDiv.classList.add("copyOnClick");
         codeDiv.addEventListener("click", copyText);
@@ -207,7 +226,10 @@ function updateSearch() {
         codeDiv.appendChild(code);
         div.appendChild(codeDiv);
       }
-      if (showField['exampleOutput'] === true && info.exampleOutput !== undefined) {
+      if (
+        showField.exampleOutput === true &&
+        info.exampleOutput !== undefined
+      ) {
         const pre = document.createElement("pre");
         const samp = document.createElement("samp");
         const sampText = document.createTextNode(info.exampleOutput);
@@ -215,26 +237,26 @@ function updateSearch() {
         pre.appendChild(samp);
         div.appendChild(pre);
       }
-      if (showField['description'] === true) {
+      if (showField.description === true) {
         const descriptionDiv = document.createElement("div");
         const description = document.createTextNode(info.description);
         descriptionDiv.appendChild(description);
         div.appendChild(descriptionDiv);
       }
-      if (showField['links'] === true && info.links !== undefined) {
+      if (showField.links === true && info.links !== undefined) {
         const links = document.createElement("div");
         for (const link of info.links) {
           const thisLink = document.createElement("div");
           const thisAnchor = document.createElement("a");
-          thisAnchor.setAttribute("href", link)
+          thisAnchor.setAttribute("href", link);
           const linkText = document.createTextNode(link);
           thisAnchor.appendChild(linkText);
           thisLink.appendChild(thisAnchor);
           links.appendChild(thisLink);
         }
-        div.appendChild(links)
+        div.appendChild(links);
       }
-      if (showField['shell'] === true) {
+      if (showField.shell === true) {
         const shellDiv = document.createElement("div");
         const shellNameText = document.createTextNode(info.shell);
         const shellName = document.createElement("code");
@@ -283,11 +305,7 @@ function validate(cmdInfo) {
     "invocation",
     "shell",
   ];
-  const optionalKeys = [
-    "exampleOutput",
-    "links",
-    "uuid",
-  ];
+  const optionalKeys = ["exampleOutput", "links", "uuid"];
   const allKeys = mandatoryKeys.concat(optionalKeys);
   const keyType = {
     "componentCommands": "object",
@@ -297,36 +315,76 @@ function validate(cmdInfo) {
     "exampleOutput": "string",
     "links": "object",
     "uuid": "string",
-  }
+  };
   const arrayType = {
-    "componentCommands": "string",
-    "links": "string",
-  }
+    componentCommands: "string",
+    links: "string",
+  };
   const invocations = new Set([]);
   const uuids = new Set([]);
   for (let i = 0; i < cmdInfo.length; i++) {
-    const info = cmdInfo[i]
+    const info = cmdInfo[i];
     for (const key of allKeys) {
       const val = info[key];
-      console.assert(val !== '',   "#%i: %s = %o", i, key, val)
-      console.assert(val !== null, "#%i: %s = %o", i, key, val)
+      console.assert(val !== "", "#%i: %s = %o", i, key, val);
+      console.assert(val !== null, "#%i: %s = %o", i, key, val);
       if (val !== undefined) {
-        console.assert(typeof val === keyType[key], "#%i: typeof %s = %s != %s", i, key, typeof val, keyType[key])
+        console.assert(
+          typeof val === keyType[key],
+          "#%i: typeof %s = %s != %s",
+          i,
+          key,
+          typeof val,
+          keyType[key],
+        );
         if (key in arrayType) {
           // Check each value in the array.
-          console.assert(Array.isArray(val), "#%i: %s : Array.isArray(%o) === false", i, key, val)
-          console.assert(val.length !== 0, "#%i: %s : %s.length === 0", i, key, key)
+          console.assert(
+            Array.isArray(val),
+            "#%i: %s : Array.isArray(%o) === false",
+            i,
+            key,
+            val,
+          );
+          console.assert(
+            val.length !== 0,
+            "#%i: %s : %s.length === 0",
+            i,
+            key,
+            key,
+          );
           for (const arrayVal of val) {
-            console.assert(arrayVal !== '',   "#%i: %o in %s", i, arrayVal, key)
-            console.assert(arrayVal !== null, "#%i: %o in %s", i, arrayVal, key)
-            console.assert(typeof arrayVal === arrayType[key], "#%i: typeof %o = %s != %s in %s", i, arrayVal, typeof arrayVal, arrayType[key], key)
+            console.assert(arrayVal !== "", "#%i: %o in %s", i, arrayVal, key);
+            console.assert(
+              arrayVal !== null,
+              "#%i: %o in %s",
+              i,
+              arrayVal,
+              key,
+            );
+            console.assert(
+              typeof arrayVal === arrayType[key],
+              "#%i: typeof %o = %s != %s in %s",
+              i,
+              arrayVal,
+              typeof arrayVal,
+              arrayType[key],
+              key,
+            );
           }
         }
       }
     }
     for (const key of mandatoryKeys) {
       const val = info[key];
-      console.assert(val !== undefined, "#%i: %s = %o, info = %s", i, key, val, JSON.stringify(info))
+      console.assert(
+        val !== undefined,
+        "#%i: %s = %o, info = %s",
+        i,
+        key,
+        val,
+        JSON.stringify(info),
+      );
     }
     for (const key in info) {
       if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
@@ -356,18 +414,22 @@ function runTests() {
     ["matchCommand", "ls", "ls", false, true], // Exact match
     ["matchCommand", "ls", "ls ", false, true], // Prefix with whitespace
     ["matchCommand", "ls", " ls ", false, true], // Suffix match with whitespace
-    ["matchCommand", "-sh", "du -sh --exclude \"./.*\"", false, true], // Match flag
+    ["matchCommand", "-sh", 'du -sh --exclude "./.*"', false, true], // Match flag
     // TODO: write more regex tests
-  ]
+  ];
   for (const matchCommandTest of matchCommandTests) {
     let funcName, match, candidate, useRegex, expectedValue;
     [funcName, match, candidate, useRegex, expectedValue] = matchCommandTest;
-    const actualValue = matchCommand(match, candidate, useRegex)
+    const actualValue = matchCommand(match, candidate, useRegex);
     console.assert(
       actualValue === expectedValue,
       "%s(%s, %s, useRegex = %s) === %s !== %s",
-      funcName, JSON.stringify(match), JSON.stringify(candidate), useRegex,
-      actualValue, expectedValue
+      funcName,
+      JSON.stringify(match),
+      JSON.stringify(candidate),
+      useRegex,
+      actualValue,
+      expectedValue,
     );
   }
 
@@ -378,25 +440,45 @@ function runTests() {
     ["matchDescription", "filname", "Print filenames", false, false], // Mis-spelling
     ["matchDescription", "Print", "Print filenames", true, true],
     ["matchDescription", "print", "Print filenames", true, false], // Not the same case
-  ]
+  ];
   for (const matchDescriptionTest of matchDescriptionTests) {
     let funcName, match, candidate, caseSensitive, expectedValue;
-    [funcName, match, candidate, caseSensitive, expectedValue] = matchDescriptionTest;
-    const actualValue = matchDescription(match, candidate, caseSensitive)
+    [funcName, match, candidate, caseSensitive, expectedValue] =
+      matchDescriptionTest;
+    const actualValue = matchDescription(match, candidate, caseSensitive);
     console.assert(
       actualValue === expectedValue,
       "%s(%s, %s, useRegex = %s) === %s !== %s",
-      funcName, JSON.stringify(match), JSON.stringify(candidate), caseSensitive,
-      actualValue, expectedValue
+      funcName,
+      JSON.stringify(match),
+      JSON.stringify(candidate),
+      caseSensitive,
+      actualValue,
+      expectedValue,
     );
   }
 
   const matchComponentCommandsTests = [
     ["matchComponentCommands", new Set(["ls"]), new Set(["ls"]), true],
-    ["matchComponentCommands", new Set(["find", "file"]), new Set(["find", "file"]), true],
+    [
+      "matchComponentCommands",
+      new Set(["find", "file"]),
+      new Set(["find", "file"]),
+      true,
+    ],
     ["matchComponentCommands", new Set(["ls"]), new Set(["find"]), false],
-    ["matchComponentCommands", new Set(["find"]), new Set(["find", "file"]), true],
-    ["matchComponentCommands", new Set(["find", "file"]), new Set(["find"]), false],
+    [
+      "matchComponentCommands",
+      new Set(["find"]),
+      new Set(["find", "file"]),
+      true,
+    ],
+    [
+      "matchComponentCommands",
+      new Set(["find", "file"]),
+      new Set(["find"]),
+      false,
+    ],
   ];
   for (const matchComponentCommandsTest of matchComponentCommandsTests) {
     let funcName, match, candidate, expectedValue;
@@ -405,15 +487,23 @@ function runTests() {
     console.assert(
       actualValue === expectedValue,
       "%s(new Set(%s), new Set(%s)) === %s !== %s",
-      funcName, JSON.stringify(Array.from(match)), JSON.stringify(Array.from(candidate)),
-      actualValue, expectedValue
+      funcName,
+      JSON.stringify(Array.from(match)),
+      JSON.stringify(Array.from(candidate)),
+      actualValue,
+      expectedValue,
     );
   }
 
   const matchLinksTests = [
     ["matchLinks", "example.org", ["https://example.org"], true],
     ["matchLinks", "example.com", ["https://example.org"], false],
-    ["matchLinks", "example.com", ["https://example.org", "https://example.org"], false],
+    [
+      "matchLinks",
+      "example.com",
+      ["https://example.org", "https://example.org"],
+      false,
+    ],
   ];
   for (const matchLinksTest of matchLinksTests) {
     let funcName, match, candidate, expectedValue;
@@ -422,7 +512,11 @@ function runTests() {
     console.assert(
       actualValue === expectedValue,
       "%s(%s, %s) === %s !== %s",
-      funcName, JSON.stringify(match), JSON.stringify(candidate), actualValue, expectedValue
+      funcName,
+      JSON.stringify(match),
+      JSON.stringify(candidate),
+      actualValue,
+      expectedValue,
     );
   }
 
@@ -438,8 +532,11 @@ function runTests() {
     console.assert(
       actualValue === expectedValue,
       "%s(new Set(%s), %s) === %s !== %s",
-      funcName, JSON.stringify(Array.from(match)), JSON.stringify(candidate),
-      actualValue, expectedValue
+      funcName,
+      JSON.stringify(Array.from(match)),
+      JSON.stringify(candidate),
+      actualValue,
+      expectedValue,
     );
   }
 
@@ -452,7 +549,7 @@ function runTests() {
 function initialize() {
   // Look for necessary HTML elements.
   for (const el of document.getElementsByClassName("search")) {
-    elem[el.id] = el
+    elem[el.id] = el;
   }
   // Register event handlers.
   elem.command.onkeyup = handleKeyUp;
@@ -471,33 +568,35 @@ function initialize() {
   runTests();
   // Update output.
   const shellSet = new Set([]);
-  const shellStats = {}
+  const shellStats = {};
   for (const info of cmdInfo) {
     const key = info.shell;
     shellSet.add(key);
     if (shellStats[key] == undefined) {
       shellStats[key] = new Object();
     }
-    const ss = shellStats[key]
+    const ss = shellStats[key];
     if (ss.nInvocations === undefined) {
       ss.nInvocations = 1;
     } else {
       ss.nInvocations++;
     }
     if (ss.componentCommands == undefined) {
-      ss.componentCommands = new Set(info.componentCommands)
+      ss.componentCommands = new Set(info.componentCommands);
     } else {
-      ss.componentCommands = ss.componentCommands.union(new Set(info.componentCommands))
+      ss.componentCommands = ss.componentCommands.union(
+        new Set(info.componentCommands),
+      );
     }
   }
   const shells = Array.from(shellSet).sort(Intl.Collator().compare);
   for (const shellName of shells) {
     const div = document.createElement("div");
     const input = document.createElement("input");
-    input.setAttribute("type", "checkbox")
+    input.setAttribute("type", "checkbox");
     input.checked = true;
     const label = document.createElement("label");
-    input.setAttribute("value", shellName)
+    input.setAttribute("value", shellName);
     input.classList.add("shellOption");
     input.onchange = handleChange;
     const code = document.createElement("code");
@@ -505,7 +604,9 @@ function initialize() {
     const stats = shellStats[shellName];
     const nInvocationsText = `${stats.nInvocations} invocations`;
     const nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
-    const statsText = document.createTextNode(` (${nInvocationsText}, ${nComponentCommandsText})`);
+    const statsText = document.createTextNode(
+      ` (${nInvocationsText}, ${nComponentCommandsText})`,
+    );
     code.appendChild(codeText);
     const statsSpan = document.createElement("span");
     statsSpan.appendChild(statsText);
