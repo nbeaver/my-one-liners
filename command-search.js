@@ -1748,11 +1748,58 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
+    "componentCommands": ["amixer"],
+    "description": "Mute master sound",
+    "invocation": "amixer set Master mute",
+    "links": [
+      "https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer",
+      "https://unix.stackexchange.com/questions/679793/how-to-mute-unmute-default-sound-output"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["amixer"],
+    "description": "Unmute master sound",
+    "invocation": "amixer set Master unmute",
+    "links": [
+      "https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer",
+      "https://unix.stackexchange.com/questions/679793/how-to-mute-unmute-default-sound-output"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["amixer"],
+    "description": "Set master sound level to 50%.",
+    "invocation": "amixer set Master 50",
+    "links": [
+      "http://www.tldp.org/HOWTO/Alsa-sound-6.html",
+      "http://www.linuxjournal.com/content/change-volume-bash-script"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["amixer"],
+    "description": "See master sound output settings.",
+    "invocation": "amixer get Master",
+    "exampleOutput":
+      "Simple mixer control 'Master',0\n  Capabilities: pvolume pswitch pswitch-joined\n  Playback channels: Front Left - Front Right\n  Limits: Playback 0 - 65536\n  Mono:\n  Front Left: Playback 19066 [29%] [on]\n  Front Right: Playback 18600 [28%] [on]\n",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pactl"],
+    "description": "Get default sink for PulseAudio.",
+    "invocation": "pactl get-default-sink",
+    "exampleOutput": "alsa_output.pci-0000_00_1f.3.analog-stereo\n",
+    "shell": "bash"
+  },
+  {
     "componentCommands": ["cat"],
     "description": "Show sound cards and headsets.",
     "invocation": "cat /proc/asound/cards",
+    "exampleOutput":
+      " 0 [PCH            ]: HDA-Intel - HDA Intel PCH\n                      HDA Intel PCH at 0xf2420000 irq 33\n",
     "links": [
-      "https://docs.kernel.org/sound/designs/procfile.html#card-specific-files",
+      "https://docs.kernel.org/sound/designs/procfile.html#card-specific-files"
     ],
     "shell": "bash"
   },
