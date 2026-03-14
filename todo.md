@@ -8,6 +8,7 @@ Validation
 - [x] Check for duplicate commands
 - [x] Allow optional UUID for error messages and debugging
 - [x] Check type is correct (string, list of strings, etc.)
+- [ ] Check that component commands are in the command invocation
 
 Search
 - [ ] Regex search for command invocation
