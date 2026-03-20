@@ -11,7 +11,7 @@ function copyText() {
   } else {
     // Light mode
     // this.style.background = "yellow"; // #d8d800
-    this.style.background = "#f7f792";
+    this.style.background = "#ffff98";
   }
   highlightedElement = this;
 }
