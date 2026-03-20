@@ -2,6 +2,10 @@ General
 - [x] Use camelCase for all keys
 - [x] Dark mode
 - [ ] Dark/light mode toggle
+- [ ] Add a button to export cmdInfo data to JSON file
+- [ ] Add a button to import cmdInfo data from JSON file
+- [ ] Add a field for a URL to load additional JSON resource
+- [ ] Add a button to append a command to cmdInfo with appropriate fields
 
 Validation
 - [x] Do basic validation on data on first load
@@ -9,6 +13,8 @@ Validation
 - [x] Allow optional UUID for error messages and debugging
 - [x] Check type is correct (string, list of strings, etc.)
 - [ ] Check that component commands are in the command invocation
+- [ ] Turn validation logic into functions that return true/false so they can be tested
+- [ ] Write tests for validation functions
 
 Search
 - [ ] Regex search for command invocation
