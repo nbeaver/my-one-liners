@@ -822,8 +822,7 @@ var cmdInfo = [
   },
   {
     "componentCommands": ["lscpu", "jq"],
-    "description":
-      "Get CPU model by parsing JSON output of lscpu.",
+    "description": "Get CPU model by parsing JSON output of lscpu.",
     "exampleOutput": "11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz\n",
     "invocation":
       "lscpu --json | jq -r '.lscpu[] | select(.field==\"Model name:\").data'",
@@ -1075,6 +1074,105 @@ var cmdInfo = [
     ],
     "shell": "bash",
     "uuid": "e47766a1-e332-4cd3-9e42-573d0bcd09de"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description": "Match words that contain 'ae'.",
+    "invocation": "grep 'ae' /usr/share/dict/words",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description": "Case-insensitive match for 'error' in system log file.",
+    "invocation": "grep -i 'error' /var/log/syslog",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep literal, raw strings without having to escape everything.",
+    "invocation": "grep --fixed-strings '[1]' /var/log/syslog",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep literal, raw strings without having to escape everything (short flags).",
+    "invocation": "grep -F '[1]' /var/log/syslog",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep the files under the /etc/ directory for the current machine's hostname.",
+    "invocation": "grep $HOSTNAME /etc/*",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep the files under the /etc/ directory for the current machine's hostname, showing only filename.",
+    "invocation": "grep --files-with-matches $HOSTNAME /etc/*",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep the files under the /etc/ directory for the current machine's hostname, showing only filename (short flags version).",
+    "invocation": "grep -l $HOSTNAME /etc/*",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep the /etc/ directory recursively for the current machine's hostname.",
+    "invocation": "grep --recursive $HOSTNAME /etc/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep the /etc/ directory recursively for the current machine's hostname (short flags version).",
+    "invocation": "grep -r $HOSTNAME /etc/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep the /etc/ directory recursively for words matching current machine's hostname.",
+    "invocation": "grep --recursive --word-regexp $HOSTNAME /etc/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grep the /etc/ directory recursively for words matching current machine's hostname (short flags version).",
+    "invocation": "grep -rw $HOSTNAME /etc/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep"],
+    "description":
+      "Grepping the system dictionary for words starting with 's'\nand containing 'm' and 'b';\nthis is how samba was named.",
+    "invocation": "grep -E -i '^S.*M.*B' /usr/share/dict/words",
+    "links": ["http://www.rxn.com/services/faq/smb/samba.history.txt"],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep", "sort"],
+    "description":
+      "Generate a list of unique Icon fields in desktop files, not showing filenames.",
+    "invocation":
+      "grep --no-filename --recursive 'Icon=' --include='*.desktop' /usr/share/applications/ ~/.local/share/applications | sort --unique",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["grep", "sort"],
+    "description":
+      "Generate a list of unique Icon fields in desktop files, not showing filenames (short flags).",
+    "invocation":
+      "grep -hr 'Icon=' --include='*.desktop' /usr/share/applications/ ~/.local/share/applications | sort -u",
+    "shell": "bash"
   },
   {
     "componentCommands": ["grep", "less"],
@@ -1808,6 +1906,195 @@ var cmdInfo = [
     "componentCommands": ["find"],
     "description": "Find non-executables in /bin/ and /usr/bin/",
     "invocation": "find /bin/ /usr/bin/ -type f -not -executable -print",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["top"],
+    "description": "Get batch output for process ID 10104 using top.",
+    "invocation":
+      "top --batch --iterations=1 --threads-show --pid=10104 > top.txt",
+    "links": [
+      "https://unix.stackexchange.com/questions/138484/what-does-batch-mode-mean-for-the-top-command",
+      "https://superuser.com/questions/1610061/why-are-results-from-top-in-batch-mode-different-than-from-interactive-top",
+      "https://unix.stackexchange.com/questions/147471/is-there-a-way-to-get-top-to-run-exactly-once-and-exit"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["top"],
+    "description":
+      "Get batch output for process ID 10104 using top (short flags).",
+    "invocation": "top -b -n 1 -H -p 10104 > top.txt",
+    "links": [
+      "https://unix.stackexchange.com/questions/138484/what-does-batch-mode-mean-for-the-top-command",
+      "https://superuser.com/questions/1610061/why-are-results-from-top-in-batch-mode-different-than-from-interactive-top",
+      "https://unix.stackexchange.com/questions/147471/is-there-a-way-to-get-top-to-run-exactly-once-and-exit"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["speaker-test"],
+    "description":
+      'Figure out which speaker or earphone is left and right. Note that you have to pause other sound playback for this to work or you will get a "Device or resource busy" error.',
+    "invocation":
+      "speaker-test --device plug:front --channels 2 --test sine --frequency 100 # long version",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["speaker-test"],
+    "description":
+      'Figure out which speaker or earphone is left and right (short flags). Note that you have to pause other sound playback for this to work or you will get a "Device or resource busy" error.',
+    "invocation": "speaker-test -Dplug:front -c2 -t sine -f100",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["script"],
+    "description":
+      "Save a transcript of terminal session to the file `typescript' in current directory.",
+    "invocation": "script",
+    "links": [
+      "http://linuxers.org/article/script-command-line-tool-recordsave-your-terminal-activity"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["script"],
+    "description":
+      "Save a transcript of terminal session, immediately flushing output to `typescript' file in current directory.",
+    "invocation": "script --flush",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["script"],
+    "description":
+      "Save a transcript of terminal session to `typescript.out', saving timing information to `typescript.tm'.",
+    "invocation": "script --timing=typescript.tm --flush typescript.out",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["script"],
+    "description":
+      "Save a transcript of terminal session to `typescript.out', saving timing information to `typescript.tm' (new output format).",
+    "invocation":
+      "script --log-timing=typescript.tm --flush --log-out typescript.out",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["script"],
+    "description":
+      "Save a transcript of terminal session to `typescript.out', saving timing information to `typescript.tm'.",
+    "invocation": "script -T typescript.tm -f -O typescript.out",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["less"],
+    "description": "View the typescript generated by script(1).",
+    "invocation": "less -r typescript",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["scriptreplay"],
+    "description": "Replay the typescript generated by script(1).",
+    "invocation":
+      "scriptreplay --log-timing typescript.tm --log-out typescript.out",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["scriptreplay"],
+    "description": "Replay the typescript generated by script(1), short flags.",
+    "invocation": "scriptreplay -T typescript.tm -O typescript.out",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["gnome-screenshot"],
+    "description":
+      "Take a screenshot on the GNOME desktop with a 1-second delay and a timestamped filename.",
+    "invocation":
+      "gnome-screenshot --delay=1 --file=\"$(date +'%Y-%m-%d_%H_%M_%S').png\"",
+    "links": [
+      "https://stackoverflow.com/questions/8228047/adding-timestamp-to-a-filename-with-mv-in-bash",
+      "https://askubuntu.com/questions/202391/bash-script-to-take-screenshot-and-save-the-image-ubuntu"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["echo", "!!"],
+    "description":
+      "Use history expansion to append the last interactive command to a file called 'my-commands.sh'.",
+    "invocation": "echo !! >> my-commands.sh",
+    "links": [
+      "https://unix.stackexchange.com/questions/38072/how-can-i-save-the-last-command-to-a-file",
+      "https://unix.stackexchange.com/questions/3747/understanding-the-exclamation-mark-in-bash",
+      "https://www.gnu.org/software/bash/manual/html_node/History-Interaction.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["cat"],
+    "description":
+      "Append a file onto another file (a non-useless use of cat).",
+    "invocation": "cat my-commands.sh >> big-command-list.sh",
+    "links": [
+      "https://www.cyberciti.biz/faq/unix-linux-cat-append-text-to-a-file/",
+      "https://stackoverflow.com/questions/4969641/how-to-append-one-file-to-another-in-linux-from-the-shell",
+      "https://unix.stackexchange.com/questions/355342/appending-one-file-to-another",
+      "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["ls", "cat"],
+    "description":
+      "See what piped output looks like for commands like ls(1) that detect output with isatty (a non-useless use of cat).",
+    "invocation": "ls | cat",
+    "links": [
+      "https://unix.stackexchange.com/questions/22162/ls-command-operating-differently-depending-on-recipient",
+      "https://stackoverflow.com/questions/8584356/why-does-ls-give-different-output-when-piped"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["echo", "less"],
+    "description":
+      "View both stdout and stderr using input/output redirection.",
+    "invocation": '{ echo "stdout"; echo "stderr" >&2; } 2>&1 | less',
+    "links": [
+      "https://stackoverflow.com/questions/16497317/piping-both-stdout-and-stderr-in-bash",
+      "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["ffmpeg", "less"],
+    "description":
+      "View both stdout and stderr from ffmpeg filters in less page using input/output redirection.",
+    "invocation": "ffmpeg -filters 2>&1 | less",
+    "links": [
+      "https://stackoverflow.com/questions/16497317/piping-both-stdout-and-stderr-in-bash",
+      "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["ffmpeg", "less"],
+    "description": "View only stderr in less using input/output redirection.",
+    "invocation": "ffmpeg -filters 2>&1 >/dev/null | less",
+    "links": [
+      "https://stackoverflow.com/questions/2342826/how-to-pipe-stderr-and-not-stdout",
+      "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["less"],
+    "description": "View compose-key combinations for current language.",
+    "invocation": "less /usr/share/X11/locale/$LANG/Compose",
+    "links": [
+      "https://aty.sdsu.edu/bibliog/latex/debian/compose.html",
+      "https://superuser.com/questions/74763/how-to-type-unicode-characters-in-kde",
+      "https://userbase.kde.org/Tutorials/ComposeKey",
+      "https://wiki.debian.org/XCompose"
+    ],
     "shell": "bash"
   }
 ];
