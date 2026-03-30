@@ -814,8 +814,8 @@ var cmdInfo = [
   },
   {
     "componentCommands": ["lscpu", "jq"],
-    "description":
-      "Get CPU architecture by parsing JSON output of lscpu.\nExample output:\nx86_64",
+    "description": "Get CPU architecture by parsing JSON output of lscpu.",
+    "exampleOutput": "x86_64\n",
     "invocation":
       "lscpu --json | jq -r '.lscpu[] | select(.field==\"Architecture:\").data'",
     "shell": "bash"
@@ -823,7 +823,8 @@ var cmdInfo = [
   {
     "componentCommands": ["lscpu", "jq"],
     "description":
-      "Get CPU model by parsing JSON output of lscpu.\nExample output:\n11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz",
+      "Get CPU model by parsing JSON output of lscpu.",
+    "exampleOutput": "11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz\n",
     "invocation":
       "lscpu --json | jq -r '.lscpu[] | select(.field==\"Model name:\").data'",
     "shell": "bash"
