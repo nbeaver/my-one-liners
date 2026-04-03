@@ -10,6 +10,7 @@ lint:
 install-npm:
 	npm ci
 	# npm install
+# https://stackoverflow.com/questions/52499617/what-is-the-difference-between-npm-install-and-npm-ci
 
 readme.html : readme.md
 	cmark "$<" > "$@"
