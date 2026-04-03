@@ -1,8 +1,11 @@
+.PHONY: lint
 lint:
 	tidy -errors -quiet index.html
-	npx prettier --write "**/*.js"
-	npx eslint "**/*.js"
-	npx stylelint "**/*.css"
+	npm exec -- prettier --write "**/*.js"
+	npm exec -- eslint "**/*.js"
+	npm exec -- stylelint "**/*.css"
+
+# https://docs.npmjs.com/cli/v8/commands/npx#npx-vs-npm-exec
 
 readme.html : readme.md
 	cmark "$<" > "$@"
