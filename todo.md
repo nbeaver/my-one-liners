@@ -39,4 +39,5 @@ Output
 Maybe do
 - [x] Display number of unique invocations and unique component commands for each shell
 - [ ] Add toggle box for optional fields, e.g. "has links", "has example output"
-- [ ] Save GUI state in URL
+- [ ] Save GUI state in URL (share a link that approximates linking directly to a command)
+- [ ] Add an "Edit" button for each command and sync any changes back to cmdInfo global variable.
