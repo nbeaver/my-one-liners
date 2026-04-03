@@ -8,13 +8,13 @@
   </head>
   <body>
     <div>
-      <label for="command">Command:</label>
+      <label for="command" title="Search for matching command invocation">Command:</label>
       <input type="text" id="command" name="command" class="search"/>
       <input type="checkbox" id="commandRegex" name="commandRegex" class="search"/>
-      <label for="commandRegex"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">Regex</a></label>
+      <label for="commandRegex" title="Enable regular expression search"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">Regex</a></label>
     </div>
     <div>
-      <label for="componentCommands">Component commands:</label>
+      <label for="componentCommands" title="Commands making up the command invocation">Component commands:</label>
       <input type="text" id="componentCommands" name="componentCommands" class="search"/>
     </div>
     <div>
@@ -47,6 +47,13 @@
     <fieldset id="shellOptions" class="search">
       <legend>shell options:</legend>
     </fieldset>
+    <div>
+      <input id="importJSON" type="file" multiple="false" class="IO" title="Import JSON file"/>
+    </div>
+    <div>
+      <input type="button" id="exportJSON" class="IO" value="Export..."  title="Export JSON file"/>
+      <!-- <input type="button" id="newCommand" class="IO" value="New command..."  title="Add a new command"/> -->
+    </div>
     <div id="output" class="search">
     </div>
   </body>

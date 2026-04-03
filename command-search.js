@@ -546,10 +546,45 @@ function runTests() {
   console.assert(matchShell(shells, "zsh") === false);
 }
 
+function exportJSON() {
+  var filename = "personal-command-search.json";
+  var jsonBlob = new Blob([JSON.stringify(cmdInfo)], {
+    type: "application/json",
+    name: filename
+  });
+  var tmpAnchor = document.createElement("a");
+  tmpAnchor.href = URL.createObjectURL(jsonBlob);
+  tmpAnchor.download = filename;
+  tmpAnchor.click();
+}
+
+function loadCmds(evt) {
+  var jsonString = evt.target.result;
+  var newCmdInfo = JSON.parse(jsonString);
+  cmdInfo = newCmdInfo;
+  updateSearch();
+}
+
+function importJSON(evt) {
+  var fileList = evt.target.files;
+  var currentFile = fileList[0];
+  var reader = new FileReader();
+  reader.onload = loadCmds;
+  reader.readAsText(currentFile);
+  return;
+}
+
 function initialize() {
   // Look for necessary HTML elements.
-  for (const el of document.getElementsByClassName("search")) {
-    elem[el.id] = el;
+  const classes = ["search", "IO"];
+  for (const className of classes) {
+    for (const el of document.getElementsByClassName(className)) {
+      if (Object.hasOwn(elem, el.id)) {
+        console.error(`Duplicate ID in class ${className}: ${el.id}`);
+      } else {
+        elem[el.id] = el;
+      }
+    }
   }
   // Register event handlers.
   elem.command.onkeyup = handleKeyUp;
@@ -564,6 +599,9 @@ function initialize() {
   elem.descriptionCaseSensitive.onchange = handleChange;
   elem.toggleDescription.onchange = handleChange;
   elem.toggleShell.onchange = handleChange;
+  elem.exportJSON.onclick = exportJSON;
+  elem.importJSON.onchange = importJSON;
+  // elem.newCommand.onclick = newCommand;
   validate(cmdInfo);
   runTests();
   // Update output.
