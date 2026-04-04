@@ -177,3 +177,6 @@ or [metasyntactic variables](https://en.wikipedia.org/wiki/Metasyntactic_variabl
 - https://explainshell.com/
 - https://www.commandlinefu.com/
 - https://cb.vu/unixtoolbox.html
+
+# Self-hosted applications:
+- https://github.com/pawelmalak/snippet-box
