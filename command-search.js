@@ -297,8 +297,7 @@ function selectNoShells() {
   updateSearch();
 }
 
-function validate(cmdInfo) {
-  // Validate data.
+function validateSingleEntry(info, i) {
   const mandatoryKeys = [
     "componentCommands",
     "description",
@@ -320,80 +319,79 @@ function validate(cmdInfo) {
     componentCommands: "string",
     links: "string"
   };
+  for (const key of allKeys) {
+    const val = info[key];
+    console.assert(val !== "", "#%i: %s = %o", i, key, val);
+    console.assert(val !== null, "#%i: %s = %o", i, key, val);
+    if (val !== undefined) {
+      console.assert(
+        typeof val === keyType[key],
+        "#%i: typeof %s = %s != %s",
+        i,
+        key,
+        typeof val,
+        keyType[key]
+      );
+      if (key in arrayType) {
+        // Check each value in the array.
+        console.assert(
+          Array.isArray(val),
+          "#%i: %s : Array.isArray(%o) === false",
+          i,
+          key,
+          val
+        );
+        console.assert(
+          val.length !== 0,
+          "#%i: %s : %s.length === 0",
+          i,
+          key,
+          key
+        );
+        for (const arrayVal of val) {
+          console.assert(arrayVal !== "", "#%i: %o in %s", i, arrayVal, key);
+          console.assert(arrayVal !== null, "#%i: %o in %s", i, arrayVal, key);
+          console.assert(
+            typeof arrayVal === arrayType[key],
+            "#%i: typeof %o = %s != %s in %s",
+            i,
+            arrayVal,
+            typeof arrayVal,
+            arrayType[key],
+            key
+          );
+        }
+      }
+    }
+  }
+  for (const key of mandatoryKeys) {
+    const val = info[key];
+    console.assert(
+      val !== undefined,
+      "#%i: %s = %o, info = %s",
+      i,
+      key,
+      val,
+      JSON.stringify(info)
+    );
+  }
+  for (const key in info) {
+    if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
+      continue;
+    } else {
+      // Important for e.g. catching misspellings of fields.
+      console.error(`#${i}: unknown key '${key}'`);
+    }
+  }
+}
+
+function validateAll(cmdInfo) {
+  // Validate data.
   const invocations = new Set([]);
   const uuids = new Set([]);
   for (let i = 0; i < cmdInfo.length; i++) {
     const info = cmdInfo[i];
-    for (const key of allKeys) {
-      const val = info[key];
-      console.assert(val !== "", "#%i: %s = %o", i, key, val);
-      console.assert(val !== null, "#%i: %s = %o", i, key, val);
-      if (val !== undefined) {
-        console.assert(
-          typeof val === keyType[key],
-          "#%i: typeof %s = %s != %s",
-          i,
-          key,
-          typeof val,
-          keyType[key]
-        );
-        if (key in arrayType) {
-          // Check each value in the array.
-          console.assert(
-            Array.isArray(val),
-            "#%i: %s : Array.isArray(%o) === false",
-            i,
-            key,
-            val
-          );
-          console.assert(
-            val.length !== 0,
-            "#%i: %s : %s.length === 0",
-            i,
-            key,
-            key
-          );
-          for (const arrayVal of val) {
-            console.assert(arrayVal !== "", "#%i: %o in %s", i, arrayVal, key);
-            console.assert(
-              arrayVal !== null,
-              "#%i: %o in %s",
-              i,
-              arrayVal,
-              key
-            );
-            console.assert(
-              typeof arrayVal === arrayType[key],
-              "#%i: typeof %o = %s != %s in %s",
-              i,
-              arrayVal,
-              typeof arrayVal,
-              arrayType[key],
-              key
-            );
-          }
-        }
-      }
-    }
-    for (const key of mandatoryKeys) {
-      const val = info[key];
-      console.assert(
-        val !== undefined,
-        "#%i: %s = %o, info = %s",
-        i,
-        key,
-        val,
-        JSON.stringify(info)
-      );
-    }
-    for (const key in info) {
-      if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
-        continue;
-      } else {
-        // Important for e.g. catching misspellings of fields.
-        console.error(`#${i}: unknown key '${key}'`);
-      }
-    }
+    validateSingleEntry(info, i);
     if (invocations.has(info.invocation)) {
       console.warn(`Duplicate invocation: ${info.invocation}`);
     } else {
@@ -619,8 +617,8 @@ function closeNewCommandModal(evt) {
 
 function maybeSaveNewCommand(evt) {
   evt.preventDefault(); // We don't want to submit this fake form
-  // TODO: validate object here before adding
   const newCmd = JSON.parse(newCommandDialog.returnValue);
+  validateSingleEntry(newCmd, cmdInfo.length);
   cmdInfo.push(newCmd);
   updateSearch();
 }
@@ -658,7 +656,7 @@ function initialize() {
   newCommandDialog.addEventListener("close", maybeSaveNewCommand);
   saveNewCommandButton = document.getElementById("saveNewCommandButton");
   saveNewCommandButton.addEventListener("click", closeNewCommandModal);
-  validate(cmdInfo);
+  validateAll(cmdInfo);
   runTests();
   // Update output.
   const shellSet = new Set([]);
