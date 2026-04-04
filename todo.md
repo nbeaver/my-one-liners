@@ -2,10 +2,10 @@ General
 - [x] Use camelCase for all keys
 - [x] Dark mode
 - [ ] Dark/light mode toggle
-- [ ] Add a button to export cmdInfo data to JSON file
-- [ ] Add a button to import cmdInfo data from JSON file
+- [x] Add a button to export cmdInfo data to JSON file
+- [x] Add a button to import cmdInfo data from JSON file
 - [ ] Add a field for a URL to load additional JSON resource
-- [ ] Add a button to append a command to cmdInfo with appropriate fields
+- [x] Add a button to append a command to cmdInfo with appropriate fields
 
 Validation
 - [x] Do basic validation on data on first load
