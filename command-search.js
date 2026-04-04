@@ -569,13 +569,9 @@ function importJSON(evt) {
   var reader = new FileReader();
   reader.onload = loadCmds;
   reader.readAsText(currentFile);
-  return;
 }
 
-let newCommandButton = null;
 let newCommandDialog = null;
-let saveNewCommandButton = null;
-let cancelNewCommandButton = null;
 
 function newCommandButtonHandler(evt) {
   newCommandDialog.showModal();
@@ -592,7 +588,7 @@ function parseLinks(linksStr) {
 
 function cancelNewCommand(evt) {
   evt.preventDefault(); // Don't refresh the page.
-  newCommandDialog.close();
+  newCommandDialog.close('cancel');
 }
 
 function saveNewCommand(evt) {
@@ -619,10 +615,12 @@ function saveNewCommand(evt) {
   // HTMLDialogElement.close(returnValue) must pass a string
   const newCmdStr = JSON.stringify(newCmd);
   newCommandDialog.close(newCmdStr);
+  // TODO: use onbeforeunload to prompt before closing if not exported
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
 }
 
 function maybeSaveNewCommand(evt) {
-  //evt.preventDefault(); // We don't want to submit this fake form
+  evt.preventDefault(); // We don't want to submit this fake form
   const returnStr = newCommandDialog.returnValue;
   if (returnStr === "") {
     // Cancelled, do nothing.
@@ -720,13 +718,13 @@ function initialize() {
   elem.toggleShell.onchange = handleChange;
   elem.exportJSON.onclick = exportJSON;
   elem.importJSON.onchange = importJSON;
-  newCommandButton = document.getElementById("newCommandButton");
+  const newCommandButton = document.getElementById("newCommandButton");
   newCommandButton.addEventListener("click", newCommandButtonHandler);
   newCommandDialog = document.getElementById("newCommandDialog");
   newCommandDialog.addEventListener("close", maybeSaveNewCommand);
-  saveNewCommandButton = document.getElementById("saveNewCommandButton");
+  const saveNewCommandButton = document.getElementById("saveNewCommandButton");
   saveNewCommandButton.addEventListener("click", saveNewCommand);
-  cancelNewCommandButton = document.getElementById("cancelNewCommandButton");
+  const cancelNewCommandButton = document.getElementById("cancelNewCommandButton");
   cancelNewCommandButton.addEventListener("click", cancelNewCommand);
   validateAll(cmdInfo);
   runTests();
