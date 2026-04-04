@@ -1,10 +1,13 @@
-.PHONY: lint
-lint:
-	tidy -errors -quiet index.html
+.PHONY: lint-js
+lint-js:
 	npm exec -- prettier --write "**/*.js"
 	npm exec -- eslint "**/*.js"
 
 # https://docs.npmjs.com/cli/v8/commands/npx#npx-vs-npm-exec
+
+.PHONY: lint-html
+lint-html:
+	tidy -errors -quiet index.html
 
 .PHONY: install-npm
 install-npm:
