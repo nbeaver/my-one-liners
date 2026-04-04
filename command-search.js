@@ -574,6 +574,57 @@ function importJSON(evt) {
   return;
 }
 
+let newCommandButton = null;
+let newCommandDialog = null;
+let saveNewCommand = null;
+
+function newCommandButtonHandler(evt) {
+  newCommandDialog.showModal();
+}
+
+function parseComponentCommands(componentCommandsStr) {
+  let trimmed = componentCommandsStr.trim();
+  return trimmed.split(" ");
+}
+
+function parseLinks(linksStr) {
+  return linksStr.split(/\r\n|\r|\n/);
+}
+
+function closeNewCommandModal(evt) {
+  // TODO: prevent closing when required fields are not present
+  evt.preventDefault(); // Don't refresh the page.
+  // Mandatory fields
+  let newCmd = {
+    shell: document.getElementById("newShell").value,
+    invocation: document.getElementById("newCommand").value,
+    description: document.getElementById("newDescription").value,
+    componentCommands: parseComponentCommands(
+      document.getElementById("newComponentCommands").value
+    )
+  };
+  // Optional fields
+  let exampleOutput = document.getElementById("newExampleOutput").value;
+  if (exampleOutput !== "") {
+    newCmd["exampleOutput"] = exampleOutput;
+  }
+  let links = parseLinks(document.getElementById("newLinks").value);
+  if (links.length > 0) {
+    newCmd["links"] = links;
+  }
+  // HTMLDialogElement.close(returnValue) must pass a string
+  const newCmdStr = JSON.stringify(newCmd);
+  newCommandDialog.close(newCmdStr);
+}
+
+function maybeSaveNewCommand(evt) {
+  evt.preventDefault(); // We don't want to submit this fake form
+  // TODO: validate object here before adding
+  const newCmd = JSON.parse(newCommandDialog.returnValue);
+  cmdInfo.push(newCmd);
+  updateSearch();
+}
+
 function initialize() {
   // Look for necessary HTML elements.
   const classes = ["search", "IO"];
@@ -601,7 +652,12 @@ function initialize() {
   elem.toggleShell.onchange = handleChange;
   elem.exportJSON.onclick = exportJSON;
   elem.importJSON.onchange = importJSON;
-  // elem.newCommand.onclick = newCommand;
+  newCommandButton = document.getElementById("newCommandButton");
+  newCommandButton.addEventListener("click", newCommandButtonHandler);
+  newCommandDialog = document.getElementById("newCommandDialog");
+  newCommandDialog.addEventListener("close", maybeSaveNewCommand);
+  saveNewCommandButton = document.getElementById("saveNewCommandButton");
+  saveNewCommandButton.addEventListener("click", closeNewCommandModal);
   validate(cmdInfo);
   runTests();
   // Update output.

@@ -52,7 +52,45 @@
     </div>
     <div>
       <input type="button" id="exportJSON" class="IO" value="Export..."  title="Export JSON file"/>
-      <!-- <input type="button" id="newCommand" class="IO" value="New command..."  title="Add a new command"/> -->
+    </div>
+    <div>
+      <!-- <input type="button" class="IO" value="New command..."  title="Add a new command"/> -->
+      <button id="newCommandButton" popovertarget="newCommandDialog" title="Add a new command">New command...</button>
+      <dialog id="newCommandDialog" popover>
+        <form>
+          <fieldset>
+            <legend>Add a new command</legend>
+            <div>
+              <label for="shellInput" title="Shell">Shell:</label>
+              <input id="newShell" type="text" name="shellInput" required />
+            </div>
+            <div>
+              <label for="commandInput" title="Command invocation (what the shell runs)">Command:</label>
+              <input id="newCommand" type="text" name="commandInput" required />
+            </div>
+            <div>
+              <label for="componentCommandsInput" title="Space-delimited commands making up the command invocation">Component commands:</label>
+              <input id="newComponentCommands" type="text" name="componentCommandsInput" required />
+            </div>
+            <div>
+              <label for="descriptionInput">Description:</label>
+              <textarea id="newDescription" name="descriptionInput" required></textarea>
+            </div>
+            <div>
+              <label for="exampleOutputInput">Example output:</label>
+              <textarea id="newExampleOutput" name="exampleOutputInput"></textarea>
+            </div>
+            <div>
+              <label for="linksInput" title="Links, one per line">Links:</label>
+              <textarea id="newLinks" name="linksInput"></textarea>
+            </div>
+            <div>
+              <button id="saveNewCommandButton" popovertarget="newCommandDialog">Save</button>
+              <!-- <button popovertarget="newCommandDialog" popovertargetaction="hide">Don't save</button> -->
+            </div>
+          </fieldset>
+        </form>
+      </dialog>
     </div>
     <div id="output" class="search">
     </div>
