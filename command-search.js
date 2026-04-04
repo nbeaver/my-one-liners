@@ -560,6 +560,8 @@ function loadCmds(evt) {
   var jsonString = evt.target.result;
   var newCmdInfo = JSON.parse(jsonString);
   cmdInfo = newCmdInfo;
+  // TODO: use onbeforeunload to prompt before closing if not exported
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
   updateSearch();
 }
 
