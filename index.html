@@ -57,7 +57,7 @@
       <!-- <input type="button" class="IO" value="New command..."  title="Add a new command"/> -->
       <button id="newCommandButton" popovertarget="newCommandDialog" title="Add a new command">New command...</button>
       <dialog id="newCommandDialog" popover>
-        <form>
+        <form id="newCommandForm">
           <fieldset>
             <legend>Add a new command</legend>
             <div>
@@ -85,8 +85,8 @@
               <textarea id="newLinks" name="linksInput"></textarea>
             </div>
             <div>
-              <button id="saveNewCommandButton" popovertarget="newCommandDialog">Save</button>
-              <!-- <button popovertarget="newCommandDialog" popovertargetaction="hide">Don't save</button> -->
+              <button id="saveNewCommandButton" value="cancel" popovertarget="newCommandDialog" popovertargetaction="hide">Save</button>
+              <button id="cancelNewCommandButton" value="cancel" popovertarget="newCommandDialog" popovertargetaction="hide">Cancel (don't save)</button>
             </div>
           </fieldset>
         </form>

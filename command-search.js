@@ -574,7 +574,8 @@ function importJSON(evt) {
 
 let newCommandButton = null;
 let newCommandDialog = null;
-let saveNewCommand = null;
+let saveNewCommandButton = null;
+let cancelNewCommandButton = null;
 
 function newCommandButtonHandler(evt) {
   newCommandDialog.showModal();
@@ -589,9 +590,14 @@ function parseLinks(linksStr) {
   return linksStr.split(/\r\n|\r|\n/);
 }
 
-function closeNewCommandModal(evt) {
-  // TODO: prevent closing when required fields are not present
+function cancelNewCommand(evt) {
   evt.preventDefault(); // Don't refresh the page.
+  newCommandDialog.close();
+}
+
+function saveNewCommand(evt) {
+  evt.preventDefault(); // Don't refresh the page.
+  document.forms["newCommandForm"].reportValidity();
   // Mandatory fields
   let newCmd = {
     shell: document.getElementById("newShell").value,
@@ -616,10 +622,74 @@ function closeNewCommandModal(evt) {
 }
 
 function maybeSaveNewCommand(evt) {
-  evt.preventDefault(); // We don't want to submit this fake form
-  const newCmd = JSON.parse(newCommandDialog.returnValue);
-  validateSingleEntry(newCmd, cmdInfo.length);
-  cmdInfo.push(newCmd);
+  //evt.preventDefault(); // We don't want to submit this fake form
+  const returnStr = newCommandDialog.returnValue;
+  if (returnStr === "") {
+    // Cancelled, do nothing.
+  } else if (returnStr === "cancel") {
+    // Cancelled, do nothing.
+  } else {
+    const newCmd = JSON.parse(newCommandDialog.returnValue);
+    validateSingleEntry(newCmd, cmdInfo.length);
+    cmdInfo.push(newCmd);
+    updateState();
+  }
+}
+
+function updateState() {
+  // Update things that depend on cmdInfo.
+  const shellSet = new Set([]);
+  const shellStats = {};
+  for (const info of cmdInfo) {
+    const key = info.shell;
+    shellSet.add(key);
+    if (shellStats[key] == undefined) {
+      shellStats[key] = new Object();
+    }
+    const ss = shellStats[key];
+    if (ss.nInvocations === undefined) {
+      ss.nInvocations = 1;
+    } else {
+      ss.nInvocations++;
+    }
+    if (ss.componentCommands == undefined) {
+      ss.componentCommands = new Set(info.componentCommands);
+    } else {
+      ss.componentCommands = ss.componentCommands.union(
+        new Set(info.componentCommands)
+      );
+    }
+  }
+  const shells = Array.from(shellSet).sort(Intl.Collator().compare);
+  elem.shellOptions.replaceChildren(); // Empty the div
+  for (const shellName of shells) {
+    const div = document.createElement("div");
+    const input = document.createElement("input");
+    input.setAttribute("type", "checkbox");
+    input.checked = true;
+    const label = document.createElement("label");
+    input.setAttribute("value", shellName);
+    input.classList.add("shellOption");
+    input.onchange = handleChange;
+    const code = document.createElement("code");
+    const codeText = document.createTextNode(shellName);
+    const stats = shellStats[shellName];
+    const nInvocationsText = `${stats.nInvocations} invocations`;
+    const nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
+    const statsText = document.createTextNode(
+      ` (${nInvocationsText}, ${nComponentCommandsText})`
+    );
+    code.appendChild(codeText);
+    const statsSpan = document.createElement("span");
+    statsSpan.appendChild(statsText);
+    label.appendChild(input);
+    label.appendChild(code);
+    label.appendChild(statsSpan);
+    div.appendChild(label);
+    elem.shellOptions.appendChild(div);
+  }
+  elem.allShells.addEventListener("click", selectAllShells);
+  elem.noShells.addEventListener("click", selectNoShells);
   updateSearch();
 }
 
@@ -655,62 +725,12 @@ function initialize() {
   newCommandDialog = document.getElementById("newCommandDialog");
   newCommandDialog.addEventListener("close", maybeSaveNewCommand);
   saveNewCommandButton = document.getElementById("saveNewCommandButton");
-  saveNewCommandButton.addEventListener("click", closeNewCommandModal);
+  saveNewCommandButton.addEventListener("click", saveNewCommand);
+  cancelNewCommandButton = document.getElementById("cancelNewCommandButton");
+  cancelNewCommandButton.addEventListener("click", cancelNewCommand);
   validateAll(cmdInfo);
   runTests();
-  // Update output.
-  const shellSet = new Set([]);
-  const shellStats = {};
-  for (const info of cmdInfo) {
-    const key = info.shell;
-    shellSet.add(key);
-    if (shellStats[key] == undefined) {
-      shellStats[key] = new Object();
-    }
-    const ss = shellStats[key];
-    if (ss.nInvocations === undefined) {
-      ss.nInvocations = 1;
-    } else {
-      ss.nInvocations++;
-    }
-    if (ss.componentCommands == undefined) {
-      ss.componentCommands = new Set(info.componentCommands);
-    } else {
-      ss.componentCommands = ss.componentCommands.union(
-        new Set(info.componentCommands)
-      );
-    }
-  }
-  const shells = Array.from(shellSet).sort(Intl.Collator().compare);
-  for (const shellName of shells) {
-    const div = document.createElement("div");
-    const input = document.createElement("input");
-    input.setAttribute("type", "checkbox");
-    input.checked = true;
-    const label = document.createElement("label");
-    input.setAttribute("value", shellName);
-    input.classList.add("shellOption");
-    input.onchange = handleChange;
-    const code = document.createElement("code");
-    const codeText = document.createTextNode(shellName);
-    const stats = shellStats[shellName];
-    const nInvocationsText = `${stats.nInvocations} invocations`;
-    const nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
-    const statsText = document.createTextNode(
-      ` (${nInvocationsText}, ${nComponentCommandsText})`
-    );
-    code.appendChild(codeText);
-    const statsSpan = document.createElement("span");
-    statsSpan.appendChild(statsText);
-    label.appendChild(input);
-    label.appendChild(code);
-    label.appendChild(statsSpan);
-    div.appendChild(label);
-    elem.shellOptions.appendChild(div);
-  }
-  elem.allShells.addEventListener("click", selectAllShells);
-  elem.noShells.addEventListener("click", selectNoShells);
-  updateSearch();
+  updateState();
 }
 window.onload = initialize;
 
