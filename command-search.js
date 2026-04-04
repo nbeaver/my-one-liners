@@ -297,7 +297,7 @@ function selectNoShells() {
   updateSearch();
 }
 
-function validateSingleEntry(info, i) {
+function validateSingleEntry(entry, i) {
   const mandatoryKeys = [
     "componentCommands",
     "description",
@@ -320,7 +320,7 @@ function validateSingleEntry(info, i) {
     links: "string"
   };
   for (const key of allKeys) {
-    const val = info[key];
+    const val = entry[key];
     console.assert(val !== "", "#%i: %s = %o", i, key, val);
     console.assert(val !== null, "#%i: %s = %o", i, key, val);
     if (val !== undefined) {
@@ -365,17 +365,17 @@ function validateSingleEntry(info, i) {
     }
   }
   for (const key of mandatoryKeys) {
-    const val = info[key];
+    const val = entry[key];
     console.assert(
       val !== undefined,
-      "#%i: %s = %o, info = %s",
+      "#%i: %s = %o, entry = %s",
       i,
       key,
       val,
-      JSON.stringify(info)
+      JSON.stringify(entry)
     );
   }
-  for (const key in info) {
+  for (const key in entry) {
     if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
       continue;
     } else {
