@@ -583,7 +583,13 @@ function parseComponentCommands(componentCommandsStr) {
 }
 
 function parseLinks(linksStr) {
-  return linksStr.split(/\r\n|\r|\n/);
+  var links = null;
+  if (linksStr.trim() === '') {
+    links = []
+  } else {
+    links = linksStr.split(/\r\n|\r|\n/);
+  }
+  return links;
 }
 
 function cancelNewCommand(evt) {
