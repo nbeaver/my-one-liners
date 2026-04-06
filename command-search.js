@@ -858,6 +858,7 @@ var cmdInfo = [
     "exampleOutput": "4\n",
     "invocation": "nproc",
     "links": [
+      "https://www.gnu.org/software/coreutils/manual/html_node/nproc-invocation.html",
       "http://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line",
       "http://stackoverflow.com/questions/13875081/difference-between-nproc-and-ulimit"
     ],
@@ -872,7 +873,8 @@ var cmdInfo = [
     "invocation": "lscpu | grep '^Architecture:' | awk '{print $2}'",
     "links": [
       "https://stackoverflow.com/questions/7066625/how-to-find-the-linux-processor-chip-architecture/22100700",
-      "http://www.cyberciti.biz/faq/lscpu-command-find-out-cpu-architecture-information/"
+      "http://www.cyberciti.biz/faq/lscpu-command-find-out-cpu-architecture-information/",
+      "https://man7.org/linux/man-pages/man1/lscpu.1.html"
     ],
     "shell": "bash",
     "uuid": "101630e8-efc4-4566-bbc8-78e6ac76120f"
