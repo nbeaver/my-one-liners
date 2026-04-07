@@ -18,7 +18,7 @@ Validation
 - [x] Do proper form validation when adding a new command
 
 Search
-- [ ] Regex search for command invocation
+- [x] Regex search toggle for command invocation
 - [x] Search box for component commands
 - [x] Search box for command string
 - [x] Search box for sample output
