@@ -599,7 +599,10 @@ function cancelNewCommand(evt) {
 
 function saveNewCommand(evt) {
   evt.preventDefault(); // Don't refresh the page.
-  document.forms["newCommandForm"].reportValidity();
+  if (!document.forms["newCommandForm"].reportValidity()) {
+    // Force validation before saving the command.
+    return false;
+  }
   // Mandatory fields
   let newCmd = {
     shell: document.getElementById("newShell").value,
