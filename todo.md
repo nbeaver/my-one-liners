@@ -19,6 +19,8 @@ Validation
 
 Search
 - [x] Regex search toggle for command invocation
+- [ ] Regex search option for description
+- [ ] Regex search option for example output
 - [x] Search box for component commands
 - [x] Search box for command string
 - [x] Search box for sample output
@@ -31,6 +33,7 @@ Search
 
 Output
 - [x] Click to copy command
+- [ ] Toggle for component commands
 - [x] Toggle for description
 - [x] Toggle for sample output (`<samp></samp>`)
 - [x] Toggle for shell
