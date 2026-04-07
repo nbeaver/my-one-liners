@@ -15,7 +15,7 @@ Validation
 - [ ] Check that component commands are in the command invocation
 - [ ] Turn validation logic into functions that return true/false so they can be tested
 - [ ] Write tests for validation functions
-- [ ] Do proper form validation when adding a new command
+- [x] Do proper form validation when adding a new command
 
 Search
 - [ ] Regex search for command invocation
