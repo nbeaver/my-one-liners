@@ -18,6 +18,9 @@ div.single-cmd {
   a:link {
     color: #80DFFF;
   }
+  a:visited {
+    color: #FFADFF;
+  }
 
   /* See:
    * https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css
