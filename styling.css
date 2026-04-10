@@ -10,18 +10,13 @@ div.single-cmd {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  body, dialog, form, fieldset, legend, textarea, input {
     background: #242424;
     color: #FFFFEA;
   }
 
   a:link {
     color: #80DFFF;
-  }
-
-  input {
-    color: #FFFFEA;
-    background: #242424;
   }
 
   /* See:
