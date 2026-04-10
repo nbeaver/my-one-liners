@@ -180,11 +180,12 @@ function updateSearch() {
     "description": elem.toggleDescription.checked,
     "exampleOutput": elem.toggleExampleOutput.checked,
     "links": elem.toggleLinks.checked,
-    "shell": elem.toggleShell.checked
+    "shell": elem.toggleShell.checked,
+    "edit": elem.toggleEdit.checked
   };
   const tree = document.createDocumentFragment();
   // Match the search text.
-  for (const info of cmdInfo) {
+  for (const [index, info] of cmdInfo.entries()) {
     const match = {
       "invocation": matchCommand(
         search.invocation,
@@ -265,6 +266,17 @@ function updateSearch() {
         shellDiv.appendChild(shellText);
         shellDiv.appendChild(shellName);
         div.appendChild(shellDiv);
+      }
+      if (showField.edit === true) {
+        const editDiv = document.createElement("div");
+        const editButton = document.createElement("button");
+        const editText = document.createTextNode("Edit...");
+        editButton.appendChild(editText);
+        editButton.setAttribute("title", "Edit this command");
+        editButton.setAttribute("index", index);
+        editButton.addEventListener("click", editCommandButtonHandler);
+        editDiv.appendChild(editButton);
+        div.appendChild(editDiv);
       }
       tree.appendChild(div);
     }
@@ -544,6 +556,13 @@ function runTests() {
   console.assert(matchShell(shells, "zsh") === false);
 }
 
+function editCommandButtonHandler(evt) {
+  const index = parseInt(evt.target.getAttribute("index"));
+  console.log("editCommandButtonHandler()");
+  console.log(`index = ${index}`);
+  // editCommandDialog.showModal();
+}
+
 function exportJSON() {
   var filename = "personal-command-search.json";
   var jsonBlob = new Blob([JSON.stringify(cmdInfo)], {
@@ -722,11 +741,13 @@ function initialize() {
   elem.exampleOutputCaseSensitive.onchange = handleChange;
   elem.toggleExampleOutput.onchange = handleChange;
   elem.toggleLinks.onchange = handleChange;
+  elem.toggleEdit.onchange = handleChange;
   elem.descriptionCaseSensitive.onchange = handleChange;
   elem.toggleDescription.onchange = handleChange;
   elem.toggleShell.onchange = handleChange;
   elem.exportJSON.onclick = exportJSON;
   elem.importJSON.onchange = importJSON;
+
   const newCommandButton = document.getElementById("newCommandButton");
   newCommandButton.addEventListener("click", newCommandButtonHandler);
   newCommandDialog = document.getElementById("newCommandDialog");
