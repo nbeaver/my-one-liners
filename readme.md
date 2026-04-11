@@ -70,8 +70,9 @@ since almost all users have access to a web browser.
 
 Design goals:
 
+- Batteries included (many useful commands available by default)
 - Static HTML with full offline functionality.
-- No dependencies except a standards-compliant web browser.
+- No dependencies (except a standards-compliant web browser).
 - Consistent data format with full backward and forward compatibility.
 - All data stored in a single JavaScript file,
   with a format that could be copy and pasted into a JSON file.
