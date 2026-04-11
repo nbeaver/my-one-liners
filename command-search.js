@@ -626,14 +626,7 @@ function runTests() {
     }
   ];
   for (const invalidCmd of invalidCmds) {
-    console.assert(
-      validateSingleEntry(
-        invalidCmd,
-        0,
-        (assert = false),
-        (returnValid = true)
-      ) === false
-    );
+    console.assert(validateSingleEntry(invalidCmd, 0, false, true) === false);
   }
   // TODO: add more valid commands
   const validCmds = [
@@ -645,14 +638,7 @@ function runTests() {
     }
   ];
   for (const validCmd of validCmds) {
-    console.assert(
-      validateSingleEntry(
-        validCmd,
-        0,
-        (assert = true),
-        (returnValid = true)
-      ) === true
-    );
+    console.assert(validateSingleEntry(validCmd, 0, true, true) === true);
   }
 }
 
@@ -721,7 +707,7 @@ const beforeUnloadHandler = event => {
   event.returnValue = true;
 };
 
-function newCommandButtonHandler(evt) {
+function newCommandButtonHandler() {
   newCommandDialog.showModal();
 }
 
@@ -731,13 +717,11 @@ function parseComponentCommands(componentCommandsStr) {
 }
 
 function parseLinks(linksStr) {
-  var links = null;
   if (linksStr.trim() === "") {
-    links = [];
+    return [];
   } else {
-    links = linksStr.split(/\r\n|\r|\n/);
+    return linksStr.split(/\r\n|\r|\n/);
   }
-  return links;
 }
 
 function cancelNewCommand(evt) {
