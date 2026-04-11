@@ -6,7 +6,7 @@ General
 - [x] Add a button to import cmdInfo data from JSON file
 - [x] Add a button to append a command to cmdInfo with appropriate fields
 - [x] Add an "Edit" button for each command and sync any changes back to cmdInfo global variable.
-- [ ] Prevent closing the tab if there are unsaved changes
+- [x] Prevent closing the tab if there are unsaved changes
 
 Validation
 - [x] Do basic validation on data on first load
