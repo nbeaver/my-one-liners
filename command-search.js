@@ -309,7 +309,13 @@ function selectNoShells() {
   updateSearch();
 }
 
-function validateSingleEntry(entry, i) {
+function validateSingleEntry(entry, i, assert = true, returnValid = false) {
+  let originalAssert = null;
+  if (assert === false) {
+    // Mute console.assert.
+    originalAssert = console.assert;
+    console.assert = function() {};
+  }
   const mandatoryKeys = [
     "componentCommands",
     "description",
@@ -334,7 +340,9 @@ function validateSingleEntry(entry, i) {
   for (const key of allKeys) {
     const val = entry[key];
     console.assert(val !== "", "#%i: %s = %o", i, key, val);
+    if (val === "" && returnValid) { return false; }
     console.assert(val !== null, "#%i: %s = %o", i, key, val);
+    if (val === null && returnValid) { return false; }
     if (val !== undefined) {
       console.assert(
         typeof val === keyType[key],
@@ -344,6 +352,7 @@ function validateSingleEntry(entry, i) {
         typeof val,
         keyType[key]
       );
+      if (typeof val !== keyType[key] && returnValid) { return false; }
       if (key in arrayType) {
         // Check each value in the array.
         console.assert(
@@ -353,6 +362,7 @@ function validateSingleEntry(entry, i) {
           key,
           val
         );
+        if (!Array.isArray(val) && returnValid) { return false; }
         console.assert(
           val.length !== 0,
           "#%i: %s : %s.length === 0",
@@ -360,9 +370,12 @@ function validateSingleEntry(entry, i) {
           key,
           key
         );
+        if (val.length === 0 && returnValid) { return false; }
         for (const arrayVal of val) {
           console.assert(arrayVal !== "", "#%i: %o in %s", i, arrayVal, key);
+          if (arrayVal === "" && returnValid) { return false; }
           console.assert(arrayVal !== null, "#%i: %o in %s", i, arrayVal, key);
+          if (arrayVal === null && returnValid) { return false; }
           console.assert(
             typeof arrayVal === arrayType[key],
             "#%i: typeof %o = %s != %s in %s",
@@ -372,6 +385,7 @@ function validateSingleEntry(entry, i) {
             arrayType[key],
             key
           );
+          if (typeof arrayVal !== arrayType[key] && returnValid) { return false; }
         }
       }
     }
@@ -386,6 +400,7 @@ function validateSingleEntry(entry, i) {
       val,
       JSON.stringify(entry)
     );
+    if (val === undefined && returnValid) { return false; }
   }
   for (const key in entry) {
     if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
@@ -393,8 +408,14 @@ function validateSingleEntry(entry, i) {
     } else {
       // Important for e.g. catching misspellings of fields.
       console.error(`#${i}: unknown key '${key}'`);
+      if (returnValid) { return false; }
     }
   }
+  if (assert === false) {
+    // Unmute console.assert
+    console.assert = originalAssert;
+  }
+  if (returnValid) { return true; }
 }
 
 function validateAll(cmdInfo) {
@@ -554,6 +575,51 @@ function runTests() {
   console.assert(matchShell(shells, "bash") === true);
   console.assert(matchShell(shells, "PowerShell") === true);
   console.assert(matchShell(shells, "zsh") === false);
+
+  // TODO: add more invalid commands
+  const invalidCmds = [
+    { // missing componentCommands
+      "description": "Example",
+      "invocation": "example -arg",
+      "shell": "myshell",
+    },
+    { // missing description
+      "componentCommands": ["example"],
+      "invocation": "example -arg",
+      "shell": "myshell",
+    },
+    { // missing invocation
+      "componentCommands": ["example"],
+      "description": "Example",
+      "shell": "myshell",
+    },
+    { // missing shell
+      "componentCommands": ["example"],
+      "description": "Example",
+      "invocation": "example -arg",
+    },
+  ]
+  for (const invalidCmd of invalidCmds) {
+    console.assert(
+      validateSingleEntry(
+        invalidCmd, 0, assert = false, returnValid = true
+      ) === false);
+  }
+  // TODO: add more valid commands
+  const validCmds = [
+    {
+      "componentCommands": ["example"],
+      "description": "Example",
+      "invocation": "example -arg",
+      "shell": "myshell"
+    }
+  ]
+  for (const validCmd of validCmds) {
+    console.assert(
+      validateSingleEntry(
+        validCmd, 0, assert = true, returnValid = true
+      ) === true);
+  }
 }
 
 function editCommandButtonHandler(evt) {
