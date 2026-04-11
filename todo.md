@@ -4,8 +4,8 @@ General
 - [ ] Dark/light mode toggle
 - [x] Add a button to export cmdInfo data to JSON file
 - [x] Add a button to import cmdInfo data from JSON file
-- [ ] Add a field for a URL to load additional JSON resource
 - [x] Add a button to append a command to cmdInfo with appropriate fields
+- [x] Add an "Edit" button for each command and sync any changes back to cmdInfo global variable.
 - [ ] Prevent closing the tab if there are unsaved changes
 
 Validation
@@ -46,4 +46,4 @@ Maybe do
 - [x] Display number of unique invocations and unique component commands for each shell
 - [ ] Add toggle box for optional fields, e.g. "has links", "has example output"
 - [ ] Save GUI state in URL (share a link that approximates linking directly to a command)
-- [x] Add an "Edit" button for each command and sync any changes back to cmdInfo global variable.
+- [ ] Add a field for a URL to load additional JSON resource
