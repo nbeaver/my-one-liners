@@ -592,6 +592,7 @@ function exportJSON() {
   tmpAnchor.href = URL.createObjectURL(jsonBlob);
   tmpAnchor.download = filename;
   tmpAnchor.click();
+  window.removeEventListener("beforeunload", beforeUnloadHandler);
 }
 
 function loadCmds(evt) {
@@ -611,6 +612,13 @@ function importJSON(evt) {
 
 let newCommandDialog = null;
 let editCommandDialog = null;
+const beforeUnloadHandler = (event) => {
+  // Recommended
+  event.preventDefault();
+
+  // Included for legacy support, e.g. Chrome/Edge < 119
+  event.returnValue = true;
+};
 
 function newCommandButtonHandler(evt) {
   newCommandDialog.showModal();
@@ -667,10 +675,8 @@ function saveNewCommand(evt) {
   const index = cmdInfo.length;
   validateSingleEntry(cmd, index);
   cmdInfo.push(cmd);
-
+  window.addEventListener("beforeunload", beforeUnloadHandler);
   newCommandDialog.close("saved");
-  // TODO: use onbeforeunload to prompt before closing if not exported
-  // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
 }
 
 function onCloseNewCommandDialog(evt) {
@@ -722,8 +728,7 @@ function saveEditedCommand(evt) {
   cmdInfo[index] = cmd;
   editCommandDialog.setAttribute("index", '');
   editCommandDialog.close("saved");
-  // TODO: use onbeforeunload to prompt before closing if not exported
-  // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
+  window.addEventListener("beforeunload", beforeUnloadHandler);
 }
 
 function onCloseEditCommandDialog(evt) {
