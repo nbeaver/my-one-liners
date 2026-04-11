@@ -689,6 +689,7 @@ function onCloseNewCommandDialog(evt) {
 
 function cancelEditCommand(evt) {
   evt.preventDefault(); // Don't refresh the page.
+  editCommandDialog.setAttribute("index", '');
   editCommandDialog.close('cancel');
 }
 
