@@ -640,6 +640,8 @@ function runTests() {
   for (const validCmd of validCmds) {
     console.assert(validateSingleEntry(validCmd, 0, true, true) === true);
   }
+  // TODO: test parseComponentCommands
+  // TODO: test parseLinks
 }
 
 function editCommandButtonHandler(evt) {
