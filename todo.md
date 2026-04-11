@@ -25,6 +25,7 @@ Search
 - [x] Search box for command string
 - [x] Search box for sample output
 - [x] Search box for links
+- [ ] Search box for uuid
 - [ ] Case-sensitive toggle for commands
 - [ ] Case-sensitive toggle for component commands
 - [x] Output shell options and have toggle for each
