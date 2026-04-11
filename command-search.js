@@ -314,7 +314,7 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
   if (assert === false) {
     // Mute console.assert.
     originalAssert = console.assert;
-    console.assert = function() {};
+    console.assert = function () {};
   }
   const mandatoryKeys = [
     "componentCommands",
@@ -340,9 +340,13 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
   for (const key of allKeys) {
     const val = entry[key];
     console.assert(val !== "", "#%i: %s = %o", i, key, val);
-    if (val === "" && returnValid) { return false; }
+    if (val === "" && returnValid) {
+      return false;
+    }
     console.assert(val !== null, "#%i: %s = %o", i, key, val);
-    if (val === null && returnValid) { return false; }
+    if (val === null && returnValid) {
+      return false;
+    }
     if (val !== undefined) {
       console.assert(
         typeof val === keyType[key],
@@ -352,7 +356,9 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
         typeof val,
         keyType[key]
       );
-      if (typeof val !== keyType[key] && returnValid) { return false; }
+      if (typeof val !== keyType[key] && returnValid) {
+        return false;
+      }
       if (key in arrayType) {
         // Check each value in the array.
         console.assert(
@@ -362,7 +368,9 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
           key,
           val
         );
-        if (!Array.isArray(val) && returnValid) { return false; }
+        if (!Array.isArray(val) && returnValid) {
+          return false;
+        }
         console.assert(
           val.length !== 0,
           "#%i: %s : %s.length === 0",
@@ -370,12 +378,18 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
           key,
           key
         );
-        if (val.length === 0 && returnValid) { return false; }
+        if (val.length === 0 && returnValid) {
+          return false;
+        }
         for (const arrayVal of val) {
           console.assert(arrayVal !== "", "#%i: %o in %s", i, arrayVal, key);
-          if (arrayVal === "" && returnValid) { return false; }
+          if (arrayVal === "" && returnValid) {
+            return false;
+          }
           console.assert(arrayVal !== null, "#%i: %o in %s", i, arrayVal, key);
-          if (arrayVal === null && returnValid) { return false; }
+          if (arrayVal === null && returnValid) {
+            return false;
+          }
           console.assert(
             typeof arrayVal === arrayType[key],
             "#%i: typeof %o = %s != %s in %s",
@@ -385,7 +399,9 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
             arrayType[key],
             key
           );
-          if (typeof arrayVal !== arrayType[key] && returnValid) { return false; }
+          if (typeof arrayVal !== arrayType[key] && returnValid) {
+            return false;
+          }
         }
       }
     }
@@ -400,7 +416,9 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
       val,
       JSON.stringify(entry)
     );
-    if (val === undefined && returnValid) { return false; }
+    if (val === undefined && returnValid) {
+      return false;
+    }
   }
   for (const key in entry) {
     if (mandatoryKeys.includes(key) || optionalKeys.includes(key)) {
@@ -408,14 +426,18 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
     } else {
       // Important for e.g. catching misspellings of fields.
       console.error(`#${i}: unknown key '${key}'`);
-      if (returnValid) { return false; }
+      if (returnValid) {
+        return false;
+      }
     }
   }
   if (assert === false) {
     // Unmute console.assert
     console.assert = originalAssert;
   }
-  if (returnValid) { return true; }
+  if (returnValid) {
+    return true;
+  }
 }
 
 function validateAll(cmdInfo) {
@@ -578,32 +600,40 @@ function runTests() {
 
   // TODO: add more invalid commands
   const invalidCmds = [
-    { // missing componentCommands
+    {
+      // missing componentCommands
       "description": "Example",
       "invocation": "example -arg",
-      "shell": "myshell",
+      "shell": "myshell"
     },
-    { // missing description
+    {
+      // missing description
       "componentCommands": ["example"],
       "invocation": "example -arg",
-      "shell": "myshell",
+      "shell": "myshell"
     },
-    { // missing invocation
+    {
+      // missing invocation
       "componentCommands": ["example"],
       "description": "Example",
-      "shell": "myshell",
+      "shell": "myshell"
     },
-    { // missing shell
+    {
+      // missing shell
       "componentCommands": ["example"],
       "description": "Example",
-      "invocation": "example -arg",
-    },
-  ]
+      "invocation": "example -arg"
+    }
+  ];
   for (const invalidCmd of invalidCmds) {
     console.assert(
       validateSingleEntry(
-        invalidCmd, 0, assert = false, returnValid = true
-      ) === false);
+        invalidCmd,
+        0,
+        (assert = false),
+        (returnValid = true)
+      ) === false
+    );
   }
   // TODO: add more valid commands
   const validCmds = [
@@ -613,29 +643,34 @@ function runTests() {
       "invocation": "example -arg",
       "shell": "myshell"
     }
-  ]
+  ];
   for (const validCmd of validCmds) {
     console.assert(
       validateSingleEntry(
-        validCmd, 0, assert = true, returnValid = true
-      ) === true);
+        validCmd,
+        0,
+        (assert = true),
+        (returnValid = true)
+      ) === true
+    );
   }
 }
 
 function editCommandButtonHandler(evt) {
   const index = parseInt(evt.target.getAttribute("index"));
-  const cmd = cmdInfo[index]
+  const cmd = cmdInfo[index];
   document.getElementById("editShell").value = cmd.shell;
   document.getElementById("editCommand").value = cmd.invocation;
-  document.getElementById("editComponentCommands").value = cmd.componentCommands.join(' ');
-  document.getElementById("editDescription").value = cmd.description
+  document.getElementById("editComponentCommands").value =
+    cmd.componentCommands.join(" ");
+  document.getElementById("editDescription").value = cmd.description;
   if (cmd.exampleOutput !== undefined) {
     document.getElementById("editExampleOutput").value = cmd.exampleOutput;
   } else {
     document.getElementById("editExampleOutput").value = "";
   }
   if (cmd.links !== undefined) {
-    document.getElementById("editLinks").value = cmd.links.join('\n');
+    document.getElementById("editLinks").value = cmd.links.join("\n");
   } else {
     document.getElementById("editLinks").value = "";
   }
@@ -678,7 +713,7 @@ function importJSON(evt) {
 
 let newCommandDialog = null;
 let editCommandDialog = null;
-const beforeUnloadHandler = (event) => {
+const beforeUnloadHandler = event => {
   // Recommended
   event.preventDefault();
 
@@ -697,8 +732,8 @@ function parseComponentCommands(componentCommandsStr) {
 
 function parseLinks(linksStr) {
   var links = null;
-  if (linksStr.trim() === '') {
-    links = []
+  if (linksStr.trim() === "") {
+    links = [];
   } else {
     links = linksStr.split(/\r\n|\r|\n/);
   }
@@ -707,7 +742,7 @@ function parseLinks(linksStr) {
 
 function cancelNewCommand(evt) {
   evt.preventDefault(); // Don't refresh the page.
-  newCommandDialog.close('cancel');
+  newCommandDialog.close("cancel");
 }
 
 function saveNewCommand(evt) {
@@ -752,17 +787,17 @@ function onCloseNewCommandDialog(evt) {
     // Cancelled, do nothing.
   } else if (returnStr === "cancel") {
     // Cancelled, do nothing.
-  } else if (returnStr === "saved"){
+  } else if (returnStr === "saved") {
     updateState();
-  } else{
+  } else {
     console.error(`returnStr = ${returnStr}`);
   }
 }
 
 function cancelEditCommand(evt) {
   evt.preventDefault(); // Don't refresh the page.
-  editCommandDialog.setAttribute("index", '');
-  editCommandDialog.close('cancel');
+  editCommandDialog.setAttribute("index", "");
+  editCommandDialog.close("cancel");
 }
 
 function saveEditedCommand(evt) {
@@ -792,7 +827,7 @@ function saveEditedCommand(evt) {
   const index = parseInt(editCommandDialog.getAttribute("index"));
   validateSingleEntry(cmd, index);
   cmdInfo[index] = cmd;
-  editCommandDialog.setAttribute("index", '');
+  editCommandDialog.setAttribute("index", "");
   editCommandDialog.close("saved");
   window.addEventListener("beforeunload", beforeUnloadHandler);
 }
@@ -804,9 +839,9 @@ function onCloseEditCommandDialog(evt) {
     // Cancelled, do nothing.
   } else if (returnStr === "cancel") {
     // Cancelled, do nothing.
-  } else if (returnStr === "saved"){
+  } else if (returnStr === "saved") {
     updateState();
-  } else{
+  } else {
     console.error(`returnStr = ${returnStr}`);
   }
 }
@@ -903,14 +938,20 @@ function initialize() {
   newCommandDialog.addEventListener("close", onCloseNewCommandDialog);
   const saveNewCommandButton = document.getElementById("saveNewCommandButton");
   saveNewCommandButton.addEventListener("click", saveNewCommand);
-  const cancelNewCommandButton = document.getElementById("cancelNewCommandButton");
+  const cancelNewCommandButton = document.getElementById(
+    "cancelNewCommandButton"
+  );
   cancelNewCommandButton.addEventListener("click", cancelNewCommand);
 
   editCommandDialog = document.getElementById("editCommandDialog");
   editCommandDialog.addEventListener("close", onCloseEditCommandDialog);
-  const saveEditedCommandButton = document.getElementById("saveEditedCommandButton");
+  const saveEditedCommandButton = document.getElementById(
+    "saveEditedCommandButton"
+  );
   saveEditedCommandButton.addEventListener("click", saveEditedCommand);
-  const cancelEditCommandButton = document.getElementById("cancelEditCommandButton");
+  const cancelEditCommandButton = document.getElementById(
+    "cancelEditCommandButton"
+  );
   cancelEditCommandButton.addEventListener("click", cancelEditCommand);
 
   validateAll(cmdInfo);
