@@ -558,9 +558,28 @@ function runTests() {
 
 function editCommandButtonHandler(evt) {
   const index = parseInt(evt.target.getAttribute("index"));
-  console.log("editCommandButtonHandler()");
-  console.log(`index = ${index}`);
-  // editCommandDialog.showModal();
+  const cmd = cmdInfo[index]
+  document.getElementById("editShell").value = cmd.shell;
+  document.getElementById("editCommand").value = cmd.invocation;
+  document.getElementById("editComponentCommands").value = cmd.componentCommands.join(' ');
+  document.getElementById("editDescription").value = cmd.description
+  if (cmd.exampleOutput !== undefined) {
+    document.getElementById("editExampleOutput").value = cmd.exampleOutput;
+  } else {
+    document.getElementById("editExampleOutput").value = "";
+  }
+  if (cmd.links !== undefined) {
+    document.getElementById("editLinks").value = cmd.links.join('\n');
+  } else {
+    document.getElementById("editLinks").value = "";
+  }
+  if (cmd.uuid !== undefined) {
+    document.getElementById("editUUID").value = cmd.uuid;
+  } else {
+    document.getElementById("editUUID").value = "";
+  }
+  editCommandDialog.setAttribute("index", index);
+  editCommandDialog.showModal();
 }
 
 function exportJSON() {
@@ -591,6 +610,7 @@ function importJSON(evt) {
 }
 
 let newCommandDialog = null;
+let editCommandDialog = null;
 
 function newCommandButtonHandler(evt) {
   newCommandDialog.showModal();
@@ -623,7 +643,7 @@ function saveNewCommand(evt) {
     return false;
   }
   // Mandatory fields
-  let newCmd = {
+  let cmd = {
     shell: document.getElementById("newShell").value,
     invocation: document.getElementById("newCommand").value,
     description: document.getElementById("newDescription").value,
@@ -634,31 +654,88 @@ function saveNewCommand(evt) {
   // Optional fields
   let exampleOutput = document.getElementById("newExampleOutput").value;
   if (exampleOutput !== "") {
-    newCmd["exampleOutput"] = exampleOutput;
+    cmd["exampleOutput"] = exampleOutput;
   }
-  let links = parseLinks(document.getElementById("newLinks").value);
+  const links = parseLinks(document.getElementById("newLinks").value);
   if (links.length > 0) {
-    newCmd["links"] = links;
+    cmd["links"] = links;
   }
-  // HTMLDialogElement.close(returnValue) must pass a string
-  const newCmdStr = JSON.stringify(newCmd);
-  newCommandDialog.close(newCmdStr);
+  const uuid = document.getElementById("newUUID").value;
+  if (uuid.length > 0) {
+    cmd["uuid"] = uuid;
+  }
+  const index = cmdInfo.length;
+  validateSingleEntry(cmd, index);
+  cmdInfo.push(cmd);
+
+  newCommandDialog.close("saved");
   // TODO: use onbeforeunload to prompt before closing if not exported
   // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
 }
 
-function maybeSaveNewCommand(evt) {
+function onCloseNewCommandDialog(evt) {
   evt.preventDefault(); // We don't want to submit this fake form
   const returnStr = newCommandDialog.returnValue;
   if (returnStr === "") {
     // Cancelled, do nothing.
   } else if (returnStr === "cancel") {
     // Cancelled, do nothing.
-  } else {
-    const newCmd = JSON.parse(newCommandDialog.returnValue);
-    validateSingleEntry(newCmd, cmdInfo.length);
-    cmdInfo.push(newCmd);
+  } else if (returnStr === "saved"){
     updateState();
+  } else{
+    console.error(`returnStr = ${returnStr}`);
+  }
+}
+
+function cancelEditCommand(evt) {
+  evt.preventDefault(); // Don't refresh the page.
+  editCommandDialog.close('cancel');
+}
+
+function saveEditedCommand(evt) {
+  evt.preventDefault(); // Don't refresh the page.
+  if (!document.forms["editCommandForm"].reportValidity()) {
+    // Force validation before saving the command.
+    return false;
+  }
+  // Mandatory fields
+  let cmd = {
+    shell: document.getElementById("editShell").value,
+    invocation: document.getElementById("editCommand").value,
+    description: document.getElementById("editDescription").value,
+    componentCommands: parseComponentCommands(
+      document.getElementById("editComponentCommands").value
+    )
+  };
+  // Optional fields
+  let exampleOutput = document.getElementById("editExampleOutput").value;
+  if (exampleOutput !== "") {
+    cmd["exampleOutput"] = exampleOutput;
+  }
+  let links = parseLinks(document.getElementById("editLinks").value);
+  if (links.length > 0) {
+    cmd["links"] = links;
+  }
+  const index = parseInt(editCommandDialog.getAttribute("index"));
+  validateSingleEntry(cmd, index);
+  cmdInfo[index] = cmd;
+  editCommandDialog.setAttribute("index", '');
+  editCommandDialog.close("saved");
+  // TODO: use onbeforeunload to prompt before closing if not exported
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
+}
+
+function onCloseEditCommandDialog(evt) {
+  evt.preventDefault(); // We don't want to submit this fake form
+  const returnStr = editCommandDialog.returnValue;
+  if (returnStr === "") {
+    // Cancelled, do nothing.
+  } else if (returnStr === "cancel") {
+    // Cancelled, do nothing.
+  } else if (returnStr === "saved"){
+    updateState();
+  } else{
+    console.error(`returnStr = ${returnStr}`);
   }
 }
 
@@ -751,11 +828,19 @@ function initialize() {
   const newCommandButton = document.getElementById("newCommandButton");
   newCommandButton.addEventListener("click", newCommandButtonHandler);
   newCommandDialog = document.getElementById("newCommandDialog");
-  newCommandDialog.addEventListener("close", maybeSaveNewCommand);
+  newCommandDialog.addEventListener("close", onCloseNewCommandDialog);
   const saveNewCommandButton = document.getElementById("saveNewCommandButton");
   saveNewCommandButton.addEventListener("click", saveNewCommand);
   const cancelNewCommandButton = document.getElementById("cancelNewCommandButton");
   cancelNewCommandButton.addEventListener("click", cancelNewCommand);
+
+  editCommandDialog = document.getElementById("editCommandDialog");
+  editCommandDialog.addEventListener("close", onCloseEditCommandDialog);
+  const saveEditedCommandButton = document.getElementById("saveEditedCommandButton");
+  saveEditedCommandButton.addEventListener("click", saveEditedCommand);
+  const cancelEditCommandButton = document.getElementById("cancelEditCommandButton");
+  cancelEditCommandButton.addEventListener("click", cancelEditCommand);
+
   validateAll(cmdInfo);
   runTests();
   updateState();
