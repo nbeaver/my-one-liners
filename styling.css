@@ -9,6 +9,19 @@ div.single-cmd {
   border-radius: 5px;
 }
 
+input[type="text"].monospace {
+  font-family: 'Ubuntu Mono', 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+textarea.monospace {
+  font-family: 'Ubuntu Mono', 'Consolas', 'Monaco', 'Lucida Console', monospace;
+}
+input[type="text"].proportional {
+  font-family: 'Ubuntu', 'Cantarell', sans-serif;
+}
+textarea.proportional {
+  font-family: 'Ubuntu', 'Cantarell', sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
   body, dialog, form, fieldset, legend, textarea, input {
     background: #242424;

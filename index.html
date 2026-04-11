@@ -67,11 +67,11 @@
             <legend>Add a new command</legend>
             <div>
               <label for="shellInput" title="Shell">Shell:</label>
-              <input id="newShell" type="text" name="shellInput" required />
+              <input id="newShell" type="text" name="shellInput" class="monospace" required />
             </div>
             <div>
               <label for="commandInput" title="Command invocation (what the shell runs)">Command:</label>
-              <input id="newCommand" type="text" name="commandInput" required />
+              <input id="newCommand" type="text" name="commandInput" class="monospace" required />
             </div>
             <div>
               <label for="componentCommandsInput" title="Space-delimited commands making up the command invocation">Component commands:</label>
@@ -79,19 +79,19 @@
             </div>
             <div>
               <label for="descriptionInput">Description:</label>
-              <textarea id="newDescription" name="descriptionInput" required></textarea>
+              <textarea id="newDescription" name="descriptionInput" class="proportional" required></textarea>
             </div>
             <div>
               <label for="exampleOutputInput">Example output (optional):</label>
-              <textarea id="newExampleOutput" name="exampleOutputInput"></textarea>
+              <textarea id="newExampleOutput" name="exampleOutputInput" class="monospace"></textarea>
             </div>
             <div>
               <label for="linksInput" title="Links, one per line">Links (optional):</label>
-              <textarea id="newLinks" name="linksInput"></textarea>
+              <textarea id="newLinks" name="linksInput" class="monospace"></textarea>
             </div>
             <div>
               <label for="uuidInput" title=Universally unique identifier>UUID (optional):</label>
-              <input id="newUUID" type="text" name="uuidInput" />
+              <input id="newUUID" type="text" name="uuidInput" class="monospace" />
             </div>
             <div>
               <button id="saveNewCommandButton" value="save" popovertarget="newCommandDialog" popovertargetaction="hide">Save</button>
@@ -106,31 +106,31 @@
             <legend>Edit a command</legend>
             <div>
               <label for="shellInput" title="Shell">Shell:</label>
-              <input id="editShell" type="text" name="shellInput" required />
+              <input id="editShell" type="text" name="shellInput" class="monospace" required />
             </div>
             <div>
               <label for="commandInput" title="Command invocation (what the shell runs)">Command:</label>
-              <input id="editCommand" type="text" name="commandInput" required />
+              <input id="editCommand" type="text" name="commandInput" class="monospace" required />
             </div>
             <div>
               <label for="componentCommandsInput" title="Space-delimited commands making up the command invocation">Component commands:</label>
-              <input id="editComponentCommands" type="text" name="componentCommandsInput" required />
+              <input id="editComponentCommands" type="text" name="componentCommandsInput" class="monospace" required />
             </div>
             <div>
               <label for="descriptionInput">Description:</label>
-              <textarea id="editDescription" name="descriptionInput" required></textarea>
+              <textarea id="editDescription" name="descriptionInput" class="proportional" required></textarea>
             </div>
             <div>
               <label for="exampleOutputInput">Example output (optional):</label>
-              <textarea id="editExampleOutput" name="exampleOutputInput"></textarea>
+              <textarea id="editExampleOutput" name="exampleOutputInput" class="monospace"></textarea>
             </div>
             <div>
               <label for="linksInput" title="Links, one per line">Links (optional):</label>
-              <textarea id="editLinks" name="linksInput"></textarea>
+              <textarea id="editLinks" name="linksInput" class="monospace"></textarea>
             </div>
             <div>
               <label for="uuidInput" title="Universally unique identifier">UUID (optional):</label>
-              <input id="editUUID" type="text" name="uuidInput" />
+              <input id="editUUID" type="text" name="uuidInput" class="monospace" />
             </div>
             <div>
               <button id="saveEditedCommandButton" value="save" popovertarget="editCommandDialog" popovertargetaction="hide">Save</button>
