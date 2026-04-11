@@ -850,7 +850,7 @@ function updateState() {
     const codeText = document.createTextNode(shellName);
     const stats = shellStats[shellName];
     const nInvocationsText = `${stats.nInvocations} invocations`;
-    const nComponentCommandsText = `${stats.componentCommands.size} unique commands`;
+    const nComponentCommandsText = `${stats.componentCommands.size} unique component commands`;
     const statsText = document.createTextNode(
       ` (${nInvocationsText}, ${nComponentCommandsText})`
     );
