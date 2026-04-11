@@ -6,6 +6,7 @@ General
 - [x] Add a button to import cmdInfo data from JSON file
 - [ ] Add a field for a URL to load additional JSON resource
 - [x] Add a button to append a command to cmdInfo with appropriate fields
+- [ ] Prevent closing the tab if there are unsaved changes
 
 Validation
 - [x] Do basic validation on data on first load
