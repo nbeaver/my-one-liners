@@ -2084,14 +2084,12 @@ var cmdInfo = [
     "shell": "PowerShell"
   },
   {
-    "componentCommands": [
-      " Set-Content"
-    ],
-    "description": "Make Dropbox ignore file 'C:\\Users\\yourname\\Dropbox (Personal)\\YourFileName.pdf'.",
-    "invocation": "Set-Content -Path 'C:\\Users\\yourname\\Dropbox (Personal)\\YourFileName.pdf' -Stream com.dropbox.ignored -Value 1",
-    "links": [
-      "https://help.dropbox.com/sync/ignored-files"
-    ],
+    "componentCommands": [" Set-Content"],
+    "description":
+      "Make Dropbox ignore file 'C:\\Users\\yourname\\Dropbox (Personal)\\YourFileName.pdf'.",
+    "invocation":
+      "Set-Content -Path 'C:\\Users\\yourname\\Dropbox (Personal)\\YourFileName.pdf' -Stream com.dropbox.ignored -Value 1",
+    "links": ["https://help.dropbox.com/sync/ignored-files"],
     "shell": "Powershell"
   },
   {
@@ -2402,11 +2400,20 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo"
+    "componentCommands": ["echo", "less"],
+    "description":
+      "Pipe stdout and stderr together to another command (bash only).",
+    "invocation": '{ echo "stdout"; echo "stderr" >&2; } |& less',
+    "links": [
+      "https://stackoverflow.com/questions/16497317/piping-both-stdout-and-stderr-in-bash",
+      "https://www.gnu.org/software/bash/manual/html_node/Pipelines.html"
     ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["echo"],
     "description": "Redirect stdout to file",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } > stdout_log.txt",
+    "invocation": '{ echo "stdout"; echo "stderr" >&2; } > stdout_log.txt',
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html",
       "https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file"
@@ -2414,56 +2421,51 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo"
-    ],
+    "componentCommands": ["echo"],
     "description": "Redirect stderr to file",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } 2> stderr_log.txt",
+    "invocation": '{ echo "stdout"; echo "stderr" >&2; } 2> stderr_log.txt',
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo"
-    ],
+    "componentCommands": ["echo"],
     "description": "Redirect both stdout and stderr to text file (bash only).",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } &> full_log.txt",
+    "invocation": '{ echo "stdout"; echo "stderr" >&2; } &> full_log.txt',
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo"
-    ],
-    "description": "Redirect both stdout and stderr to text file (note that `2>&1' must come after `>').",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } > stdout_stderr_log.txt 2>&1",
+    "componentCommands": ["echo"],
+    "description":
+      "Redirect both stdout and stderr to text file (note that `2>&1' must come after `>').",
+    "invocation":
+      '{ echo "stdout"; echo "stderr" >&2; } > stdout_stderr_log.txt 2>&1',
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo",
-      "less"
-    ],
-    "description": "Redirect both stdout and stderr to text file and view in pager.",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } 2>&1 | tee stdout_stderr_log.txt | less",
+    "componentCommands": ["echo", "less"],
+    "description":
+      "Redirect both stdout and stderr to text file and view in pager.",
+    "invocation":
+      '{ echo "stdout"; echo "stderr" >&2; } 2>&1 | tee stdout_stderr_log.txt | less',
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo"
-    ],
-    "description": "Append both stdout and stderr to text file (note that `2>&1' must come after `>').",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } >> append_stdout_stderr_log.txt 2>&1",
+    "componentCommands": ["echo"],
+    "description":
+      "Append both stdout and stderr to text file (note that `2>&1' must come after `>').",
+    "invocation":
+      '{ echo "stdout"; echo "stderr" >&2; } >> append_stdout_stderr_log.txt 2>&1',
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html",
       "https://stackoverflow.com/questions/876239/how-to-redirect-and-append-both-standard-output-and-standard-error-to-a-file-wit"
@@ -2471,11 +2473,10 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo"
-    ],
+    "componentCommands": ["echo"],
     "description": "Append both stdout and stderr to text file (bash only).",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } &>> append_stdout_stderr_log.txt",
+    "invocation":
+      '{ echo "stdout"; echo "stderr" >&2; } &>> append_stdout_stderr_log.txt',
     "links": [
       "https://stackoverflow.com/questions/876239/how-to-redirect-and-append-both-standard-output-and-standard-error-to-a-file-wit",
       "https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file"
@@ -2483,12 +2484,10 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
-    "componentCommands": [
-      "echo",
-      "less"
-    ],
+    "componentCommands": ["echo", "less"],
     "description": "Suppress stdout and view only stderr in pager",
-    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } >/dev/null 2>&1 | less",
+    "invocation":
+      '{ echo "stdout"; echo "stderr" >&2; } >/dev/null 2>&1 | less',
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html",
       "https://stackoverflow.com/questions/2342826/how-can-i-pipe-stderr-and-not-stdout/"
