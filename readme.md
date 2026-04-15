@@ -86,6 +86,32 @@ including `lsattr`, `lsblk`, `lshw`, `lsmod`, `lsof`, `lspci`, and `lsusb`.
 Explicitly listing the component commands makes it much easier to narrow down
 the desired commands in a search.
 
+> What counts as a component command?
+
+The choice of what is and isn't a component command
+is a pragmatic choice depending on your taste and judgement.
+For example, in `bash` it is reasonable to state
+that for this command:
+
+    cat file2 >> file1
+
+the only component command is `cat` and counting `>>` as a component command
+would be confusing as `>>` is a *redirection operator*, not a command unto itself.
+However in `zsh` this command is equivalent and does not use `cat`:
+
+    < file2 >> file1
+
+so in this case it might be said that `<` and `>>` could be considered component commands
+for the purposes of making this command easier to find.
+
+Similarly, in a looping construct such as
+`
+    while read line; do echo -e "$line\n"; done < file.txt
+
+almost certainly the shell builtins `read` and `echo` should be counted as component commands,
+but whether the shell keywords `while`, `do` or `done` should be considered component commands
+is left to the user's discretion.
+
 > Why a single Javascript file for data and code?
 
 This makes it work as a single standalone static HTML page.
