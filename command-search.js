@@ -2090,7 +2090,7 @@ var cmdInfo = [
     "invocation":
       "Set-Content -Path 'C:\\Users\\yourname\\Dropbox (Personal)\\YourFileName.pdf' -Stream com.dropbox.ignored -Value 1",
     "links": ["https://help.dropbox.com/sync/ignored-files"],
-    "shell": "Powershell"
+    "shell": "PowerShell"
   },
   {
     "componentCommands": ["dir"],
