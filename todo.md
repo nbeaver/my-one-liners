@@ -14,6 +14,7 @@ Validation
 - [x] Allow optional UUID for error messages and debugging
 - [x] Check type is correct (string, list of strings, etc.)
 - [ ] Check that component commands are in the command invocation
+- [ ] Check for whitespace in component commands
 - [x] Turn validation logic into functions that return true/false so they can be tested
 - [x] Write tests for validation functions
 - [x] Do proper form validation when adding a new command
