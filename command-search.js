@@ -2108,7 +2108,7 @@ var cmdInfo = [
     "shell": "PowerShell"
   },
   {
-    "componentCommands": [" Set-Content"],
+    "componentCommands": ["Set-Content"],
     "description":
       "Make Dropbox ignore file 'C:\\Users\\yourname\\Dropbox (Personal)\\YourFileName.pdf'.",
     "invocation":
