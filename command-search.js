@@ -491,7 +491,7 @@ function runTests() {
     ["matchCommand", "ls", "ls", false, true], // Exact match
     ["matchCommand", "ls", "ls ", false, true], // Prefix with whitespace
     ["matchCommand", "ls", " ls ", false, true], // Suffix match with whitespace
-    ["matchCommand", "-sh", 'du -sh --exclude "./.*"', false, true] // Match flag
+    ["matchCommand", "-sh", "du -sh --exclude \"./.*\"", false, true] // Match flag
     // TODO: write more regex tests
   ];
   for (const matchCommandTest of matchCommandTests) {
@@ -1051,7 +1051,7 @@ var cmdInfo = [
     "description":
       "For each file ending with '.pdf' in the current directory, extract the images from the pdf file into a new directory with the name of the file stripped of '.pdf'.",
     "invocation":
-      'for f in *.pdf; do dir="${f%.*}"; mkdir -p "$dir" && pdfimages -png -j "$f" "$dir/$dir"; done',
+      "for f in *.pdf; do dir=\"${f%.*}\"; mkdir -p \"$dir\" && pdfimages -png -j \"$f\" \"$dir/$dir\"; done",
     "shell": "bash",
     "uuid": "6c0081a3-5c10-4cdf-826b-1bd778ae8ef0"
   },
@@ -1376,7 +1376,7 @@ var cmdInfo = [
     "description":
       "Resize all the images in an OpenDocument (ODT) file to 10% of their former size. Stores location of tempfile in $dir shell variable, which is not entirely safe.",
     "invocation":
-      'dir="$(mktemp -d --tmpdir=.)" && unzip -q file.odt -d "$dir" && cd "$dir" && mogrify -resize 10x10% Pictures/* && zip -qrm ../resized.odt * && cd .. && rmdir "$dir"',
+      "dir=\"$(mktemp -d --tmpdir=.)\" && unzip -q file.odt -d \"$dir\" && cd \"$dir\" && mogrify -resize 10x10% Pictures/* && zip -qrm ../resized.odt * && cd .. && rmdir \"$dir\"",
     "shell": "bash",
     "uuid": "361f2d3b-beeb-4a29-bcf6-070edaec63a9"
   },
@@ -1796,7 +1796,7 @@ var cmdInfo = [
     "componentCommands": ["find"],
     "description":
       "Show human-readable and octal permissions of files recursively.",
-    "invocation": 'find . -type f -printf "%m %M %f\\n"',
+    "invocation": "find . -type f -printf \"%m %M %f\\n\"",
     "links": [
       "https://unix.stackexchange.com/questions/126040/convert-the-permissions-in-ls-l-output-to-octal"
     ],
@@ -1903,7 +1903,7 @@ var cmdInfo = [
     "componentCommands": ["grep"],
     "description":
       "Grep all three-letter words without vowels, e.g. 'brr', 'nth', Mrs'.",
-    "invocation": 'grep -E -i "^[^aeiouy\']{3}$" /usr/share/dict/words',
+    "invocation": "grep -E -i \"^[^aeiouy']{3}$\" /usr/share/dict/words",
     "shell": "bash"
   },
   {
@@ -1916,7 +1916,7 @@ var cmdInfo = [
     "componentCommands": ["grep"],
     "description":
       "Grep words that can be spelled with hexadecimal alone, like 0xDEADBEEF.",
-    "invocation": 'grep -E -i "^[a-fA-F]+$" /usr/share/dict/words',
+    "invocation": "grep -E -i \"^[a-fA-F]+$\" /usr/share/dict/words",
     "links": [
       "https://en.wikipedia.org/wiki/Magic_number_%28programming%29#Magic_debug_values",
       "http://www.urbandictionary.com/define.php?term=0xDEADBEEF",
@@ -1926,7 +1926,7 @@ var cmdInfo = [
   },
   {
     "componentCommands": ["grep"],
-    "description": 'Grep for words that end in "gry"',
+    "description": "Grep for words that end in \"gry\"",
     "exampleOutput": "angry\ndemagogry\nhungry\n",
     "invocation": "grep -i '.*gry$' /usr/share/dict/words",
     "shell": "bash"
@@ -1943,7 +1943,7 @@ var cmdInfo = [
     "description":
       "Print operating system type (OS identifier). Available in bash but not POSIX standard.",
     "exampleOutput": "linux-gnu\n",
-    "invocation": 'echo "$OSTYPE"',
+    "invocation": "echo \"$OSTYPE\"",
     "shell": "bash"
   },
   {
@@ -2060,7 +2060,7 @@ var cmdInfo = [
     "componentCommands": ["gwmi"],
     "description": "Print battery status and charging information.",
     "exampleOutput":
-      '\r\n\r\n__GENUS            : 2\r\n__CLASS            : BatteryStatus\r\n__SUPERCLASS       : MSBatteryClass\r\n__DYNASTY          : CIM_StatisticalInformation\r\n__RELPATH          : BatteryStatus.InstanceName="ACPI\\\\PNP0C0A\\\\0_0"\r\n__PROPERTY_COUNT   : 20\r\n__DERIVATION       : {MSBatteryClass, Win32_PerfRawData, Win32_Perf, CIM_StatisticalInformation}\r\n__SERVER           : WIN11-LAPTOP\r\n__NAMESPACE        : root\\wmi\r\n__PATH             : \\\\WIN11-LAPTOP\\root\\wmi:BatteryStatus.InstanceName="ACPI\\\\PNP0C0A\\\\0_0"\r\nActive             : True\r\nCaption            : \r\nChargeRate         : 0\r\nCharging           : False\r\nCritical           : False\r\nDescription        : \r\nDischargeRate      : 19290\r\nDischarging        : True\r\nFrequency_Object   : \r\nFrequency_PerfTime : \r\nFrequency_Sys100NS : \r\nInstanceName       : ACPI\\PNP0C0A\\0_0\r\nName               : \r\nPowerOnline        : False\r\nRemainingCapacity  : 32894\r\nTag                : 15\r\nTimestamp_Object   : \r\nTimestamp_PerfTime : \r\nTimestamp_Sys100NS : \r\nVoltage            : 15457\r\nPSComputerName     : WIN11-LAPTOP\r\n\r\n\r\n\r\n\r\n',
+      "\r\n\r\n__GENUS            : 2\r\n__CLASS            : BatteryStatus\r\n__SUPERCLASS       : MSBatteryClass\r\n__DYNASTY          : CIM_StatisticalInformation\r\n__RELPATH          : BatteryStatus.InstanceName=\"ACPI\\\\PNP0C0A\\\\0_0\"\r\n__PROPERTY_COUNT   : 20\r\n__DERIVATION       : {MSBatteryClass, Win32_PerfRawData, Win32_Perf, CIM_StatisticalInformation}\r\n__SERVER           : WIN11-LAPTOP\r\n__NAMESPACE        : root\\wmi\r\n__PATH             : \\\\WIN11-LAPTOP\\root\\wmi:BatteryStatus.InstanceName=\"ACPI\\\\PNP0C0A\\\\0_0\"\r\nActive             : True\r\nCaption            : \r\nChargeRate         : 0\r\nCharging           : False\r\nCritical           : False\r\nDescription        : \r\nDischargeRate      : 19290\r\nDischarging        : True\r\nFrequency_Object   : \r\nFrequency_PerfTime : \r\nFrequency_Sys100NS : \r\nInstanceName       : ACPI\\PNP0C0A\\0_0\r\nName               : \r\nPowerOnline        : False\r\nRemainingCapacity  : 32894\r\nTag                : 15\r\nTimestamp_Object   : \r\nTimestamp_PerfTime : \r\nTimestamp_Sys100NS : \r\nVoltage            : 15457\r\nPSComputerName     : WIN11-LAPTOP\r\n\r\n\r\n\r\n\r\n",
     "invocation": "gwmi -Class batterystatus -Namespace root\\wmi",
     "links": [
       "https://devblogs.microsoft.com/scripting/using-windows-powershell-to-determine-if-a-laptop-is-on-battery-power/",
@@ -2294,7 +2294,7 @@ var cmdInfo = [
   {
     "componentCommands": ["speaker-test"],
     "description":
-      'Figure out which speaker or earphone is left and right. Note that you have to pause other sound playback for this to work or you will get a "Device or resource busy" error.',
+      "Figure out which speaker or earphone is left and right. Note that you have to pause other sound playback for this to work or you will get a \"Device or resource busy\" error.",
     "invocation":
       "speaker-test --device plug:front --channels 2 --test sine --frequency 100 # long version",
     "shell": "bash"
@@ -2302,7 +2302,7 @@ var cmdInfo = [
   {
     "componentCommands": ["speaker-test"],
     "description":
-      'Figure out which speaker or earphone is left and right (short flags). Note that you have to pause other sound playback for this to work or you will get a "Device or resource busy" error.',
+      "Figure out which speaker or earphone is left and right (short flags). Note that you have to pause other sound playback for this to work or you will get a \"Device or resource busy\" error.",
     "invocation": "speaker-test -Dplug:front -c2 -t sine -f100",
     "shell": "bash"
   },
@@ -2416,7 +2416,7 @@ var cmdInfo = [
     "componentCommands": ["echo", "less"],
     "description":
       "View both stdout and stderr using input/output redirection.",
-    "invocation": '{ echo "stdout"; echo "stderr" >&2; } 2>&1 | less',
+    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } 2>&1 | less",
     "links": [
       "https://stackoverflow.com/questions/16497317/piping-both-stdout-and-stderr-in-bash",
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
@@ -2427,7 +2427,7 @@ var cmdInfo = [
     "componentCommands": ["echo", "less"],
     "description":
       "Pipe stdout and stderr together to another command (bash only).",
-    "invocation": '{ echo "stdout"; echo "stderr" >&2; } |& less',
+    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } |& less",
     "links": [
       "https://stackoverflow.com/questions/16497317/piping-both-stdout-and-stderr-in-bash",
       "https://www.gnu.org/software/bash/manual/html_node/Pipelines.html"
@@ -2437,7 +2437,7 @@ var cmdInfo = [
   {
     "componentCommands": ["echo"],
     "description": "Redirect stdout to file",
-    "invocation": '{ echo "stdout"; echo "stderr" >&2; } > stdout_log.txt',
+    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } > stdout_log.txt",
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html",
       "https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file"
@@ -2447,7 +2447,7 @@ var cmdInfo = [
   {
     "componentCommands": ["echo"],
     "description": "Redirect stderr to file",
-    "invocation": '{ echo "stdout"; echo "stderr" >&2; } 2> stderr_log.txt',
+    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } 2> stderr_log.txt",
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
@@ -2456,7 +2456,7 @@ var cmdInfo = [
   {
     "componentCommands": ["echo"],
     "description": "Redirect both stdout and stderr to text file (bash only).",
-    "invocation": '{ echo "stdout"; echo "stderr" >&2; } &> full_log.txt',
+    "invocation": "{ echo \"stdout\"; echo \"stderr\" >&2; } &> full_log.txt",
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
@@ -2467,7 +2467,7 @@ var cmdInfo = [
     "description":
       "Redirect both stdout and stderr to text file (note that `2>&1' must come after `>').",
     "invocation":
-      '{ echo "stdout"; echo "stderr" >&2; } > stdout_stderr_log.txt 2>&1',
+      "{ echo \"stdout\"; echo \"stderr\" >&2; } > stdout_stderr_log.txt 2>&1",
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
@@ -2478,7 +2478,7 @@ var cmdInfo = [
     "description":
       "Redirect both stdout and stderr to text file and view in pager.",
     "invocation":
-      '{ echo "stdout"; echo "stderr" >&2; } 2>&1 | tee stdout_stderr_log.txt | less',
+      "{ echo \"stdout\"; echo \"stderr\" >&2; } 2>&1 | tee stdout_stderr_log.txt | less",
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
     ],
@@ -2489,7 +2489,7 @@ var cmdInfo = [
     "description":
       "Append both stdout and stderr to text file (note that `2>&1' must come after `>').",
     "invocation":
-      '{ echo "stdout"; echo "stderr" >&2; } >> append_stdout_stderr_log.txt 2>&1',
+      "{ echo \"stdout\"; echo \"stderr\" >&2; } >> append_stdout_stderr_log.txt 2>&1",
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html",
       "https://stackoverflow.com/questions/876239/how-to-redirect-and-append-both-standard-output-and-standard-error-to-a-file-wit"
@@ -2500,7 +2500,7 @@ var cmdInfo = [
     "componentCommands": ["echo"],
     "description": "Append both stdout and stderr to text file (bash only).",
     "invocation":
-      '{ echo "stdout"; echo "stderr" >&2; } &>> append_stdout_stderr_log.txt',
+      "{ echo \"stdout\"; echo \"stderr\" >&2; } &>> append_stdout_stderr_log.txt",
     "links": [
       "https://stackoverflow.com/questions/876239/how-to-redirect-and-append-both-standard-output-and-standard-error-to-a-file-wit",
       "https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file"
@@ -2511,7 +2511,7 @@ var cmdInfo = [
     "componentCommands": ["echo", "less"],
     "description": "Suppress stdout and view only stderr in pager",
     "invocation":
-      '{ echo "stdout"; echo "stderr" >&2; } >/dev/null 2>&1 | less',
+      "{ echo \"stdout\"; echo \"stderr\" >&2; } >/dev/null 2>&1 | less",
     "links": [
       "https://www.gnu.org/software/bash/manual/html_node/Redirections.html",
       "https://stackoverflow.com/questions/2342826/how-can-i-pipe-stderr-and-not-stdout/"
