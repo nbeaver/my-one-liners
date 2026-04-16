@@ -1,7 +1,7 @@
 .PHONY: lint-js
 lint-js:
 	npm exec -- prettier --write "**/*.js"
-	npm exec -- eslint "**/*.js"
+	npm exec -- eslint --fix "**/*.js"
 
 # https://docs.npmjs.com/cli/v8/commands/npx#npx-vs-npm-exec
 
