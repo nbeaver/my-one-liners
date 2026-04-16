@@ -1142,7 +1142,7 @@ var cmdInfo = [
       "Inspect text files for encoding information including line breaks, byte order mark (BOM), and text/binary.",
     "exampleOutput":
       "    6       0       0  no_bom    text    dos.txt\n    0       6       0  no_bom    text    unix.txt\n    0       0       6  no_bom    text    mac.txt\n    6       6       6  no_bom    text    mixed.txt\n   50       0       0  UTF-16LE  text    utf16le.txt\n    0      50       0  no_bom    text    utf8unix.txt\n   50       0       0  UTF-8     text    utf8dos.txt\n    2     418     219  no_bom    binary  dos2unix.exe",
-    "invocation": "dos2unix --info *",
+    "invocation": "dos2unix --info -- *",
     "links": [
       "https://man.archlinux.org/man/dos2unix.1.en#i_FLAGS_,",
       "https://manpages.debian.org/stable/dos2unix/dos2unix.1.en.html#i_FLAGS_,"
@@ -1455,49 +1455,49 @@ var cmdInfo = [
     "componentCommands": ["grep"],
     "description":
       "Grep the files under the /etc/ directory for the current machine's hostname.",
-    "invocation": "grep $HOSTNAME /etc/*",
+    "invocation": "grep \"$HOSTNAME\" /etc/*",
     "shell": "bash"
   },
   {
     "componentCommands": ["grep"],
     "description":
       "Grep the files under the /etc/ directory for the current machine's hostname, showing only filename.",
-    "invocation": "grep --files-with-matches $HOSTNAME /etc/*",
+    "invocation": "grep --files-with-matches \"$HOSTNAME\" /etc/*",
     "shell": "bash"
   },
   {
     "componentCommands": ["grep"],
     "description":
       "Grep the files under the /etc/ directory for the current machine's hostname, showing only filename (short flags version).",
-    "invocation": "grep -l $HOSTNAME /etc/*",
+    "invocation": "grep -l \"$HOSTNAME\" /etc/*",
     "shell": "bash"
   },
   {
     "componentCommands": ["grep"],
     "description":
       "Grep the /etc/ directory recursively for the current machine's hostname.",
-    "invocation": "grep --recursive $HOSTNAME /etc/",
+    "invocation": "grep --recursive \"$HOSTNAME\" /etc/",
     "shell": "bash"
   },
   {
     "componentCommands": ["grep"],
     "description":
       "Grep the /etc/ directory recursively for the current machine's hostname (short flags version).",
-    "invocation": "grep -r $HOSTNAME /etc/",
+    "invocation": "grep -r \"$HOSTNAME\" /etc/",
     "shell": "bash"
   },
   {
     "componentCommands": ["grep"],
     "description":
       "Grep the /etc/ directory recursively for words matching current machine's hostname.",
-    "invocation": "grep --recursive --word-regexp $HOSTNAME /etc/",
+    "invocation": "grep --recursive --word-regexp \"$HOSTNAME\" /etc/",
     "shell": "bash"
   },
   {
     "componentCommands": ["grep"],
     "description":
       "Grep the /etc/ directory recursively for words matching current machine's hostname (short flags version).",
-    "invocation": "grep -rw $HOSTNAME /etc/",
+    "invocation": "grep -rw \"$HOSTNAME\" /etc/",
     "shell": "bash"
   },
   {
