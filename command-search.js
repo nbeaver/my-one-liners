@@ -402,6 +402,30 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
           if (typeof arrayVal !== arrayType[key] && returnValid) {
             return false;
           }
+          // Check for leading whitespace.
+          if (key === "componentCommands" || key === "links") {
+            console.assert(
+              Array.from(arrayVal)[0] !== ' ',
+              "#%i: %s[0] = ' ' (leading whitespace), entry = %s",
+              i,
+              JSON.stringify(arrayVal),
+              key
+            )
+            if (Array.from(arrayVal)[0] === ' ' && returnValid) {
+              return false
+            }
+            // Check for trailing whitespace.
+            console.assert(
+              arrayVal.slice(-1) !== ' ',
+              "#%i: %s.slice(-1) = ' ' (trailing whitespace), entry = %s",
+              i,
+              JSON.stringify(arrayVal),
+              key
+            )
+            if (arrayVal.slice(-1) === ' ' && returnValid) {
+              return false
+            }
+          }
         }
       }
     }
