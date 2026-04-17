@@ -17,3 +17,5 @@ create-pages:
     - public
   only:
   - gh-pages
+  stage: deploy
+  environment: production
