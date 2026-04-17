@@ -15,7 +15,5 @@ create-pages:
   artifacts:
     paths:
     - public
-  only:
-  - gh-pages
   stage: deploy
   environment: production
