@@ -1,3 +1,8 @@
+**My One-Liners**
+
+A searchable list of one-liner command-line inputs.
+Works offline and requires only a web browser.
+
 # Intro
 
 When I got more serious about learning interactive shells like the bash command line circa 2012,

@@ -1,14 +1,14 @@
 {
-  "name": "personal-command-search",
+  "name": "my-one-liners",
   "version": "0.0.1",
-  "description": "Search a personalized list of shell commands.",
+  "description": "Searchable list of one-liner command-line inputs.",
   "main": "command-search.js",
   "scripts": {
     "test": "make"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nbeaver/personal-command-search.git"
+    "url": "git+https://github.com/nbeaver/my-one-liners.git"
   },
   "keywords": [
     "shell",
@@ -19,9 +19,9 @@
   "author": "Nathaniel M. Foley-Beaver",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nbeaver/personal-command-search/issues"
+    "url": "https://github.com/nbeaver/my-one-liners/issues"
   },
-  "homepage": "https://github.com/nbeaver/personal-command-search#readme",
+  "homepage": "https://github.com/nbeaver/my-one-liners#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.0.3",
