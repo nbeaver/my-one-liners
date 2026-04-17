@@ -2,6 +2,8 @@
 
 <https://nbeaver.github.io/my-one-liners/>
 
+<https://my-one-liners-c68692.gitlab.io/>
+
 A searchable list of one-liner command-line inputs.
 Works offline and requires only a web browser.
 
