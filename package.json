@@ -2,7 +2,7 @@
   "name": "my-one-liners",
   "version": "0.0.1",
   "description": "Searchable list of one-liner command-line inputs.",
-  "main": "command-search.js",
+  "main": "my-one-liners.js",
   "scripts": {
     "test": "make"
   },
@@ -11,6 +11,7 @@
     "url": "git+https://github.com/nbeaver/my-one-liners.git"
   },
   "keywords": [
+    "one-liner",
     "shell",
     "command",
     "search",
