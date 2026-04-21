@@ -87,7 +87,7 @@ Design goals:
   with a format that could be copy and pasted into a JSON file.
 - Ease of debugging: data errors point to a line in a single JavaScript file.
 
-> Why is `componentCommands` necessary?
+## Why is `componentCommands` necessary?
 
 A simple search of the command invocation will often match too many things.
 For example, `ls` will match many other commands,
@@ -95,7 +95,7 @@ including `lsattr`, `lsblk`, `lshw`, `lsmod`, `lsof`, `lspci`, and `lsusb`.
 Explicitly listing the component commands makes it much easier to narrow down
 the desired commands in a search.
 
-> What counts as a component command?
+## What counts as a component command?
 
 The choice of what is and isn't a component command
 is a pragmatic choice depending on your taste and judgement.
@@ -121,7 +121,7 @@ almost certainly the shell builtins `read` and `echo` should be counted as compo
 but whether the shell keywords `while`, `do` or `done` should be considered component commands
 is left to the user's discretion.
 
-> Why a single Javascript file for data and code?
+## Why a single Javascript file for data and code?
 
 This makes it work as a single standalone static HTML page.
 Adding more commands requires only a text editor.
@@ -129,7 +129,7 @@ No dependencies other than a browser, and no internet connection required.
 Debugging is easier as any errors from the browser
 correspond to the actual line number of the Javascript file.
 
-> What if a command works with more than one shell?
+## What if a command works with more than one shell?
 
 The `shell` field is intended to correspond to the shell most associated with a command,
 or the shell most mnemonic for recalling a command invocation.
@@ -141,7 +141,7 @@ and on Unix-like systems [with GNU coreutils](https://www.gnu.org/software/coreu
 However, today the `dir` command is most commonly associated with the `cmd.exe` interpreter
 for Windows NT, so for most people `cmd.exe` is the appropriate choice.
 
-> Why aren't multiple variations of a command permitted permitted per entry?
+## Why aren't multiple variations of a command permitted permitted per entry?
 
 While this might seem desirable in certain cases,
 such as for a long and short flag version of a command,
@@ -152,7 +152,7 @@ in addition to complicating the data model and interface for little real benefit
 Similarly, a single description is better than e.g. a verbose description
 and a terse description field.
 
-> Why are the command examples specific instead of more generalized?
+## Why are the command examples specific instead of more generalized?
 
 This is a stylistic choice: a command invocation
 should resemble real usage as much as possible,
