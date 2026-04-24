@@ -2,7 +2,7 @@
   "name": "my-one-liners",
   "version": "0.0.1",
   "description": "Searchable list of one-liner command-line inputs.",
-  "main": "my-one-liners.js",
+  "main": "one-liners.js",
   "scripts": {
     "test": "make"
   },
