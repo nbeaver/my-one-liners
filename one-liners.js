@@ -1758,6 +1758,12 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
+    "componentCommands": ["find", "sort"],
+    "description": "List files and directories sorted by group, owner, and permissions.",
+    "invocation": "find . -printf '%g:%u %M %p\\n' | sort",
+    "shell": "bash"
+  },
+  {
     "componentCommands": ["ls"],
     "description":
       "Print long listing format, including permissions, for the /var/log directory.",
