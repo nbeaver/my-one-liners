@@ -696,7 +696,7 @@ function editCommandButtonHandler(evt) {
 }
 
 function exportJSON() {
-  var filename = "my-one-liners.json";
+  var filename = "one-liners.json";
   var jsonBlob = new Blob([JSON.stringify(cmdInfo)], {
     type: "application/json",
     name: filename
