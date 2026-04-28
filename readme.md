@@ -209,7 +209,7 @@ or [metasyntactic variables](https://en.wikipedia.org/wiki/Metasyntactic_variabl
 - https://github.com/laktak/tome
 
 # Websites
-- https://bropages.org/ (defunct)
+- https://bropages.org/
 - https://explainshell.com/
 - https://www.commandlinefu.com/
 - https://cb.vu/unixtoolbox.html
