@@ -10,7 +10,7 @@ create-pages:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   script:
   - mkdir -p -- ./.public
-  - cp -- index.html my-one-liners.js styling.css ./.public
+  - cp -- index.html one-liners.js styling.css ./.public
   - mv -- .public public
   artifacts:
     paths:
