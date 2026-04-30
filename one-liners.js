@@ -1759,7 +1759,8 @@ var cmdInfo = [
   },
   {
     "componentCommands": ["find", "sort"],
-    "description": "List files and directories sorted by group, owner, and permissions.",
+    "description":
+      "List files and directories sorted by group, owner, and permissions.",
     "invocation": "find . -printf '%g:%u %M %p\\n' | sort",
     "shell": "bash"
   },
@@ -2554,6 +2555,116 @@ var cmdInfo = [
       "https://superuser.com/questions/74763/how-to-type-unicode-characters-in-kde",
       "https://userbase.kde.org/Tutorials/ComposeKey",
       "https://wiki.debian.org/XCompose"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["wget", "grep"],
+    "description": "Grep HTTP requests from wget.",
+    "invocation":
+      "wget --timeout=3 --tries=1 --spider --no-check-certificate 'http://google.com' |& grep 'HTTP request\\|Location:'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["getfattr"],
+    "description":
+      "List all extended attributes of files / folders in current directory.",
+    "invocation": "getfattr -dm- -- *",
+    "links": [
+      "https://superuser.com/questions/858210/how-can-you-show-list-all-extended-attributes-in-linux",
+      "https://unix.stackexchange.com/questions/180019/why-doesnt-getfattr-d-show-anything"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["attr"],
+    "description":
+      "Ignore a file in Dropbox folder so it isn't synced. This sets the extended attribute 'com.dropbox.ignored' to 1.",
+    "invocation":
+      "attr -s com.dropbox.ignored -V 1 ~/'Dropbox/file-to-ignore.pdf'",
+    "links": ["https://help.dropbox.com/sync/ignored-files"],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["setfattr"],
+    "description":
+      "Ignore a file in Dropbox folder so it isn't synced. This sets the extended attribute 'com.dropbox.ignored' to 1.",
+    "invocation":
+      "setfattr -n com.dropbox.ignored -v 1 ~/'Dropbox/file-to-ignore.pdf'",
+    "links": ["https://help.dropbox.com/sync/ignored-files"],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["attr"],
+    "description":
+      "Remove 'com.dropbox.ignored' attribute for a file in Dropbox folder so it syncs again.",
+    "invocation": "attr -r com.dropbox.ignored ~/'Dropbox/file-to-ignore.pdf'",
+    "links": ["https://help.dropbox.com/sync/ignored-files"],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["setfattr"],
+    "description":
+      "Remove 'com.dropbox.ignored' attribute for a file in Dropbox folder so it syncs again.",
+    "invocation":
+      "setfattr -x com.dropbox.ignored ~/'Dropbox/file-to-ignore.pdf'",
+    "links": ["https://help.dropbox.com/sync/ignored-files"],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["attr"],
+    "description":
+      "Ignore a Git repo folder in Dropbox folder so it isn't synced.",
+    "invocation":
+      "attr -s com.dropbox.ignored -V 1 ~/'Dropbox/example-repo/.git'",
+    "links": ["https://help.dropbox.com/sync/ignored-files"],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdftk"],
+    "description": "Split out a single page of a PDF (page 17 in this case).",
+    "invocation": "pdftk example.pdf cat 17 output page-17.pdf",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdftk"],
+    "description":
+      "Get a range of pages from a PDF (10 through 12 and 17 to the end in this case).",
+    "invocation": "pdftk myoldfile.pdf cat 10-12 17-end output mynewfile.pdf",
+    "links": [
+      "https://askubuntu.com/questions/221962/how-can-i-extract-a-page-range-a-part-of-a-pdf",
+      "https://stackoverflow.com/questions/17776582/split-a-pdf-in-two",
+      "https://superuser.com/questions/1882737/remove-the-first-three-pages-of-a-pdf-file-using-pdftk",
+      "https://unix.stackexchange.com/questions/796293/how-do-i-extract-some-pages-of-a-pdf-into-another-pdf-file",
+      "http://linuxcommando.blogspot.com/2013/02/splitting-up-is-easy-for-pdf-file.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdftk"],
+    "description": "Remove last page of a PDF.",
+    "invocation": "pdftk example.pdf cat '1-r2' output last-page-removed.pdf",
+    "links": [
+      "https://stackoverflow.com/questions/17705974/remove-the-last-page-of-a-pdf-file-using-pdftk",
+      "https://www.pdflabs.com/docs/pdftk-cli-examples/"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdftk"],
+    "description": "Get all but a single page (number 17 in this case).",
+    "invocation": "pdftk myoldfile.pdf cat '~17' output mynewfile.pdf",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["gs"],
+    "description": "Extract pages 1-4 of a PDF using GhostScript.",
+    "exampleOutput":
+      "GPL Ghostscript 10.02.1 (2023-11-01)\nCopyright (C) 2023 Artifex Software, Inc.  All rights reserved.\nThis software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:\nsee the file COPYING for details.\n   **** Warning: File has some garbage before %PDF- .\nProcessing pages 1 through 4.\nPage 1\nPage 2\nPage 3\nPage 4\n\nThe following errors were encountered at least once while processing this file:\n\txref table was repaired\n\n   **** This file had errors that were repaired or ignored.\n   **** The file was produced by: \n   **** >>>> Acrobat Distiller 5.00 for Macintosh <<<<\n   **** Please notify the author of the software that produced this\n   **** file that it does not conform to Adobe's published PDF\n   **** specification.",
+    "invocation":
+      "gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -dFirstPage=1 -dLastPage=4 -sOutputFile=example-pages1-4.pdf example.pdf",
+    "links": [
+      "http://linuxcommando.blogspot.com/2014/01/how-to-split-up-pdf-files-part-2.html"
     ],
     "shell": "bash"
   }
