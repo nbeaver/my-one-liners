@@ -19,6 +19,10 @@ install-npm:
 initialize-eslint-config:
 	npm init @eslint/config@latest
 
+.PHONY: outdated-npm
+outdated-npm:
+	npm outdated
+
 .PHONY: update-npm
 update-npm:
 	npm update
