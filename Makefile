@@ -11,7 +11,7 @@ lint-html:
 
 .PHONY: install-npm
 install-npm:
-	npm ci
+	npm clean-install
 	# npm install eslint globals
 # https://stackoverflow.com/questions/52499617/what-is-the-difference-between-npm-install-and-npm-ci
 
