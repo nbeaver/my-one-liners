@@ -19,5 +19,10 @@ install-npm:
 initialize-eslint-config:
 	npm init @eslint/config@latest
 
+.PHONY: update-npm
+update-npm:
+	npm update
+
+
 readme.html : readme.md
 	cmark "$<" > "$@"
