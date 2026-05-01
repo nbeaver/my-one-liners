@@ -1760,24 +1760,8 @@ var cmdInfo = [
   {
     "componentCommands": ["find", "sort"],
     "description":
-      "List files and directories sorted by group, owner, and permissions.",
+      "List files and directories sorted by group, owner, and permissions. (Impromptu permissions report.)",
     "invocation": "find . -printf '%g:%u %M %p\\n' | sort",
-    "shell": "bash"
-  },
-  {
-    "componentCommands": ["ls"],
-    "description":
-      "Print long listing format, including permissions, for the /var/log directory.",
-    "exampleOutput": "drwxr-xr-x 23 root root 4096 May 23 08:18 /var/log\n",
-    "invocation": "ls -ld /var/log",
-    "shell": "bash"
-  },
-  {
-    "componentCommands": ["stat"],
-    "description": "Print permissions of the /var/log directory.",
-    "exampleOutput":
-      "  File: ‘/var/log’\n  Size: 4096      \tBlocks: 8          IO Block: 4096   directory\nDevice: 801h/2049d\tInode: 30416373    Links: 23\nAccess: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)\nAccess: 2016-05-23 09:59:45.411033488 -0500\nModify: 2016-05-23 08:18:12.333311420 -0500\nChange: 2016-05-23 08:18:12.333311420 -0500\n Birth: -",
-    "invocation": "stat /var/log",
     "shell": "bash"
   },
   {
@@ -1807,6 +1791,22 @@ var cmdInfo = [
     "links": [
       "https://unix.stackexchange.com/questions/126040/convert-the-permissions-in-ls-l-output-to-octal"
     ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["ls"],
+    "description":
+      "Print long listing format, including permissions, for the /var/log directory.",
+    "exampleOutput": "drwxr-xr-x 23 root root 4096 May 23 08:18 /var/log\n",
+    "invocation": "ls -ld /var/log",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["stat"],
+    "description": "Print permissions of the /var/log directory.",
+    "exampleOutput":
+      "  File: ‘/var/log’\n  Size: 4096      \tBlocks: 8          IO Block: 4096   directory\nDevice: 801h/2049d\tInode: 30416373    Links: 23\nAccess: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)\nAccess: 2016-05-23 09:59:45.411033488 -0500\nModify: 2016-05-23 08:18:12.333311420 -0500\nChange: 2016-05-23 08:18:12.333311420 -0500\n Birth: -",
+    "invocation": "stat /var/log",
     "shell": "bash"
   },
   {
