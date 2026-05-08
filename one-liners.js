@@ -2153,6 +2153,19 @@ var cmdInfo = [
     "shell": "cmd.exe"
   },
   {
+    "componentCommands": [
+      "netsh"
+    ],
+    "description": "List WiFi (wlan) interfaces, including SSID and signal quality.",
+    "exampleOutput": "\r\nThere is 1 interface on the system: \r\n\r\n    Name                   : Wi-Fi 2\r\n    Description            : Intel(R) Wi-Fi 6E AX210 160MHz #2\r\n    GUID                   : 0e9b7811-4e78-4b20-9345-3f6b93e1b825\r\n    Physical address       : bc:09:1b:f4:42:73\r\n    Interface type         : Primary\r\n    State                  : connected\r\n    SSID                   : my-home-wifi\r\n    AP BSSID               : 76:83:c2:04:cf:63\r\n    Band                   : 5 GHz\r\n    Channel                : 36\r\n    Connected Akm-cipher   : [ akm = 00-0f-ac:02, cipher =  00-0f-ac:04 ]\r\n    Network type           : Infrastructure\r\n    Radio type             : 802.11ac\r\n    Authentication         : WPA2-Personal\r\n    Cipher                 : CCMP\r\n    Connection mode        : Auto Connect\r\n    Receive rate (Mbps)    : 234\r\n    Transmit rate (Mbps)   : 260\r\n    Signal                 : 81% \r\n    Rssi                   : -63\r\n    Profile                : my-home-wifi \r\n    QoS MSCS Configured         : 0\r\n    QoS Map Configured          : 0\r\n    QoS Map Allowed by Policy   : 0\r\n\r\n",
+    "invocation": "netsh wlan show interfaces",
+    "links": [
+      "https://superuser.com/questions/991457/how-do-i-display-a-list-of-wi-fi-connections-using-netsh",
+      "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-wlan"
+    ],
+    "shell": "cmd.exe"
+  },
+  {
     "componentCommands": ["source"],
     "description": "Make bash re-read modified .bashrc file",
     "invocation": "source ~/.bashrc",
