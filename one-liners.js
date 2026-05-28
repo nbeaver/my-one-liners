@@ -2680,5 +2680,162 @@ var cmdInfo = [
       "http://linuxcommando.blogspot.com/2014/01/how-to-split-up-pdf-files-part-2.html"
     ],
     "shell": "bash"
+  },
+  {
+    "componentCommands": ["snap"],
+    "description": "Use snap to run an application directly.",
+    "invocation": "snap run slack",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["snap"],
+    "description": "Enable debug mode for slack snap package.",
+    "invocation": "snap set slack debugmode=true",
+    "links": [
+      "https://forum.snapcraft.io/t/slack-snap-stopped-working-after-ubuntu-updates/51066/4"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["chmod"],
+    "description":
+      "Make all files under current directory readable and writable by current user.",
+    "invocation": "chmod -R u+rw .",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["for do done ffmpeg"],
+    "description":
+      "Iterate over all MP4 files in current directory and convert to MP3.",
+    "invocation":
+      "for f in *.mp4; do ffmpeg -i \"$f\" -c:a libmp3lame \"${f%.mp4}.mp3\"; done",
+    "links": [
+      "https://stackoverflow.com/questions/38449239/converting-all-the-mp4-audio-files-in-a-folder-to-mp3-using-ffmpeg",
+      "https://stackoverflow.com/questions/5784661/how-do-you-convert-an-entire-directory-with-ffmpeg"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["for do done ffmpeg"],
+    "description":
+      "Iterate over all WAV files in current directory and convert to MP3.",
+    "invocation":
+      "for f in *.wav; do ffmpeg -i \"$f\" -c:a libmp3lame \"${f%.wav}.mp3\"; done",
+    "links": [
+      "https://stackoverflow.com/questions/3255674/convert-audio-files-to-mp3-using-ffmpeg",
+      "https://stackoverflow.com/questions/5784661/how-do-you-convert-an-entire-directory-with-ffmpeg"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["calibre-debug"],
+    "description": "Run calibre in debug mode and save output to out.txt",
+    "invocation": "calibre-debug --gui 2>&1 | tee out.txt",
+    "links": [
+      "https://manual.calibre-ebook.com/generated/en/calibre-debug.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdftocairo"],
+    "description": "Embed fonts into a PDF",
+    "invocation": "pdftocairo -pdf input.pdf output.pdf.",
+    "links": [
+      "https://stackoverflow.com/questions/4231656/how-do-i-embed-fonts-in-an-existing-pdf/",
+      "https://stackoverflow.com/questions/12857849/how-to-repair-a-pdf-file-and-embed-missing-fonts/"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["gs"],
+    "description": "Embed fonts into a PDF",
+    "invocation":
+      "gs -sFONTPATH=/path/to/fonts:/another/dir/with/more/fonts -o output-pdf-with-embedded-fonts.pdf -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress input-pdf-where-some-fonts-are-not-embedded.pdf",
+    "links": [
+      "https://stackoverflow.com/questions/4231656/how-do-i-embed-fonts-in-an-existing-pdf/",
+      "https://stackoverflow.com/questions/12857849/how-to-repair-a-pdf-file-and-embed-missing-fonts/"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["inkscape"],
+    "description": "Export SVG to PNG using Inkscape v1.0 and later.",
+    "invocation":
+      "inkscape \"image.svg\" --export-overwrite --export-filename=\"out.png\" --export-width=128 --export-height=128",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["inkscape"],
+    "description":
+      "Export SVG to PNG using Inkscape v1.0 and later (short flags).",
+    "invocation": "inkscape -w 128 -h 128 image.svg -o out.png",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["inkscape"],
+    "description":
+      "Export SVG to PNG using older versions of Inkscape, e.g. 0.92.2",
+    "invocation": "inkscape -z -e out.png -w 128 -h 128 image.svg",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["readelf"],
+    "description": "Get build ID from an elf binary.",
+    "invocation": "readelf -n /usr/bin/gawk | grep -A4 build.id",
+    "links": [
+      "https://man.archlinux.org/man/debuginfod.8.en",
+      "https://manpages.debian.org/experimental/debuginfod/debuginfod-find.1.en.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["python3"],
+    "description":
+      "Reduce the fraction 2340/1080; works in python 3.9 and later.\nOutput: 13/6",
+    "invocation":
+      "python3 -c \"from fractions import Fraction; print(Fraction(2340, 1080))\"",
+    "links": [
+      "https://stackoverflow.com/questions/17537613/does-python-have-a-function-to-reduce-fractions"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["mutool"],
+    "description": "Inspect PDF for errors.",
+    "invocation": "mutool info example.pdf",
+    "links": [
+      "https://bitsgalore.org/2021/09/06/pdf-processing-and-analysis-with-open-source-tools.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["gs"],
+    "description": "Inspect PDF for errors.",
+    "invocation":
+      "gs -dNOPAUSE -dBATCH -dPDFSTOPONERROR -sDEVICE=nullpage example.pdf",
+    "links": [
+      "https://bitsgalore.org/2021/09/06/pdf-processing-and-analysis-with-open-source-tools.html",
+      "https://stackoverflow.com/questions/3108201/detect-if-pdf-file-is-correct-header-pdf",
+      "https://ghostscript.readthedocs.io/en/latest/Use.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdfcpu"],
+    "description": "Inspect PDF for errors.",
+    "invocation": "pdfcpu validate -m strict example.pdf",
+    "links": [
+      "https://pdfcpu.io/",
+      "https://bitsgalore.org/2021/09/06/pdf-processing-and-analysis-with-open-source-tools.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["python3", "attr"],
+    "description":
+      "Create a new Python virtual environment in .venv but make Dropbox ignore it.",
+    "invocation":
+      "python3 -m venv .venv; attr -s com.dropbox.ignored -V 1 .venv",
+    "shell": "bash"
   }
 ];
