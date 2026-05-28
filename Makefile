@@ -3,6 +3,10 @@ lint-js:
 	npm exec -- prettier --write "**/*.js"
 	npm exec -- eslint --fix "**/*.js"
 
+.PHONY: format-js
+format-js:
+	npm exec -- prettier --write "**/*.js"
+
 # https://docs.npmjs.com/cli/v8/commands/npx#npx-vs-npm-exec
 
 .PHONY: lint-html
