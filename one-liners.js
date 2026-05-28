@@ -2739,7 +2739,7 @@ var cmdInfo = [
   {
     "componentCommands": ["pdftocairo"],
     "description": "Embed fonts into a PDF",
-    "invocation": "pdftocairo -pdf input.pdf output.pdf.",
+    "invocation": "pdftocairo -pdf input.pdf output.pdf",
     "links": [
       "https://stackoverflow.com/questions/4231656/how-do-i-embed-fonts-in-an-existing-pdf/",
       "https://stackoverflow.com/questions/12857849/how-to-repair-a-pdf-file-and-embed-missing-fonts/"
