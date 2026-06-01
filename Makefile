@@ -38,6 +38,7 @@ readme.html : readme.md
 
 one-liners-exported.json : one-liners.js
 	./writeJson.js "$(JS)" "$(JSON)"
+	chmod -w -- "$(JSON)"
 
 .PHONY: clean
 clean:
