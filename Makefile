@@ -1,3 +1,5 @@
+JS:=one-liners.js
+JSON:=one-liners-exported.json
 .PHONY: lint-js
 lint-js:
 	npm exec -- prettier --write "**/*.js"
@@ -31,6 +33,12 @@ outdated-npm:
 update-npm:
 	npm update
 
-
 readme.html : readme.md
 	cmark "$<" > "$@"
+
+one-liners-exported.json : one-liners.js
+	./writeJson.js "$(JS)" "$(JSON)"
+
+.PHONY: clean
+clean:
+	rm -f -- $(JSON)
