@@ -26,6 +26,6 @@ fs.writeFile(outJsonPath, string, "utf8", err => {
   if (err) {
     console.error(err);
   } else {
-    // file written successfully
+    console.debug(`'${outJsonPath}' written successfully`);
   }
 });
