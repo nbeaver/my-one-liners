@@ -1,5 +1,6 @@
-JS:=one-liners.js
-JSON:=one-liners-exported.json
+JS_MAIN:=one-liners.js
+JS:=$(JS_MAIN) writeJson.js
+JSON:=exported-one-liners.json
 .PHONY: lint-js
 lint-js:
 	npm exec -- prettier --write "**/*.js"
@@ -36,8 +37,8 @@ update-npm:
 readme.html : readme.md
 	cmark "$<" > "$@"
 
-one-liners-exported.json : one-liners.js
-	./writeJson.js "$(JS)" "$(JSON)"
+$(JSON) : $(JS_MAIN)
+	./writeJson.js "$(JS_MAIN)" "$(JSON)"
 	chmod -w -- "$(JSON)"
 
 .PHONY: clean
