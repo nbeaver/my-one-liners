@@ -18,4 +18,12 @@ export default defineConfig([
         }],
     },
   },
+  {
+    files: ["writeJson.js"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: globals.node,
+    },
+  },
 ]);
