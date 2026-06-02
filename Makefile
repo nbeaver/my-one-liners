@@ -38,6 +38,7 @@ readme.html : readme.md
 	cmark "$<" > "$@"
 
 $(JSON) : $(JS_MAIN)
+	chmod +w -- "$(JSON)"
 	./writeJson.js "$(JS_MAIN)" "$(JSON)"
 	chmod -w -- "$(JSON)"
 
