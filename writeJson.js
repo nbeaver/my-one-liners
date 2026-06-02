@@ -20,7 +20,11 @@ contextMock.window = contextMock;
 vm.createContext(contextMock);
 vm.runInContext(fileData, contextMock);
 
-const string = JSON.stringify(contextMock.cmdInfo, null, 2);
+const string = JSON.stringify(
+  contextMock.cmdInfo,
+  null, // include all string-keyed properties of objects
+  2 // indent by 2 spaces
+);
 
 fs.writeFile(outJsonPath, string, "utf8", err => {
   if (err) {
