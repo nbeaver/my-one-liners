@@ -38,9 +38,9 @@ readme.html : readme.md
 	cmark "$<" > "$@"
 
 $(JSON) : $(JS_MAIN)
-	chmod +w -- "$(JSON)"
+	if test -f $(JSON); then chmod --silent +w -- "$(JSON)"; fi
 	./writeJson.js "$(JS_MAIN)" "$(JSON)"
-	chmod -w -- "$(JSON)"
+	chmod --silent -w -- "$(JSON)"
 
 .PHONY: clean
 clean:
