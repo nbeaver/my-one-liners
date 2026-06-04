@@ -1,4 +1,5 @@
 General
+- [ ] Add an "About" page
 - [x] Use camelCase for all keys
 - [x] Dark mode
 - [ ] Dark/light mode toggle
@@ -7,6 +8,7 @@ General
 - [x] Add a button to append a command to cmdInfo with appropriate fields
 - [x] Add an "Edit" button for each command and sync any changes back to cmdInfo global variable.
 - [x] Prevent closing the tab if there are unsaved changes
+- [ ] Warn on import if there are unsaved changes
 
 Validation
 - [x] Do basic validation on data on first load
