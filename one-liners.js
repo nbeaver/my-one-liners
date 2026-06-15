@@ -1129,6 +1129,7 @@ var cmdInfo = [
     "componentCommands": ["encguess"],
     "description":
       "Guess / infer character encoding of all files ending in '.txt'.",
+    "exampleOutput": "chardos.txt\tunknown\neol_dos.txt\tUS-ASCII\nunix.txt\tUS-ASCII\nutf16ben.txt\tUTF-16BE\nutf16be.txt\tUTF-16\nutf16bin.txt\tUTF-32\nutf16len.txt\tUTF-16LE\nutf16le.txt\tUTF-16\nutf16m.txt\tUTF-16\nutf16.txt\tUTF-16\nutf16u.txt\tUTF-16\nutf8dosn.txt\tUTF-8\nutf8dos.txt\tUTF-8\nutf8unix.txt\tUTF-8\nutf8unxb.txt\tUTF-8",
     "invocation": "encguess *.txt",
     "links": [
       "https://stackoverflow.com/questions/805418/how-can-i-find-encoding-of-a-file-via-a-script-on-linux",
@@ -2791,7 +2792,8 @@ var cmdInfo = [
   {
     "componentCommands": ["python3"],
     "description":
-      "Reduce the fraction 2340/1080; works in python 3.9 and later.\nOutput: 13/6",
+      "Reduce the fraction 2340/1080; works in python 3.9 and later.",
+    "exampleOutput": "13/6",
     "invocation":
       "python3 -c \"from fractions import Fraction; print(Fraction(2340, 1080))\"",
     "links": [
