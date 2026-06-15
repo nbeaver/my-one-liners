@@ -1,4 +1,5 @@
-General
+# General
+
 - [ ] Make a visually obvious distinction between the "Search/filter" area and the "Edit/Import/Export" section
 - [ ] Add an "About" page
 - [x] Use camelCase for all keys
@@ -11,7 +12,8 @@ General
 - [x] Prevent closing the tab if there are unsaved changes
 - [ ] Warn on import if there are unsaved changes
 
-Validation
+# Validation
+
 - [x] Do basic validation on data on first load
 - [x] Check for duplicate commands
 - [x] Allow optional UUID for error messages and debugging
@@ -22,10 +24,17 @@ Validation
 - [x] Write tests for validation functions
 - [x] Do proper form validation when adding a new command
 
-Search
+# Search
+
+## Description
+
 - [ ] Default to ignoring order of words in matching description search, add checkbox for "Strict order"
-- [x] Regex search toggle for command invocation
+- [ ] Return partial matches for description search if there are no matches for all words.
 - [ ] Regex search option for description
+
+## Other fields
+
+- [x] Regex search toggle for command invocation
 - [ ] Regex search option for example output
 - [x] Search box for component commands
 - [x] Search box for command string
@@ -38,7 +47,8 @@ Search
 - [x] Button for no shells
 - [x] Button for all shells
 
-Output
+# Output
+
 - [x] Click to copy command
 - [ ] Toggle for component commands
 - [x] Toggle for description
@@ -47,7 +57,8 @@ Output
 - [x] Toggle for links
 - [x] Show all commands by default
 
-Maybe do
+# Maybe do
+
 - [x] Display number of unique invocations and unique component commands for each shell
 - [ ] Add toggle box for optional fields, e.g. "has links", "has example output"
 - [ ] Save GUI state in URL (share a link that approximates linking directly to a command)
