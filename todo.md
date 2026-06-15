@@ -1,4 +1,5 @@
 General
+- [ ] Make a visually obvious distinction between the "Search/filter" area and the "Edit/Import/Export" section
 - [ ] Add an "About" page
 - [x] Use camelCase for all keys
 - [x] Dark mode
@@ -22,6 +23,7 @@ Validation
 - [x] Do proper form validation when adding a new command
 
 Search
+- [ ] Default to ignoring order of words in matching description search, add checkbox for "Strict order"
 - [x] Regex search toggle for command invocation
 - [ ] Regex search option for description
 - [ ] Regex search option for example output
