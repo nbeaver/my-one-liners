@@ -2839,5 +2839,32 @@ var cmdInfo = [
     "invocation":
       "python3 -m venv .venv; attr -s com.dropbox.ignored -V 1 .venv",
     "shell": "bash"
+  },
+  {
+    "componentCommands": ["wmic"],
+    "exampleOutput": "SMBIOSBIOSVersion  \n03.05              \n",
+    "description":
+      "Print BIOS version for current machine.",
+    "invocation":
+      "wmic bios get smbiosbiosversion",
+    "links": [
+      "https://superuser.com/questions/1319418/find-out-bios-version-from-windows",
+      "https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/lenovo-v-series-laptops/v110-15isk/videos/vid100778-how-to-check-bios-version-in-windows"
+    ],
+    "shell": "cmd.exe"
+  },
+  {
+    "componentCommands": [
+      "Get-CimInstance"
+    ],
+    "description":
+      "Print BIOS version for current machine.",
+    "exampleOutput": "\n\nSMBIOSBIOSVersion : 03.05\nManufacturer      : INSYDE Corp.\nName              : 03.05\nSerialNumber      : FRANPACPA62452000D\nVersion           : INSYDE - 2\n\n\n\n",
+    "invocation": "Get-CimInstance Win32_BIOS",
+    "links": [
+      "https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/07-working-with-wmi?view=powershell-7.6",
+      "https://learn.microsoft.com/en-us/powershell/scripting/samples/collecting-information-about-computers?view=powershell-7.6"
+    ],
+    "shell": "PowerShell"
   }
 ];
