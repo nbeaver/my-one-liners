@@ -32,8 +32,6 @@ such as `grep` without matching `pgrep` or `ls` without matching `lsof`.
 After experimenting with a [command-line search version of this idea](https://github.com/nbeaver/cmd_oysters)
 I decided to do a simpler version with static HTML instead.
 
-<!--- TODO link to hosted version --->
-
 This provides the benefits of interactivity
 without requiring an additional installation step,
 since almost all users have access to a web browser.
