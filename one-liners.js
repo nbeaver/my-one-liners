@@ -2879,7 +2879,7 @@ var cmdInfo = [
     "componentCommands": ["git"],
     "description": "Clone a git repository while preserving symbolic links.",
     "invocation":
-      "git clone --config core.symlinks=true 'https://example.org//myrepo.git' 'myrepo'",
+      "git clone --config core.symlinks=true 'https://example.org/myrepo.git' 'myrepo'",
     "links": [
       "https://cal.com/help/event-types/symbolic-issues",
       "https://stackoverflow.com/questions/11662868/what-happens-when-i-clone-a-repository-with-symlinks-on-windows",
