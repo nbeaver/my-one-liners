@@ -2866,5 +2866,313 @@ var cmdInfo = [
       "https://learn.microsoft.com/en-us/powershell/scripting/samples/collecting-information-about-computers?view=powershell-7.6"
     ],
     "shell": "PowerShell"
+  },
+  {
+    "componentCommands": [
+      "git"
+    ],
+    "description": "Fetch git server status for branch 'main' from remote called 'origin'. Useful when status or tags are stale.",
+    "invocation": "git fetch 'origin/main'",
+    "links": [
+      "https://git-scm.com/docs/git-fetch",
+      "https://stackoverflow.com/questions/47009237/what-is-the-difference-between-git-fetch-and-git-fetch-origin"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "git"
+    ],
+    "description": "Clone a git repository while preserving symbolic links.",
+    "invocation": "git clone --config core.symlinks=true 'https://example.org//myrepo.git' 'myrepo'",
+    "links": [
+      "https://cal.com/help/event-types/symbolic-issues",
+      "https://stackoverflow.com/questions/11662868/what-happens-when-i-clone-a-repository-with-symlinks-on-windows",
+      "https://stackoverflow.com/questions/51119974/how-do-you-preserve-symlinks-in-a-git-repo",
+      "https://superuser.com/questions/1713099/symbolic-link-does-not-work-in-git-over-windows",
+      "https://www.jvt.me/posts/2024/10/01/mac-symlinks-git/"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "rsync"
+    ],
+    "description": "Copy a folder without copying symbolic links.",
+    "invocation": "rsync --archive --no-links /usr/share/backgrounds/ ./usr_share_backgrounds/",
+    "links": [
+      "https://unix.stackexchange.com/questions/392236/how-can-i-copy-a-directory-structure-but-ignore-symlinks"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "ocrmypdf"
+    ],
+    "description": "Add an OCR layer to a PDF.",
+    "invocation": "ocrmypdf input.pdf out-with-ocr.pdf",
+    "links": [
+      "https://ocrmypdf.readthedocs.io/en/latest/cookbook.html#basic-examples"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "ls"
+    ],
+    "description": "See LD_DEBUG options.",
+    "invocation": "LD_DEBUG=help ls",
+    "links": [
+      "https://bnikolic.co.uk/blog/linux-ld-debug.html"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "grep"
+    ],
+    "description": "Match python3 scripts in /usr/bin/.",
+    "invocation": "grep --max-count=1 --binary-files=without-match 'python3' /usr/bin/*",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "gnome-sesssion-quit",
+      "gnome-session-quit"
+    ],
+    "description": "Exit gnome session from command line.",
+    "invocation": "gnome-session-quit --no-prompt --logout --force",
+    "links": [
+      "https://gnome.pages.gitlab.gnome.org/gnome-session/re03.html",
+      "https://fostips.com/log-out-command-linux-desktops/",
+      "https://askubuntu.com/questions/180628/how-can-i-logout-from-the-gui-using-cli"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "busctl"
+    ],
+    "description": "Restart gnome session from command line.",
+    "invocation": "busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart(\"Restarting…\")'",
+    "links": [
+      "https://askubuntu.com/questions/100226/how-to-restart-gnome-shell-from-command-line",
+      "https://www.linuxuprising.com/2020/07/how-to-restart-gnome-shell-from-command.html",
+      "https://discourse.gnome.org/t/proper-way-to-restart-the-shell-from-a-script/9797"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "loginctl"
+    ],
+    "description": "List running graphical sessions.",
+    "invocation": "loginctl list-sessions",
+    "links": [
+      "https://askubuntu.com/questions/180628/how-can-i-logout-from-the-gui-using-cli"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "top"
+    ],
+    "description": "Write output of top(1) command in batch mode to a text file (long flags style).",
+    "invocation": "top --iterations=1 --batch > top.txt",
+    "links": [
+      "https://stackoverflow.com/questions/11729720/how-to-capture-the-output-of-a-top-command-in-a-file-in-linux"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "top"
+    ],
+    "description": "Write output of top(1) command in batch mode to a text file.",
+    "invocation": "top -n 1 -b > top.txt",
+    "links": [
+      "https://stackoverflow.com/questions/11729720/how-to-capture-the-output-of-a-top-command-in-a-file-in-linux"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "top"
+    ],
+    "description": "For process IDs 4469 and 4530, Write output of top(1) command in batch mode to a text file.",
+    "invocation": "top -n 1 -b -p 4469,4530 > top.txt",
+    "links": [
+      "https://stackoverflow.com/questions/11729720/how-to-capture-the-output-of-a-top-command-in-a-file-in-linux"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "systemctl"
+    ],
+    "description": "List all running systemd services.",
+    "invocation": "systemctl list-units --type=service",
+    "links": [
+      "https://unix.stackexchange.com/questions/517872/systemctl-list-all-possible-including-disabled-services"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "systemctl"
+    ],
+    "description": "List all running systemd services for the current user (not global services).",
+    "invocation": "systemctl list-units --user --type=service",
+    "links": [
+      "https://askubuntu.com/questions/1300152/how-to-list-user-services-of-another-user-under-ubuntu",
+      "https://til.devjugal.com/linux/systemd/list-services-of-a-user"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "systemctl"
+    ],
+    "description": "Example output:\n● cups.service - CUPS Scheduler\n     Loaded: loaded (/usr/lib/systemd/system/cups.service; enabled; preset: enabled)\n     Active: active (running) since Sun 2026-06-14 08:38:40 EDT; 1 day 4h ago\nTriggeredBy: ● cups.path\n             ● cups.socket\n       Docs: man:cupsd(8)\n   Main PID: 123124 (cupsd)\n     Status: \"Scheduler is running...\"\n      Tasks: 1 (limit: 38061)\n     Memory: 8.3M (peak: 35.6M)\n        CPU: 3.222s\n     CGroup: /system.slice/cups.service\n             └─123124 /usr/sbin/cupsd -l\nJun 14 08:38:40 mica systemd[1]: Starting cups.service - CUPS Scheduler...\nJun 14 08:38:40 mica systemd[1]: Started cups.service - CUPS Scheduler.",
+    "invocation": "#systemctl list-units --user --type=service Look at the status of a particular service, in this case the CUPS printing daemon.; systemctl status cups.service; #",
+    "links": [
+      "https://systemd.io/DEBUGGING/#status-and-logs-of-services",
+      "https://systemd.io/TIPS_AND_TRICKS/#showing-runtime-status"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "systemctl"
+    ],
+    "description": "Look at the status of a particular user service, in this case for the ssh-agent.",
+    "invocation": "systemctl status --user ssh-agent.service",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "journalctl"
+    ],
+    "description": "Look at journal for GNOME shell as it updates in real time.",
+    "invocation": "journalctl --follow /usr/bin/gnome-shell",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "pdfimages"
+    ],
+    "description": "Extract embedded images from a PDF and dump them as JPEGs into the current directory, with filenames starting with 'mypdf-images'.",
+    "invocation": "pdfimages -j mypdf.pdf mypdf-images",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "pdfimages"
+    ],
+    "description": "Extract embedded images from first page of a PDF.",
+    "invocation": "pdfimages -all -f 1 -l 1 -j mypdf.pdf mypdf-images",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "pdfimages"
+    ],
+    "description": "List embedded images from first page of a PDF.",
+    "invocation": "pdfimages -l -f 1 -l 1 -j mypdf.pdf mypdf-images",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "pango-view"
+    ],
+    "description": "Render text in 'example-file.txt' to 'out.png' with FreeMono font.",
+    "invocation": "pango-view --font='FreeMono' -qo out.png example-file.txt",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "ffmpeg"
+    ],
+    "description": "Preprocess a video for use with Sony Vegas.",
+    "invocation": "ffmpeg -i 'example.webm' -vf 'format=rgb24,crop=w=.95*iw:h=.95*ih,scale=w=1440:h=1080,minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,hqdn3d=luma_spatial=10' -c:v libx264 -qp 18 -preset medium -s 1440x1080 -aspect 4:3 -r 60 -pix_fmt yuv420p -af 'aresample=48000,aexciter,afftdn' -c:a alac upscale.mov",
+    "links": [
+      "https://www.youtube.com/watch?v=I7lgm7LqzBA&t=659s"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "yt-dlp"
+    ],
+    "description": "Download a YouTube video to the current directory with JSON metadata and a filesystem-safe filename, in this case 'Me_at_the_zoo-[jNQXAC9IVRw].webm' and 'Me_at_the_zoo-[jNQXAC9IVRw].info.json'.",
+    "invocation": "yt-dlp --write-info-json --restrict-filenames 'https://www.youtube.com/watch?v=jNQXAC9IVRw'",
+    "links": [
+      "https://stackoverflow.com/questions/32322771/what-is-the-downloader-option-restrict-filenames-for-python-youtube-dl",
+      "https://github.com/yt-dlp/yt-dlp"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "yt-dlp"
+    ],
+    "description": "Download just the JSON metadata for a YouTube video to the current directory, in this case 'Me_at_the_zoo-[jNQXAC9IVRw].info.json'.",
+    "invocation": "yt-dlp --write-info-json --restrict-filenames --skip-download 'https://www.youtube.com/watch?v=jNQXAC9IVRw'",
+    "links": [
+      "https://stackoverflow.com/questions/32322771/what-is-the-downloader-option-restrict-filenames-for-python-youtube-dl",
+      "https://unix.stackexchange.com/questions/528302/how-can-i-download-just-the-info-json-files-using-youtube-dl-without-downloadin",
+      "https://github.com/yt-dlp/yt-dlp"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "yt-dlp"
+    ],
+    "description": "List the available subtitles for a YouTube video.",
+    "exampleOutput": "[youtube] Extracting URL: https://www.youtube.com/watch?v=jNQXAC9IVRw\n[youtube] jNQXAC9IVRw: Downloading webpage\n[youtube] jNQXAC9IVRw: Downloading android vr player API JSON\n[youtube] jNQXAC9IVRw: Downloading player 5b27766f-main\n[youtube] [jsc:deno] Solving JS challenges using deno\n[info] Available automatic captions for jNQXAC9IVRw:\nLanguage   Name                               Formats\nab-en      Abkhazian from English             vtt, srt, ttml, srv3, srv2, srv1, json3\naa-en      Afar from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\naf-en      Afrikaans from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nak-en      Akan from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nsq-en      Albanian from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nam-en      Amharic from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nar-en      Arabic from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nhy-en      Armenian from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nas-en      Assamese from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nay-en      Aymara from English                vtt, srt, ttml, srv3, srv2, srv1, json3\naz-en      Azerbaijani from English           vtt, srt, ttml, srv3, srv2, srv1, json3\nbn-en      Bangla from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nba-en      Bashkir from English               vtt, srt, ttml, srv3, srv2, srv1, json3\neu-en      Basque from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nbe-en      Belarusian from English            vtt, srt, ttml, srv3, srv2, srv1, json3\nbho-en     Bhojpuri from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nbs-en      Bosnian from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nbr-en      Breton from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nbg-en      Bulgarian from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nmy-en      Burmese from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nca-en      Catalan from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nceb-en     Cebuano from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nzh-Hans-en Chinese (Simplified) from English  vtt, srt, ttml, srv3, srv2, srv1, json3\nzh-Hant-en Chinese (Traditional) from English vtt, srt, ttml, srv3, srv2, srv1, json3\nco-en      Corsican from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nhr-en      Croatian from English              vtt, srt, ttml, srv3, srv2, srv1, json3\ncs-en      Czech from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nda-en      Danish from English                vtt, srt, ttml, srv3, srv2, srv1, json3\ndv-en      Divehi from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nnl-en      Dutch from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\ndz-en      Dzongkha from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nen-en      English from English               vtt, srt, ttml, srv3, srv2, srv1, json3\neo-en      Esperanto from English             vtt, srt, ttml, srv3, srv2, srv1, json3\net-en      Estonian from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nee-en      Ewe from English                   vtt, srt, ttml, srv3, srv2, srv1, json3\nfo-en      Faroese from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nfj-en      Fijian from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nfil-en     Filipino from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nfi-en      Finnish from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nfr-en      French from English                vtt, srt, ttml, srv3, srv2, srv1, json3\ngaa-en     Ga from English                    vtt, srt, ttml, srv3, srv2, srv1, json3\ngl-en      Galician from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nlg-en      Ganda from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nka-en      Georgian from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nde-en      German from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nel-en      Greek from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\ngn-en      Guarani from English               vtt, srt, ttml, srv3, srv2, srv1, json3\ngu-en      Gujarati from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nht-en      Haitian Creole from English        vtt, srt, ttml, srv3, srv2, srv1, json3\nha-en      Hausa from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nhaw-en     Hawaiian from English              vtt, srt, ttml, srv3, srv2, srv1, json3\niw-en      Hebrew from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nhi-en      Hindi from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nhmn-en     Hmong from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nhu-en      Hungarian from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nis-en      Icelandic from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nig-en      Igbo from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nid-en      Indonesian from English            vtt, srt, ttml, srv3, srv2, srv1, json3\niu-en      Inuktitut from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nga-en      Irish from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nit-en      Italian from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nja-en      Japanese from English              vtt, srt, ttml, srv3, srv2, srv1, json3\njv-en      Javanese from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nkl-en      Kalaallisut from English           vtt, srt, ttml, srv3, srv2, srv1, json3\nkn-en      Kannada from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nkk-en      Kazakh from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nkha-en     Khasi from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nkm-en      Khmer from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nrw-en      Kinyarwanda from English           vtt, srt, ttml, srv3, srv2, srv1, json3\nko-en      Korean from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nkri-en     Krio from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nku-en      Kurdish from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nky-en      Kyrgyz from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nlo-en      Lao from English                   vtt, srt, ttml, srv3, srv2, srv1, json3\nla-en      Latin from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nlv-en      Latvian from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nln-en      Lingala from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nlt-en      Lithuanian from English            vtt, srt, ttml, srv3, srv2, srv1, json3\nlua-en     Luba-Lulua from English            vtt, srt, ttml, srv3, srv2, srv1, json3\nluo-en     Luo from English                   vtt, srt, ttml, srv3, srv2, srv1, json3\nlb-en      Luxembourgish from English         vtt, srt, ttml, srv3, srv2, srv1, json3\nmk-en      Macedonian from English            vtt, srt, ttml, srv3, srv2, srv1, json3\nmg-en      Malagasy from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nms-en      Malay from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nml-en      Malayalam from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nmt-en      Maltese from English               vtt, srt, ttml, srv3, srv2, srv1, json3\ngv-en      Manx from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nmi-en      Māori from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nmr-en      Marathi from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nmn-en      Mongolian from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nmfe-en     Morisyen from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nne-en      Nepali from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nnew-en     Newari from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nnso-en     Northern Sotho from English        vtt, srt, ttml, srv3, srv2, srv1, json3\nno-en      Norwegian from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nny-en      Nyanja from English                vtt, srt, ttml, srv3, srv2, srv1, json3\noc-en      Occitan from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nor-en      Odia from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nom-en      Oromo from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nos-en      Ossetic from English               vtt, srt, ttml, srv3, srv2, srv1, json3\npam-en     Pampanga from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nps-en      Pashto from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nfa-en      Persian from English               vtt, srt, ttml, srv3, srv2, srv1, json3\npl-en      Polish from English                vtt, srt, ttml, srv3, srv2, srv1, json3\npt-en      Portuguese from English            vtt, srt, ttml, srv3, srv2, srv1, json3\npt-PT-en   Portuguese (Portugal) from English vtt, srt, ttml, srv3, srv2, srv1, json3\npa-en      Punjabi from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nqu-en      Quechua from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nro-en      Romanian from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nrn-en      Rundi from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nru-en      Russian from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nsm-en      Samoan from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nsg-en      Sango from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nsa-en      Sanskrit from English              vtt, srt, ttml, srv3, srv2, srv1, json3\ngd-en      Scottish Gaelic from English       vtt, srt, ttml, srv3, srv2, srv1, json3\nsr-en      Serbian from English               vtt, srt, ttml, srv3, srv2, srv1, json3\ncrs-en     Seselwa Creole French from English vtt, srt, ttml, srv3, srv2, srv1, json3\nsn-en      Shona from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nsd-en      Sindhi from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nsi-en      Sinhala from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nsk-en      Slovak from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nsl-en      Slovenian from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nso-en      Somali from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nst-en      Southern Sotho from English        vtt, srt, ttml, srv3, srv2, srv1, json3\nes-en      Spanish from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nsu-en      Sundanese from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nsw-en      Swahili from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nss-en      Swati from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nsv-en      Swedish from English               vtt, srt, ttml, srv3, srv2, srv1, json3\ntg-en      Tajik from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nta-en      Tamil from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\ntt-en      Tatar from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nte-en      Telugu from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nth-en      Thai from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nbo-en      Tibetan from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nti-en      Tigrinya from English              vtt, srt, ttml, srv3, srv2, srv1, json3\nto-en      Tongan from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nts-en      Tsonga from English                vtt, srt, ttml, srv3, srv2, srv1, json3\ntn-en      Tswana from English                vtt, srt, ttml, srv3, srv2, srv1, json3\ntum-en     Tumbuka from English               vtt, srt, ttml, srv3, srv2, srv1, json3\ntr-en      Turkish from English               vtt, srt, ttml, srv3, srv2, srv1, json3\ntk-en      Turkmen from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nuk-en      Ukrainian from English             vtt, srt, ttml, srv3, srv2, srv1, json3\nur-en      Urdu from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nug-en      Uyghur from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nuz-en      Uzbek from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nve-en      Venda from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nvi-en      Vietnamese from English            vtt, srt, ttml, srv3, srv2, srv1, json3\nwar-en     Waray from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\ncy-en      Welsh from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nfy-en      Western Frisian from English       vtt, srt, ttml, srv3, srv2, srv1, json3\nwo-en      Wolof from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nxh-en      Xhosa from English                 vtt, srt, ttml, srv3, srv2, srv1, json3\nyi-en      Yiddish from English               vtt, srt, ttml, srv3, srv2, srv1, json3\nyo-en      Yoruba from English                vtt, srt, ttml, srv3, srv2, srv1, json3\nzu-en      Zulu from English                  vtt, srt, ttml, srv3, srv2, srv1, json3\nab-de      Abkhazian from German              vtt, srt, ttml, srv3, srv2, srv1, json3\naa-de      Afar from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\naf-de      Afrikaans from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nak-de      Akan from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\nsq-de      Albanian from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nam-de      Amharic from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nar-de      Arabic from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nhy-de      Armenian from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nas-de      Assamese from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nay-de      Aymara from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\naz-de      Azerbaijani from German            vtt, srt, ttml, srv3, srv2, srv1, json3\nbn-de      Bangla from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nba-de      Bashkir from German                vtt, srt, ttml, srv3, srv2, srv1, json3\neu-de      Basque from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nbe-de      Belarusian from German             vtt, srt, ttml, srv3, srv2, srv1, json3\nbho-de     Bhojpuri from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nbs-de      Bosnian from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nbr-de      Breton from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nbg-de      Bulgarian from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nmy-de      Burmese from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nca-de      Catalan from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nceb-de     Cebuano from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nzh-Hans-de Chinese (Simplified) from German   vtt, srt, ttml, srv3, srv2, srv1, json3\nzh-Hant-de Chinese (Traditional) from German  vtt, srt, ttml, srv3, srv2, srv1, json3\nco-de      Corsican from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nhr-de      Croatian from German               vtt, srt, ttml, srv3, srv2, srv1, json3\ncs-de      Czech from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nda-de      Danish from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\ndv-de      Divehi from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nnl-de      Dutch from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\ndz-de      Dzongkha from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nen-de      English from German                vtt, srt, ttml, srv3, srv2, srv1, json3\neo-de      Esperanto from German              vtt, srt, ttml, srv3, srv2, srv1, json3\net-de      Estonian from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nee-de      Ewe from German                    vtt, srt, ttml, srv3, srv2, srv1, json3\nfo-de      Faroese from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nfj-de      Fijian from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nfil-de     Filipino from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nfi-de      Finnish from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nfr-de      French from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\ngaa-de     Ga from German                     vtt, srt, ttml, srv3, srv2, srv1, json3\ngl-de      Galician from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nlg-de      Ganda from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nka-de      Georgian from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nde-de      German from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nel-de      Greek from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\ngn-de      Guarani from German                vtt, srt, ttml, srv3, srv2, srv1, json3\ngu-de      Gujarati from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nht-de      Haitian Creole from German         vtt, srt, ttml, srv3, srv2, srv1, json3\nha-de      Hausa from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nhaw-de     Hawaiian from German               vtt, srt, ttml, srv3, srv2, srv1, json3\niw-de      Hebrew from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nhi-de      Hindi from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nhmn-de     Hmong from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nhu-de      Hungarian from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nis-de      Icelandic from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nig-de      Igbo from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\nid-de      Indonesian from German             vtt, srt, ttml, srv3, srv2, srv1, json3\niu-de      Inuktitut from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nga-de      Irish from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nit-de      Italian from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nja-de      Japanese from German               vtt, srt, ttml, srv3, srv2, srv1, json3\njv-de      Javanese from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nkl-de      Kalaallisut from German            vtt, srt, ttml, srv3, srv2, srv1, json3\nkn-de      Kannada from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nkk-de      Kazakh from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nkha-de     Khasi from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nkm-de      Khmer from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nrw-de      Kinyarwanda from German            vtt, srt, ttml, srv3, srv2, srv1, json3\nko-de      Korean from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nkri-de     Krio from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\nku-de      Kurdish from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nky-de      Kyrgyz from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nlo-de      Lao from German                    vtt, srt, ttml, srv3, srv2, srv1, json3\nla-de      Latin from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nlv-de      Latvian from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nln-de      Lingala from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nlt-de      Lithuanian from German             vtt, srt, ttml, srv3, srv2, srv1, json3\nlua-de     Luba-Lulua from German             vtt, srt, ttml, srv3, srv2, srv1, json3\nluo-de     Luo from German                    vtt, srt, ttml, srv3, srv2, srv1, json3\nlb-de      Luxembourgish from German          vtt, srt, ttml, srv3, srv2, srv1, json3\nmk-de      Macedonian from German             vtt, srt, ttml, srv3, srv2, srv1, json3\nmg-de      Malagasy from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nms-de      Malay from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nml-de      Malayalam from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nmt-de      Maltese from German                vtt, srt, ttml, srv3, srv2, srv1, json3\ngv-de      Manx from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\nmi-de      Māori from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nmr-de      Marathi from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nmn-de      Mongolian from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nmfe-de     Morisyen from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nne-de      Nepali from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nnew-de     Newari from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nnso-de     Northern Sotho from German         vtt, srt, ttml, srv3, srv2, srv1, json3\nno-de      Norwegian from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nny-de      Nyanja from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\noc-de      Occitan from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nor-de      Odia from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\nom-de      Oromo from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nos-de      Ossetic from German                vtt, srt, ttml, srv3, srv2, srv1, json3\npam-de     Pampanga from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nps-de      Pashto from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nfa-de      Persian from German                vtt, srt, ttml, srv3, srv2, srv1, json3\npl-de      Polish from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\npt-de      Portuguese from German             vtt, srt, ttml, srv3, srv2, srv1, json3\npt-PT-de   Portuguese (Portugal) from German  vtt, srt, ttml, srv3, srv2, srv1, json3\npa-de      Punjabi from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nqu-de      Quechua from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nro-de      Romanian from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nrn-de      Rundi from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nru-de      Russian from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nsm-de      Samoan from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nsg-de      Sango from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nsa-de      Sanskrit from German               vtt, srt, ttml, srv3, srv2, srv1, json3\ngd-de      Scottish Gaelic from German        vtt, srt, ttml, srv3, srv2, srv1, json3\nsr-de      Serbian from German                vtt, srt, ttml, srv3, srv2, srv1, json3\ncrs-de     Seselwa Creole French from German  vtt, srt, ttml, srv3, srv2, srv1, json3\nsn-de      Shona from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nsd-de      Sindhi from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nsi-de      Sinhala from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nsk-de      Slovak from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nsl-de      Slovenian from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nso-de      Somali from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nst-de      Southern Sotho from German         vtt, srt, ttml, srv3, srv2, srv1, json3\nes-de      Spanish from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nsu-de      Sundanese from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nsw-de      Swahili from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nss-de      Swati from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nsv-de      Swedish from German                vtt, srt, ttml, srv3, srv2, srv1, json3\ntg-de      Tajik from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nta-de      Tamil from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\ntt-de      Tatar from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nte-de      Telugu from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nth-de      Thai from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\nbo-de      Tibetan from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nti-de      Tigrinya from German               vtt, srt, ttml, srv3, srv2, srv1, json3\nto-de      Tongan from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nts-de      Tsonga from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\ntn-de      Tswana from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\ntum-de     Tumbuka from German                vtt, srt, ttml, srv3, srv2, srv1, json3\ntr-de      Turkish from German                vtt, srt, ttml, srv3, srv2, srv1, json3\ntk-de      Turkmen from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nuk-de      Ukrainian from German              vtt, srt, ttml, srv3, srv2, srv1, json3\nur-de      Urdu from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\nug-de      Uyghur from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nuz-de      Uzbek from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nve-de      Venda from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nvi-de      Vietnamese from German             vtt, srt, ttml, srv3, srv2, srv1, json3\nwar-de     Waray from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\ncy-de      Welsh from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nfy-de      Western Frisian from German        vtt, srt, ttml, srv3, srv2, srv1, json3\nwo-de      Wolof from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nxh-de      Xhosa from German                  vtt, srt, ttml, srv3, srv2, srv1, json3\nyi-de      Yiddish from German                vtt, srt, ttml, srv3, srv2, srv1, json3\nyo-de      Yoruba from German                 vtt, srt, ttml, srv3, srv2, srv1, json3\nzu-de      Zulu from German                   vtt, srt, ttml, srv3, srv2, srv1, json3\n[info] Available subtitles for jNQXAC9IVRw:\nLanguage Name    Formats\nen       English vtt, srt, ttml, srv3, srv2, srv1, json3\nde       German  vtt, srt, ttml, srv3, srv2, srv1, json3\n",
+    "invocation": "yt-dlp --list-subs 'https://www.youtube.com/watch?v=jNQXAC9IVRw'",
+    "links": [
+      "https://www.ubuntubuzz.com/2023/07/practically-useful-youtube-dl-command-list.html",
+      "https://superuser.com/questions/927523/how-to-download-only-subtitles-of-videos-using-youtube-dl",
+      "https://github.com/yt-dlp/yt-dlp"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "yt-dlp"
+    ],
+    "description": "Download just the subtitles for a YouTube video to the current directory, in this case 'Me_at_the_zoo-[jNQXAC9IVRw].en.vtt'.",
+    "invocation": "yt-dlp --write-subs --restrict-filenames --sub-langs='en.*' --skip-download 'https://www.youtube.com/watch?v=jNQXAC9IVRw'",
+    "links": [
+      "https://superuser.com/questions/927523/how-to-download-only-subtitles-of-videos-using-youtube-dl",
+      "https://github.com/yt-dlp/yt-dlp"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "yt-dlp"
+    ],
+    "description": "Download just the automatic subtitles for a YouTube video to the current directory, in this case 'Me_at_the_zoo-[jNQXAC9IVRw].en.vtt'.",
+    "invocation": "yt-dlp --write-auto-sub --write-info-json --sub-lang en 'https://www.youtube.com/watch?v=QncdLPYLPkA'",
+    "links": [
+      "https://superuser.com/questions/927523/how-to-download-only-subtitles-of-videos-using-youtube-dl",
+      "https://github.com/yt-dlp/yt-dlp"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "yt-dlp"
+    ],
+    "description": "Download a YouTube video to ~/Videos/me-at-the-zoo.webm and create parent directories as needed.",
+    "invocation": "yt-dlp --output ~/Videos/me-at-the-zoo.webm 'https://www.youtube.com/watch?v=jNQXAC9IVRw'",
+    "links": [
+      "https://www.ditig.com/yt-dlp-cheat-sheet",
+      "https://github.com/yt-dlp/yt-dlp"
+    ],
+    "shell": "bash"
   }
 ];
