@@ -3033,8 +3033,9 @@ var cmdInfo = [
     "componentCommands": [
       "systemctl"
     ],
-    "description": "Example output:\n● cups.service - CUPS Scheduler\n     Loaded: loaded (/usr/lib/systemd/system/cups.service; enabled; preset: enabled)\n     Active: active (running) since Sun 2026-06-14 08:38:40 EDT; 1 day 4h ago\nTriggeredBy: ● cups.path\n             ● cups.socket\n       Docs: man:cupsd(8)\n   Main PID: 123124 (cupsd)\n     Status: \"Scheduler is running...\"\n      Tasks: 1 (limit: 38061)\n     Memory: 8.3M (peak: 35.6M)\n        CPU: 3.222s\n     CGroup: /system.slice/cups.service\n             └─123124 /usr/sbin/cupsd -l\nJun 14 08:38:40 mica systemd[1]: Starting cups.service - CUPS Scheduler...\nJun 14 08:38:40 mica systemd[1]: Started cups.service - CUPS Scheduler.",
-    "invocation": "#systemctl list-units --user --type=service Look at the status of a particular service, in this case the CUPS printing daemon.; systemctl status cups.service; #",
+    "description": "Look at the status of a particular service, in this case the CUPS printing daemon.",
+    "exampleOutput": "● cups.service - CUPS Scheduler\n     Loaded: loaded (/usr/lib/systemd/system/cups.service; enabled; preset: enabled)\n     Active: active (running) since Sun 2026-06-14 08:38:40 EDT; 1 day 4h ago\nTriggeredBy: ● cups.path\n             ● cups.socket\n       Docs: man:cupsd(8)\n   Main PID: 123124 (cupsd)\n     Status: \"Scheduler is running...\"\n      Tasks: 1 (limit: 38061)\n     Memory: 8.3M (peak: 35.6M)\n        CPU: 3.222s\n     CGroup: /system.slice/cups.service\n             └─123124 /usr/sbin/cupsd -l\nJun 14 08:38:40 mica systemd[1]: Starting cups.service - CUPS Scheduler...\nJun 14 08:38:40 mica systemd[1]: Started cups.service - CUPS Scheduler.",
+    "invocation": "systemctl status cups.service",
     "links": [
       "https://systemd.io/DEBUGGING/#status-and-logs-of-services",
       "https://systemd.io/TIPS_AND_TRICKS/#showing-runtime-status"
