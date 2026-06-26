@@ -2706,7 +2706,7 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
-    "componentCommands": ["for do done ffmpeg"],
+    "componentCommands": ["for", "ffmpeg"],
     "description":
       "Iterate over all MP4 files in current directory and convert to MP3.",
     "invocation":
@@ -2718,7 +2718,7 @@ var cmdInfo = [
     "shell": "bash"
   },
   {
-    "componentCommands": ["for do done ffmpeg"],
+    "componentCommands": ["for", "ffmpeg"],
     "description":
       "Iterate over all WAV files in current directory and convert to MP3.",
     "invocation":
