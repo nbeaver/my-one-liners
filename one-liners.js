@@ -2637,8 +2637,30 @@ var cmdInfo = [
   },
   {
     "componentCommands": ["pdftk"],
+    "description": "Combine / merge / concatenate two PDFs into a single PDF.",
+    "invocation": "pdftk file1.pdf file2.pdf cat output combined.pdf",
+    "links": [
+      "https://stackoverflow.com/questions/50728273/merging-pdf-files-with-pdftk",
+      "https://superuser.com/questions/366490/how-to-merge-multiple-pdf-files-onto-one-page-with-pdftk",
+      "https://askubuntu.com/questions/1312657/how-can-i-merge-numbered-pdf-files-with-pdftk"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdftk"],
     "description": "Split out a single page of a PDF (page 17 in this case).",
     "invocation": "pdftk example.pdf cat 17 output page-17.pdf",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["pdftk"],
+    "description": "Split out page 17 of a PDF and rotate 90 degrees clockwise.",
+    "invocation": "pdftk example.pdf cat 17east output page-17.pdf",
+    "links": [
+      "https://stackoverflow.com/questions/3136610/pdftk-rotating-pages-problem",
+      "https://unix.stackexchange.com/questions/394065/command-line-how-do-you-rotate-a-pdf-file-90-degrees",
+      "https://askubuntu.com/questions/569328/rotate-a-specific-page-of-a-pdf-file"
+    ],
     "shell": "bash"
   },
   {
