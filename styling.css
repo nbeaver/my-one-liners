@@ -9,6 +9,19 @@ fieldset {
   display:inline;
 }
 
+#searchBox {
+  border: thin solid black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  display: inline flow-root;
+}
+
+span.sectionTitle{
+  font-size: 20px;
+  font-weight: bold;
+}
+
 div.single-cmd {
   border: thin solid black;
   border-radius: 5px;
