@@ -149,10 +149,10 @@ function getChosenShells() {
 const elem = {};
 function updateSearch() {
   const strings = {
-    "invocation": elem.command.value,
-    "description": elem.description.value,
     "componentCommands": elem.componentCommands.value,
+    "description": elem.description.value,
     "exampleOutput": elem.exampleOutput.value,
+    "invocation": elem.command.value,
     "links": elem.links.value
   };
   const componentCommandsList = noWhiteSpace(
@@ -160,10 +160,10 @@ function updateSearch() {
   );
   const chosenShellsList = getChosenShells();
   const search = {
-    "invocation": strings.invocation,
-    "description": strings.description.trim(),
     "componentCommands": new Set(componentCommandsList),
+    "description": strings.description.trim(),
     "exampleOutput": strings.exampleOutput,
+    "invocation": strings.invocation,
     "links": strings.links,
     "shells": new Set(chosenShellsList)
   };
@@ -176,35 +176,35 @@ function updateSearch() {
   };
 
   const showField = {
-    "invocation": true,
     "description": elem.toggleDescription.checked,
+    "edit": elem.toggleEdit.checked,
     "exampleOutput": elem.toggleExampleOutput.checked,
+    "invocation": true,
     "links": elem.toggleLinks.checked,
-    "shell": elem.toggleShell.checked,
-    "edit": elem.toggleEdit.checked
+    "shell": elem.toggleShell.checked
   };
   const tree = document.createDocumentFragment();
   // Match the search text.
   for (const [index, info] of cmdInfo.entries()) {
     const match = {
-      "invocation": matchCommand(
-        search.invocation,
-        info.invocation,
-        regex.invocation
+      "componentCommands": matchComponentCommands(
+        search.componentCommands,
+        new Set(info.componentCommands)
       ),
       "description": matchDescription(
         search.description,
         info.description,
         caseSensitive.description
       ),
-      "componentCommands": matchComponentCommands(
-        search.componentCommands,
-        new Set(info.componentCommands)
-      ),
       "exampleOutput": matchExampleOutput(
         search.exampleOutput,
         info.exampleOutput,
         caseSensitive.exampleOutput
+      ),
+      "invocation": matchCommand(
+        search.invocation,
+        info.invocation,
+        regex.invocation
       ),
       "links": matchLinks(search.links, info.links),
       "shell": matchShell(search.shells, info.shell)
@@ -327,10 +327,10 @@ function validateSingleEntry(entry, i, assert = true, returnValid = false) {
   const keyType = {
     "componentCommands": "object",
     "description": "string",
-    "invocation": "string",
-    "shell": "string",
     "exampleOutput": "string",
+    "invocation": "string",
     "links": "object",
+    "shell": "string",
     "uuid": "string"
   };
   const arrayType = {
@@ -698,8 +698,8 @@ function editCommandButtonHandler(evt) {
 function exportJSON() {
   var filename = "one-liners.json";
   var jsonBlob = new Blob([JSON.stringify(cmdInfo)], {
-    type: "application/json",
-    name: filename
+    name: filename,
+    type: "application/json"
   });
   var tmpAnchor = document.createElement("a");
   tmpAnchor.href = URL.createObjectURL(jsonBlob);
@@ -763,12 +763,12 @@ function saveNewCommand(evt) {
   }
   // Mandatory fields
   let cmd = {
-    shell: document.getElementById("newShell").value,
-    invocation: document.getElementById("newCommand").value,
-    description: document.getElementById("newDescription").value,
     componentCommands: parseComponentCommands(
       document.getElementById("newComponentCommands").value
-    )
+    ),
+    description: document.getElementById("newDescription").value,
+    invocation: document.getElementById("newCommand").value,
+    shell: document.getElementById("newShell").value
   };
   // Optional fields
   let exampleOutput = document.getElementById("newExampleOutput").value;
@@ -818,12 +818,12 @@ function saveEditedCommand(evt) {
   }
   // Mandatory fields
   let cmd = {
-    shell: document.getElementById("editShell").value,
-    invocation: document.getElementById("editCommand").value,
-    description: document.getElementById("editDescription").value,
     componentCommands: parseComponentCommands(
       document.getElementById("editComponentCommands").value
-    )
+    ),
+    description: document.getElementById("editDescription").value,
+    invocation: document.getElementById("editCommand").value,
+    shell: document.getElementById("editShell").value
   };
   // Optional fields
   let exampleOutput = document.getElementById("editExampleOutput").value;
@@ -2187,9 +2187,9 @@ var cmdInfo = [
   {
     "componentCommands": ["apt-cache"],
     "description": "Search only package names for 'blender', not descriptions.",
-    "invocation": "apt-cache search --names-only 'blender'",
     "exampleOutput":
       "blender-dbgsym - debug symbols for blender\nblender - Very fast and versatile 3D modeller/renderer\nblender-data - Very fast and versatile 3D modeller/renderer - data package\nblender-doc - Blender Manual by the Blender Foundation\nblender-ogrexml-1.9 - Blender Exporter for OGRE\nblender-ogrexml-next - Blender Exporter for OGRE-Next",
+    "invocation": "apt-cache search --names-only 'blender'",
     "links": [
       "https://askubuntu.com/questions/298506/using-apt-cache-search",
       "https://stackoverflow.com/questions/2944104/why-does-apt-cache-search-find-packages-which-do-not-match-the-given-regular-exp",
@@ -2201,8 +2201,8 @@ var cmdInfo = [
     "componentCommands": ["apt-cache"],
     "description":
       "Only exact string 'mc' in package names, not '*mc*' that matches e.g. 'wmcalc'",
-    "invocation": "apt-cache search --names-only '^mc$'",
     "exampleOutput": "mc - Midnight Commander - a powerful file manager\n",
+    "invocation": "apt-cache search --names-only '^mc$'",
     "links": [
       "https://askubuntu.com/questions/298506/using-apt-cache-search",
       "https://askubuntu.com/questions/934739/apt-search-limit-to-exact-match"
@@ -2260,24 +2260,24 @@ var cmdInfo = [
   {
     "componentCommands": ["amixer"],
     "description": "See master sound output settings.",
-    "invocation": "amixer get Master",
     "exampleOutput":
       "Simple mixer control 'Master',0\n  Capabilities: pvolume pswitch pswitch-joined\n  Playback channels: Front Left - Front Right\n  Limits: Playback 0 - 65536\n  Mono:\n  Front Left: Playback 19066 [29%] [on]\n  Front Right: Playback 18600 [28%] [on]\n",
+    "invocation": "amixer get Master",
     "shell": "bash"
   },
   {
     "componentCommands": ["pactl"],
     "description": "Get default sink for PulseAudio.",
-    "invocation": "pactl get-default-sink",
     "exampleOutput": "alsa_output.pci-0000_00_1f.3.analog-stereo\n",
+    "invocation": "pactl get-default-sink",
     "shell": "bash"
   },
   {
     "componentCommands": ["cat"],
     "description": "Show sound cards and headsets.",
-    "invocation": "cat /proc/asound/cards",
     "exampleOutput":
       " 0 [PCH            ]: HDA-Intel - HDA Intel PCH\n                      HDA Intel PCH at 0xf2420000 irq 33\n",
+    "invocation": "cat /proc/asound/cards",
     "links": [
       "https://docs.kernel.org/sound/designs/procfile.html#card-specific-files"
     ],
@@ -2654,7 +2654,8 @@ var cmdInfo = [
   },
   {
     "componentCommands": ["pdftk"],
-    "description": "Split out page 17 of a PDF and rotate 90 degrees clockwise.",
+    "description":
+      "Split out page 17 of a PDF and rotate 90 degrees clockwise.",
     "invocation": "pdftk example.pdf cat 17east output page-17.pdf",
     "links": [
       "https://stackoverflow.com/questions/3136610/pdftk-rotating-pages-problem",
@@ -2865,8 +2866,8 @@ var cmdInfo = [
   },
   {
     "componentCommands": ["wmic"],
-    "exampleOutput": "SMBIOSBIOSVersion  \n03.05              \n",
     "description": "Print BIOS version for current machine.",
+    "exampleOutput": "SMBIOSBIOSVersion  \n03.05              \n",
     "invocation": "wmic bios get smbiosbiosversion",
     "links": [
       "https://superuser.com/questions/1319418/find-out-bios-version-from-windows",

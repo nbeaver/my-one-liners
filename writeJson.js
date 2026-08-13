@@ -9,11 +9,11 @@ const outJsonPath = args[1];
 
 const fileData = fs.readFileSync(jsFilePath, "utf8");
 const contextMock = {
-  window: {},
+  console: console,
   document: {
     getElementById: () => ({ addEventListener: () => {} })
   },
-  console: console
+  window: {}
 };
 
 contextMock.window = contextMock;
