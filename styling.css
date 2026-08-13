@@ -4,6 +4,11 @@ body {
   font-size:  18px;
 }
 
+fieldset {
+  border-radius: 5px;
+  display:inline;
+}
+
 div.single-cmd {
   border: thin solid black;
   border-radius: 5px;
