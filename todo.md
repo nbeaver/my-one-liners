@@ -1,6 +1,6 @@
 # General
 
-- [ ] Make a visually obvious distinction between the "Search/filter" area and the "Edit/Import/Export" section
+- [x] Make a visually obvious distinction between the "Search/filter" area and the "Edit/Import/Export" section
 - [ ] Add an "About" page
 - [x] Use camelCase for all keys
 - [x] Dark mode

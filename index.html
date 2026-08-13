@@ -51,18 +51,12 @@
       </fieldset>
     </div>
     <div id="editBox" class="section">
-      <span class="sectionTitle">Edit / Input / Output</span>
+      <span class="sectionTitle">Edit / New / Import / Export</span>
       <div>
         <label>
           <input type="checkbox" id="toggleEdit" class="search"/>
           Edit commands
         </label>
-      </div>
-      <div>
-        <input id="importJSON" type="file" multiple="false" class="IO" title="Import JSON file"/>
-      </div>
-      <div>
-        <input type="button" id="exportJSON" class="IO" value="Export..."  title="Export JSON file"/>
       </div>
       <div>
         <button id="newCommandButton" popovertarget="newCommandDialog" title="Add a new command">New command...</button>
@@ -144,6 +138,12 @@
             </fieldset>
           </form>
         </dialog>
+      </div>
+      <div>
+        <input id="importJSON" type="file" multiple="false" class="IO" title="Import JSON file"/>
+      </div>
+      <div>
+        <input type="button" id="exportJSON" class="IO" value="Export..."  title="Export JSON file"/>
       </div>
     </div>
     <div id="output" class="search"></div>
