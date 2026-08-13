@@ -7,7 +7,7 @@
     <script src="one-liners.js"></script>
   </head>
   <body>
-    <div id="searchBox">
+    <div id="searchBox" class="section">
       <span class="sectionTitle">Filter commands</span>
       <div>
         <label for="command" title="Search for matching command invocation">Command:</label>
@@ -50,100 +50,102 @@
         <legend>shell options:</legend>
       </fieldset>
     </div>
-    <div>
-      <label>
-      <input type="checkbox" id="toggleEdit" class="search"/>
-      Edit commands
-      </label>
+    <div id="editBox" class="section">
+      <span class="sectionTitle">Edit / Input / Output</span>
+      <div>
+        <label>
+          <input type="checkbox" id="toggleEdit" class="search"/>
+          Edit commands
+        </label>
+      </div>
+      <div>
+        <input id="importJSON" type="file" multiple="false" class="IO" title="Import JSON file"/>
+      </div>
+      <div>
+        <input type="button" id="exportJSON" class="IO" value="Export..."  title="Export JSON file"/>
+      </div>
+      <div>
+        <button id="newCommandButton" popovertarget="newCommandDialog" title="Add a new command">New command...</button>
+        <dialog id="newCommandDialog" popover>
+          <form id="newCommandForm">
+            <fieldset>
+              <legend>Add a new command</legend>
+              <div>
+                <label for="shellInput" title="Shell">Shell:</label>
+                <input id="newShell" type="text" name="shellInput" class="monospace" required />
+              </div>
+              <div>
+                <label for="commandInput" title="Command invocation (what the shell runs)">Command:</label>
+                <input id="newCommand" type="text" name="commandInput" class="monospace" required />
+              </div>
+              <div>
+                <label for="componentCommandsInput" title="Space-delimited commands making up the command invocation">Component commands:</label>
+                <input id="newComponentCommands" type="text" name="componentCommandsInput" class="monospace" required />
+              </div>
+              <div>
+                <label for="descriptionInput">Description:</label>
+                <textarea id="newDescription" name="descriptionInput" class="proportional" required></textarea>
+              </div>
+              <div>
+                <label for="exampleOutputInput">Example output (optional):</label>
+                <textarea id="newExampleOutput" name="exampleOutputInput" class="monospace"></textarea>
+              </div>
+              <div>
+                <label for="linksInput" title="Links, one per line">Links (optional):</label>
+                <textarea id="newLinks" name="linksInput" class="monospace"></textarea>
+              </div>
+              <div>
+                <label for="uuidInput" title="Universally unique identifier">UUID (optional):</label>
+                <input id="newUUID" type="text" name="uuidInput" class="monospace" />
+              </div>
+              <div>
+                <button id="saveNewCommandButton" value="save" popovertarget="newCommandDialog" popovertargetaction="hide">Save</button>
+                <button id="cancelNewCommandButton" value="cancel" popovertarget="newCommandDialog" popovertargetaction="hide">Cancel (don't save)</button>
+              </div>
+            </fieldset>
+          </form>
+        </dialog>
+        <dialog id="editCommandDialog" popover>
+          <form id="editCommandForm">
+            <fieldset>
+              <legend>Edit a command</legend>
+              <div>
+                <label for="shellInput" title="Shell">Shell:</label>
+                <input id="editShell" type="text" name="shellInput" class="monospace" required />
+              </div>
+              <div>
+                <label for="commandInput" title="Command invocation (what the shell runs)">Command:</label>
+                <input id="editCommand" type="text" name="commandInput" class="monospace" required />
+              </div>
+              <div>
+                <label for="componentCommandsInput" title="Space-delimited commands making up the command invocation">Component commands:</label>
+                <input id="editComponentCommands" type="text" name="componentCommandsInput" class="monospace" required />
+              </div>
+              <div>
+                <label for="descriptionInput">Description:</label>
+                <textarea id="editDescription" name="descriptionInput" class="proportional" required></textarea>
+              </div>
+              <div>
+                <label for="exampleOutputInput">Example output (optional):</label>
+                <textarea id="editExampleOutput" name="exampleOutputInput" class="monospace"></textarea>
+              </div>
+              <div>
+                <label for="linksInput" title="Links, one per line">Links (optional):</label>
+                <textarea id="editLinks" name="linksInput" class="monospace"></textarea>
+              </div>
+              <div>
+                <label for="uuidInput" title="Universally unique identifier">UUID (optional):</label>
+                <input id="editUUID" type="text" name="uuidInput" class="monospace" />
+              </div>
+              <div>
+                <button id="saveEditedCommandButton" value="save" popovertarget="editCommandDialog" popovertargetaction="hide">Save</button>
+                <button id="cancelEditCommandButton" value="cancel" popovertarget="editCommandDialog" popovertargetaction="hide">Cancel (don't save)</button>
+              </div>
+            </fieldset>
+          </form>
+        </dialog>
+      </div>
     </div>
-    <div>
-      <input id="importJSON" type="file" multiple="false" class="IO" title="Import JSON file"/>
-    </div>
-    <div>
-      <input type="button" id="exportJSON" class="IO" value="Export..."  title="Export JSON file"/>
-    </div>
-    <div>
-      <button id="newCommandButton" popovertarget="newCommandDialog" title="Add a new command">New command...</button>
-      <dialog id="newCommandDialog" popover>
-        <form id="newCommandForm">
-          <fieldset>
-            <legend>Add a new command</legend>
-            <div>
-              <label for="shellInput" title="Shell">Shell:</label>
-              <input id="newShell" type="text" name="shellInput" class="monospace" required />
-            </div>
-            <div>
-              <label for="commandInput" title="Command invocation (what the shell runs)">Command:</label>
-              <input id="newCommand" type="text" name="commandInput" class="monospace" required />
-            </div>
-            <div>
-              <label for="componentCommandsInput" title="Space-delimited commands making up the command invocation">Component commands:</label>
-              <input id="newComponentCommands" type="text" name="componentCommandsInput" class="monospace" required />
-            </div>
-            <div>
-              <label for="descriptionInput">Description:</label>
-              <textarea id="newDescription" name="descriptionInput" class="proportional" required></textarea>
-            </div>
-            <div>
-              <label for="exampleOutputInput">Example output (optional):</label>
-              <textarea id="newExampleOutput" name="exampleOutputInput" class="monospace"></textarea>
-            </div>
-            <div>
-              <label for="linksInput" title="Links, one per line">Links (optional):</label>
-              <textarea id="newLinks" name="linksInput" class="monospace"></textarea>
-            </div>
-            <div>
-              <label for="uuidInput" title="Universally unique identifier">UUID (optional):</label>
-              <input id="newUUID" type="text" name="uuidInput" class="monospace" />
-            </div>
-            <div>
-              <button id="saveNewCommandButton" value="save" popovertarget="newCommandDialog" popovertargetaction="hide">Save</button>
-              <button id="cancelNewCommandButton" value="cancel" popovertarget="newCommandDialog" popovertargetaction="hide">Cancel (don't save)</button>
-            </div>
-          </fieldset>
-        </form>
-      </dialog>
-      <dialog id="editCommandDialog" popover>
-        <form id="editCommandForm">
-          <fieldset>
-            <legend>Edit a command</legend>
-            <div>
-              <label for="shellInput" title="Shell">Shell:</label>
-              <input id="editShell" type="text" name="shellInput" class="monospace" required />
-            </div>
-            <div>
-              <label for="commandInput" title="Command invocation (what the shell runs)">Command:</label>
-              <input id="editCommand" type="text" name="commandInput" class="monospace" required />
-            </div>
-            <div>
-              <label for="componentCommandsInput" title="Space-delimited commands making up the command invocation">Component commands:</label>
-              <input id="editComponentCommands" type="text" name="componentCommandsInput" class="monospace" required />
-            </div>
-            <div>
-              <label for="descriptionInput">Description:</label>
-              <textarea id="editDescription" name="descriptionInput" class="proportional" required></textarea>
-            </div>
-            <div>
-              <label for="exampleOutputInput">Example output (optional):</label>
-              <textarea id="editExampleOutput" name="exampleOutputInput" class="monospace"></textarea>
-            </div>
-            <div>
-              <label for="linksInput" title="Links, one per line">Links (optional):</label>
-              <textarea id="editLinks" name="linksInput" class="monospace"></textarea>
-            </div>
-            <div>
-              <label for="uuidInput" title="Universally unique identifier">UUID (optional):</label>
-              <input id="editUUID" type="text" name="uuidInput" class="monospace" />
-            </div>
-            <div>
-              <button id="saveEditedCommandButton" value="save" popovertarget="editCommandDialog" popovertargetaction="hide">Save</button>
-              <button id="cancelEditCommandButton" value="cancel" popovertarget="editCommandDialog" popovertargetaction="hide">Cancel (don't save)</button>
-            </div>
-          </fieldset>
-        </form>
-      </dialog>
-    </div>
-    <div id="output" class="search">
-    </div>
+    <div id="output" class="search"></div>
   </body>
 </html>
