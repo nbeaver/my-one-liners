@@ -16,6 +16,11 @@ export default defineConfig([
         quotes: ["error", "double", {
             avoidEscape: false,
         }],
+        "sort-keys": ["error", "asc", {
+          caseSensitive: true,
+          natural: false, // alphanumeric string sorting, not numeric
+          minKeys: 2
+        }]
     },
   },
   {
