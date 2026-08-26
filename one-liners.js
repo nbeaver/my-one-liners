@@ -3162,5 +3162,218 @@ var cmdInfo = [
       "https://github.com/yt-dlp/yt-dlp"
     ],
     "shell": "bash"
+  },
+  {
+    "componentCommands": ["ffprobe"],
+    "description":
+      "Get duration of a video in seconds.\nExample output:\n4.970000",
+    "invocation":
+      "ffprobe -i example.mp4 -show_entries format=duration -v error -of csv=\"p=0\"",
+    "links": [
+      "https://superuser.com/questions/361329/how-can-i-get-the-length-of-a-video-file-from-the-console",
+      "https://askubuntu.com/questions/224237/how-to-check-how-long-a-video-mp4-is-using-the-shell"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["ffprobe"],
+    "description": "Get duration of a video in hour:minute:seconds format.",
+    "invocation":
+      "ffprobe -i example.mp4 -show_entries format=duration -sexagesimal -v error -of csv=\"p=0\"",
+    "links": [
+      "https://superuser.com/questions/361329/how-can-i-get-the-length-of-a-video-file-from-the-console",
+      "https://askubuntu.com/questions/224237/how-to-check-how-long-a-video-mp4-is-using-the-shell"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["Get-PnpDevice"],
+    "description": "Save USB devices to text file.",
+    "invocation":
+      "Get-PnpDevice -InstanceId 'USB*' -Status OK | Out-File -FilePath \"USB_Devices.txt\" -Encoding UTF8",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["Get-PnpDevice"],
+    "description": "Save USB devices to CSV file.",
+    "invocation":
+      "Get-PnpDevice -PresentOnly | Where-Object { $_.InstanceId -match '^USB' } | Select-Object Status, Class, FriendlyName, InstanceId | Export-Csv -Path \"USB_Devices.csv\" -NoTypeInformation -Encoding UTF8",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["man", "col"],
+    "description": "Save the bash(1) man page to a plain text file.",
+    "invocation": "man bash | col -bx > man_bash.txt",
+    "links": [
+      "https://unix.stackexchange.com/questions/15855/how-to-dump-a-man-page"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["man", "col"],
+    "description":
+      "Save the bash(1) man page to a plain text file, using a width of 120 characters.",
+    "invocation": "MANWIDTH=120 man bash | col -bx > man_bash.txt",
+    "links": [
+      "https://unix.stackexchange.com/questions/15855/how-to-dump-a-man-page"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["iconv"],
+    "description": "Convert from UTF-8 to ISO-8859-1.",
+    "invocation":
+      "iconv -f UTF-8 -t ISO-8859-1 input_utf8.txt > output_latin1.txt",
+    "links": [
+      "https://stackoverflow.com/questions/44412168/convert-utf8-to-iso8859-1-using-iconv-command"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["iconv"],
+    "description":
+      "Convert from UTF8 to ISO8859-1, silently discarding encoding errors.",
+    "invocation":
+      "iconv -c -f UTF-8 -t ISO-8859-1 input_utf8.txt > output_latin1.txt",
+    "links": [
+      "https://stackoverflow.com/questions/44412168/convert-utf8-to-iso8859-1-using-iconv-command"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["xdg-mime"],
+    "description":
+      "Show default file manager application along with debug output.",
+    "invocation":
+      "XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query default 'inode/directory'",
+    "links": [
+      "https://askubuntu.com/questions/1292612/xdg-open-does-not-open-files-in-the-preferred-applicaton"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["xdg-mime"],
+    "description": "Show default PDF reader.",
+    "invocation": "xdg-mime query default 'application/pdf'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["xdg-mime"],
+    "description":
+      "Trace the file that gives the mimetype association for PDF files.",
+    "invocation":
+      "XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query default 'application/pdf'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["ktraderclient5"],
+    "description": "See how KDE handles the 'appplication/pdf' mimetype.",
+    "invocation": "ktraderclient5 --mimetype 'application/pdf'",
+    "links": [
+      "https://bugs.kde.org/show_bug.cgi?id=347353",
+      "https://unix.stackexchange.com/questions/565202/kde-is-not-saving-a-mime-type-file-association"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all directories with exact name 'build', works with mlocate but not plocate.",
+    "invocation": "locate -b '\\build'",
+    "links": [
+      "https://askubuntu.com/questions/831869/locate-command-for-searching-exact-filename-only"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all directories with exact name 'build', works with both mlocate and plocate.",
+    "invocation": "locate -b -r '^build$'",
+    "links": [
+      "https://askubuntu.com/questions/831869/locate-command-for-searching-exact-filename-only"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all files with a path or name containing 'LC_TIME', case-sensitive.",
+    "invocation": "locate 'LC_TIME'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all files with a path or name containing 'lc_time', ignoring case.",
+    "invocation": "locate -i 'LC_TIME'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all base filenames or base directory names containing '[' character.",
+    "invocation": "locate -b '\\['",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all base filenames or directories starting with 'conf'.",
+    "invocation": "locate -b 'conf*'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description": "Print all filenames or directories under /usr/share.",
+    "invocation": "locate '/usr/share/*'",
+    "links": [
+      "https://askubuntu.com/questions/33280/use-locate-under-some-specific-directory"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all filenames or directories ending with '.conf' under /usr/share.",
+    "invocation": "locate '/usr/share/*.conf'",
+    "links": [
+      "https://askubuntu.com/questions/33280/use-locate-under-some-specific-directory"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all file paths ending with '.conf', using built-in glob pattern.",
+    "invocation": "locate '*.conf'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all file paths ending with '.conf', using regular expressions.",
+    "invocation": "locate -r '\\.conf$'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all files that end with '.htm' and '.html' (basic POSIX regular expressions).",
+    "invocation": "locate -b -r '\\.\\(htm\\|html\\)$'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description":
+      "Print all files that end with '.htm' and  '.html' (extended POSIX regular expressions).",
+    "invocation": "locate -b --regex '\\.html?$'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": ["locate"],
+    "description": "Print all paths that end in 'share/applications'",
+    "invocation": "locate -r 'share/applications$'",
+    "shell": "bash"
   }
 ];
