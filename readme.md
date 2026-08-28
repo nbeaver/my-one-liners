@@ -77,12 +77,12 @@ since almost all users have access to a web browser.
 
 Design goals:
 
-- Batteries included (many useful commands available by default)
-- Static HTML with full offline functionality.
-- No dependencies (except a standards-compliant web browser).
+- Batteries included (many useful commands available by default).
+- Static HTML with full offline functionality. No web server required.
+- No dependencies (except a standards-compliant web browser). No need to keep up to date with breaking changes in JavaScript libraries.
 - Consistent data format with full backward and forward compatibility.
-- All data stored in a single JavaScript file,
-  with a format that could be copy and pasted into a JSON file.
+- All data stored in a single JavaScript file.
+- Automated export of all data to a single JSON file.
 - Ease of debugging: data errors point to a line in a single JavaScript file.
 
 ## Why is `componentCommands` necessary?
