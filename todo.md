@@ -11,7 +11,7 @@
 - [x] Add an "Edit" button for each command and sync any changes back to cmdInfo global variable.
 - [x] Prevent closing the tab if there are unsaved changes
 - [ ] Warn on import if there are unsaved changes
-- [ ] Add a "Clear" button in the search section
+- [x] Add a "Clear" button in the search section
 
 # Validation
 

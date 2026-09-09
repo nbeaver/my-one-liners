@@ -308,6 +308,17 @@ function selectNoShells() {
   }
   updateSearch();
 }
+function clearSearchFields() {
+  for (const el of document.getElementsByClassName("shellOption")) {
+    el.checked = true;
+  }
+  for (const el of document.getElementsByClassName("search")) {
+    if (el.type === "text" ) {
+      el.value = "";
+    }
+  }
+  updateSearch();
+}
 
 function validateSingleEntry(entry, i, assert = true, returnValid = false) {
   let originalAssert = null;
@@ -910,6 +921,7 @@ function updateState() {
   }
   elem.allShells.addEventListener("click", selectAllShells);
   elem.noShells.addEventListener("click", selectNoShells);
+  elem.clearSearchFields.addEventListener("click", clearSearchFields);
   updateSearch();
 }
 
