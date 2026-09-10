@@ -3388,5 +3388,227 @@ var cmdInfo = [
     "description": "Print all paths that end in 'share/applications'",
     "invocation": "locate -r 'share/applications$'",
     "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "find",
+      "rename"
+    ],
+    "description": "Remove pipe characters from filenames recursively.",
+    "invocation": "find . -name '*|*' -exec rename -n 's/\\|//g' '{}' \\+",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "grep"
+    ],
+    "description": "Filter out words with uppercase (i.e. capital) letters.",
+    "invocation": "grep -v '[A-Z]' /usr/share/dict/words",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "du"
+    ],
+    "description": "Print disk usage of current directory and subdirectories in 1024 bytes (KiB).",
+    "invocation": "du",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "du"
+    ],
+    "description": "Print disk usage of current directory and subdirectories in bytes.",
+    "invocation": "du -b",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "du"
+    ],
+    "description": "Print disk usage of current directory and subdirectories in bytes (long flag).",
+    "invocation": "du --bytes",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "du",
+      "sort"
+    ],
+    "description": "Print disk usage of /boot and subdirectories in bytes.",
+    "exampleOutput": "357321475\t/boot\n8076090\t/boot/grub\n6458969\t/boot/efi/EFI\n6458969\t/boot/efi\n4547681\t/boot/efi/EFI/ubuntu\n3105455\t/boot/grub/x86_64-efi\n2411806\t/boot/grub/fonts\n1911288\t/boot/efi/EFI/BOOT\n135880\t/boot/grub/locale\n0\t/boot/efi/EFI/UpdateCapsule\n0\t/boot/efi/EFI/ubuntu/fw\n",
+    "invocation": "du -b | sort -nr",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "du",
+      "sort"
+    ],
+    "description": "Print disk usage of /boot and subdirectories in bytes (long flags).",
+    "exampleOutput": "357321475\t/boot\n8076090\t/boot/grub\n6458969\t/boot/efi/EFI\n6458969\t/boot/efi\n4547681\t/boot/efi/EFI/ubuntu\n3105455\t/boot/grub/x86_64-efi\n2411806\t/boot/grub/fonts\n1911288\t/boot/efi/EFI/BOOT\n135880\t/boot/grub/locale\n0\t/boot/efi/EFI/UpdateCapsule\n0\t/boot/efi/EFI/ubuntu/fw\n",
+    "invocation": "du --bytes /boot | sort --numeric-sort --reverse",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "du",
+      "sort"
+    ],
+    "description": "Print which user directory is taking up the most disk space in units of KiB.",
+    "invocation": "du -k --max-depth=1 /home | sort -nr",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "ncdu"
+    ],
+    "description": "Look at disk usage of current directory interactively.",
+    "invocation": "ncdu",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "mkvextract"
+    ],
+    "description": "Extract audio tracks from an mkv file.",
+    "invocation": "mkvextract tracks example.mkv 2:example_out.ac3",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "ls"
+    ],
+    "description": "Show list of all files except . and .. in a single column.",
+    "invocation": "ls --almost-all --format=single-column",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "!!"
+    ],
+    "description": "Shortcut to repeat previous command in bash using history expansion. Interactive shells only.",
+    "invocation": "!!",
+    "links": [
+      "https://www.gnu.org/software/bash/manual/html_node/Event-Designators.html",
+      "https://www.redhat.com/en/blog/bash-bang-commands",
+      "https://unix.stackexchange.com/questions/147563/how-do-i-repeat-the-last-command-without-using-the-arrow-keys"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "watch",
+      "lsusb"
+    ],
+    "description": "List USB devices every second and highlight any changes. Useful while plugging or unplugging USB devices.",
+    "invocation": "watch -d -n 1 lsusb",
+    "links": [
+      "https://askubuntu.com/questions/600818/bluetooth-messed-up-by-kernel-3-13-46",
+      "https://unix.stackexchange.com/questions/776606/usb-wireless-adapter-not-showing-except-in-lsusb"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "systemd-inhibit",
+      "sleep"
+    ],
+    "description": "Prevent laptop from going to idle standby or sleep mode for 1 hour (3600 seconds).",
+    "invocation": "systemd-inhibit --what=idle:sleep sleep 3600",
+    "links": [
+      "https://askubuntu.com/questions/577862/how-to-temporarily-disable-sleep-and-hibernate-from-the-command-line"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "ag"
+    ],
+    "description": "Search for HTML files constaining CSS for a dark color scheme.",
+    "invocation": "ag -lQG '.*\\.html' 'prefers-color-scheme: dark'",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "ag"
+    ],
+    "description": "Print permissions in human-readable (%A) and octal (%a) format, as well as owner (%U) and group (%G).",
+    "invocation": "stat -c '%A %a %U %G %n' myfile.txt",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a file so that all users can read it but only the owner can modify it.",
+    "invocation": "chmod u=rw,g=r,o=r myfile.txt",
+    "links": [
+      "http://www.quitsendingmetrash.com/lrn/unix/commands/chmod/chmodBasics.html",
+      "https://www.linuxjournal.com/article/1190",
+      "https://marcyes.com/2018/0208-a-simple-way-to-remember-linux-permissions/"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a file so that all users can read it but only the owner can modify it.",
+    "invocation": "chmod 0644 myfile.txt",
+    "links": [
+      "http://www.quitsendingmetrash.com/lrn/unix/commands/chmod/chmodBasics.html",
+      "https://www.linuxjournal.com/article/1190",
+      "https://marcyes.com/2018/0208-a-simple-way-to-remember-linux-permissions/"
+    ],
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a directory called mydir/ so that only the owner and group members can modify it, but don't change access settings.",
+    "invocation": "chmod a-w,ug+w mydir/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a directory called mydir/ so that only the owner and group members can modify it, but don't change access settings.",
+    "invocation": "chmod ug+w,o-w mydir/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a directory so that only the owner and group members access and modify mydir/.",
+    "invocation": "chmod ug=rwx,o=rwx mydir/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a directory so that only the owner and group members access and modify mydir/.",
+    "invocation": "chmod 0770 mydir/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a directory so only the owner can access.",
+    "invocation": "chmod u+rwx,g-rwx,o-rwx mydir/",
+    "shell": "bash"
+  },
+  {
+    "componentCommands": [
+      "chmod"
+    ],
+    "description": "Set permissions of a directory so only the owner can access.",
+    "invocation": "chmod 0700 mydir/",
+    "shell": "bash"
   }
 ];
