@@ -3178,7 +3178,8 @@ var cmdInfo = [
   {
     "componentCommands": ["ffprobe"],
     "description":
-      "Get duration of a video in seconds.\nExample output:\n4.970000",
+      "Get duration of a video in seconds.",
+    "exampleOutput": "4.970000\n",
     "invocation":
       "ffprobe -i example.mp4 -show_entries format=duration -v error -of csv=\"p=0\"",
     "links": [
